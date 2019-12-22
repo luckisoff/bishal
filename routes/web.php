@@ -13,6 +13,5 @@
 
 Route::get('/', function () {
     \Artisan::call('migrate');
-    \Artisan::call('passport:install');
     return view('welcome');
 });

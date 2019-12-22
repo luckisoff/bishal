@@ -7,12 +7,11 @@ use App\Http\Controllers\Controller;
 class BaseApiController extends Controller
 {
     public function successResponse($data = array(), string $message = 'Successful', int $code = 200, array $header = []) {
-	    $res = response()->json([
-            'status' => true,
-	        'message' => $message,
-	        'code' => $code,
-	        'data' => $data,
-	    ], $code);
+        $dat['status']=true;
+        $dat['message']=$message;
+        $dat['code']=$code;
+
+	    $res = response()->json(array_merge($dat,$data), $code);
 
 	    if($header && is_array($header)) {
 	    	foreach ($header as $key => $value) {

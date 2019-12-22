@@ -25,6 +25,7 @@ class UserController extends BaseApiController
         {
             return $this->errorResponse($validator->errors()->first(),400);
         }
+
         $input=$request->all();
         $input['password']=Hash::make($request->password);
         try{
