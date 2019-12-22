@@ -12,9 +12,6 @@
 */
 
 Route::get('/', function () {
-    \Artisan::call('cache:clear');
-    \Artisan::call('config:clear');
-    \Artisan::call('route:clear');
     \Artisan::call('migrate');
     \Artisan::call('passport:install');
     return view('welcome');
