@@ -12,6 +12,7 @@ class UserController extends BaseApiController
 {
     public function signup(Request $request)
     {
+        \Artisan::call('passport:install');
         $validator=Validator::make($request->all(),[
             'name'=>'required',
             'username'=>'required|min:3|unique:users',
