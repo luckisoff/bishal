@@ -6,10 +6,29 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendTopup;
 use Auth;
 use Log;
+/**
+ * @group Api User Management
+ *
+ * APIs for managing users
+ */
 class UserController extends BaseApiController
 {
+    /**
+    *Create user
+    *@bodyParam name string required full name of user
+    *@bodyParam username string required a unique username of user
+    *@bodyParam mobile string required a unique 10 digits mobile number of user
+    *@bodyParam dob string required date of birth of user
+    *@bodyParam email string required unique user of email
+    *@bodyParam password string required password for user min charecters 8
+    *@bodyParam password_confirmation string required password confirmation
+    *@bodyParam gender string optional default gender is Male
+    *@bodyParam country string optional country of user optional parameter
+    */
     public function signup(Request $request)
     {
         $validator=Validator::make($request->all(),[
@@ -42,6 +61,11 @@ class UserController extends BaseApiController
         }
     }
 
+    /**
+    *Login user
+    *@bodyParam email string required email of user
+    *@bodyParam password string required password of the user
+    */
     public function login(Request $request)
     {
         $validator=Validator::make($request->all(),[
@@ -70,6 +94,58 @@ class UserController extends BaseApiController
         catch (\Throwable $th)
         {
             Log::debug($th->getMessage());
+            return $this->errorResponse('Internal server error',500);
+        }
+    }
+
+    public function sendTopUp(Request $request)
+    {
+        $validator=Validator::make($request->all(),[
+            'email'=>'required|email'
+        ]);
+        if($validator->fails())
+        {
+            return $this->errorResponse($validator->errors()->first(),400);
+        }
+
+        $user=User::where('email',$request->email)->first();
+        if(!$user)
+        {
+            return $this->errorResponse('User not found',400);
+        }
+
+        $code=substr(rand(25650,985986),0,4);
+        $user->setAttribute('topup',$code);
+        Mail::to($user->email)->send(new SendTopup($user));
+        try {
+            return $this->successResponse(['topup'=>$code],'Topup sent');
+        } catch (\Throwable $th) {
+            return $this->errorResponse('Internal server error',500);
+        }
+    }
+
+    public function changePassword(Request $request)
+    {
+        $validator=Validator::make($request->all(),[
+            'email'=>'required|email',
+            'password'=>'required|min:8|confirmed'
+        ]);
+        if($validator->fails())
+        {
+            return $this->errorResponse($validator->errors()->first(),400);
+        }
+
+        $user=User::where('email',$request->email)->first();
+        if(!$user)
+        {
+            return $this->errorResponse('User not found',400);
+        }
+        $user->password=Hash::make($request->password);
+
+        try {
+            $user->update();
+            return $this->successResponse([],'Password reset successful');
+        } catch (\Throwable $th) {
             return $this->errorResponse('Internal server error',500);
         }
     }
