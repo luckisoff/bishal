@@ -34,7 +34,7 @@ curl -X POST \
     "http://localhost/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"voluptatem","password":"et"}'
+    -d '{"email":"animi","password":"ipsam"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "email": "voluptatem",
-    "password": "et"
+    "email": "animi",
+    "password": "ipsam"
 }
 
 fetch(url, {
@@ -85,7 +85,7 @@ curl -X POST \
     "http://localhost/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"aspernatur","username":"corporis","mobile":"voluptatem","dob":"dignissimos","email":"dicta","password":"iure","password_confirmation":"id","gender":"animi","country":"est"}'
+    -d '{"name":"quia","username":"eius","mobile":"odio","dob":"id","email":"quisquam","password":"mollitia","password_confirmation":"tempore","gender":"perspiciatis","country":"excepturi"}'
 
 ```
 
@@ -100,15 +100,15 @@ let headers = {
 };
 
 let body = {
-    "name": "aspernatur",
-    "username": "corporis",
-    "mobile": "voluptatem",
-    "dob": "dignissimos",
-    "email": "dicta",
-    "password": "iure",
-    "password_confirmation": "id",
-    "gender": "animi",
-    "country": "est"
+    "name": "quia",
+    "username": "eius",
+    "mobile": "odio",
+    "dob": "id",
+    "email": "quisquam",
+    "password": "mollitia",
+    "password_confirmation": "tempore",
+    "gender": "perspiciatis",
+    "country": "excepturi"
 }
 
 fetch(url, {
@@ -139,6 +139,108 @@ Parameter | Type | Status | Description
         `country` | string |  optional  | optional country of user optional parameter
     
 <!-- END_8ae5d428da27b2b014dc767c2f19a813 -->
+
+<!-- START_f5f84a10a515cff0c79b41e6834dc92c -->
+## Send top up to reset password
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/top-up" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"molestiae"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/top-up"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "molestiae"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/top-up`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | email of user
+    
+<!-- END_f5f84a10a515cff0c79b41e6834dc92c -->
+
+<!-- START_a62f1703e9fba891a3e20ff27854aac0 -->
+## Send top up to reset password
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/v1/password/reset" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"provident","password":"iste","password_confirmation":"eum"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/password/reset"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "provident",
+    "password": "iste",
+    "password_confirmation": "eum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/password/reset`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  required  | email of user
+        `password` | string |  required  | password min 8 character
+        `password_confirmation` | string |  required  | password min 8 character
+    
+<!-- END_a62f1703e9fba891a3e20ff27854aac0 -->
 
 #general
 

@@ -15,3 +15,7 @@ Route::get('/', function () {
     \Artisan::call('migrate');
     return view('welcome');
 });
+
+Route::get('/documentation',function(){
+    return view('apidoc.index');
+})->name('apidoc');

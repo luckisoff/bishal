@@ -97,7 +97,10 @@ class UserController extends BaseApiController
             return $this->errorResponse('Internal server error',500);
         }
     }
-
+     /**
+    *Send top up to reset password
+    *@bodyParam email string required email of user
+    */
     public function sendTopUp(Request $request)
     {
         $validator=Validator::make($request->all(),[
@@ -124,6 +127,12 @@ class UserController extends BaseApiController
         }
     }
 
+    /**
+    *Send top up to reset password
+    *@bodyParam email string required email of user
+    *@bodyParam password string required password min 8 character
+    *@bodyParam password_confirmation string required password min 8 character
+    */
     public function changePassword(Request $request)
     {
         $validator=Validator::make($request->all(),[
