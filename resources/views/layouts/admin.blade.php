@@ -371,7 +371,7 @@
 		</div> <!-- /#project-switcher -->
 	</header> <!-- /.header -->
 
-	<div id="container sidebar-closed">
+	<div id="container" class="sidebar-closed">
         @include('admin.partials.navbar')
 
         @yield('dashboard')
