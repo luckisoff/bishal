@@ -16,6 +16,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::group(['prefix'=>'dashboard'],function(){
+    Route::get('/','Admin\DashBoardController@dashboard')->name('dashboard');
+});
+
+
 Route::get('/documentation',function(){
     return view('apidoc.index');
 })->name('apidoc');
