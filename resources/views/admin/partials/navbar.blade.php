@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar-fixed sidebar-closed">
+<div id="sidebar" class="sidebar-fixed">
     <div id="sidebar-content">
 
         <!-- Search Input -->
