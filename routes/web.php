@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     \Artisan::call('migrate');
+    \Artisan::call('db:seed');
     return view('welcome');
 });
 
