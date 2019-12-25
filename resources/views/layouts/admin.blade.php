@@ -8,7 +8,7 @@
 	<!--=== CSS ===-->
 
 	<!-- Bootstrap -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
 	<!-- jQuery UI -->
 	<!--<link href="plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
@@ -51,7 +51,7 @@
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="index.html">
-				<img src="assets/img/logo.png" alt="logo" />
+				<img src="{{asset('assets/img/logo.png')}}" alt="logo" />
 				<strong>ME</strong>LON
 			</a>
 			<!-- /logo -->
@@ -269,7 +269,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<!--<img alt="" src="assets/img/avatar1_small.jpg" />-->
 						<i class="icon-male"></i>
-						<span class="username">John Doe</span>
+						<span class="username">{{ucfirst(auth()->user()->username)}}</span>
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
@@ -277,7 +277,15 @@
 						<li><a href="pages_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
 						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+                        <li>
+                            <a href="{{ route('dashboard.logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="icon-key">
+                                </i> Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
 					</ul>
 				</li>
 				<!-- /user login dropdown -->
@@ -373,16 +381,135 @@
 
 	<div id="container" class="sidebar-closed">
         @include('admin.partials.navbar')
+        <div id="content">
+            <div class="container">
+                <!-- Breadcrumbs line -->
+                <div class="crumbs">
+                    <ul id="breadcrumbs" class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="{{route('dashboard')}}">Dashboard</a>
+                        </li>
+                        <li class="current">
+                            <a href="pages_calendar.html" title="">Calendar</a>
+                        </li>
+                    </ul>
 
-        @yield('dashboard')
+                    <ul class="crumb-buttons">
+                        <li><a href="charts.html" title=""><i class="icon-signal"></i><span>Statistics</span></a></li>
+                        <li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="icon-tasks"></i><span>Users <strong>(+3)</strong></span><i class="icon-angle-down left-padding"></i></a>
+                            <ul class="dropdown-menu pull-right">
+                            <li><a href="form_components.html" title=""><i class="icon-plus"></i>Add new User</a></li>
+                            <li><a href="tables_dynamic.html" title=""><i class="icon-reorder"></i>Overview</a></li>
+                            </ul>
+                        </li>
+                        <li class="range"><a href="#">
+                            <i class="icon-calendar"></i>
+                            <span></span>
+                            <i class="icon-angle-down"></i>
+                        </a></li>
+                    </ul>
+                </div>
+                <!-- /Breadcrumbs line -->
+
+                <!--=== Page Header ===-->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>Dashboard</h3>
+                        <span>Good {{\App\Helpers\Helper::wish()}}, {{ucfirst(auth()->user()->name)}}</span>
+                    </div>
+
+                    <!-- Page Stats -->
+                    <ul class="page-stats">
+                        <li>
+                            <div class="summary">
+                                <span>New orders</span>
+                                <h3>17,561</h3>
+                            </div>
+                            <div id="sparkline-bar" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
+                            <!-- Use instead of sparkline e.g. this:
+                            <div class="graph circular-chart" data-percent="73">73%</div>
+                            -->
+                        </li>
+                        <li>
+                            <div class="summary">
+                                <span>My balance</span>
+                                <h3>$21,561.21</h3>
+                            </div>
+                            <div id="sparkline-bar2" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
+                        </li>
+                    </ul>
+                    <!-- /Page Stats -->
+                </div>
+                <!-- /Page Header -->
+
+                <!--=== Page Content ===-->
+                <!--=== Statboxes ===-->
+                <div class="row row-bg"> <!-- .row-bg -->
+                    <div class="col-sm-6 col-md-3">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual cyan">
+                                    <div class="statbox-sparkline">30,20,15,30,22,25,26,30,27</div>
+                                </div>
+                                <div class="title">Clients</div>
+                                <div class="value">4 501</div>
+                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <div class="col-sm-6 col-md-3">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual green">
+                                    <div class="statbox-sparkline">20,30,30,29,22,15,20,30,32</div>
+                                </div>
+                                <div class="title">Feedbacks</div>
+                                <div class="value">714</div>
+                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <div class="col-sm-6 col-md-3 hidden-xs">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual yellow">
+                                    <i class="icon-dollar"></i>
+                                </div>
+                                <div class="title">Total Profit</div>
+                                <div class="value">$42,512.61</div>
+                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <div class="col-sm-6 col-md-3 hidden-xs">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual red">
+                                    <i class="icon-user"></i>
+                                </div>
+                                <div class="title">Visitors</div>
+                                <div class="value">2 521 719</div>
+                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+                </div> <!-- /.row -->
+                <!-- /Statboxes -->
+                @yield('dashboard')
+            </div>
+        </div>
 	</div>
 
-</body>
-<script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
+
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -426,14 +553,20 @@
 	<script type="text/javascript" src="{{asset('plugins/noty/themes/default.js')}}"></script>
 
 	<!-- Forms -->
-	<script type="text/javascript" src="{{asset('plugins/uniform/jquery.uniform.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('plugins/select2/select2.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('plugins/uniform/jquery.uniform.min.js')}}"></script> <!-- Styled radio and checkboxes -->
+	<script type="text/javascript" src="{{asset('plugins/select2/select2.min.js')}}"></script> <!-- Styled select boxes -->
+	<script type="text/javascript" src="{{asset('plugins/fileinput/fileinput.js')}}"></script>
+	<script type="text/javascript" src="{{asset('plugins/bootstrap-multiselect/bootstrap-multiselect.min.js')}}"></script>
 
 	<!-- App -->
 	<script type="text/javascript" src="{{asset('assets/js/app.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/plugins.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/plugins.form-components.js')}}"></script>
 
+    <!-- DataTables -->
+	<script type="text/javascript" src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('plugins/datatables/DT_bootstrap.js')}}"></script>
+	<script type="text/javascript" src="{{asset('plugins/datatables/responsive/datatables.responsive.js')}}"></script> <!-- optional -->
 	<script>
 	$(document).ready(function(){
 		"use strict";
@@ -445,8 +578,11 @@
 	</script>
 
 	<!-- Demo JS -->
-	<script type="text/javascript" src="{{asset('assets/js/custom.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/custom.js')}}"></script>
+	<script type="text/javascript" src="assets/js/demo/form_components.js"></script>
+
 	<script type="text/javascript" src="{{asset('assets/js/demo/pages_calendar.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_filled_blue.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_simple.js')}}"></script>
+</body>
 </html>

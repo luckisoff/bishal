@@ -36,7 +36,7 @@ class UserController extends BaseApiController
             'username'=>'required|min:3|unique:users',
             'mobile'=>'required|min:10|max:13|unique:users',
             'email'=>'required|email|unique:users',
-            'dob'=>'date_format:Y-m-d|before:15 years ago',
+            'dob'=>'date_format:Y-m-d',
             'password'=>'required|min:8|confirmed',
 
         ]);
