@@ -9,8 +9,20 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends BaseAdminController
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:view user'],['only'=>['index']]);
+        $this->middleware(['permission:create user'],['ony'=>['edit','update']]);
+        $this->middleware(['permission:delete user'],['only'=>['destroy']]);
+        $this->middleware(['permission:update user'],['only'=>['edit','update']]);
+        $this->middleware(['permission:update permission'],['only'=>['updatePermission']]);
+    }
     public function index()
     {
+        if(!auth()->user()->can('view user'))
+        {
+            return redirect()->back()->withErrors("You don't have permission for this action",'error');
+        }
         $users=User::orderBy('created_at','desc')->get();
         return view('admin.parts.users.index',compact('users'));
     }
@@ -24,6 +36,10 @@ class UserController extends BaseAdminController
 
     public function update(Request $request,User $user)
     {
+        if(!auth()->user()->can('update user'))
+        {
+            return redirect()->back()->withErrors("You don't have permission for this action",'error');
+        }
         $this->validate($request,[
             'name'=>'required',
             'dob'=>'required',
@@ -58,6 +74,10 @@ class UserController extends BaseAdminController
 
     public function destroy(User $user)
     {
+        if(!auth()->user()->can('delete user'))
+        {
+            return redirect()->back()->withErrors("You don't have permission for this action",'error');
+        }
         if(auth()->user()->id==$user->id)
         {
             return redirect()->back()->withErrors(['You can not delete yourself'],'error');
@@ -67,5 +87,18 @@ class UserController extends BaseAdminController
             return redirect()->back()->with('success','Delete successful');
 
         return redirect()->back()->withErrors(['Someting went wrong'],'error');
+    }
+
+    public function updatePermission()
+    {
+        if(!auth()->user()->can('update permission'))
+        {
+            return redirect()->back()->withErrors("You don't have permission for this action",'error');
+        }
+        if(!\Artisan::call('db:seed'))
+        {
+            return redirect()->back()->with('success','Database seeded and permissions created.');
+        }
+        return redirect()->back()->withErrors("Something went wrong",'error');
     }
 }

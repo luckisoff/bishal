@@ -318,7 +318,17 @@
                 </label>
             </div>
         </div>
-
+        @if(auth()->user()->can('update permission'))
+        <div class="sidebar-widget align-center">
+            <div class="btn-group" id="theme-switcher">
+                <a href="{{route('dashboard.user.permission')}}">
+                    <label class="btn btn-success btn-sm">
+                        <i class="icon-cog"></i> Create Permissions
+                    </label>
+                </a>
+            </div>
+        </div>
+        @endif
     </div>
     <div id="divider" class="resizeable"></div>
 </div>

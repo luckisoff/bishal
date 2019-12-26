@@ -30,6 +30,7 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/edit/{user}','Admin\UserController@edit')->name('dashboard.user.edit');
             Route::post('/update/{user}','Admin\UserController@update')->name('dashboard.user.update');
             Route::post('/delete/{user}','Admin\UserController@destroy')->name('dashboard.user.delete');
+            Route::get('/update/permission','Admin\UserController@updatePermission')->name('dashboard.user.permission');
         });
     });
     Route::get('/login','Admin\AdminAuthController@showLoginForm')->name('dashboard.login');
