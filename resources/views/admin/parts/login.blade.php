@@ -45,12 +45,13 @@
 			<form class="form-vertical" action="{{route('dashboard.login.post')}}" method="POST">
 				<!-- Title -->
                 <h3 class="form-title">Sign In to your Account</h3>
-                @error('email')
-				<div class="alert fade in alert-danger">
+
+                @if(session()->get('errors'))
+                <div class="alert fade in alert-danger">
                     <i class="icon-remove close" data-dismiss="alert"></i>
-                    {{$message}}
-				</div>
-                @enderror
+                    {{$errors->first()!=null?$errors->first():$errors->error->first()}}
+                </div>
+                @endif
                 <!-- Input Fields -->
                 @csrf
 				<div class="form-group">
@@ -81,7 +82,7 @@
 		</div> <!-- /.content -->
 
 		<!-- Forgot Password Form -->
-		<div class="inner-box">
+		{{-- <div class="inner-box">
 			<div class="content">
 				<!-- Close Button -->
 				<i class="icon-remove close hide-default"></i>
@@ -113,7 +114,7 @@
 					<span>Great. We have sent you an email.</span>
 				</div>
 			</div> <!-- /.content -->
-		</div>
+		</div> --}}
 		<!-- /Forgot Password Form -->
 	</div>
 	<!-- /Login Box -->

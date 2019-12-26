@@ -17,7 +17,7 @@ class DashBoardController extends BaseAdminController
         if(!auth()->user()->can('view dashboard'))
         {
             Auth::logout();
-            return redirect()->route('dashboard.login');
+            return redirect()->back()->withErrors("Access denied",'error');;
         }
         return view('admin.parts.index');
     }
