@@ -15,6 +15,7 @@ class PermissionTableSeeder extends Seeder
         $models=File::allFiles(app_path('Models'));
         Permission::firstOrCreate(['name'=>'update permission','guard_name'=>'web']);
         Permission::firstOrCreate(['name'=>'view dashboard','guard_name'=>'web']);
+        Permission::firstOrCreate(['name'=>'receive notification','guard_name'=>'web']);
         foreach($models as $model)
         {
             $name=strtolower(substr($model->getFilename(),0,-4));

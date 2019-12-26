@@ -179,7 +179,7 @@
                                                     <select class="col-md-10" multiple size="5" name="permissions[]" id="input18" class="select2-select-00 col-md-12 full-width-fix">
                                                         <option value="">None</option>
                                                         @foreach($permissions as $permission)
-                                                            <option value="{{$permission->name}}" {{auth()->user()->can($permission->name)?'selected':''}}>{{$permission->name}}</option>
+                                                            <option value="{{$permission->name}}" {{$user->can($permission->name)?'selected':''}}>{{$permission->name}}</option>
                                                         @endforeach
                                                     </select>
                                             </div>

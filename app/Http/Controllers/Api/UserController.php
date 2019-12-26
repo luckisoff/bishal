@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendTopup;
+use App\Notifications\NewUsers;
 use Auth;
+use Illuminate\Support\Facades\Notification;
 use Log;
 /**
  * @group Api User Management
@@ -50,13 +52,19 @@ class UserController extends BaseApiController
         try{
             if($user=User::create($input))
             {
+                try {
+                    Notification::send(User::permission('receive notification')->get(),new NewUsers($user));
+                } catch (\Throwable $th) {
+                    Log::debug($th->getMessage());
+                }
+
                 $data['token']=$user->createToken($user->username)->accessToken;
                 $data['user']=$user;
                 return $this->successResponse($data,'User Created');
             }
         }catch(\Exception $e)
         {
-            Log::debug($e->getMessage());;
+            Log::debug($e->getMessage());
             return $this->errorResponse('Internal server error',500);
         }
     }
@@ -117,11 +125,18 @@ class UserController extends BaseApiController
             return $this->errorResponse('User not found',400);
         }
 
-        $code=substr(rand(25650,985986),0,4);
-        $user->setAttribute('topup',$code);
-        Mail::to($user->email)->send(new SendTopup($user));
         try {
+            $code=substr(rand(25650,985986),0,4);
+            $user->setAttribute('topup',$code);
+
+            try {
+                Mail::to($user->email)->send(new SendTopup($user));
+            } catch (\Throwable $th) {
+                return $this->errorResponse('Can not send mail. Try again',502);
+            }
+
             return $this->successResponse(['topup'=>$code],'Topup sent');
+
         } catch (\Throwable $th) {
             return $this->errorResponse('Internal server error',500);
         }
