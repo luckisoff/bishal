@@ -14,11 +14,11 @@ class DashBoardController extends BaseAdminController
     }
     public function dashboard()
     {
-        // if(!auth()->user()->can('view dashboard'))
-        // {
-        //     Auth::logout();
-        //     return redirect()->route('dashboard.login');
-        // }
+        if(!auth()->user()->can('view dashboard'))
+        {
+            Auth::logout();
+            return redirect()->route('dashboard.login');
+        }
         return view('admin.parts.index');
     }
 }
