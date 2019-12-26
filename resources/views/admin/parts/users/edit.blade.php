@@ -163,7 +163,7 @@
                                     </div> <!-- /.row -->
                                 </div> <!-- /.widget-content -->
                             </div> <!-- /.widget -->
-
+                            @if(auth()->user()->can('update permission'))
                             <div class="widget">
                                 <div class="widget-header">
                                     <h4>Permissions and Roles</h4>
@@ -186,6 +186,7 @@
                                     </div> <!-- /.row -->
                                 </div> <!-- /.widget-content -->
                             </div> <!-- /.widget -->
+                            @endif
                             <div class="form-actions">
                                 <input type="submit" value="Update" class="btn btn-primary pull-right">
                             </div>
