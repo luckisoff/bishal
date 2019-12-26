@@ -73,6 +73,7 @@
                     Dashboard
                 </a>
             </li>
+            @if(auth()->user()->can('view user'))
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-group"></i>
@@ -81,9 +82,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="ui_general.html">
+                        <a href="{{route('dashboard.users')}}">
                         <i class="icon-angle-right"></i>
-                        General
+                        List Users
                         </a>
                     </li>
                     <li>
@@ -130,6 +131,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>

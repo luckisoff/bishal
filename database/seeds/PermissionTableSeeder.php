@@ -13,6 +13,7 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $models=File::allFiles(app_path('Models'));
+        Permission::firstOrCreate(['name'=>'update permission','guard_name'=>'web']);
         foreach($models as $model)
         {
             $name=strtolower(substr($model->getFilename(),0,-4));
