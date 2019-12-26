@@ -31,27 +31,35 @@
                     </thead>
                     <tbody>
                         @foreach($users as $user)
-                        <tr>
-                            <td class="checkbox-column">
-                                <input type="checkbox" class="uniform">
-                            </td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->username}}</td>
-                            <td>{{$user->gender}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->mobile}}</td>
-                            <td>{{$user->country}}</td>
-                            <td>{{$user->dob}}</td>
-                            <td>{{$user->address}}</td>
-                            <td>
-                                @if(auth()->user()->can('update user'))
-                                    <a href="{{route('dashboard.user.edit',$user)}}"><i class="icon-pencil"></i></a>
-                                @endif
-                                @if(auth()->user()->can('delete user'))
-                                    <a href="{{route('dashboard.user.delete',$user)}}"><i class="icon-trash"></i></a>
-                                @endif
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="uniform">
+                                </td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->gender}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->mobile}}</td>
+                                <td>{{$user->country}}</td>
+                                <td>{{$user->dob}}</td>
+                                <td>{{$user->address}}</td>
+                                <td>
+                                    @if(auth()->user()->can('update user'))
+                                        <a href="{{route('dashboard.user.edit',$user)}}" class="btn btn-warning btn-sm"><i class="icon-pencil"></i></a>
+                                    @endif
+                                    @if(auth()->user()->can('delete user'))
+                                        <a class="btn btn-danger btn-sm" href="{{route('dashboard.user.delete',$user)}}" onclick="userDelete({{$user->id}});">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                        <form id="user-delete{{$user->id}}" action="{{route('dashboard.user.delete',$user)}}" method="POST" style="display: none">
+                                            @csrf
+                                        </form>
+                                    @endif
+                                    @if(auth()->user()->can('view user'))
+                                        <a href="#" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
+                                    @endif
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -59,4 +67,18 @@
         </div>
     </div>
 </div>
+<script>
+    function userDelete(id)
+    {
+        event.preventDefault();
+        if(confirm('Are you sure?'))
+        {
+            document.getElementById('user-delete'+id).submit();
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
 @endsection

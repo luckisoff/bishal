@@ -34,11 +34,13 @@
 
 	<!--=== JavaScript ===-->
 
-
+    <script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
 </head>
 
 <body>
-
 	<!-- Header -->
 	<header class="header navbar navbar-fixed-top" role="banner">
 		<!-- Top Navigation Bar -->
@@ -250,19 +252,19 @@
 				</li>
 
 				<!-- .row .row-bg Toggler -->
-				<li>
+				{{-- <li>
 					<a href="#" class="dropdown-toggle row-bg-toggle">
 						<i class="icon-resize-vertical"></i>
 					</a>
-				</li>
+				</li> --}}
 
 				<!-- Project Switcher Button -->
-				<li class="dropdown">
+				{{-- <li class="dropdown">
 					<a href="#" class="project-switcher-btn dropdown-toggle">
 						<i class="icon-folder-open"></i>
 						<span>Projects</span>
 					</a>
-				</li>
+				</li> --}}
 
 				<!-- User Login Dropdown -->
 				<li class="dropdown user">
@@ -420,7 +422,7 @@
                     </div>
 
                     <!-- Page Stats -->
-                    <ul class="page-stats">
+                    {{-- <ul class="page-stats">
                         <li>
                             <div class="summary">
                                 <span>New orders</span>
@@ -438,14 +440,20 @@
                             </div>
                             <div id="sparkline-bar2" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <!-- /Page Stats -->
                 </div>
+                @if(session()->exists('success')||session()->get('errors'))
+                    <div class="alert alert-{{session()->exists('success')?'success':'danger'}} fade in">
+                        <i class="icon-remove close" data-dismiss="alert"></i>
+                        <strong>{{session()->exists('success')?session()->get('success'):$errors->error->first()}}</strong>
+                    </div>
+                @endif
                 <!-- /Page Header -->
 
                 <!--=== Page Content ===-->
                 <!--=== Statboxes ===-->
-                <div class="row row-bg"> <!-- .row-bg -->
+                {{-- <div class="row row-bg"> <!-- .row-bg -->
                     <div class="col-sm-6 col-md-3">
                         <div class="statbox widget box box-shadow">
                             <div class="widget-content">
@@ -497,20 +505,12 @@
                             </div>
                         </div> <!-- /.smallstat -->
                     </div> <!-- /.col-md-3 -->
-                </div> <!-- /.row -->
+                </div> <!-- /.row --> --}}
                 <!-- /Statboxes -->
                 @yield('dashboard')
             </div>
         </div>
-	</div>
-
-    <script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
-
-	<script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
-
-
+    </div>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 		<script src="assets/js/libs/html5shiv.js"></script>
@@ -549,6 +549,7 @@
 
 	<!-- Noty -->
 	<script type="text/javascript" src="{{asset('plugins/noty/jquery.noty.js')}}"></script>
+	<script type="text/javascript" src="{{asset('plugins/noty/promise.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/noty/layouts/top.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/noty/themes/default.js')}}"></script>
 
@@ -574,7 +575,7 @@
 		App.init(); // Init layout and core plugins
 		Plugins.init(); // Init all plugins
 		FormComponents.init(); // Init all form-specific plugins
-	});
+    });
 	</script>
 
 	<!-- Demo JS -->

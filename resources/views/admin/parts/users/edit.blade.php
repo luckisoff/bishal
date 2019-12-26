@@ -22,24 +22,44 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Name:</label>
-                                                <div class="col-md-8"><input type="text" name="name" class="form-control" value="{{$user->name}}"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                                                    @error('name')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Email:</label>
                                                 <div class="col-md-8">
                                                     <input disabled="disabled" type="text" name="email" class="form-control" value="{{$user->email}}">
+                                                    @error('email')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Mobile: </label>
                                                 <div class="input-group col-md-8">
                                                     <input id="user-mobile" disabled="disabled" type="text" name="mobile" class="form-control" value="{{$user->mobile}}">
                                                     <span class="input-group-addon" id="user-mobile-edit" style="cursor:pointer"><i class="icon-pencil"></i></span>
                                                 </div>
+                                                @error('mobile')
+                                                    <div>
+                                                        <span class="invalid-feedback alert-danger" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    </div>
+                                                @enderror
                                             </div>
-
                                         </div>
 
 
@@ -56,11 +76,29 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">DOB:</label>
-                                                <div class="col-md-8"><input type="text" name="dob" class="form-control input-width-small" value="{{$user->dob}}"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="dob" class="form-control input-width-small" value="{{$user->dob}}">
+                                                    @error('dob')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Address:</label>
-                                                <div class="col-md-8"><input type="text" name="address" class="form-control" value="{{$user->address}}"></div>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="address" class="form-control" value="{{$user->address}}">
+                                                    @error('address')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
                                     </div> <!-- /.row -->
@@ -83,6 +121,13 @@
                                             <div class="form-group">
                                                 <label class="control-label padding-top-10px">Username:</label>
                                                 <input type="text" name="username" class="form-control" value="{{$user->username}}" disabled="disabled">
+                                                @error('username')
+                                                    <div style="margin-top: 10px;">
+                                                        <span class="invalid-feedback alert-danger" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div> <!-- /.row -->
@@ -95,12 +140,20 @@
                                             <div class="form-group">
                                                 <label class="control-label">Old password:</label>
                                                 <input type="password" name="old_password" class="form-control" placeholder="Leave empty for no password-change">
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="control-label">New password:</label>
                                                 <input type="password" name="password" class="form-control" placeholder="Leave empty for no password-change">
                                             </div>
+                                            @error('password')
+                                                <div>
+                                                    <span class="invalid-feedback alert-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                </div>
+                                            @enderror
 
                                             <div class="form-group">
                                                 <label class="control-label">Repeat new password:</label>
