@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="widget box">
             <div class="widget-header">
-                <h4><i class="icon-reorder"></i> Users</h4>
+                <h4><i class="icon-reorder"></i> Posts</h4>
                 <div class="toolbar no-padding">
                     <div class="btn-group">
                         <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
@@ -18,45 +18,37 @@
                             <th class="checkbox-column">
                                 <input type="checkbox" class="uniform">
                             </th>
-                            <th data-class="expand">Name</th>
-                            <th data-hide="phone">Username</th>
-                            <th data-hide="phone">Gender</th>
-                            <th data-class="expand">Email</th>
-                            <th data-hide="phone">Mobile</th>
-                            <th data-hide="phone,tablet">Country</th>
-                            <th data-hide="phone">DOB</th>
-                            <th data-hide="phone">Address</th>
+                            <th data-class="expand">User</th>
+                            <th data-hide="phone">Title</th>
+                            <th data-hide="phone">Comments/Likes</th>
+                            <th data-hide="phone">Date/Time</th>
                             <th data-hide="phone,tablet">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($userposts as $post)
                             <tr>
                                 <td class="checkbox-column">
                                     <input type="checkbox" class="uniform">
                                 </td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->username}}</td>
-                                <td>{{$user->gender}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->mobile}}</td>
-                                <td>{{$user->country}}</td>
-                                <td>{{$user->dob}}</td>
-                                <td>{{$user->address}}</td>
+                                <td>{{$post->user->name}}</td>
+                                <td>{{$post->title}}</td>
                                 <td>
-                                    @if(auth()->user()->can('update user'))
-                                        <a href="{{route('dashboard.user.edit',$user)}}" class="btn btn-warning btn-sm"><i class="icon-edit"></i></a>
-                                    @endif
-                                    @if(auth()->user()->can('delete user'))
-                                        <a class="btn btn-danger btn-sm" href="{{route('dashboard.user.delete',$user)}}" onclick="userDelete({{$user->id}});">
+                                    {!!"<icon class='icon-comment'></icon> ".$post->comments->count()!!}|
+                                    {!!"<icon class='icon-thumbs-up'></icon> ".$post->comments->count()!!}
+                                </td>
+                                <td>{{$post->created_at}}</td>
+                                <td>
+                                    @if(auth()->user()->can('delete userpost'))
+                                        <a class="btn btn-danger btn-sm" href="#" onclick="postDelete({{$post->id}});">
                                             <i class="icon-trash"></i>
                                         </a>
-                                        <form id="user-delete{{$user->id}}" action="{{route('dashboard.user.delete',$user)}}" method="POST" style="display: none">
+                                        <form id="user-delete{{$post->id}}" action="{{route('dashboard.user.post.delete',$post)}}" method="POST" style="display: none">
                                             @csrf
                                         </form>
                                     @endif
-                                    @if(auth()->user()->can('view user'))
-                                        <a href="#" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
+                                    @if(auth()->user()->can('view userpost'))
+                                        <a href="{{route('dashboard.user.post',$post)}}" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
                                     @endif
                                 </td>
                             </tr>
@@ -68,7 +60,7 @@
     </div>
 </div>
 <script>
-    function userDelete(id)
+    function postDelete(id)
     {
         event.preventDefault();
         if(confirm('Are you sure?'))

@@ -1,6 +1,8 @@
 <?php
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\File;
+
 class Helper
 {
     public static function wish()
@@ -14,5 +16,14 @@ class Helper
         $name = rand(15,1500).time().'.'.$file->getClientOriginalExtension();
         $file->move(storage_path().$path, $name);
         return $name;
+    }
+
+    public static function delete_image($file,$path='/app/public/user/post/')
+    {
+        $file=storage_path($path).$file;
+        if(File::exists($file))
+        {
+            File::delete($file);
+        }
     }
 }

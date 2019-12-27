@@ -21,6 +21,7 @@
 	<link href="{{asset('assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
 
 	<link rel="stylesheet" href="{{asset('assets/css/fontawesome/font-awesome.min.css')}}">
 	<!--[if IE 7]>

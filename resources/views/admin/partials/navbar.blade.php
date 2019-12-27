@@ -132,6 +132,24 @@
                 </ul>
             </li>
             @endif
+
+            @if(auth()->user()->can('view userpost'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                    Post Management
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.user.posts')}}">
+                        <i class="icon-angle-right"></i>
+                        List Post
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>
@@ -320,7 +338,7 @@
         </div>
         @if(auth()->user()->can('update permission'))
         <div class="sidebar-widget align-center">
-            <div class="btn-group" id="theme-switcher">
+            <div class="btn-group">
                 <a href="{{route('dashboard.user.permission')}}">
                     <label class="btn btn-success btn-sm">
                         <i class="icon-cog"></i> Create Permissions

@@ -34,7 +34,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"ut","password":"ut"}'
+    -d '{"email":"voluptatibus","password":"dolorem"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "email": "ut",
-    "password": "ut"
+    "email": "voluptatibus",
+    "password": "dolorem"
 }
 
 fetch(url, {
@@ -85,7 +85,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"cupiditate","username":"totam","mobile":"molestiae","dob":"aut","email":"provident","password":"praesentium","password_confirmation":"deserunt","gender":"voluptas","country":"suscipit"}'
+    -d '{"name":"facilis","username":"reprehenderit","mobile":"dolores","dob":"labore","email":"officia","password":"ipsam","password_confirmation":"optio","gender":"dignissimos","country":"commodi"}'
 
 ```
 
@@ -100,15 +100,15 @@ let headers = {
 };
 
 let body = {
-    "name": "cupiditate",
-    "username": "totam",
-    "mobile": "molestiae",
-    "dob": "aut",
-    "email": "provident",
-    "password": "praesentium",
-    "password_confirmation": "deserunt",
-    "gender": "voluptas",
-    "country": "suscipit"
+    "name": "facilis",
+    "username": "reprehenderit",
+    "mobile": "dolores",
+    "dob": "labore",
+    "email": "officia",
+    "password": "ipsam",
+    "password_confirmation": "optio",
+    "gender": "dignissimos",
+    "country": "commodi"
 }
 
 fetch(url, {
@@ -150,7 +150,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"enim"}'
+    -d '{"email":"magni"}'
 
 ```
 
@@ -165,7 +165,7 @@ let headers = {
 };
 
 let body = {
-    "email": "enim"
+    "email": "magni"
 }
 
 fetch(url, {
@@ -199,7 +199,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"nemo","password":"eius","password_confirmation":"recusandae"}'
+    -d '{"email":"enim","password":"sint","password_confirmation":"pariatur"}'
 
 ```
 
@@ -214,9 +214,9 @@ let headers = {
 };
 
 let body = {
-    "email": "nemo",
-    "password": "eius",
-    "password_confirmation": "recusandae"
+    "email": "enim",
+    "password": "sint",
+    "password_confirmation": "pariatur"
 }
 
 fetch(url, {
@@ -256,7 +256,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"fugit","user_id":17,"images":[]}'
+    -d '{"title":"tempore","user_id":20,"images":[]}'
 
 ```
 
@@ -271,8 +271,8 @@ let headers = {
 };
 
 let body = {
-    "title": "fugit",
-    "user_id": 17,
+    "title": "tempore",
+    "user_id": 20,
     "images": []
 }
 
@@ -298,6 +298,59 @@ Parameter | Type | Status | Description
         `images` | array |  required  | array of the images max 5
     
 <!-- END_f4e3e8657ad3b65db645337fe9d30393 -->
+
+<!-- START_a691e091f03a6923a0603c6589c006c9 -->
+## Create post comment
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_id":3,"user_post_id":3,"comment":"suscipit"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/post/comment/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 3,
+    "user_post_id": 3,
+    "comment": "suscipit"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/user/post/comment/store`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `user_id` | integer |  required  | id of signed in user
+        `user_post_id` | integer |  required  | current post id to be commented
+        `comment` | string |  required  | comment text
+    
+<!-- END_a691e091f03a6923a0603c6589c006c9 -->
 
 #general
 
@@ -1148,6 +1201,129 @@ null
 
 
 <!-- END_bc9275eb7f241b08e47127fed622e4d7 -->
+
+<!-- START_c068fd8e7cf6dde916c943a22a3ce4ea -->
+## dashboard/user/posts
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/user/posts" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/posts"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard/user/posts`
+
+
+<!-- END_c068fd8e7cf6dde916c943a22a3ce4ea -->
+
+<!-- START_225c4b6c3c919b5654df40d5fcebf1bc -->
+## dashboard/user/post/view/{post}
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/user/post/view/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/post/view/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (404):
+
+```json
+{
+    "message": "No query results for model [App\\Models\\UserPost] 1"
+}
+```
+
+### HTTP Request
+`GET dashboard/user/post/view/{post}`
+
+
+<!-- END_225c4b6c3c919b5654df40d5fcebf1bc -->
+
+<!-- START_4440aef9a410c613520d6d59a54323fb -->
+## dashboard/user/post/delete/{post}
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/dashboard/user/post/delete/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/post/delete/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/user/post/delete/{post}`
+
+
+<!-- END_4440aef9a410c613520d6d59a54323fb -->
 
 <!-- START_b26bfc0cbd24d03f409e76aee11b682d -->
 ## dashboard/login

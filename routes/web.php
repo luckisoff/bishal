@@ -31,6 +31,9 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::post('/update/{user}','Admin\UserController@update')->name('dashboard.user.update');
             Route::post('/delete/{user}','Admin\UserController@destroy')->name('dashboard.user.delete');
             Route::get('/update/permission','Admin\UserController@updatePermission')->name('dashboard.user.permission');
+            Route::get('/posts','Admin\UserPostController@index')->name('dashboard.user.posts');
+            Route::get('/post/view/{post}','Admin\UserPostController@show')->name('dashboard.user.post');
+            Route::post('/post/delete/{post}','Admin\UserPostController@destroy')->name('dashboard.user.post.delete');
         });
     });
     Route::get('/login','Admin\AdminAuthController@showLoginForm')->name('dashboard.login');

@@ -25,6 +25,7 @@ Route::group(['prefix'=>'v1'],function(){
 
     Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
         Route::post('post/store','Api\UserPostController@store');
+        Route::post('post/comment/store','Api\UserPostController@commentStore');
     });
 });
 
