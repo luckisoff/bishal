@@ -13,7 +13,7 @@ use Auth;
 use Illuminate\Support\Facades\Notification;
 use Log;
 /**
- * @group Api User Management
+ * @group User Management
  *
  * APIs for managing users
  */

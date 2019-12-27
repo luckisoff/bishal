@@ -13,18 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 Route::group(['prefix'=>'v1'],function(){
     Route::post('login', 'Api\UserController@login');
     Route::post('register', 'Api\UserController@signup');
     Route::post('top-up', 'Api\UserController@sendTopUp');
     Route::post('password/reset', 'Api\UserController@changePassword');
+    //api/v1/user/post/store
 
-
-    Route::group(['middleware'=>'auth:api'],function(){
-
+    Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
+        Route::post('post/store','Api\UserPostController@store');
     });
 });
 

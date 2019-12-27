@@ -16,11 +16,11 @@ toc_footers:
 # Info
 
 Welcome to the generated API reference.
-[Get Postman Collection](http://localhost/docs/collection.json)
+[Get Postman Collection](http://127.0.0.1:8000/docs/collection.json)
 
 <!-- END_INFO -->
 
-#Api User Management
+#User Management
 
 
 APIs for managing users
@@ -31,16 +31,16 @@ APIs for managing users
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/login" \
+    "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"animi","password":"ipsam"}'
+    -d '{"email":"ut","password":"ut"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/login"
+    "http://127.0.0.1:8000/api/v1/login"
 );
 
 let headers = {
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "email": "animi",
-    "password": "ipsam"
+    "email": "ut",
+    "password": "ut"
 }
 
 fetch(url, {
@@ -82,16 +82,16 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/register" \
+    "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quia","username":"eius","mobile":"odio","dob":"id","email":"quisquam","password":"mollitia","password_confirmation":"tempore","gender":"perspiciatis","country":"excepturi"}'
+    -d '{"name":"cupiditate","username":"totam","mobile":"molestiae","dob":"aut","email":"provident","password":"praesentium","password_confirmation":"deserunt","gender":"voluptas","country":"suscipit"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/register"
+    "http://127.0.0.1:8000/api/v1/register"
 );
 
 let headers = {
@@ -100,15 +100,15 @@ let headers = {
 };
 
 let body = {
-    "name": "quia",
-    "username": "eius",
-    "mobile": "odio",
-    "dob": "id",
-    "email": "quisquam",
-    "password": "mollitia",
-    "password_confirmation": "tempore",
-    "gender": "perspiciatis",
-    "country": "excepturi"
+    "name": "cupiditate",
+    "username": "totam",
+    "mobile": "molestiae",
+    "dob": "aut",
+    "email": "provident",
+    "password": "praesentium",
+    "password_confirmation": "deserunt",
+    "gender": "voluptas",
+    "country": "suscipit"
 }
 
 fetch(url, {
@@ -147,16 +147,16 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/top-up" \
+    "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"molestiae"}'
+    -d '{"email":"enim"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/top-up"
+    "http://127.0.0.1:8000/api/v1/top-up"
 );
 
 let headers = {
@@ -165,7 +165,7 @@ let headers = {
 };
 
 let body = {
-    "email": "molestiae"
+    "email": "enim"
 }
 
 fetch(url, {
@@ -196,16 +196,16 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/password/reset" \
+    "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"provident","password":"iste","password_confirmation":"eum"}'
+    -d '{"email":"nemo","password":"eius","password_confirmation":"recusandae"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/password/reset"
+    "http://127.0.0.1:8000/api/v1/password/reset"
 );
 
 let headers = {
@@ -214,9 +214,9 @@ let headers = {
 };
 
 let body = {
-    "email": "provident",
-    "password": "iste",
-    "password_confirmation": "eum"
+    "email": "nemo",
+    "password": "eius",
+    "password_confirmation": "recusandae"
 }
 
 fetch(url, {
@@ -242,6 +242,63 @@ Parameter | Type | Status | Description
     
 <!-- END_a62f1703e9fba891a3e20ff27854aac0 -->
 
+#User Post Management
+
+
+APIs for managing users post
+<!-- START_f4e3e8657ad3b65db645337fe9d30393 -->
+## Create user post
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/api/v1/user/post/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"title":"fugit","user_id":17,"images":[]}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/post/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "fugit",
+    "user_id": 17,
+    "images": []
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/user/post/store`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `title` | string |  required  | title of the post or description
+        `user_id` | integer |  required  | user id of online user
+        `images` | array |  required  | array of the images max 5
+    
+<!-- END_f4e3e8657ad3b65db645337fe9d30393 -->
+
 #general
 
 
@@ -252,14 +309,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost/oauth/authorize" \
+    -G "http://127.0.0.1:8000/oauth/authorize" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/authorize"
+    "http://127.0.0.1:8000/oauth/authorize"
 );
 
 let headers = {
@@ -297,14 +354,14 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/oauth/authorize" \
+    "http://127.0.0.1:8000/oauth/authorize" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/authorize"
+    "http://127.0.0.1:8000/oauth/authorize"
 );
 
 let headers = {
@@ -335,14 +392,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost/oauth/authorize" \
+    "http://127.0.0.1:8000/oauth/authorize" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/authorize"
+    "http://127.0.0.1:8000/oauth/authorize"
 );
 
 let headers = {
@@ -373,14 +430,14 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/oauth/token" \
+    "http://127.0.0.1:8000/oauth/token" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/token"
+    "http://127.0.0.1:8000/oauth/token"
 );
 
 let headers = {
@@ -411,14 +468,14 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost/oauth/tokens" \
+    -G "http://127.0.0.1:8000/oauth/tokens" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/tokens"
+    "http://127.0.0.1:8000/oauth/tokens"
 );
 
 let headers = {
@@ -456,14 +513,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost/oauth/tokens/1" \
+    "http://127.0.0.1:8000/oauth/tokens/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/tokens/1"
+    "http://127.0.0.1:8000/oauth/tokens/1"
 );
 
 let headers = {
@@ -494,14 +551,14 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/oauth/token/refresh" \
+    "http://127.0.0.1:8000/oauth/token/refresh" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/token/refresh"
+    "http://127.0.0.1:8000/oauth/token/refresh"
 );
 
 let headers = {
@@ -532,14 +589,14 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost/oauth/clients" \
+    -G "http://127.0.0.1:8000/oauth/clients" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/clients"
+    "http://127.0.0.1:8000/oauth/clients"
 );
 
 let headers = {
@@ -577,14 +634,14 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/oauth/clients" \
+    "http://127.0.0.1:8000/oauth/clients" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/clients"
+    "http://127.0.0.1:8000/oauth/clients"
 );
 
 let headers = {
@@ -615,14 +672,14 @@ fetch(url, {
 
 ```bash
 curl -X PUT \
-    "http://localhost/oauth/clients/1" \
+    "http://127.0.0.1:8000/oauth/clients/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/clients/1"
+    "http://127.0.0.1:8000/oauth/clients/1"
 );
 
 let headers = {
@@ -653,14 +710,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost/oauth/clients/1" \
+    "http://127.0.0.1:8000/oauth/clients/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/clients/1"
+    "http://127.0.0.1:8000/oauth/clients/1"
 );
 
 let headers = {
@@ -691,14 +748,14 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost/oauth/scopes" \
+    -G "http://127.0.0.1:8000/oauth/scopes" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/scopes"
+    "http://127.0.0.1:8000/oauth/scopes"
 );
 
 let headers = {
@@ -736,14 +793,14 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost/oauth/personal-access-tokens" \
+    -G "http://127.0.0.1:8000/oauth/personal-access-tokens" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/personal-access-tokens"
+    "http://127.0.0.1:8000/oauth/personal-access-tokens"
 );
 
 let headers = {
@@ -781,14 +838,14 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/oauth/personal-access-tokens" \
+    "http://127.0.0.1:8000/oauth/personal-access-tokens" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/personal-access-tokens"
+    "http://127.0.0.1:8000/oauth/personal-access-tokens"
 );
 
 let headers = {
@@ -819,14 +876,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost/oauth/personal-access-tokens/1" \
+    "http://127.0.0.1:8000/oauth/personal-access-tokens/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/oauth/personal-access-tokens/1"
+    "http://127.0.0.1:8000/oauth/personal-access-tokens/1"
 );
 
 let headers = {
@@ -849,5 +906,857 @@ fetch(url, {
 
 
 <!-- END_bae65df80fd9d72a01439241a9ea20d0 -->
+
+<!-- START_30059a09ef3f0284c40e4d06962ce08d -->
+## dashboard
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard`
+
+
+<!-- END_30059a09ef3f0284c40e4d06962ce08d -->
+
+<!-- START_d0011eccd4530617608bac7a4faabb54 -->
+## dashboard/user
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/user" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard/user`
+
+
+<!-- END_d0011eccd4530617608bac7a4faabb54 -->
+
+<!-- START_dc15b897966f84f1f7fecd9ab67b64bf -->
+## dashboard/user/edit/{user}
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/user/edit/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/edit/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard/user/edit/{user}`
+
+
+<!-- END_dc15b897966f84f1f7fecd9ab67b64bf -->
+
+<!-- START_8bb38c625bcc37af2f7112844d6b3553 -->
+## dashboard/user/update/{user}
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/dashboard/user/update/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/update/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/user/update/{user}`
+
+
+<!-- END_8bb38c625bcc37af2f7112844d6b3553 -->
+
+<!-- START_e453eb06eb7e2ed65a1482e9f62586f1 -->
+## dashboard/user/delete/{user}
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/dashboard/user/delete/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/delete/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/user/delete/{user}`
+
+
+<!-- END_e453eb06eb7e2ed65a1482e9f62586f1 -->
+
+<!-- START_bc9275eb7f241b08e47127fed622e4d7 -->
+## dashboard/user/update/permission
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/user/update/permission" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/user/update/permission"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard/user/update/permission`
+
+
+<!-- END_bc9275eb7f241b08e47127fed622e4d7 -->
+
+<!-- START_b26bfc0cbd24d03f409e76aee11b682d -->
+## dashboard/login
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/dashboard/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET dashboard/login`
+
+
+<!-- END_b26bfc0cbd24d03f409e76aee11b682d -->
+
+<!-- START_805947295b86bf13c635e55974c91671 -->
+## Handle a login request to the application.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/dashboard/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/login`
+
+
+<!-- END_805947295b86bf13c635e55974c91671 -->
+
+<!-- START_f4fbf16058b03a817ccc0abaa14f9464 -->
+## Log the user out of the application.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/dashboard/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/dashboard/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/logout`
+
+
+<!-- END_f4fbf16058b03a817ccc0abaa14f9464 -->
+
+<!-- START_66e08d3cc8222573018fed49e121e96d -->
+## Show the application&#039;s login form.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET login`
+
+
+<!-- END_66e08d3cc8222573018fed49e121e96d -->
+
+<!-- START_ba35aa39474cb98cfb31829e70eb8b74 -->
+## Handle a login request to the application.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST login`
+
+
+<!-- END_ba35aa39474cb98cfb31829e70eb8b74 -->
+
+<!-- START_e65925f23b9bc6b93d9356895f29f80c -->
+## Log the user out of the application.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST logout`
+
+
+<!-- END_e65925f23b9bc6b93d9356895f29f80c -->
+
+<!-- START_ff38dfb1bd1bb7e1aa24b4e1792a9768 -->
+## Show the application registration form.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET register`
+
+
+<!-- END_ff38dfb1bd1bb7e1aa24b4e1792a9768 -->
+
+<!-- START_d7aad7b5ac127700500280d511a3db01 -->
+## Handle a registration request for the application.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST register`
+
+
+<!-- END_d7aad7b5ac127700500280d511a3db01 -->
+
+<!-- START_d72797bae6d0b1f3a341ebb1f8900441 -->
+## Display the form to request a password reset link.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/password/reset" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/reset"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET password/reset`
+
+
+<!-- END_d72797bae6d0b1f3a341ebb1f8900441 -->
+
+<!-- START_feb40f06a93c80d742181b6ffb6b734e -->
+## Send a reset link to the given user.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/password/email" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/email"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST password/email`
+
+
+<!-- END_feb40f06a93c80d742181b6ffb6b734e -->
+
+<!-- START_e1605a6e5ceee9d1aeb7729216635fd7 -->
+## Display the password reset view for the given token.
+
+If no token is present, display the link request form.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/password/reset/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/reset/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET password/reset/{token}`
+
+
+<!-- END_e1605a6e5ceee9d1aeb7729216635fd7 -->
+
+<!-- START_cafb407b7a846b31491f97719bb15aef -->
+## Reset the given user&#039;s password.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/password/reset" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/reset"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST password/reset`
+
+
+<!-- END_cafb407b7a846b31491f97719bb15aef -->
+
+<!-- START_b77aedc454e9471a35dcb175278ec997 -->
+## Display the password confirmation view.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/password/confirm" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/confirm"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET password/confirm`
+
+
+<!-- END_b77aedc454e9471a35dcb175278ec997 -->
+
+<!-- START_54462d3613f2262e741142161c0e6fea -->
+## Confirm the given user&#039;s password.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://127.0.0.1:8000/password/confirm" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/password/confirm"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST password/confirm`
+
+
+<!-- END_54462d3613f2262e741142161c0e6fea -->
+
+<!-- START_cb859c8e84c35d7133b6a6c8eac253f8 -->
+## Show the application dashboard.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://127.0.0.1:8000/home" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://127.0.0.1:8000/home"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET home`
+
+
+<!-- END_cb859c8e84c35d7133b6a6c8eac253f8 -->
 
 
