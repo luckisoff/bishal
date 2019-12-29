@@ -7,6 +7,8 @@
             <div class="widget-header">
                 <div class="pull-left">
                     <h2>{{'Post by '.$post->user->name}}</h2>
+                    <span class="icon-comment"> {{$post->comments->count()}}</span>
+                    <span class="icon-thumbs-up"> {{$post->likes->count()}}</span>
                 </div>
                 <div class="pull-right">
                     <p class="invoice-nr"><strong>{{$post->created_at->diffForHumans()}}</strong></h3></p>
