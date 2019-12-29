@@ -34,7 +34,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"porro","password":"unde"}'
+    -d '{"email":"possimus","password":"dolorum"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "email": "porro",
-    "password": "unde"
+    "email": "possimus",
+    "password": "dolorum"
 }
 
 fetch(url, {
@@ -85,7 +85,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"totam","username":"nobis","mobile":"excepturi","dob":"harum","email":"corporis","password":"iusto","password_confirmation":"nobis","gender":"et","country":"temporibus"}'
+    -d '{"name":"laborum","username":"suscipit","mobile":"non","dob":"quo","email":"consequuntur","password":"tempore","password_confirmation":"ut","gender":"aliquid","country":"illum"}'
 
 ```
 
@@ -100,15 +100,15 @@ let headers = {
 };
 
 let body = {
-    "name": "totam",
-    "username": "nobis",
-    "mobile": "excepturi",
-    "dob": "harum",
-    "email": "corporis",
-    "password": "iusto",
-    "password_confirmation": "nobis",
-    "gender": "et",
-    "country": "temporibus"
+    "name": "laborum",
+    "username": "suscipit",
+    "mobile": "non",
+    "dob": "quo",
+    "email": "consequuntur",
+    "password": "tempore",
+    "password_confirmation": "ut",
+    "gender": "aliquid",
+    "country": "illum"
 }
 
 fetch(url, {
@@ -150,7 +150,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sunt"}'
+    -d '{"email":"possimus"}'
 
 ```
 
@@ -165,7 +165,7 @@ let headers = {
 };
 
 let body = {
-    "email": "sunt"
+    "email": "possimus"
 }
 
 fetch(url, {
@@ -199,7 +199,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sed","password":"quia","password_confirmation":"qui"}'
+    -d '{"email":"iusto","password":"perferendis","password_confirmation":"in"}'
 
 ```
 
@@ -214,9 +214,9 @@ let headers = {
 };
 
 let body = {
-    "email": "sed",
-    "password": "quia",
-    "password_confirmation": "qui"
+    "email": "iusto",
+    "password": "perferendis",
+    "password_confirmation": "in"
 }
 
 fetch(url, {
@@ -256,7 +256,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"voluptatem","images":[]}'
+    -d '{"title":"et","images":[]}'
 
 ```
 
@@ -271,7 +271,7 @@ let headers = {
 };
 
 let body = {
-    "title": "voluptatem",
+    "title": "et",
     "images": []
 }
 
@@ -307,7 +307,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":3,"comment":"ut"}'
+    -d '{"user_post_id":3,"comment":"ipsam"}'
 
 ```
 
@@ -323,7 +323,7 @@ let headers = {
 
 let body = {
     "user_post_id": 3,
-    "comment": "ut"
+    "comment": "ipsam"
 }
 
 fetch(url, {
@@ -443,7 +443,7 @@ fetch(url, {
 
 APIs for managing users post liked
 <!-- START_a8ba2df90c241c559b860e7dd0d171b8 -->
-## Like or dislike the user post
+## Check if user has liked the post
 
 > Example request:
 
@@ -452,7 +452,7 @@ curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":14}'
 
 ```
 
@@ -467,7 +467,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 14
 }
 
 fetch(url, {
@@ -508,7 +508,7 @@ curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":18}'
 
 ```
 
@@ -523,7 +523,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 18
 }
 
 fetch(url, {

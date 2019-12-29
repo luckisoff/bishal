@@ -59,7 +59,7 @@
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"porro","password":"unde"}'
+    -d '{"email":"possimus","password":"dolorum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/login"
@@ -71,8 +71,8 @@ let headers = {
 };
 
 let body = {
-    "email": "porro",
-    "password": "unde"
+    "email": "possimus",
+    "password": "dolorum"
 }
 
 fetch(url, {
@@ -119,7 +119,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"totam","username":"nobis","mobile":"excepturi","dob":"harum","email":"corporis","password":"iusto","password_confirmation":"nobis","gender":"et","country":"temporibus"}'
+    -d '{"name":"laborum","username":"suscipit","mobile":"non","dob":"quo","email":"consequuntur","password":"tempore","password_confirmation":"ut","gender":"aliquid","country":"illum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/register"
@@ -131,15 +131,15 @@ let headers = {
 };
 
 let body = {
-    "name": "totam",
-    "username": "nobis",
-    "mobile": "excepturi",
-    "dob": "harum",
-    "email": "corporis",
-    "password": "iusto",
-    "password_confirmation": "nobis",
-    "gender": "et",
-    "country": "temporibus"
+    "name": "laborum",
+    "username": "suscipit",
+    "mobile": "non",
+    "dob": "quo",
+    "email": "consequuntur",
+    "password": "tempore",
+    "password_confirmation": "ut",
+    "gender": "aliquid",
+    "country": "illum"
 }
 
 fetch(url, {
@@ -228,7 +228,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sunt"}'
+    -d '{"email":"possimus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/top-up"
@@ -240,7 +240,7 @@ let headers = {
 };
 
 let body = {
-    "email": "sunt"
+    "email": "possimus"
 }
 
 fetch(url, {
@@ -281,7 +281,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sed","password":"quia","password_confirmation":"qui"}'
+    -d '{"email":"iusto","password":"perferendis","password_confirmation":"in"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/password/reset"
@@ -293,9 +293,9 @@ let headers = {
 };
 
 let body = {
-    "email": "sed",
-    "password": "quia",
-    "password_confirmation": "qui"
+    "email": "iusto",
+    "password": "perferendis",
+    "password_confirmation": "in"
 }
 
 fetch(url, {
@@ -350,7 +350,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"voluptatem","images":[]}'
+    -d '{"title":"et","images":[]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/store"
@@ -362,7 +362,7 @@ let headers = {
 };
 
 let body = {
-    "title": "voluptatem",
+    "title": "et",
     "images": []
 }
 
@@ -410,7 +410,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":3,"comment":"ut"}'
+    -d '{"user_post_id":3,"comment":"ipsam"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/comment/store"
@@ -423,7 +423,7 @@ let headers = {
 
 let body = {
     "user_post_id": 3,
-    "comment": "ut"
+    "comment": "ipsam"
 }
 
 fetch(url, {
@@ -530,7 +530,7 @@ fetch(url, {
 <h1>User post like api</h1>
 <p>APIs for managing users post liked</p>
 <!-- START_a8ba2df90c241c559b860e7dd0d171b8 -->
-<h2>Like or dislike the user post</h2>
+<h2>Check if user has liked the post</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -538,7 +538,7 @@ fetch(url, {
     -G "http://127.0.0.1:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":14}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/check/like/1"
@@ -550,7 +550,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 14
 }
 
 fetch(url, {
@@ -597,7 +597,7 @@ fetch(url, {
     -G "http://127.0.0.1:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":18}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/like/1"
@@ -609,7 +609,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 18
 }
 
 fetch(url, {

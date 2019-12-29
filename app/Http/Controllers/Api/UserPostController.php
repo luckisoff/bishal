@@ -23,8 +23,7 @@ class UserPostController extends BaseApiController
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'images'=>'required|array|min:1|max:5',
-            'title'=>'required'
+            'images'=>'array'
         ]);
         if($validator->fails())
         {
