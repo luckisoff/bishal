@@ -553,6 +553,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
     );
 
     public static $classMap = array (
+        'App\\App\\NoPermissionModels\\Like' => __DIR__ . '/../..' . '/app/App/NoPermissionModels/Like.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',

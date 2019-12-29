@@ -18,13 +18,11 @@ class UserPostController extends BaseApiController
     /**
     *Create user post
     *@bodyParam title string required title of the post or description
-    *@bodyParam user_id integer required user id of online user
     *@bodyParam images array required array of the images max 5
     */
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'user_id'=>'required',
             'images'=>'required|array|min:1|max:5',
             'title'=>'required'
         ]);
@@ -35,6 +33,8 @@ class UserPostController extends BaseApiController
 
         try {
             $input=$request->all();
+            $input['user_id']=app()->request->user()->id;
+
             $data=array();
 
             foreach($request->file('images') as $image)
@@ -60,14 +60,12 @@ class UserPostController extends BaseApiController
 
     /**
     *Create post comment
-    *@bodyParam user_id integer required id of signed in user
     *@bodyParam user_post_id integer required current post id to be commented
     *@bodyParam comment string required comment text
     */
     public function commentStore(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'user_id'=>'required',
             'user_post_id'=>'required',
             'comment'=>'required'
         ]);
@@ -77,13 +75,49 @@ class UserPostController extends BaseApiController
         }
 
         try {
-            if(Comment::create($request->all()))
+            $input=$request->all();
+            $input['user_id']=app()->request->user()->id;
+            if(Comment::create($input))
             {
                 return $this->successResponse([],'commenting successful');
             }
         } catch (\Throwable $th) {
             Log::debug('comment log:'.$th->getMessage());
             return $this->errorResponse('Internal server error',500);
+        }
+    }
+
+    /**
+    *Fetch all posts
+    */
+    public function fetchPosts()
+    {
+        try {
+            $posts=UserPost::orderBy('created_at','desc')->withCount(['comments','likes'])->with(['user'=>function($query){
+                $query->select('id','name','username');
+            }])->get();
+
+            return $this->successResponse(['posts'=>$posts],'User posts');
+        } catch (\Throwable $th) {
+            Log::debug('post fetch log:'.$th->getMessage());
+            return $this->errorResponse('Internal server error',500);
+        }
+    }
+
+    /**
+    *Fetch unique posts
+    */
+    public function fetchUniquePost($postId)
+    {
+        try {
+            $post=UserPost::where('id',$postId)->withCount(['comments','likes'])->with('comments')
+            ->with(['user'=>function($query){
+                $query->select('id','name');
+            }])
+            ->first();
+            return $this->successResponse(['post'=>$post],'Single post listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse('Something went wrong!',500);
         }
     }
 
