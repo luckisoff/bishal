@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserPost;
 use App\NoPermissionModels\Like;
 use Illuminate\Http\Request;
 /**
@@ -25,17 +26,22 @@ class LikeController extends BaseApiController
                 if((bool) $isLiked)
                 {
                     $isLiked->delete();
+                    return $this->successResponse([],'Dislike succesful');
                 }
                 else
                 {
-                    Like::create([
+                    if(Like::create([
                         'user_id'=>$user->id,
-                        'likeable_id',$postId,
-                        'likeable_type'=>\get_class(Like::class)
-                    ]);
+                        'likeable_id'=>$postId,
+                        'likeable_type'=>\get_class(new UserPost())
+                    ]))
+                    {
+                        return $this->successResponse([],'Like succesful');
+                    }
                 }
 
         } catch (\Throwable $th) {
+            return $th->getMessage();
             return $this->errorResponse('Could not like this time.',500);
         }
 

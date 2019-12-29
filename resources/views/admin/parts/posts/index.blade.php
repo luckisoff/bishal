@@ -35,7 +35,7 @@
                                 <td>{{$post->title}}</td>
                                 <td>
                                     {!!"<icon class='icon-comment'></icon> ".$post->comments->count()!!}|
-                                    {!!"<icon class='icon-thumbs-up'></icon> ".$post->comments->count()!!}
+                                    {!!"<icon class='icon-thumbs-up'></icon> ".$post->likes->count()!!}
                                 </td>
                                 <td>{{$post->created_at}}</td>
                                 <td>
