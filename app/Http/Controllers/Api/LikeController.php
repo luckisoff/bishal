@@ -42,7 +42,7 @@ class LikeController extends BaseApiController
     }
 
     /**
-     * Like or dislike the user post
+     * Check if user has liked the post
      * @bodyParam post_id integer required id of the post to check if user has liked the post or not
     */
     public function isLiked($postId)
