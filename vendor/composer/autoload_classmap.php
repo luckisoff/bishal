@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\App\\NoPermissionModels\\Like' => $baseDir . '/app/App/NoPermissionModels/Like.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Helpers\\Helper' => $baseDir . '/app/Helpers/Helper.php',
@@ -16,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
     'App\\Http\\Controllers\\Admin\\UserPostController' => $baseDir . '/app/Http/Controllers/Admin/UserPostController.php',
     'App\\Http\\Controllers\\Api\\BaseApiController' => $baseDir . '/app/Http/Controllers/Api/BaseApiController.php',
+    'App\\Http\\Controllers\\Api\\LikeController' => $baseDir . '/app/Http/Controllers/Api/LikeController.php',
     'App\\Http\\Controllers\\Api\\UserController' => $baseDir . '/app/Http/Controllers/Api/UserController.php',
     'App\\Http\\Controllers\\Api\\UserPostController' => $baseDir . '/app/Http/Controllers/Api/UserPostController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -38,8 +38,10 @@ return array(
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Mail\\SendTopup' => $baseDir . '/app/Mail/SendTopup.php',
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
+    'App\\Models\\Hotel' => $baseDir . '/app/Models/Hotel.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserPost' => $baseDir . '/app/Models/UserPost.php',
+    'App\\NoPermissionModels\\Like' => $baseDir . '/app/NoPermissionModels/Like.php',
     'App\\Notifications\\NewUsers' => $baseDir . '/app/Notifications/NewUsers.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

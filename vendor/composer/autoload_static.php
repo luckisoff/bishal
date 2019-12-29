@@ -553,7 +553,6 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
     );
 
     public static $classMap = array (
-        'App\\App\\NoPermissionModels\\Like' => __DIR__ . '/../..' . '/app/App/NoPermissionModels/Like.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
@@ -563,6 +562,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\UserPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserPostController.php',
         'App\\Http\\Controllers\\Api\\BaseApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/BaseApiController.php',
+        'App\\Http\\Controllers\\Api\\LikeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/LikeController.php',
         'App\\Http\\Controllers\\Api\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserController.php',
         'App\\Http\\Controllers\\Api\\UserPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserPostController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -585,8 +585,10 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Mail\\SendTopup' => __DIR__ . '/../..' . '/app/Mail/SendTopup.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
+        'App\\Models\\Hotel' => __DIR__ . '/../..' . '/app/Models/Hotel.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserPost' => __DIR__ . '/../..' . '/app/Models/UserPost.php',
+        'App\\NoPermissionModels\\Like' => __DIR__ . '/../..' . '/app/NoPermissionModels/Like.php',
         'App\\Notifications\\NewUsers' => __DIR__ . '/../..' . '/app/Notifications/NewUsers.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

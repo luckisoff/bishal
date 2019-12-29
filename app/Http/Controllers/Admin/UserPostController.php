@@ -23,9 +23,12 @@ class UserPostController extends BaseAdminController
 
         if($post->delete())
         {
-            foreach($post->images as $image)
+            if(!empty($post->images))
             {
-               Helper::delete_image($image);
+                foreach($post->images as $image)
+                {
+                Helper::delete_image($image);
+                }
             }
             return redirect()->back()->with('success','Post delete successful');
         }
