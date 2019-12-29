@@ -22,13 +22,6 @@ class UserPostController extends BaseApiController
     */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'images'=>'array'
-        ]);
-        if($validator->fails())
-        {
-            return $this->errorResponse($validator->errors()->first(),501);
-        }
 
         try {
             $input=$request->all();
@@ -36,17 +29,28 @@ class UserPostController extends BaseApiController
 
             $data=array();
 
-            foreach($request->file('images') as $image)
+            if($request->has('images'))
             {
-                $imageName=Helper::upload_image($image);
+                $validator=Validator::make($request->all(),[
+                    'images'=>'array'
+                ]);
 
-                $data['images'][]=$imageName;
-                $data['urls'][]=env('APP_URL')."/storage/user/post/".$imageName;
+                if($validator->fails())
+                {
+                    return $this->errorResponse($validator->errors()->first(),501);
+                }
+
+                foreach($request->file('images') as $image)
+                {
+                    $imageName=Helper::upload_image($image);
+
+                    $data['images'][]=$imageName;
+                    $data['urls'][]=env('APP_URL')."/storage/user/post/".$imageName;
+                }
+
+                $input['images']=$data['images'];
+                $input['image_url']=$data['urls'];
             }
-
-            $input['images']=$data['images'];
-            $input['image_url']=$data['urls'];
-
             if($post=UserPost::create($input))
             {
                 return $this->successResponse(['post'=>$post],'Post inserted');
