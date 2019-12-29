@@ -79,9 +79,11 @@
         </div>
     </div>
     <div class="col-md-12">
-        @foreach($post->image_url as $image)
-            <img class="post-img img-responsive" src="{{$image}}" alt="{{$post->title}}">
-        @endforeach
+        @if(!empty($post->image_url))
+            @foreach($post->image_url as $image)
+                <img class="post-img img-responsive" src="{{$image}}" alt="{{$post->title}}">
+            @endforeach
+        @endif
     </div>
     <!-- /Invoice -->
 </div> <!-- /.row -->
