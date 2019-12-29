@@ -59,7 +59,7 @@
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"voluptatibus","password":"dolorem"}'
+    -d '{"email":"porro","password":"unde"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/login"
@@ -71,8 +71,8 @@ let headers = {
 };
 
 let body = {
-    "email": "voluptatibus",
-    "password": "dolorem"
+    "email": "porro",
+    "password": "unde"
 }
 
 fetch(url, {
@@ -119,7 +119,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"facilis","username":"reprehenderit","mobile":"dolores","dob":"labore","email":"officia","password":"ipsam","password_confirmation":"optio","gender":"dignissimos","country":"commodi"}'
+    -d '{"name":"totam","username":"nobis","mobile":"excepturi","dob":"harum","email":"corporis","password":"iusto","password_confirmation":"nobis","gender":"et","country":"temporibus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/register"
@@ -131,15 +131,15 @@ let headers = {
 };
 
 let body = {
-    "name": "facilis",
-    "username": "reprehenderit",
-    "mobile": "dolores",
-    "dob": "labore",
-    "email": "officia",
-    "password": "ipsam",
-    "password_confirmation": "optio",
-    "gender": "dignissimos",
-    "country": "commodi"
+    "name": "totam",
+    "username": "nobis",
+    "mobile": "excepturi",
+    "dob": "harum",
+    "email": "corporis",
+    "password": "iusto",
+    "password_confirmation": "nobis",
+    "gender": "et",
+    "country": "temporibus"
 }
 
 fetch(url, {
@@ -228,7 +228,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"magni"}'
+    -d '{"email":"sunt"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/top-up"
@@ -240,7 +240,7 @@ let headers = {
 };
 
 let body = {
-    "email": "magni"
+    "email": "sunt"
 }
 
 fetch(url, {
@@ -281,7 +281,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"enim","password":"sint","password_confirmation":"pariatur"}'
+    -d '{"email":"sed","password":"quia","password_confirmation":"qui"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/password/reset"
@@ -293,9 +293,9 @@ let headers = {
 };
 
 let body = {
-    "email": "enim",
-    "password": "sint",
-    "password_confirmation": "pariatur"
+    "email": "sed",
+    "password": "quia",
+    "password_confirmation": "qui"
 }
 
 fetch(url, {
@@ -350,7 +350,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"tempore","user_id":20,"images":[]}'
+    -d '{"title":"voluptatem","images":[]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/store"
@@ -362,8 +362,7 @@ let headers = {
 };
 
 let body = {
-    "title": "tempore",
-    "user_id": 20,
+    "title": "voluptatem",
     "images": []
 }
 
@@ -394,12 +393,6 @@ fetch(url, {
 <td>title of the post or description</td>
 </tr>
 <tr>
-<td><code>user_id</code></td>
-<td>integer</td>
-<td>required</td>
-<td>user id of online user</td>
-</tr>
-<tr>
 <td><code>images</code></td>
 <td>array</td>
 <td>required</td>
@@ -417,7 +410,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_id":3,"user_post_id":3,"comment":"suscipit"}'
+    -d '{"user_post_id":3,"comment":"ut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/comment/store"
@@ -429,9 +422,8 @@ let headers = {
 };
 
 let body = {
-    "user_id": 3,
     "user_post_id": 3,
-    "comment": "suscipit"
+    "comment": "ut"
 }
 
 fetch(url, {
@@ -455,12 +447,6 @@ fetch(url, {
 </thead>
 <tbody>
 <tr>
-<td><code>user_id</code></td>
-<td>integer</td>
-<td>required</td>
-<td>id of signed in user</td>
-</tr>
-<tr>
 <td><code>user_post_id</code></td>
 <td>integer</td>
 <td>required</td>
@@ -475,6 +461,192 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_a691e091f03a6923a0603c6589c006c9 -->
+<!-- START_d7cf4563ab17484c7198d7bdc29e8584 -->
+<h2>Fetch all posts</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://127.0.0.1:8000/api/v1/user/fetch/posts" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/fetch/posts"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/user/fetch/posts</code></p>
+<!-- END_d7cf4563ab17484c7198d7bdc29e8584 -->
+<!-- START_425250dfcffd4e4e89a515e1daaa71c8 -->
+<h2>Fetch unique posts</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://127.0.0.1:8000/api/v1/user/fetch/post/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/fetch/post/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/user/fetch/post/{id}</code></p>
+<!-- END_425250dfcffd4e4e89a515e1daaa71c8 -->
+<h1>User post like api</h1>
+<p>APIs for managing users post liked</p>
+<!-- START_a8ba2df90c241c559b860e7dd0d171b8 -->
+<h2>Like or dislike the user post</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://127.0.0.1:8000/api/v1/user/check/like/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":17}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/check/like/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 17
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/user/check/like/{post_id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>id of the post to check if user has liked the post or not</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a8ba2df90c241c559b860e7dd0d171b8 -->
+<!-- START_21c3a7399d059d7d5f17949daaa00d48 -->
+<h2>Like or dislike the user post</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://127.0.0.1:8000/api/v1/user/post/like/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":17}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/post/like/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 17
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/user/post/like/{post_id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>id of the post to be liked or disliked</td>
+</tr>
+</tbody>
+</table>
+<!-- END_21c3a7399d059d7d5f17949daaa00d48 -->
 <h1>general</h1>
 <!-- START_0c068b4037fb2e47e71bd44bd36e3e2a -->
 <h2>Authorize a client to access the user&#039;s account.</h2>
@@ -998,9 +1170,11 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (302):</p>
+<p>Example response (404):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Models\\User] 1"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET dashboard/user/edit/{user}</code></p>
 <!-- END_dc15b897966f84f1f7fecd9ab67b64bf -->
@@ -1145,11 +1319,9 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (302):</p>
 </blockquote>
-<pre><code class="language-json">{
-    "message": "No query results for model [App\\Models\\UserPost] 1"
-}</code></pre>
+<pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET dashboard/user/post/view/{post}</code></p>
 <!-- END_225c4b6c3c919b5654df40d5fcebf1bc -->

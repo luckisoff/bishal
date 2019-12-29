@@ -28,6 +28,8 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('post/comment/store','Api\UserPostController@commentStore');
         Route::get('fetch/posts','Api\UserPostController@fetchPosts');
         Route::get('fetch/post/{id}','Api\UserPostController@fetchUniquePost');
+        Route::get('check/like/{post_id}','Api\LikeController@isLiked');
+        Route::get('post/like/{post_id}','Api\LikeController@likeDislike');
 
         Route::get('userinfo',function(){
             return app()->request->user();
