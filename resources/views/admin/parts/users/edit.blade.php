@@ -10,7 +10,7 @@
             <div class="tab-content row">
                 <!--=== Edit Account ===-->
                 <div class="tab-pane active" id="tab_edit_account">
-                    <form class="form-horizontal" action="{{route('dashboard.user.update',$user)}}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="{{route('dashboard.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <div class="widget">
