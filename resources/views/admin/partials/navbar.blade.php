@@ -67,7 +67,7 @@
 
         <!--=== Navigation ===-->
         <ul id="nav">
-            <li class="current">
+            <li class="{{Request::url()==route('dashboard')?'current':''}}">
                 <a href="{{route('dashboard')}}">
                     <i class="icon-dashboard"></i>
                     Dashboard
@@ -148,6 +148,14 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            @endif
+            @if(auth()->user()->can('view hotel'))
+            <li class="{{Request::url()==route('dashboard.hotels')?'current':''}}">
+                <a href="{{route('dashboard.hotels')}}">
+                    <i class="icon-home"></i>
+                    Hotels
+                </a>
             </li>
             @endif
             <li>

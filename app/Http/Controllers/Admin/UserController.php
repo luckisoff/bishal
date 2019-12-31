@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 
@@ -63,6 +65,17 @@ class UserController extends BaseAdminController
             unset($input['password']);
             unset($input['password_confirmation']);
         }
+
+        if($request->has('image') && !empty($request->image))
+        {
+            $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
+            $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
+            if($user->image)
+            {
+                Helper::delete_image($user->image,'/app/public/user/image/');
+            }
+        }
+
         if($user->update($input))
         {
             if($request->has('permissions'))

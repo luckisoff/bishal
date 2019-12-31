@@ -33,12 +33,8 @@
 	<![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-	<!--=== JavaScript ===-->
-
     <script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
+
 </head>
 
 <body>
@@ -270,13 +266,12 @@
 				<!-- User Login Dropdown -->
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<!--<img alt="" src="assets/img/avatar1_small.jpg" />-->
-						<i class="icon-male"></i>
+						<img alt="{{auth()->user()->name}}" src="{{auth()->user()->image_url}}" style="height: 20px;border-radius: 50%;width: 20px;"/>
 						<span class="username">{{ucfirst(auth()->user()->username)}}</span>
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="pages_user_profile.html"><i class="icon-user"></i> My Profile</a></li>
+						<li><a href="{{route('dashboard.user.edit',auth()->user())}}"><i class="icon-user"></i> My Profile</a></li>
 						<li><a href="pages_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
 						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
 						<li class="divider"></li>
@@ -516,7 +511,11 @@
 	<!--[if lt IE 9]>
 		<script src="assets/js/libs/html5shiv.js"></script>
 	<![endif]-->
+    <!--=== JavaScript ===-->
 
+    <script type="text/javascript" src="{{asset('plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/libs/lodash.compat.min.js')}}"></script>
 	<!-- Smartphone Touch Events -->
 	<script type="text/javascript" src="{{asset('plugins/touchpunch/jquery.ui.touch-punch.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/event.swipe/jquery.event.move.js')}}"></script>
@@ -581,7 +580,7 @@
 
 	<!-- Demo JS -->
     <script type="text/javascript" src="{{asset('assets/js/custom.js')}}"></script>
-	<script type="text/javascript" src="assets/js/demo/form_components.js"></script>
+	<script type="text/javascript" src="{{asset('assets/js/demo/form_components.js')}}"></script>
 
 	<script type="text/javascript" src="{{asset('assets/js/demo/pages_calendar.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_filled_blue.js')}}"></script>

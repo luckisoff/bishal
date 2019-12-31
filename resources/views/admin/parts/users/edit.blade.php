@@ -101,6 +101,31 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Image:</label>
+                                                <div class="col-md-8">
+                                                    <input type="file" name="image" class="form-control">
+                                                    @error('image')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            @if($user->image_url)
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label"></label>
+                                                    <div class="col-md-8">
+                                                        <img src="{{$user->image_url}}" alt="{{$user->name}}" style="height: 100px;border-radius: 50%;width: 100px;">
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+
                                     </div> <!-- /.row -->
                                 </div> <!-- /.widget-content -->
                             </div> <!-- /.widget -->

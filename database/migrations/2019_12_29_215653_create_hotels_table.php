@@ -15,6 +15,15 @@ class CreateHotelsTable extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('logo_url')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('location');
+            $table->string('address');
+            $table->text('description');
+            $table->string('phone');
+            $table->string('website')->nullable();
+            $table->string('open_time')->nullable();
             $table->timestamps();
         });
     }

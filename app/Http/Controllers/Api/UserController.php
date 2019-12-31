@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Helper;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +31,7 @@ class UserController extends BaseApiController
     *@bodyParam password_confirmation string required password confirmation
     *@bodyParam gender string optional default gender is Male
     *@bodyParam country string optional country of user optional parameter
+    *@bodyParam image image optional country of user optional parameter
     */
     public function signup(Request $request)
     {
@@ -49,6 +51,11 @@ class UserController extends BaseApiController
 
         $input=$request->all();
         $input['password']=Hash::make($request->password);
+        if($request->has('image')&&!empty($request->image))
+        {
+            $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
+            $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
+        }
         try{
             if($user=User::create($input))
             {
