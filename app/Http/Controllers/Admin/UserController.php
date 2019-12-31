@@ -66,13 +66,16 @@ class UserController extends BaseAdminController
             unset($input['password_confirmation']);
         }
 
-        if($request->has('image') && !empty($request->image))
+        if($request->has('image'))
         {
-            $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
-            $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
-            if($user->image)
+            if( !empty($request->image))
             {
-                Helper::delete_image($user->image,'/app/public/user/image/');
+                $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
+                $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
+                if($user->image)
+                {
+                    Helper::delete_image($user->image,'/app/public/user/image/');
+                }
             }
         }
 
