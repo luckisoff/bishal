@@ -100,6 +100,7 @@ class UserController extends BaseAdminController
         }
 
         if($user->delete())
+            Helper::delete_image($user->image,'/app/public/user/image/');
             return redirect()->back()->with('success','Delete successful');
 
         return redirect()->back()->withErrors(['Someting went wrong'],'error');
