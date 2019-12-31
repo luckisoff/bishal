@@ -116,6 +116,10 @@ class UserController extends BaseAdminController
         {
             \Artisan::call('storage:link');
             \Artisan::call('migrate');
+            \Artisan::call('cache:clear');
+            \Artisan::call('config:clear');
+            \Artisan::call('view:clear');
+            \Artisan::call('route:clear');
             return redirect()->back()->with('success','Database seeded and permissions created.');
         }
         return redirect()->back()->withErrors("Something went wrong",'error');
