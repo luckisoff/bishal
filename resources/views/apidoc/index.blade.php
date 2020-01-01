@@ -59,7 +59,7 @@
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"rerum","password":"modi"}'
+    -d '{"email":"magni","password":"nulla"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/login"
@@ -71,8 +71,8 @@ let headers = {
 };
 
 let body = {
-    "email": "rerum",
-    "password": "modi"
+    "email": "magni",
+    "password": "nulla"
 }
 
 fetch(url, {
@@ -119,7 +119,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"ut","username":"velit","mobile":"ea","dob":"sapiente","email":"ut","password":"aperiam","password_confirmation":"accusantium","gender":"enim","country":"et","image":"consectetur"}'
+    -d '{"name":"dolor","username":"non","mobile":"placeat","dob":"eum","email":"eligendi","password":"non","password_confirmation":"molestiae","gender":"labore","country":"soluta","image":"rem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/register"
@@ -131,16 +131,16 @@ let headers = {
 };
 
 let body = {
-    "name": "ut",
-    "username": "velit",
-    "mobile": "ea",
-    "dob": "sapiente",
-    "email": "ut",
-    "password": "aperiam",
-    "password_confirmation": "accusantium",
-    "gender": "enim",
-    "country": "et",
-    "image": "consectetur"
+    "name": "dolor",
+    "username": "non",
+    "mobile": "placeat",
+    "dob": "eum",
+    "email": "eligendi",
+    "password": "non",
+    "password_confirmation": "molestiae",
+    "gender": "labore",
+    "country": "soluta",
+    "image": "rem"
 }
 
 fetch(url, {
@@ -235,7 +235,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quo"}'
+    -d '{"email":"id"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/top-up"
@@ -247,7 +247,7 @@ let headers = {
 };
 
 let body = {
-    "email": "quo"
+    "email": "id"
 }
 
 fetch(url, {
@@ -288,7 +288,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"atque","password":"quasi","password_confirmation":"harum"}'
+    -d '{"email":"cupiditate","password":"a","password_confirmation":"in"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/password/reset"
@@ -300,9 +300,9 @@ let headers = {
 };
 
 let body = {
-    "email": "atque",
-    "password": "quasi",
-    "password_confirmation": "harum"
+    "email": "cupiditate",
+    "password": "a",
+    "password_confirmation": "in"
 }
 
 fetch(url, {
@@ -357,7 +357,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"ipsum","images":[]}'
+    -d '{"title":"voluptatem","images":[]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/store"
@@ -369,7 +369,7 @@ let headers = {
 };
 
 let body = {
-    "title": "ipsum",
+    "title": "voluptatem",
     "images": []
 }
 
@@ -417,7 +417,7 @@ fetch(url, {
     "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":13,"comment":"quos"}'
+    -d '{"user_post_id":17,"comment":"voluptatem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/comment/store"
@@ -429,8 +429,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 13,
-    "comment": "quos"
+    "user_post_id": 17,
+    "comment": "voluptatem"
 }
 
 fetch(url, {
@@ -503,13 +503,16 @@ fetch(url, {
 <!-- END_d7cf4563ab17484c7198d7bdc29e8584 -->
 <!-- START_425250dfcffd4e4e89a515e1daaa71c8 -->
 <h2>Fetch unique posts</h2>
+<p>post with like and comment counts and comments</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
+    -H "Accept: application/json" \
+    -d '{"id":15}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/fetch/post/1"
 );
@@ -519,9 +522,14 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "id": 15
+}
+
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
@@ -533,6 +541,25 @@ fetch(url, {
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/v1/user/fetch/post/{id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>post id to get post with comments</td>
+</tr>
+</tbody>
+</table>
 <!-- END_425250dfcffd4e4e89a515e1daaa71c8 -->
 <h1>User post like api</h1>
 <p>APIs for managing users post liked</p>
@@ -545,7 +572,7 @@ fetch(url, {
     -G "http://127.0.0.1:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":15}'
+    -d '{"post_id":19}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/check/like/1"
@@ -557,7 +584,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 15
+    "post_id": 19
 }
 
 fetch(url, {
@@ -604,7 +631,7 @@ fetch(url, {
     -G "http://127.0.0.1:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":4}'
+    -d '{"post_id":20}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://127.0.0.1:8000/api/v1/user/post/like/1"
@@ -616,7 +643,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 4
+    "post_id": 20
 }
 
 fetch(url, {

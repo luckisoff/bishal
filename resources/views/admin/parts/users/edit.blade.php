@@ -228,7 +228,7 @@
 
 <script>
     var $toggle=document.getElementById("user-mobile");
-    document.getElementById("user-mobile-edit").onclick = function fun()
+    document.getElementById("user-mobile-edit").onclick = function()
     {
         if($toggle.disabled)
             $toggle.disabled=false;

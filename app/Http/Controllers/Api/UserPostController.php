@@ -109,11 +109,15 @@ class UserPostController extends BaseApiController
 
     /**
     *Fetch unique posts
+    *post with like and comment counts and comments
+    *@bodyParam id integer required post id to get post with comments
     */
     public function fetchUniquePost($postId)
     {
         try {
-            $post=UserPost::where('id',$postId)->withCount(['comments','likes'])->with('comments')
+            $post=UserPost::where('id',$postId)->withCount(['comments','likes'])->with(['comments'=>function($query){
+                $query->with('user');
+            }])
             ->with(['user'=>function($query){
                 $query->select('id','name');
             }])

@@ -34,7 +34,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"rerum","password":"modi"}'
+    -d '{"email":"magni","password":"nulla"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "email": "rerum",
-    "password": "modi"
+    "email": "magni",
+    "password": "nulla"
 }
 
 fetch(url, {
@@ -85,7 +85,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"ut","username":"velit","mobile":"ea","dob":"sapiente","email":"ut","password":"aperiam","password_confirmation":"accusantium","gender":"enim","country":"et","image":"consectetur"}'
+    -d '{"name":"dolor","username":"non","mobile":"placeat","dob":"eum","email":"eligendi","password":"non","password_confirmation":"molestiae","gender":"labore","country":"soluta","image":"rem"}'
 
 ```
 
@@ -100,16 +100,16 @@ let headers = {
 };
 
 let body = {
-    "name": "ut",
-    "username": "velit",
-    "mobile": "ea",
-    "dob": "sapiente",
-    "email": "ut",
-    "password": "aperiam",
-    "password_confirmation": "accusantium",
-    "gender": "enim",
-    "country": "et",
-    "image": "consectetur"
+    "name": "dolor",
+    "username": "non",
+    "mobile": "placeat",
+    "dob": "eum",
+    "email": "eligendi",
+    "password": "non",
+    "password_confirmation": "molestiae",
+    "gender": "labore",
+    "country": "soluta",
+    "image": "rem"
 }
 
 fetch(url, {
@@ -152,7 +152,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quo"}'
+    -d '{"email":"id"}'
 
 ```
 
@@ -167,7 +167,7 @@ let headers = {
 };
 
 let body = {
-    "email": "quo"
+    "email": "id"
 }
 
 fetch(url, {
@@ -201,7 +201,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"atque","password":"quasi","password_confirmation":"harum"}'
+    -d '{"email":"cupiditate","password":"a","password_confirmation":"in"}'
 
 ```
 
@@ -216,9 +216,9 @@ let headers = {
 };
 
 let body = {
-    "email": "atque",
-    "password": "quasi",
-    "password_confirmation": "harum"
+    "email": "cupiditate",
+    "password": "a",
+    "password_confirmation": "in"
 }
 
 fetch(url, {
@@ -258,7 +258,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"ipsum","images":[]}'
+    -d '{"title":"voluptatem","images":[]}'
 
 ```
 
@@ -273,7 +273,7 @@ let headers = {
 };
 
 let body = {
-    "title": "ipsum",
+    "title": "voluptatem",
     "images": []
 }
 
@@ -309,7 +309,7 @@ curl -X POST \
     "http://127.0.0.1:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":13,"comment":"quos"}'
+    -d '{"user_post_id":17,"comment":"voluptatem"}'
 
 ```
 
@@ -324,8 +324,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 13,
-    "comment": "quos"
+    "user_post_id": 17,
+    "comment": "voluptatem"
 }
 
 fetch(url, {
@@ -397,6 +397,7 @@ fetch(url, {
 
 <!-- START_425250dfcffd4e4e89a515e1daaa71c8 -->
 ## Fetch unique posts
+post with like and comment counts and comments
 
 > Example request:
 
@@ -404,7 +405,9 @@ fetch(url, {
 curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -d '{"id":15}'
+
 ```
 
 ```javascript
@@ -417,9 +420,14 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "id": 15
+}
+
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -437,7 +445,11 @@ fetch(url, {
 ### HTTP Request
 `GET api/v1/user/fetch/post/{id}`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `id` | integer |  required  | post id to get post with comments
+    
 <!-- END_425250dfcffd4e4e89a515e1daaa71c8 -->
 
 #User post like api
@@ -454,7 +466,7 @@ curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":15}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -469,7 +481,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 15
+    "post_id": 19
 }
 
 fetch(url, {
@@ -510,7 +522,7 @@ curl -X GET \
     -G "http://127.0.0.1:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":4}'
+    -d '{"post_id":20}'
 
 ```
 
@@ -525,7 +537,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 4
+    "post_id": 20
 }
 
 fetch(url, {
