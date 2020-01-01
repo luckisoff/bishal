@@ -6,7 +6,7 @@
         <div class="widget invoice">
             <div class="widget-header" style="widht:100%">
                 <div class="text-center">
-                    <img src="{{$hotel->logo_url}}" alt="{{$hotel->name}}" class="img-responsive hotel-logo align-center">
+                    <img src="{{$hotel->logo_url}}" alt="{{$hotel->name}}" class="img-responsive align-center hotel-logo">
                     <h2>{{$hotel->name}}</h2>
                 </div>
             </div>

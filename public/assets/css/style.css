@@ -6,7 +6,9 @@
 
 .hotel-logo
 {
-    height:200px;
+    height: 150px;
+    border-radius: 50%;
+    width: 150px;
 }
 
 #gallery-processing
