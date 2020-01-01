@@ -61,7 +61,7 @@
                                         </form>
                                     @endif
                                     @if(auth()->user()->can('view userpost'))
-                                        <a href="#" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
+                                        <a href="{{route('dashboard.hotel.show',$hotel)}}" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
                                     @endif
                                 </td>
                             </tr>

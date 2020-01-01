@@ -40,8 +40,13 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/','Admin\HotelController@index')->name('dashboard.hotels');
             Route::get('/create/{id?}','Admin\HotelController@create')->name('dashboard.hotel.create');
             Route::post('/store/{id?}','Admin\HotelController@store')->name('dashboard.hotel.store');
-            Route::post('/delete/{id?}','Admin\HotelController@destroy')->name('dashboard.hotel.delete');
+            Route::post('/delete/{id}','Admin\HotelController@destroy')->name('dashboard.hotel.delete');
+            Route::get('/show/{hotel}','Admin\HotelController@show')->name('dashboard.hotel.show');
+            Route::get('/gallery/{hotel}','Admin\HotelController@gallery')->name('dashboard.hotel.gallery');
+            Route::post('/gallery/store/{hotel}','Admin\HotelController@galleryStore')->name('dashboard.hotel.gallery.store');
+            Route::get('/gallery/delete/{gallery?}','Admin\HotelController@galleryDelete')->name('dashboard.hotel.gallery.delete');
         });
+
 
     });
 

@@ -589,6 +589,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Jobs\\SendWelcomeEmail' => __DIR__ . '/../..' . '/app/Jobs/SendWelcomeEmail.php',
         'App\\Mail\\SendTopup' => __DIR__ . '/../..' . '/app/Mail/SendTopup.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
+        'App\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Models/Gallery.php',
         'App\\Models\\Hotel' => __DIR__ . '/../..' . '/app/Models/Hotel.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserPost' => __DIR__ . '/../..' . '/app/Models/UserPost.php',

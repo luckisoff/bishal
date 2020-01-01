@@ -42,6 +42,7 @@ return array(
     'App\\Jobs\\SendWelcomeEmail' => $baseDir . '/app/Jobs/SendWelcomeEmail.php',
     'App\\Mail\\SendTopup' => $baseDir . '/app/Mail/SendTopup.php',
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
+    'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
     'App\\Models\\Hotel' => $baseDir . '/app/Models/Hotel.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserPost' => $baseDir . '/app/Models/UserPost.php',

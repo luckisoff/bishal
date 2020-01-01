@@ -1,6 +1,28 @@
 .post-img{
     height: 150px;
-    margin-left: 10px;
     display: inline-block;
     border: solid 1px #efefef;
+}
+
+.hotel-logo
+{
+    height:200px;
+}
+
+#gallery-processing
+{
+    display: none;
+    background: #0094049e;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    color: #fff;
+}
+.galleryImage
+{
+    height: 180px;
+    display: inline-block;
+    border: solid #ccc 1px;
+    background: #003665;
+    color: #fff;
 }
