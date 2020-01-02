@@ -115,11 +115,14 @@ class UserPostController extends BaseApiController
     public function fetchUniquePost($postId)
     {
         try {
-            $post=UserPost::where('id',$postId)->withCount(['comments','likes'])->with(['comments'=>function($query){
-                $query->with('user');
-            }])
+            $post=UserPost::where('id',$postId)->withCount(['comments','likes'])
             ->with(['user'=>function($query){
                 $query->select('id','name');
+            }])
+            ->with(['comments'=>function($query){
+                $query->with(['user'=>function($q){
+                    $q->select('id','name');
+                }]);
             }])
             ->first();
             return $this->successResponse(['post'=>$post],'Single post listing');
