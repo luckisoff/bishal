@@ -104,7 +104,6 @@
                     addGallery();
                     $('#formImage').val('');
                     $('#gallery-modal').modal('hide');
-                    $('#gallery-processing').show();
                     $('#locProcess').hide();
 
                 },

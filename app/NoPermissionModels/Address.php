@@ -11,6 +11,6 @@ class Address extends Model
 
     public function hotels()
     {
-        return $this->hasMany(Hotel::class);
+        return $this->hasMany(Hotel::class,'location');
     }
 }

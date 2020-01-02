@@ -12,4 +12,9 @@ class Gallery extends Model
     {
         $this->attributes['image_url']=env('APP_URL').'/storage/hotels/gallery/'.$image;
     }
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }

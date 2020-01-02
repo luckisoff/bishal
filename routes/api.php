@@ -30,10 +30,13 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('fetch/post/{id}','Api\UserPostController@fetchUniquePost');
         Route::get('check/like/{post_id}','Api\LikeController@isLiked');
         Route::get('post/like/{post_id}','Api\LikeController@likeDislike');
-
-        Route::get('userinfo',function(){
-            return app()->request->user();
-        });
     });
+
+    //api/v1/location/
+    Route::group(['prefix'=>'location','middleware'=>'auth:api'],function(){
+        Route::get('hotels','Api\HotelController@addressWithHotels');
+
+    });
+
 });
 
