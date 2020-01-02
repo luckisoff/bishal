@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\NoPermissionModels\Address;
-use Illuminate\Http\Request;
 
 /**
  * @group Hotel Apis
