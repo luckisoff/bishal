@@ -28,3 +28,12 @@
     background: #003665;
     color: #fff;
 }
+.hotel-nav
+{
+    background: #b9b9b9;
+    border-bottom: 0px;
+}
+.hotel-nav .navbar-brand img
+{
+    width: 35px;
+}

@@ -24,6 +24,7 @@
 	<link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
 
 	<link rel="stylesheet" href="{{asset('assets/css/fontawesome/font-awesome.min.css')}}">
+	{{-- <link rel="stylesheet" href="{{asset('assets/css/simple-sidebar.css')}}"> --}}
 	<!--[if IE 7]>
 		<link rel="stylesheet" href="{{asset('assets/css/fontawesome/font-awesome-ie7.min.css')}}">
 	<![endif]-->
@@ -585,5 +586,6 @@
 	<script type="text/javascript" src="{{asset('assets/js/demo/pages_calendar.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_filled_blue.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_simple.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
 </body>
 </html>

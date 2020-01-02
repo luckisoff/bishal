@@ -127,7 +127,8 @@ class UserPostController extends BaseApiController
             ->first();
             return $this->successResponse(['post'=>$post],'Single post listing');
         } catch (\Throwable $th) {
-            return $this->errorResponse($th->getMessage(),500);
+            Log::debug('Single post fetch log:'.$th->getMessage());
+            return $this->errorResponse('Internal serve error',500);
         }
     }
 

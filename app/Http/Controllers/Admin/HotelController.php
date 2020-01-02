@@ -68,9 +68,9 @@ class HotelController extends Controller
         }
     }
 
-    public function show(Hotel $hotel)
+    public function show(Hotel $hotel,$page='show')
     {
-        return view('admin.parts.hotels.show',compact('hotel'));
+        return view('admin.parts.hotels.'.$page,compact('hotel'));
     }
 
     public function destroy(Hotel $id)
