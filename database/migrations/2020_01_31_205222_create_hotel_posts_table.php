@@ -19,7 +19,7 @@ class CreateHotelPostsTable extends Migration
             $table->text('post');
             $table->json('images');
 
-            //$table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }
