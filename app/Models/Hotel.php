@@ -20,4 +20,9 @@ class Hotel extends Model
         return $this->hasMany(Gallery::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(HotelPost::class);
+    }
+
 }

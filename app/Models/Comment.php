@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable=['user_id','user_post_id','comment'];
+    protected $guarded=[];
 
-    public function userPost()
+    public function commentable()
     {
-        return $this->belongsTo(UserPost::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 }

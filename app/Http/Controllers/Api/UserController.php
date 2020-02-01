@@ -109,7 +109,7 @@ class UserController extends BaseApiController
         catch (\Throwable $th)
         {
             Log::debug($th->getMessage());
-            return $this->errorResponse('Internal server error',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
      /**

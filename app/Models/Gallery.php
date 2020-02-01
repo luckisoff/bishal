@@ -10,7 +10,7 @@ class Gallery extends Model
 
     public function setImageUrlAttribute($image)
     {
-        $this->attributes['image_url']=env('APP_URL').'/storage/hotels/gallery/'.$image;
+        $this->attributes['image_url']=\URL::to('/storage/hotels/gallery/'.$image);
     }
 
     public function hotel()

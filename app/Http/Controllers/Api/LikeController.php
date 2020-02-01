@@ -41,7 +41,7 @@ class LikeController extends BaseApiController
                 }
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            // return $th->getMessage();
             return $this->errorResponse('Could not like this time.',500);
         }
 

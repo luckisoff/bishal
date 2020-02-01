@@ -24,8 +24,8 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    Story
+                <a href="{{route('dashboard.hotel.show',$hotel->id.'/posts')}}">
+                    Posts
                 </a>
             </li>
             <li>

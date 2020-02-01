@@ -34,6 +34,9 @@
 	<![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
+
+	@yield('styles')
+
     <script type="text/javascript" src="{{asset('assets/js/libs/jquery-1.10.2.min.js')}}"></script>
 
 </head>
@@ -522,6 +525,7 @@
 	<script type="text/javascript" src="{{asset('plugins/event.swipe/jquery.event.move.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/event.swipe/jquery.event.swipe.js')}}"></script>
 
+	@yield('scripts')
 	<!-- General -->
 	<script type="text/javascript" src="{{asset('assets/js/libs/breakpoints.js')}}"></script>
 	<script type="text/javascript" src="{{asset('plugins/respond/respond.min.js')}}"></script> <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
@@ -587,5 +591,6 @@
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_filled_blue.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/demo/charts/chart_simple.js')}}"></script>
 	{{-- <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
+
 </body>
 </html>

@@ -78,8 +78,11 @@ class UserPostController extends BaseApiController
         }
 
         try {
-            $input=$request->all();
             $input['user_id']=app()->request->user()->id;
+            $input['commentable_id']=$request->user_post_id;
+            $input['commentable_type']=\get_class(new UserPost());
+            $input['comment']=$request->comment;
+            
             if(Comment::create($input))
             {
                 return $this->successResponse([],'commenting successful');
