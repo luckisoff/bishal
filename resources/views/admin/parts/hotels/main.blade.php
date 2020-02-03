@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('dashboard')
-@include('admin.parts.hotels.menu')
 <div class="row">
     <!--=== Invoice ===-->
     <div class="col-md-12">

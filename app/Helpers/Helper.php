@@ -21,6 +21,7 @@ class Helper
     public static function delete_image($file,$path='/app/public/user/post/')
     {
         $file=storage_path($path).$file;
+        
         if(File::exists($file))
         {
             File::delete($file);

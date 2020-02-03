@@ -72,18 +72,9 @@
 						Dashboard
 					</a>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						Dropdown
-						<i class="icon-caret-down small"></i>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><i class="icon-user"></i> Example #1</a></li>
-						<li><a href="#"><i class="icon-calendar"></i> Example #2</a></li>
-						<li class="divider"></li>
-						<li><a href="#"><i class="icon-tasks"></i> Example #3</a></li>
-					</ul>
-				</li>
+				@if(Route::currentRouteName() == 'dashboard.hotel.show')
+					@include('admin.parts.hotels.menu')
+				@endif
 			</ul>
 			<!-- /Top Left Menu -->
 

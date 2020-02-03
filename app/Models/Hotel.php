@@ -12,7 +12,7 @@ class Hotel extends Model
 
     public function addressLocation()
     {
-        return $this->belongsTo(Address::class,'location');
+        return $this->belongsTo(Address::class,'location','id');
     }
 
     public function galleries()
@@ -23,6 +23,11 @@ class Hotel extends Model
     public function posts()
     {
         return $this->hasMany(HotelPost::class);
+    }
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
     }
 
 }

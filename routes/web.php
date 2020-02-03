@@ -45,10 +45,16 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/gallery/{hotel}','Admin\HotelController@gallery')->name('dashboard.hotel.gallery');
             Route::post('/gallery/store/{hotel}','Admin\HotelController@galleryStore')->name('dashboard.hotel.gallery.store');
             Route::get('/gallery/delete/{gallery?}','Admin\HotelController@galleryDelete')->name('dashboard.hotel.gallery.delete');
+            
             Route::get('/show/{hotel}/{page?}','Admin\HotelController@show')->name('dashboard.hotel.show');
 
             Route::post('/create/post/store/{hotel}','Admin\HotelPostController@store')->name('dashboard.hotel.post.store');
             Route::post('/delete/post/{post}','Admin\HotelPostController@destroy')->name('dashboard.hotel.post.delete');
+
+            Route::group(['prefix'=>'menu'],function(){
+                Route::post('store/{hotel}','Admin\MenuController@store')->name('dashboard.menu.store');
+                Route::post('delete/{menu}','Admin\MenuController@destroy')->name('dashboard.menu.delete');
+            });
 
         });
 
