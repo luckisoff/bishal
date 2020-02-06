@@ -112,7 +112,7 @@
                                                     </div>
 
                                                     <div class="form-group col-md-6">
-                                                        <label for="name">Unit *</label>
+                                                        <label for="name">Price *</label>
                                                         <input type="number" name="items[0][price]" class="form-control" placeholder="Price of the item">
                                                         <span id="add-field" class="btn btn-success glyphicon glyphicon-plus"></span>
                                                     </div>
@@ -150,7 +150,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="name">Unit *</label>
+                                    <label for="name">Price *</label>
                                     <input type="number" name="items[${i}][price]" class="form-control" placeholder="Price for the item">
                                 </div>
                                 <span id="cut-field" class="btn btn-success glyphicon glyphicon-minus"></span>
