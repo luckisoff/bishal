@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\User;
+Spatie\Permission\Models\Role;
 
 class HotelManagerController extends BaseAdminController
 {
@@ -16,7 +17,11 @@ class HotelManagerController extends BaseAdminController
             if(!$hotel) throw new \Exception('No hotel selected',403);
 
             $hotel->managers()->attach($user->id);
-            $user->assignRole('manager');
+
+            $role = Role::firstOrCrate(['name'=>'manager']);
+
+            $user->assignRole($role);
+            
             return back()->with('success','A manager is attached');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
