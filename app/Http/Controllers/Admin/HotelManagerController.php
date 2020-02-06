@@ -18,7 +18,7 @@ class HotelManagerController extends BaseAdminController
 
             $hotel->managers()->attach($user->id);
 
-            $role = Role::firstOrCrate(['name'=>'manager']);
+            $role = Role::firstOrCreate(['name'=>'manager']);
 
             $user->assignRole($role);
 
