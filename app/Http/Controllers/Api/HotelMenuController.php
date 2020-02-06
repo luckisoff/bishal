@@ -35,7 +35,7 @@ class HotelMenuController extends BaseApiController
     }
 
     /**
-     * Menus
+     * Packages
      * get all package for related hotel
      * @bodyParam hotel_id integer required hotel id for the packages of hotel
     */
