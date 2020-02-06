@@ -11,9 +11,11 @@ use App\Models\Gallery;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
-class HotelController extends Controller
+class HotelController extends BaseAdminController
 {
+    
     public function index()
     {
         $hotels=Hotel::orderBy('name','asc')->get();
@@ -70,7 +72,13 @@ class HotelController extends Controller
 
     public function show(Hotel $hotel,$page='show')
     {
-        return view('admin.parts.hotels.'.$page,compact('hotel'));
+        $users=null;
+        
+        if($page=='create-manager')
+        {
+            $users=User::orderBy('name','asc')->get();
+        }
+        return view('admin.parts.hotels.'.$page,compact('hotel','users'));
     }
 
     public function destroy(Hotel $id)

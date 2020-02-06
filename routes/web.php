@@ -45,6 +45,9 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/gallery/{hotel}','Admin\HotelController@gallery')->name('dashboard.hotel.gallery');
             Route::post('/gallery/store/{hotel}','Admin\HotelController@galleryStore')->name('dashboard.hotel.gallery.store');
             Route::get('/gallery/delete/{gallery?}','Admin\HotelController@galleryDelete')->name('dashboard.hotel.gallery.delete');
+
+            Route::get('manager/store/{user}/{hotel}','Admin\HotelManagerController@store')->name('dashboard.manager.store');
+            Route::get('manager/delete/{user}/{hotel}','Admin\HotelManagerController@destroy')->name('dashboard.manager.delete');
             
             Route::get('/show/{hotel}/{page?}','Admin\HotelController@show')->name('dashboard.hotel.show');
 

@@ -35,4 +35,9 @@ class Hotel extends Model
         return $this->hasMany(Package::class);
     }
 
+    public function managers()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }

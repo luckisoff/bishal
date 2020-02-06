@@ -17,12 +17,10 @@ class DashboardMiddleware
     {
         if(auth()->check())
         {
-            if(count(auth()->user()->getAllPermissions())>0)
-            {
-                // if(auth()->user()->role()=='manager')
-                // {
-                    
-                // }
+            $user = auth()->user();
+
+            if(count($user->getAllPermissions())>0 || $user->hasRole('manager'))
+            {   
                 return $next($request);
             }
             

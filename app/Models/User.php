@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserPost::class);
     }
+
+    public function hotels()
+    {
+        return $this->belongsToMany(Hotel::class);
+    }
 }
