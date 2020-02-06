@@ -47,6 +47,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('post/comment','Api\HotelPostController@storeComment');
         Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
         Route::get('menus/{hotel_id}','Api\HotelMenuController@getMenus');
+        Route::get('packages/{hotel_id}','Api\HotelMenuController@getPackages');
     });
 
 });

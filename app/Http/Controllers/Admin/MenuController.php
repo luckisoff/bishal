@@ -48,6 +48,7 @@ class MenuController extends Controller
             $input['items'] = $data['items'];
     
             $hotel->menus()->create($input);
+            
             return back()->with('success','Menu created');
 
 

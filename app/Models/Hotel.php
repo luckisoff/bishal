@@ -30,4 +30,9 @@ class Hotel extends Model
         return $this->hasMany(Menu::class);
     }
 
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\Package;
 
 /**
  * @group Hotel Menus
@@ -27,6 +28,26 @@ class HotelMenuController extends BaseApiController
             if($menus->count()==0) throw new \Exception('No menus are available',404);
 
             return $this->successResponse(['menus'=>$menus],'Hotel menu listing');
+
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),$th->getCode());
+        }
+    }
+
+    /**
+     * Menus
+     * get all package for related hotel
+     * @bodyParam hotel_id integer required hotel id for the packages of hotel
+    */
+    public function getPackages($hotel_id)
+    {
+        try {
+
+            $packages = package::where('hotel_id',$hotel_id)->orderBy('created_at','desc')->get();
+
+            if($packages->count()==0) throw new \Exception('No menus are available',404);
+
+            return $this->successResponse(['packages'=>$packages],'Hotel menu listing');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),$th->getCode());

@@ -56,6 +56,11 @@ Route::group(['prefix'=>'dashboard'],function(){
                 Route::post('delete/{menu}','Admin\MenuController@destroy')->name('dashboard.menu.delete');
             });
 
+            Route::group(['prefix'=>'package'],function(){
+                Route::post('store/{hotel}','Admin\HotelPackageController@store')->name('dashboard.package.store');
+                Route::post('delete/{package}','Admin\HotelPackageController@destroy')->name('dashboard.package.delete');
+            });
+
         });
 
 

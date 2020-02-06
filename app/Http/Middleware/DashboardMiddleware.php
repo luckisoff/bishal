@@ -19,8 +19,14 @@ class DashboardMiddleware
         {
             if(count(auth()->user()->getAllPermissions())>0)
             {
+                // if(auth()->user()->role()=='manager')
+                // {
+                    
+                // }
                 return $next($request);
             }
+            
+
             Auth::logout();
         }
         return redirect()->route('dashboard.login');
