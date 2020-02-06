@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\User;
-Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Role;
 
 class HotelManagerController extends BaseAdminController
 {
@@ -21,7 +21,7 @@ class HotelManagerController extends BaseAdminController
             $role = Role::firstOrCrate(['name'=>'manager']);
 
             $user->assignRole($role);
-            
+
             return back()->with('success','A manager is attached');
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
