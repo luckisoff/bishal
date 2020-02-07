@@ -38,30 +38,32 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::post('/post/delete/{post}','Admin\UserPostController@destroy')->name('dashboard.user.post.delete');
         
         Route::group(['prefix'=>'hotel'],function(){
-            Route::get('/','Admin\HotelController@index')->name('dashboard.hotels');
-            Route::get('/create/{id?}','Admin\HotelController@create')->name('dashboard.hotel.create');
-            Route::post('/store/{id?}','Admin\HotelController@store')->name('dashboard.hotel.store');
-            Route::post('/delete/{id}','Admin\HotelController@destroy')->name('dashboard.hotel.delete');
+
+            Route::get('/','Admin\HotelController@index')->name('dashboard.hotels')->middleware('permission:create hotel');
+            Route::get('/create/{id?}','Admin\HotelController@create')->name('dashboard.hotel.create')->middleware('permission:create hotel');
+            Route::post('/store/{id?}','Admin\HotelController@store')->name('dashboard.hotel.store')->middleware('permission:create hotel');
+            Route::post('/delete/{id}','Admin\HotelController@destroy')->name('dashboard.hotel.delete')->middleware('permission:delete hotel');
+            
             Route::get('/gallery/{hotel}','Admin\HotelController@gallery')->name('dashboard.hotel.gallery');
             Route::post('/gallery/store/{hotel}','Admin\HotelController@galleryStore')->name('dashboard.hotel.gallery.store');
             Route::get('/gallery/delete/{gallery?}','Admin\HotelController@galleryDelete')->name('dashboard.hotel.gallery.delete');
 
-            Route::get('manager/store/{user}/{hotel}','Admin\HotelManagerController@store')->name('dashboard.manager.store');
-            Route::get('manager/delete/{user}/{hotel}','Admin\HotelManagerController@destroy')->name('dashboard.manager.delete');
+            Route::get('manager/store/{user}/{hotel}','Admin\HotelManagerController@store')->name('dashboard.manager.store')->middleware('permission:create hotel');
+            Route::get('manager/delete/{user}/{hotel}','Admin\HotelManagerController@destroy')->name('dashboard.manager.delete')->middleware('permission:view hotel');
             
-            Route::get('/show/{hotel}/{page?}','Admin\HotelController@show')->name('dashboard.hotel.show');
+            Route::get('/show/{hotel}/{page?}','Admin\HotelController@show')->name('dashboard.hotel.show')->middleware('permission:view hotel');
 
-            Route::post('/create/post/store/{hotel}','Admin\HotelPostController@store')->name('dashboard.hotel.post.store');
-            Route::post('/delete/post/{post}','Admin\HotelPostController@destroy')->name('dashboard.hotel.post.delete');
+            Route::post('/create/post/store/{hotel}','Admin\HotelPostController@store')->name('dashboard.hotel.post.store')->middleware('permission:view hotel');
+            Route::post('/delete/post/{post}','Admin\HotelPostController@destroy')->name('dashboard.hotel.post.delete')->middleware('permission:view hotel');
 
             Route::group(['prefix'=>'menu'],function(){
-                Route::post('store/{hotel}','Admin\MenuController@store')->name('dashboard.menu.store');
-                Route::post('delete/{menu}','Admin\MenuController@destroy')->name('dashboard.menu.delete');
+                Route::post('store/{hotel}','Admin\MenuController@store')->name('dashboard.menu.store')->middleware('permission:view hotel');
+                Route::post('delete/{menu}','Admin\MenuController@destroy')->name('dashboard.menu.delete')->middleware('permission:view hotel');
             });
 
             Route::group(['prefix'=>'package'],function(){
-                Route::post('store/{hotel}','Admin\HotelPackageController@store')->name('dashboard.package.store');
-                Route::post('delete/{package}','Admin\HotelPackageController@destroy')->name('dashboard.package.delete');
+                Route::post('store/{hotel}','Admin\HotelPackageController@store')->name('dashboard.package.store')->middleware('permission:view hotel');
+                Route::post('delete/{package}','Admin\HotelPackageController@destroy')->name('dashboard.package.delete')->middleware('permission:view hotel');
             });
 
         });

@@ -59,19 +59,22 @@
 			</a>
 			<!-- /logo -->
 
+		@if(!auth()->user()->hasRole('manager'))
 			<!-- Sidebar Toggler -->
 			<a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
 				<i class="icon-reorder"></i>
 			</a>
 			<!-- /Sidebar Toggler -->
-
+		@endif
 			<!-- Top Left Menu -->
 			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+			@if(!auth()->user()->hasRole('manager'))
 				<li>
 					<a href="#">
 						Dashboard
 					</a>
 				</li>
+			@endif
 				@if(Route::currentRouteName() == 'dashboard.hotel.show')
 					@include('admin.parts.hotels.menu')
 				@endif

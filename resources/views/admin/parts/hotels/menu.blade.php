@@ -1,6 +1,6 @@
 <li>
     <a href="{{route('dashboard.hotel.show',$hotel->id)}}">
-        Home
+        Dashboard
     </a>
 </li>
 <li>
