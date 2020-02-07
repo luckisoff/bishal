@@ -82,7 +82,7 @@ class HotelController extends BaseAdminController
         if(!auth()->user()->can('create hotel'))
             if(!$hotel->managers->contains(auth()->user()->id)) abort(403,'Permission denied');
         
-        if($page=='create-manager')
+        if($page == 'create-manager')
         {
             if(!auth()->user()->can('create hotel')) abort(403,'Permission denied');
 
