@@ -22,7 +22,8 @@ class HotelManagerController extends BaseAdminController
 
             $user->assignRole($role);
 
-            return back()->with('success','A manager is attached');
+            return redirect()->route('dashboard.hotel.show',[$hotel,'managers'])->with('success','A manager is attached');
+        
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
         }
@@ -37,9 +38,10 @@ class HotelManagerController extends BaseAdminController
 
             $hotel->managers()->detach($user->id);
 
-            $user->removeRole('manager');
+            $user->hasRole('manager') ? $user->removeRole('manager') : '';
 
             return back()->with('success','A manager is detached');
+
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
         }

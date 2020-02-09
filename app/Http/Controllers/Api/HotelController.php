@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\NoPermissionModels\Address;
+use App\Models\HotelPost;
+
 
 /**
  * @group Hotel Apis
@@ -22,10 +24,12 @@ class HotelController extends BaseApiController
                 $query->with('galleries');
             }])
             ->get();
+
             return $this->successResponse(['locations'=>$address],'Locations with hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
         }
     }
+
 }

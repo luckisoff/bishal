@@ -16,16 +16,18 @@ class DashBoardController extends BaseAdminController
     public function dashboard()
     {
         $user = auth()->user();
+
         if($user->hasRole('manager'))
         {
             return redirect()->route('dashboard.hotel.show',$user->hotels()->first());
         }
 
-        if(!auth()->user()->can('view dashboard'))
+        if(!$user->can('view dashboard'))
         {
             Auth::logout();
             return redirect()->back()->withErrors("Access denied",'error');;
         }
+        
         return view('admin.parts.index');
     }
 }
