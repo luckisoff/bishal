@@ -22,7 +22,9 @@
                             <th data-class="expand">Email</th>
                             <th data-hide="phone">Mobile</th>
                             <th data-hide="phone">Address</th>
+                            @if(auth()->user()->can('create hotel'))
                             <th data-hide="phone,tablet">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +38,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->mobile}}</td>
                                     <td>{{$user->address}}</td>
+                                    @if(auth()->user()->can('create hotel'))
                                     <td>
                                         @if($hotel->managers->contains($user->id)&&auth()->user()->can('delete user'))
                                             <a class="btn btn-danger btn-sm" href="{{route('dashboard.manager.delete',[$user,$hotel])}}">
@@ -45,6 +48,7 @@
                                             <a href="{{route('dashboard.manager.store',[$user,$hotel])}}" class="btn btn-success btn-sm"><i class="icon-plus"></i></a>
                                         @endif
                                     </td>
+                                    @endif
                                 </tr>
                             @endif
                         @endforeach

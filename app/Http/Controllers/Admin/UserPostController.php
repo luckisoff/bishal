@@ -7,6 +7,12 @@ use App\Models\UserPost;
 
 class UserPostController extends BaseAdminController
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->middleware(['permission:view userpost'],['only'=>['index']]);
+        $this->middleware(['permission:delete userpost'],['ony'=>['destroy']]);
+    }
     public function index()
     {
         $userposts=UserPost::orderBy('created_at','desc')->get();

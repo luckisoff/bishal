@@ -11,11 +11,13 @@
                     </div>
                 </div>
             </div>
+            @if(auth()->user()->can('create hotel'))
             <div class="widget-header">
                 <h4>
                      <a href="{{route('dashboard.hotel.show',[$hotel->id,'create-manager'])}}"><i class="icon-plus"></i>New</a>
                 </h4>
             </div>
+            @endif
             <div class="widget-content no-padding">
                 <table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable">
                     <thead>
@@ -26,7 +28,9 @@
                             <th data-class="expand">Manager Name</th>
                             <th data-hide="phone">Manger Mobile</th>
                             <th data-hide="phone">Email</th>
+                            @if(auth()->user()->can('view hotel'))
                             <th data-hide="phone,tablet">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -38,13 +42,15 @@
                                 <td>{{$manager->name}}</td>
                                 <td>{{$manager->mobile}}</td>
                                 <td>{{$manager->email}}</td>
+                                @if(auth()->user()->can('view hotel'))
                                 <td>
-                                    @if(auth()->user()->can('delete package'))
+                                    @if(auth()->user()->can('view hotel'))
                                         <a class="btn btn-danger btn-sm" href="{{route('dashboard.manager.delete',[$manager,$hotel])}}">
                                             <i class="icon-minus"></i>
                                         </a>
                                     @endif
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

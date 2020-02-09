@@ -11,8 +11,8 @@ class DashBoardController extends BaseAdminController
     public function __construct()
     {
         parent::__construct();
-        //$this->middleware(['permission:view dashboard']);
     }
+    
     public function dashboard()
     {
         $user = auth()->user();

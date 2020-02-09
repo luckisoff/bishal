@@ -20,10 +20,14 @@ class HotelManagerController extends BaseAdminController
 
             $role = Role::firstOrCreate(['name'=>'manager']);
 
+            $role->givePermissionTo('view hotel');
+
             $user->assignRole($role);
 
-            return redirect()->route('dashboard.hotel.show',[$hotel,'managers'])->with('success','A manager is attached');
-        
+            $user->givePermissionTo('view hotel');
+
+            return back()->with('success','A manager is attached');
+
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
         }
@@ -39,6 +43,8 @@ class HotelManagerController extends BaseAdminController
             $hotel->managers()->detach($user->id);
 
             $user->hasRole('manager') ? $user->removeRole('manager') : '';
+
+            $user->revokePermissionTo('view hotel');
 
             return back()->with('success','A manager is detached');
 

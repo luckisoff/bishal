@@ -15,6 +15,7 @@ class HotelPostController extends BaseAdminController
     
     function __construct(HotelPost $model)
     {
+        parent::__construct();
         $this->model=$model;
         $this->storageFolder='/app/public/hotels/post';
     }

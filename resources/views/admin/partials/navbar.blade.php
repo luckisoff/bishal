@@ -1,3 +1,4 @@
+@if(!auth()->user()->hasRole('manager'))
 <div id="sidebar" class="sidebar-fixed">
     <div id="sidebar-content">
 
@@ -358,4 +359,5 @@
     </div>
     <div id="divider" class="resizeable"></div>
 </div>
+@endif
 <!-- /Sidebar -->
