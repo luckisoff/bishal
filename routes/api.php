@@ -51,5 +51,9 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('packages/{hotel_id}','Api\HotelMenuController@getPackages');
     });
 
+    Route::group(['prefix'=>'gift'],function(){
+        Route::get('/','Api\GiftController@gifts');
+    });
+
 });
 

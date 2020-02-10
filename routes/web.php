@@ -68,6 +68,22 @@ Route::group(['prefix'=>'dashboard'],function(){
 
         });
 
+        Route::group(['prefix'=>'gift'],function(){
+            Route::get('/','Admin\GiftController@viewGifts')->name('dashboard.gifts');
+            Route::get('/create/{category?}','Admin\GiftController@createGift')->name('dashboard.gift.create');
+            Route::get('/show/{gift}','Admin\GiftController@showGift')->name('dashboard.gift.show');
+            
+            Route::post('/store','Admin\GiftController@storeGift')->name('dashboard.gift.store');
+            Route::post('/delete/{gift}','Admin\GiftController@deleteGift')->name('dashboard.gift.delete');
+        });
+
+        Route::group(['prefix'=>'category'],function(){
+            Route::get('/','Admin\GiftController@viewCategory')->name('dashboard.categories');
+            Route::get('/create','Admin\GiftController@createCategory')->name('dashboard.category.create');
+            Route::post('/store','Admin\GiftController@storeCategory')->name('dashboard.category.store');
+            Route::post('/delete/{category}','Admin\GiftController@deleteCategory')->name('dashboard.category.delete');
+        });
+
 
     });
 

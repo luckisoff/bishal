@@ -39,7 +39,7 @@ class HotelPostController extends BaseAdminController
                 foreach($request->images as $image)
                 {
                     $imageName=Helper::upload_image($image,$this->storageFolder);
-                    $data['images'][]=\URL::to('/storage/hotel/post/'.$imageName);
+                    $data['images'][]=\URL::to('/storage/hotels/post/'.$imageName);
                 }
             }
 
