@@ -20,6 +20,90 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
+#Gift Apis
+
+
+APIs for management of the gift items
+<!-- START_79d6b510e3c1534b676e38be5736b240 -->
+## Get
+get all gifts items
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/gift" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/gift"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": true,
+    "message": "Categories with gifts",
+    "code": 200,
+    "data": [
+        {
+            "id": 4,
+            "name": "Laptops",
+            "created_at": "2020-02-10 21:18:49",
+            "updated_at": "2020-02-10 21:18:49",
+            "gifts": [
+                {
+                    "id": 1,
+                    "category_id": 4,
+                    "name": "Acer 2040",
+                    "price": 45000,
+                    "oldprice": 47000,
+                    "description": "dsfdfds sdfdsf sdfsd fsd f ds",
+                    "height": "45",
+                    "cover_img": "http:\/\/localhost:8000\/storage\/gifts\/4531581350163.jpg",
+                    "available": 1,
+                    "highlights": [
+                        "slim",
+                        "new",
+                        "i7",
+                        "branded"
+                    ],
+                    "collections": [
+                        "http:\/\/localhost:8000\/storage\/gifts\/8561581350163.jpg"
+                    ],
+                    "created_at": "2020-02-10 21:41:03",
+                    "updated_at": "2020-02-10 21:41:03"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/v1/gift`
+
+
+<!-- END_79d6b510e3c1534b676e38be5736b240 -->
+
 #Hotel Apis
 
 
@@ -85,7 +169,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":18}'
+    -d '{"hotel_id":20}'
 
 ```
 
@@ -100,7 +184,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 18
+    "hotel_id": 20
 }
 
 fetch(url, {
@@ -144,7 +228,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":13}'
+    -d '{"hotel_id":9}'
 
 ```
 
@@ -159,7 +243,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 13
+    "hotel_id": 9
 }
 
 fetch(url, {
@@ -273,7 +357,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":14}'
+    -d '{"hotel_id":3}'
 
 ```
 
@@ -288,7 +372,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 14
+    "hotel_id": 3
 }
 
 fetch(url, {
@@ -332,7 +416,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":2}'
+    -d '{"post_id":18}'
 
 ```
 
@@ -347,7 +431,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 2
+    "post_id": 18
 }
 
 fetch(url, {
@@ -386,7 +470,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":2}'
+    -d '{"post_id":17}'
 
 ```
 
@@ -401,7 +485,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 2
+    "post_id": 17
 }
 
 fetch(url, {
@@ -435,7 +519,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":16,"comment":"sit"}'
+    -d '{"post_id":12,"comment":"quia"}'
 
 ```
 
@@ -450,8 +534,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 16,
-    "comment": "sit"
+    "post_id": 12,
+    "comment": "quia"
 }
 
 fetch(url, {
@@ -486,7 +570,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":6}'
+    -d '{"commnet_id":15}'
 
 ```
 
@@ -501,7 +585,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 6
+    "commnet_id": 15
 }
 
 fetch(url, {
@@ -539,7 +623,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sequi","password":"numquam"}'
+    -d '{"email":"omnis","password":"totam"}'
 
 ```
 
@@ -554,8 +638,8 @@ let headers = {
 };
 
 let body = {
-    "email": "sequi",
-    "password": "numquam"
+    "email": "omnis",
+    "password": "totam"
 }
 
 fetch(url, {
@@ -590,7 +674,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"corporis","username":"ipsa","mobile":"consequatur","dob":"dolorem","email":"suscipit","password":"eum","password_confirmation":"et","gender":"aut","country":"vero","image":"voluptas"}'
+    -d '{"name":"distinctio","username":"exercitationem","mobile":"totam","dob":"velit","email":"delectus","password":"non","password_confirmation":"quam","gender":"quibusdam","country":"doloribus","image":"illo"}'
 
 ```
 
@@ -605,16 +689,16 @@ let headers = {
 };
 
 let body = {
-    "name": "corporis",
-    "username": "ipsa",
-    "mobile": "consequatur",
-    "dob": "dolorem",
-    "email": "suscipit",
-    "password": "eum",
-    "password_confirmation": "et",
-    "gender": "aut",
-    "country": "vero",
-    "image": "voluptas"
+    "name": "distinctio",
+    "username": "exercitationem",
+    "mobile": "totam",
+    "dob": "velit",
+    "email": "delectus",
+    "password": "non",
+    "password_confirmation": "quam",
+    "gender": "quibusdam",
+    "country": "doloribus",
+    "image": "illo"
 }
 
 fetch(url, {
@@ -657,7 +741,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"ducimus"}'
+    -d '{"email":"et"}'
 
 ```
 
@@ -672,7 +756,7 @@ let headers = {
 };
 
 let body = {
-    "email": "ducimus"
+    "email": "et"
 }
 
 fetch(url, {
@@ -706,7 +790,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"ducimus","password":"cum","password_confirmation":"ab"}'
+    -d '{"email":"quia","password":"et","password_confirmation":"non"}'
 
 ```
 
@@ -721,9 +805,9 @@ let headers = {
 };
 
 let body = {
-    "email": "ducimus",
-    "password": "cum",
-    "password_confirmation": "ab"
+    "email": "quia",
+    "password": "et",
+    "password_confirmation": "non"
 }
 
 fetch(url, {
@@ -763,7 +847,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"et","images":[]}'
+    -d '{"title":"corporis","images":[]}'
 
 ```
 
@@ -778,7 +862,7 @@ let headers = {
 };
 
 let body = {
-    "title": "et",
+    "title": "corporis",
     "images": []
 }
 
@@ -814,7 +898,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":11,"comment":"dolore"}'
+    -d '{"user_post_id":20,"comment":"voluptates"}'
 
 ```
 
@@ -829,8 +913,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 11,
-    "comment": "dolore"
+    "user_post_id": 20,
+    "comment": "voluptates"
 }
 
 fetch(url, {
@@ -911,7 +995,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":9}'
+    -d '{"id":11}'
 
 ```
 
@@ -926,7 +1010,7 @@ let headers = {
 };
 
 let body = {
-    "id": 9
+    "id": 11
 }
 
 fetch(url, {
@@ -971,7 +1055,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":3}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -986,7 +1070,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 3
+    "post_id": 19
 }
 
 fetch(url, {
@@ -1027,7 +1111,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":14}'
+    -d '{"post_id":20}'
 
 ```
 
@@ -1042,7 +1126,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 14
+    "post_id": 20
 }
 
 fetch(url, {
@@ -1890,86 +1974,6 @@ fetch(url, {
 
 
 <!-- END_bae65df80fd9d72a01439241a9ea20d0 -->
-
-<!-- START_79d6b510e3c1534b676e38be5736b240 -->
-## Get
-get all gifts items
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8000/api/v1/gift" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8000/api/v1/gift"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "status": true,
-    "message": "Categories with gifts",
-    "code": 200,
-    "data": [
-        {
-            "id": 4,
-            "name": "Laptops",
-            "created_at": "2020-02-10 21:18:49",
-            "updated_at": "2020-02-10 21:18:49",
-            "gifts": [
-                {
-                    "id": 1,
-                    "category_id": 4,
-                    "name": "Acer 2040",
-                    "price": 45000,
-                    "oldprice": 47000,
-                    "description": "dsfdfds sdfdsf sdfsd fsd f ds",
-                    "height": "45",
-                    "cover_img": "http:\/\/localhost:8000\/storage\/gifts\/4531581350163.jpg",
-                    "available": 1,
-                    "highlights": [
-                        "slim",
-                        "new",
-                        "i7",
-                        "branded"
-                    ],
-                    "collections": [
-                        "http:\/\/localhost:8000\/storage\/gifts\/8561581350163.jpg"
-                    ],
-                    "created_at": "2020-02-10 21:41:03",
-                    "updated_at": "2020-02-10 21:41:03"
-                }
-            ]
-        }
-    ]
-}
-```
-
-### HTTP Request
-`GET api/v1/gift`
-
-
-<!-- END_79d6b510e3c1534b676e38be5736b240 -->
 
 <!-- START_30059a09ef3f0284c40e4d06962ce08d -->
 ## dashboard

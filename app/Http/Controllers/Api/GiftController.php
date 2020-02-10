@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Gift;
 use App\Models\Category;
 /**
- * @Gift Apis
+ * @group Gift Apis
  *
  * APIs for management of the gift items
  */
