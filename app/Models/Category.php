@@ -10,6 +10,6 @@ class Category extends Model
 
     public function gifts()
     {
-        $this->hasMany(Gift::class);
+        return $this->hasMany(Gift::class);
     }
 }

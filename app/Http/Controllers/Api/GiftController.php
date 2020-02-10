@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Gift;
+use App\Models\Category;
 /**
  * @Gift Apis
  *
@@ -13,14 +14,14 @@ use App\Models\Gift;
 class GiftController extends BaseApiController
 {
     /**
-     * Get all gifts
+     * Get
      * get all gifts items
     */
     public function gifts()
     {
         try {
-            $gifts = Gift::with('category')->get();
-            return $this->successResponse(['gifts'=>$gifts],'Locations with hotel listing');
+            $gifts = Category::with('gifts')->whereHas('gifts')->get();
+            return $this->successResponse(['data'=>$gifts],'Categories with gifts');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
         }
