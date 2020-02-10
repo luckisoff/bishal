@@ -159,6 +159,53 @@
                 </a>
             </li>
             @endif
+
+            @if(auth()->user()->can('view category'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                    Categories
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.categories')}}">
+                        <i class="icon-angle-right"></i>
+                        List Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.category.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Category
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(auth()->user()->can('view gift'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   Gifts
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.gifts')}}">
+                        <i class="icon-angle-right"></i>
+                        List Gift
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.gift.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Gift
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>
