@@ -31,7 +31,7 @@ class GiftController extends BaseApiController
     /**
      * Gifts
      * get gifts for specific category
-     * @bodyParam id integer required id of the category
+     * @urlParam category integer required id of the category
     */
     public function gifts(Category $category)
     {
