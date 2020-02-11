@@ -24,22 +24,22 @@ Welcome to the generated API reference.
 
 
 APIs for management of the gift items
-<!-- START_79d6b510e3c1534b676e38be5736b240 -->
-## Get
-get all gifts items
+<!-- START_5989a901c62996199f8d4e236283cf13 -->
+## Categories
+get categories, name appear if it has at list one gift item
 
 > Example request:
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/gift" \
+    -G "http://localhost:8000/api/v1/gift/categories" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/gift"
+    "http://localhost:8000/api/v1/gift/categories"
 );
 
 let headers = {
@@ -61,48 +61,79 @@ fetch(url, {
 ```json
 {
     "status": true,
-    "message": "Categories with gifts",
+    "message": "Categories listing",
     "code": 200,
-    "data": [
+    "categories": [
         {
             "id": 4,
-            "name": "Laptops",
-            "created_at": "2020-02-10 21:18:49",
-            "updated_at": "2020-02-10 21:18:49",
-            "gifts": [
-                {
-                    "id": 1,
-                    "category_id": 4,
-                    "name": "Acer 2040",
-                    "price": 45000,
-                    "oldprice": 47000,
-                    "description": "dsfdfds sdfdsf sdfsd fsd f ds",
-                    "height": "45",
-                    "cover_img": "http:\/\/localhost:8000\/storage\/gifts\/4531581350163.jpg",
-                    "available": 1,
-                    "highlights": [
-                        "slim",
-                        "new",
-                        "i7",
-                        "branded"
-                    ],
-                    "collections": [
-                        "http:\/\/localhost:8000\/storage\/gifts\/8561581350163.jpg"
-                    ],
-                    "created_at": "2020-02-10 21:41:03",
-                    "updated_at": "2020-02-10 21:41:03"
-                }
-            ]
+            "name": "Laptops"
         }
     ]
 }
 ```
 
 ### HTTP Request
-`GET api/v1/gift`
+`GET api/v1/gift/categories`
 
 
-<!-- END_79d6b510e3c1534b676e38be5736b240 -->
+<!-- END_5989a901c62996199f8d4e236283cf13 -->
+
+<!-- START_c90d65f60a27955fe15c28471d562b5f -->
+## Gifts
+get gifts for specific category
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/gift/category/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":9}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/gift/category/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 9
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (404):
+
+```json
+{
+    "message": "No query results for model [App\\Models\\Category] 1"
+}
+```
+
+### HTTP Request
+`GET api/v1/gift/category/{category}`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `id` | integer |  required  | id of the category
+    
+<!-- END_c90d65f60a27955fe15c28471d562b5f -->
 
 #Hotel Apis
 
@@ -169,7 +200,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":20}'
+    -d '{"hotel_id":7}'
 
 ```
 
@@ -184,7 +215,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 20
+    "hotel_id": 7
 }
 
 fetch(url, {
@@ -357,7 +388,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":3}'
+    -d '{"hotel_id":1}'
 
 ```
 
@@ -372,7 +403,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 3
+    "hotel_id": 1
 }
 
 fetch(url, {
@@ -416,7 +447,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":18}'
+    -d '{"post_id":12}'
 
 ```
 
@@ -431,7 +462,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 18
+    "post_id": 12
 }
 
 fetch(url, {
@@ -470,7 +501,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":20}'
 
 ```
 
@@ -485,7 +516,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 20
 }
 
 fetch(url, {
@@ -519,7 +550,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":12,"comment":"quia"}'
+    -d '{"post_id":14,"comment":"cupiditate"}'
 
 ```
 
@@ -534,8 +565,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 12,
-    "comment": "quia"
+    "post_id": 14,
+    "comment": "cupiditate"
 }
 
 fetch(url, {
@@ -570,7 +601,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":15}'
+    -d '{"commnet_id":9}'
 
 ```
 
@@ -585,7 +616,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 15
+    "commnet_id": 9
 }
 
 fetch(url, {
@@ -623,7 +654,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"omnis","password":"totam"}'
+    -d '{"email":"est","password":"veritatis"}'
 
 ```
 
@@ -638,8 +669,8 @@ let headers = {
 };
 
 let body = {
-    "email": "omnis",
-    "password": "totam"
+    "email": "est",
+    "password": "veritatis"
 }
 
 fetch(url, {
@@ -674,7 +705,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"distinctio","username":"exercitationem","mobile":"totam","dob":"velit","email":"delectus","password":"non","password_confirmation":"quam","gender":"quibusdam","country":"doloribus","image":"illo"}'
+    -d '{"name":"blanditiis","username":"harum","mobile":"velit","dob":"placeat","email":"atque","password":"in","password_confirmation":"necessitatibus","gender":"nemo","country":"et","image":"aliquid"}'
 
 ```
 
@@ -689,16 +720,16 @@ let headers = {
 };
 
 let body = {
-    "name": "distinctio",
-    "username": "exercitationem",
-    "mobile": "totam",
-    "dob": "velit",
-    "email": "delectus",
-    "password": "non",
-    "password_confirmation": "quam",
-    "gender": "quibusdam",
-    "country": "doloribus",
-    "image": "illo"
+    "name": "blanditiis",
+    "username": "harum",
+    "mobile": "velit",
+    "dob": "placeat",
+    "email": "atque",
+    "password": "in",
+    "password_confirmation": "necessitatibus",
+    "gender": "nemo",
+    "country": "et",
+    "image": "aliquid"
 }
 
 fetch(url, {
@@ -741,7 +772,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"et"}'
+    -d '{"email":"ratione"}'
 
 ```
 
@@ -756,7 +787,7 @@ let headers = {
 };
 
 let body = {
-    "email": "et"
+    "email": "ratione"
 }
 
 fetch(url, {
@@ -790,7 +821,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quia","password":"et","password_confirmation":"non"}'
+    -d '{"email":"unde","password":"quia","password_confirmation":"voluptas"}'
 
 ```
 
@@ -805,9 +836,9 @@ let headers = {
 };
 
 let body = {
-    "email": "quia",
-    "password": "et",
-    "password_confirmation": "non"
+    "email": "unde",
+    "password": "quia",
+    "password_confirmation": "voluptas"
 }
 
 fetch(url, {
@@ -847,7 +878,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"corporis","images":[]}'
+    -d '{"title":"rem","images":[]}'
 
 ```
 
@@ -862,7 +893,7 @@ let headers = {
 };
 
 let body = {
-    "title": "corporis",
+    "title": "rem",
     "images": []
 }
 
@@ -898,7 +929,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":20,"comment":"voluptates"}'
+    -d '{"user_post_id":6,"comment":"veniam"}'
 
 ```
 
@@ -913,8 +944,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 20,
-    "comment": "voluptates"
+    "user_post_id": 6,
+    "comment": "veniam"
 }
 
 fetch(url, {
@@ -995,7 +1026,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":11}'
+    -d '{"id":19}'
 
 ```
 
@@ -1010,7 +1041,7 @@ let headers = {
 };
 
 let body = {
-    "id": 11
+    "id": 19
 }
 
 fetch(url, {
@@ -1055,7 +1086,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":19}'
+    -d '{"post_id":15}'
 
 ```
 
@@ -1070,7 +1101,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 19
+    "post_id": 15
 }
 
 fetch(url, {
@@ -1111,7 +1142,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":20}'
+    -d '{"post_id":10}'
 
 ```
 
@@ -1126,7 +1157,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 20
+    "post_id": 10
 }
 
 fetch(url, {

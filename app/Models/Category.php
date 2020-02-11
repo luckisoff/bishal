@@ -10,6 +10,6 @@ class Category extends Model
 
     public function gifts()
     {
-        return $this->hasMany(Gift::class);
+        return $this->hasMany(Gift::class)->orderBy('created_at','desc');
     }
 }

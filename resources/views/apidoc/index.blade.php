@@ -50,18 +50,18 @@
 <!-- END_INFO -->
 <h1>Gift Apis</h1>
 <p>APIs for management of the gift items</p>
-<!-- START_79d6b510e3c1534b676e38be5736b240 -->
-<h2>Get</h2>
-<p>get all gifts items</p>
+<!-- START_5989a901c62996199f8d4e236283cf13 -->
+<h2>Categories</h2>
+<p>get categories, name appear if it has at list one gift item</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost:8000/api/v1/gift" \
+    -G "http://localhost:8000/api/v1/gift/categories" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/gift"
+    "http://localhost:8000/api/v1/gift/categories"
 );
 
 let headers = {
@@ -80,44 +80,78 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-json">{
     "status": true,
-    "message": "Categories with gifts",
+    "message": "Categories listing",
     "code": 200,
-    "data": [
+    "categories": [
         {
             "id": 4,
-            "name": "Laptops",
-            "created_at": "2020-02-10 21:18:49",
-            "updated_at": "2020-02-10 21:18:49",
-            "gifts": [
-                {
-                    "id": 1,
-                    "category_id": 4,
-                    "name": "Acer 2040",
-                    "price": 45000,
-                    "oldprice": 47000,
-                    "description": "dsfdfds sdfdsf sdfsd fsd f ds",
-                    "height": "45",
-                    "cover_img": "http:\/\/localhost:8000\/storage\/gifts\/4531581350163.jpg",
-                    "available": 1,
-                    "highlights": [
-                        "slim",
-                        "new",
-                        "i7",
-                        "branded"
-                    ],
-                    "collections": [
-                        "http:\/\/localhost:8000\/storage\/gifts\/8561581350163.jpg"
-                    ],
-                    "created_at": "2020-02-10 21:41:03",
-                    "updated_at": "2020-02-10 21:41:03"
-                }
-            ]
+            "name": "Laptops"
         }
     ]
 }</code></pre>
 <h3>HTTP Request</h3>
-<p><code>GET api/v1/gift</code></p>
-<!-- END_79d6b510e3c1534b676e38be5736b240 -->
+<p><code>GET api/v1/gift/categories</code></p>
+<!-- END_5989a901c62996199f8d4e236283cf13 -->
+<!-- START_c90d65f60a27955fe15c28471d562b5f -->
+<h2>Gifts</h2>
+<p>get gifts for specific category</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8000/api/v1/gift/category/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":9}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/gift/category/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 9
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Models\\Category] 1"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/v1/gift/category/{category}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>id of the category</td>
+</tr>
+</tbody>
+</table>
+<!-- END_c90d65f60a27955fe15c28471d562b5f -->
 <h1>Hotel Apis</h1>
 <p>APIs for hotel related things</p>
 <!-- START_1626898e456ebc2f3208f9036c240686 -->
@@ -166,7 +200,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":20}'
+    -d '{"hotel_id":7}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/menus/1"
@@ -178,7 +212,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 20
+    "hotel_id": 7
 }
 
 fetch(url, {
@@ -346,7 +380,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":3}'
+    -d '{"hotel_id":1}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/posts/1"
@@ -358,7 +392,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 3
+    "hotel_id": 1
 }
 
 fetch(url, {
@@ -408,7 +442,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":18}'
+    -d '{"post_id":12}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/post/toggle-like/1"
@@ -420,7 +454,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 18
+    "post_id": 12
 }
 
 fetch(url, {
@@ -465,7 +499,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17}'
+    -d '{"post_id":20}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/post/comment/1"
@@ -477,7 +511,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17
+    "post_id": 20
 }
 
 fetch(url, {
@@ -518,7 +552,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":12,"comment":"quia"}'
+    -d '{"post_id":14,"comment":"cupiditate"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/post/comment"
@@ -530,8 +564,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 12,
-    "comment": "quia"
+    "post_id": 14,
+    "comment": "cupiditate"
 }
 
 fetch(url, {
@@ -578,7 +612,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":15}'
+    -d '{"commnet_id":9}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/hotel/post/comment/delete"
@@ -590,7 +624,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 15
+    "commnet_id": 9
 }
 
 fetch(url, {
@@ -633,7 +667,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"omnis","password":"totam"}'
+    -d '{"email":"est","password":"veritatis"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/login"
@@ -645,8 +679,8 @@ let headers = {
 };
 
 let body = {
-    "email": "omnis",
-    "password": "totam"
+    "email": "est",
+    "password": "veritatis"
 }
 
 fetch(url, {
@@ -693,7 +727,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"distinctio","username":"exercitationem","mobile":"totam","dob":"velit","email":"delectus","password":"non","password_confirmation":"quam","gender":"quibusdam","country":"doloribus","image":"illo"}'
+    -d '{"name":"blanditiis","username":"harum","mobile":"velit","dob":"placeat","email":"atque","password":"in","password_confirmation":"necessitatibus","gender":"nemo","country":"et","image":"aliquid"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/register"
@@ -705,16 +739,16 @@ let headers = {
 };
 
 let body = {
-    "name": "distinctio",
-    "username": "exercitationem",
-    "mobile": "totam",
-    "dob": "velit",
-    "email": "delectus",
-    "password": "non",
-    "password_confirmation": "quam",
-    "gender": "quibusdam",
-    "country": "doloribus",
-    "image": "illo"
+    "name": "blanditiis",
+    "username": "harum",
+    "mobile": "velit",
+    "dob": "placeat",
+    "email": "atque",
+    "password": "in",
+    "password_confirmation": "necessitatibus",
+    "gender": "nemo",
+    "country": "et",
+    "image": "aliquid"
 }
 
 fetch(url, {
@@ -809,7 +843,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"et"}'
+    -d '{"email":"ratione"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/top-up"
@@ -821,7 +855,7 @@ let headers = {
 };
 
 let body = {
-    "email": "et"
+    "email": "ratione"
 }
 
 fetch(url, {
@@ -862,7 +896,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quia","password":"et","password_confirmation":"non"}'
+    -d '{"email":"unde","password":"quia","password_confirmation":"voluptas"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/password/reset"
@@ -874,9 +908,9 @@ let headers = {
 };
 
 let body = {
-    "email": "quia",
-    "password": "et",
-    "password_confirmation": "non"
+    "email": "unde",
+    "password": "quia",
+    "password_confirmation": "voluptas"
 }
 
 fetch(url, {
@@ -931,7 +965,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"corporis","images":[]}'
+    -d '{"title":"rem","images":[]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/user/post/store"
@@ -943,7 +977,7 @@ let headers = {
 };
 
 let body = {
-    "title": "corporis",
+    "title": "rem",
     "images": []
 }
 
@@ -991,7 +1025,7 @@ fetch(url, {
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":20,"comment":"voluptates"}'
+    -d '{"user_post_id":6,"comment":"veniam"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/user/post/comment/store"
@@ -1003,8 +1037,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 20,
-    "comment": "voluptates"
+    "user_post_id": 6,
+    "comment": "veniam"
 }
 
 fetch(url, {
@@ -1085,7 +1119,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":11}'
+    -d '{"id":19}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/user/fetch/post/1"
@@ -1097,7 +1131,7 @@ let headers = {
 };
 
 let body = {
-    "id": 11
+    "id": 19
 }
 
 fetch(url, {
@@ -1146,7 +1180,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":19}'
+    -d '{"post_id":15}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/user/check/like/1"
@@ -1158,7 +1192,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 19
+    "post_id": 15
 }
 
 fetch(url, {
@@ -1205,7 +1239,7 @@ fetch(url, {
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":20}'
+    -d '{"post_id":10}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/v1/user/post/like/1"
@@ -1217,7 +1251,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 20
+    "post_id": 10
 }
 
 fetch(url, {

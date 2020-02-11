@@ -13,15 +13,31 @@ use App\Models\Category;
  */
 class GiftController extends BaseApiController
 {
+    
     /**
-     * Get
-     * get all gifts items
+     * Categories
+     * get categories, name appear if it has at list one gift item
     */
-    public function gifts()
+    public function categories()
     {
         try {
-            $gifts = Category::with('gifts')->whereHas('gifts')->get();
-            return $this->successResponse(['data'=>$gifts],'Categories with gifts');
+            $categories = Category::whereHas('gifts')->select('id','name')->orderBy('name','asc')->get();
+            return $this->successResponse(['categories'=>$categories],'Categories listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
+
+    /**
+     * Gifts
+     * get gifts for specific category
+     * @bodyParam id integer required id of the category
+    */
+    public function gifts(Category $category)
+    {
+        try {
+            $gifts = $category->gifts;
+            return $this->successResponse(['gifts'=>$gifts],'Gifts listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
         }
