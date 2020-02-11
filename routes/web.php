@@ -72,6 +72,8 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/','Admin\GiftController@viewGifts')->name('dashboard.gifts');
             Route::get('/create/{category?}','Admin\GiftController@createGift')->name('dashboard.gift.create');
             Route::get('/show/{gift}','Admin\GiftController@showGift')->name('dashboard.gift.show');
+            Route::get('/edit/{gift}','Admin\GiftController@editGift')->name('dashboard.gift.edit');
+            Route::post('/update/{gift}','Admin\GiftController@updateGift')->name('dashboard.gift.update');
             
             Route::post('/store','Admin\GiftController@storeGift')->name('dashboard.gift.store');
             Route::post('/delete/{gift}','Admin\GiftController@deleteGift')->name('dashboard.gift.delete');

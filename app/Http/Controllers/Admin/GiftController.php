@@ -78,7 +78,7 @@ class GiftController extends BaseAdminController
     public function storeGift(Request $request,Category $category=null)
     {
         try {
-
+            
             $validator = $this->validator::make($request->all(),[
                 'name'          =>'required',
                 'price'         =>'required',
@@ -87,7 +87,86 @@ class GiftController extends BaseAdminController
                 'height'        =>'required',
                 'highlights'    =>'required',
                 'collections'   =>'required|array',
-                'cover_img'   =>'required|mimes:jpg,jpeg,png'
+                'collections.*' =>'mimes:jpg,jpeg,png',
+                'cover_img'     =>'required|mimes:jpg,jpeg,png'
+            ]);
+    
+            if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
+            
+            $input = $request->all();
+    
+            
+            if($request->has('collections'))
+            {
+                $collection=array();
+                foreach($request->collections as $image)
+                {
+                    $imageName=$this->helper::upload_image($image,$this->storageFolder);
+                    $collection['collections'][]=\URL::to($this->publicFolder.$imageName);
+                }
+                $input['collections']=$collection['collections'];
+            }
+    
+            if($request->has('cover_img'))
+            {
+                $imageName=$this->helper::upload_image($request->cover_img,$this->storageFolder);
+    
+                $input['cover_img']=\URL::to($this->publicFolder.$imageName);
+            }
+    
+    
+            $input['highlights'] = explode(',',$request->highlights);
+    
+            $category ? $category->gifts->create($input) : $this->gift::create($input);
+            
+            return redirect()->route('dashboard.gifts')->with('success','Gift item is inserted');
+
+        } catch (\Throwable $th) {
+            return back()->withErrors([$th->getMessage()],'error');
+        }
+    }
+
+    public function deleteGift(Gift $gift)
+    {
+        try {
+            if($gift->delete())
+            {
+                $this->helper::delete_image(basename($gift->cover_img),$this->storageFolder);
+                foreach($gift->collections as $image)
+                {
+                    $this->helper::delete_image(basename($image),$this->storageFolder);
+                }
+                
+            }
+            return back()->with('success','Gift item has been deleted');
+        } catch (\Throwable $th) {
+            return back()->withErrors([$th->getMessage()],505);
+        }
+    }
+
+    public function showGift(Gift $gift)
+    {
+        return view('admin.parts.gifts.show',compact('gift'));
+    }
+
+    public function editGift(Gift $gift)
+    {
+        $categories = $this->category::orderBy('name','asc')->get();
+
+        return view('admin.parts.gifts.edit',compact('gift','categories'));
+    }
+
+    public function updateGift(Request $request, Gift $gift)
+    {
+        try {
+
+            $validator = $this->validator::make($request->all(),[
+                'name'          =>'required',
+                'price'         =>'required',
+                'oldprice'      =>'required',
+                'description'   =>'required',
+                'height'        =>'required',
+                'highlights'    =>'required',
             ]);
 
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
@@ -103,6 +182,12 @@ class GiftController extends BaseAdminController
                     $imageName=$this->helper::upload_image($image,$this->storageFolder);
                     $collection['collections'][]=\URL::to($this->publicFolder.$imageName);
                 }
+
+                if($gift->collections)
+                {
+                    $collection['collections']=array_merge($gift->collections,$collection['collections']);
+                }
+                $input['collections'] = $collection['collections'];
             }
 
             if($request->has('cover_img'))
@@ -110,49 +195,19 @@ class GiftController extends BaseAdminController
                 $imageName=$this->helper::upload_image($request->cover_img,$this->storageFolder);
 
                 $input['cover_img']=\URL::to($this->publicFolder.$imageName);
+
+                $this->helper::delete_image(basename($gift->cover_img),$this->storageFolder);
             }
 
 
-            $input['collections'] = $collection['collections'];
             $input['highlights'] = explode(',',$request->highlights);
 
-            $category ? $category->gifts->create($input) : $this->gift::create($input);
+            $gift->update($input);
             
-            return back()->with('success','Gift item is inserted');
+            return redirect()->route('dashboard.gifts')->with('success','Gift item is inserted');
 
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
         }
-    }
-
-    public function deleteGift(Gift $gift)
-    {
-        try {
-            if($gift->delete())
-            {
-                foreach($gift->collections as $image)
-                {
-                    $this->helper::delete_image(basename($image),$this->storageFolder);
-                }
-            }
-            return back()->with('success','Gift item has been deleted');
-        } catch (\Throwable $th) {
-            return back()->withErrors([$th->getMessage],505);
-        }
-    }
-
-    public function showGift()
-    {
-
-    }
-
-    public function editGift(Gift $gift)
-    {
-
-    }
-
-    public function updateGift(Request $request,Gift $gift)
-    {
-        
     }
 }

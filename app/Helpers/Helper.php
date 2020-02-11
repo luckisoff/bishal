@@ -18,10 +18,9 @@ class Helper
         return $name;
     }
 
-    public static function delete_image($file,$path='/app/public/user/post/')
+    public static function delete_image($file,$path='/app/public/user/post')
     {
-        $file=storage_path($path).$file;
-        
+        $file=storage_path($path.'/'.$file);
         if(File::exists($file))
         {
             File::delete($file);

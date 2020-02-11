@@ -4,9 +4,9 @@
     #add-field,#cut-field
     {
         position: relative;
-        right: -381px;
-        top: -35px;
-        height: 34px;
+        right: -371px;
+        top: -34px;
+        height: 33px;
     }
 </style>
 @endsection
@@ -215,7 +215,7 @@
             $("#images").append(
                 `
                 <div class="cut-field">
-                    <input type="file" name="images[]" class="form-control">
+                    <input type="file" name="collections[]" class="form-control">
                     <span id="cut-field" class="btn btn-success glyphicon glyphicon-minus"></span>
                 </div>
                 `

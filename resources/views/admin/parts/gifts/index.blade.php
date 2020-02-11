@@ -53,6 +53,9 @@
                                     @if(auth()->user()->can('view gift'))
                                         <a href="{{route('dashboard.gift.show',$gift)}}" class="btn btn-info btn-sm"><i class="icon-eye-open"></i></a>
                                     @endif
+                                    @if(auth()->user()->can('update gift'))
+                                        <a href="{{route('dashboard.gift.edit',$gift)}}" class="btn btn-warning btn-sm"><i class="icon-edit"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
