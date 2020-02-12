@@ -42,4 +42,18 @@ class GiftController extends BaseApiController
             return $this->errorResponse($th->getMessage(),500);
         }
     }
+
+    /**
+     * Gifts For Top
+     * get gifts for top position
+    */
+    public function giftForTop()
+    {
+        try {
+            $gifts = Gift::where('placeat_top',1)->orderBy('created_at','desc')->get();
+            return $this->successResponse(['gifts'=>$gifts],'Gifts listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
 }

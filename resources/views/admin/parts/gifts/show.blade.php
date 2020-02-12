@@ -25,16 +25,19 @@
                         <span class="label label-info">Height: {{$gift->height}}</span>
                         <span class="label label-warning">Available: {{$gift->available==1?'Yes':'No'}}</span>
                         <hr>
+                        <span class="label label-info">Description</span><br><br>
                         <p>{{$gift->description}}</p>
                         <hr>
-                        <span class="label label-info">Cover Image</span>
-                        <hr>
+                        <span class="label label-info">Cover Image</span><br><br>
                         <img src="{{$gift->cover_img}}" alt="{{$gift->name}}" style="height:160px">
                         <hr>
-                        <span class="label label-info">Collection Images</span>
-                        <hr>
+                        <span class="label label-info">Collection Images</span><br><br>
                         @foreach($gift->collections as $key=>$image)
                         <img src="{{$image}}" alt="{{$gift->name.'-collection-'.$key}}" style="height:160px">
+                        @endforeach
+                        <hr>
+                        @foreach($gift->highlights as $char)
+                        <span class="label label-info">{{$char}}</span>
                         @endforeach
                         <hr>
                     </div>

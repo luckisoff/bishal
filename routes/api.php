@@ -54,6 +54,7 @@ Route::group(['prefix'=>'v1'],function(){
     Route::group(['prefix'=>'gift'],function(){
         Route::get('/categories','Api\GiftController@categories');
         Route::get('/category/{category}','Api\GiftController@gifts');
+        Route::get('/top','Api\GiftController@giftForTop');
     });
 
 });

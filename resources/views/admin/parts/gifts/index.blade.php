@@ -23,6 +23,7 @@
                             <th data-hide="phone">Category</th>
                             <th data-hide="phone">Cover Image</th>
                             <th data-hide="phone">Status</th>
+                            <th data-hide="phone">Placed Top</th>
                             <th data-hide="phone,tablet">Action</th>
                         </tr>
                     </thead>
@@ -40,7 +41,17 @@
                                     <img src="{{$gift->cover_img}}" alt="{{$gift->name}}" style="width:55px">
                                     @endif
                                 </td>
-                                <td>{{$gift->status ? 'Available' : 'Not Available'}}</td>
+                                <td>{!!$gift->available ? '<span class="label label-success">Available</span>' : '<span class="label label-warning">Not Available</span>'!!}</td>
+                                
+                                <td>
+                                    {!!$gift->placeat_top ? '<span class="label label-success">Yes</span>' : '<span class="label label-warning">No</span>'!!}
+                                    @if(auth()->user()->can('update gift'))
+                                        <a href="{{route('dashboard.gift.toggle',$gift)}}" class="pull-right btn btn-{{$gift->placeat_top ? 'danger':'success'}} btn-sm">
+                                            <span class="icon-off"></span>
+                                        </a>
+                                    @endif
+                                </td>
+                                
                                 <td>
                                     @if(auth()->user()->can('delete gift'))
                                         <a class="btn btn-danger btn-sm" href="#" onclick="giftDelete({{$gift->id}});">

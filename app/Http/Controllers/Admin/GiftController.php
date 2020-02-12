@@ -210,4 +210,15 @@ class GiftController extends BaseAdminController
             return back()->withErrors([$th->getMessage()],'error');
         }
     }
+
+    public function toggleOnOff(Gift $gift)
+    {
+        try {
+            $gift->placeat_top?$gift->placeat_top=0:$gift->placeat_top=1;
+            $gift->update();
+            return back()->with('success','Position changed');
+        } catch (\Throwable $th) {
+            return back()->withErrors([$th->getMessage()],'error');
+        }
+    }
 }
