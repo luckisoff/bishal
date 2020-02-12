@@ -206,6 +206,30 @@
                 </ul>
             </li>
             @endif
+
+            @if(auth()->user()->can('view story'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   Stories
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.stories')}}">
+                        <i class="icon-angle-right"></i>
+                        List Stories
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.story.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Story
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>
