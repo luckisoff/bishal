@@ -86,14 +86,14 @@ get gifts for specific category
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/gift/category/possimus" \
+    -G "http://localhost:8000/api/v1/gift/category/eum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/gift/category/possimus"
+    "http://localhost:8000/api/v1/gift/category/eum"
 );
 
 let headers = {
@@ -114,7 +114,7 @@ fetch(url, {
 
 ```json
 {
-    "message": "No query results for model [App\\Models\\Category] possimus"
+    "message": "No query results for model [App\\Models\\Category] eum"
 }
 ```
 
@@ -271,7 +271,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":12}'
+    -d '{"hotel_id":11}'
 
 ```
 
@@ -286,7 +286,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 12
+    "hotel_id": 11
 }
 
 fetch(url, {
@@ -330,7 +330,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":2}'
+    -d '{"hotel_id":11}'
 
 ```
 
@@ -345,7 +345,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 2
+    "hotel_id": 11
 }
 
 fetch(url, {
@@ -459,7 +459,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":16}'
+    -d '{"hotel_id":3}'
 
 ```
 
@@ -474,7 +474,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 16
+    "hotel_id": 3
 }
 
 fetch(url, {
@@ -518,7 +518,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":18}'
+    -d '{"post_id":7}'
 
 ```
 
@@ -533,7 +533,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 18
+    "post_id": 7
 }
 
 fetch(url, {
@@ -572,7 +572,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":18}'
+    -d '{"post_id":12}'
 
 ```
 
@@ -587,7 +587,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 18
+    "post_id": 12
 }
 
 fetch(url, {
@@ -621,7 +621,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":20,"comment":"quasi"}'
+    -d '{"post_id":9,"comment":"tempora"}'
 
 ```
 
@@ -636,8 +636,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 20,
-    "comment": "quasi"
+    "post_id": 9,
+    "comment": "tempora"
 }
 
 fetch(url, {
@@ -672,7 +672,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":3}'
+    -d '{"commnet_id":6}'
 
 ```
 
@@ -687,7 +687,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 3
+    "commnet_id": 6
 }
 
 fetch(url, {
@@ -711,6 +711,71 @@ Parameter | Type | Status | Description
     
 <!-- END_f021d6ef4b780e9afa4ea9e684080112 -->
 
+#Stories
+
+Story management api
+<!-- START_5ca7c3273a6d9b865f3c1d1567fb0d65 -->
+## Stories
+get stories listing
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/stories" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/stories"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": true,
+    "message": "Gifts listing",
+    "code": 200,
+    "stories": [
+        {
+            "id": 2,
+            "name": "Love of Nature",
+            "cover_img": "http:\/\/localhost:8000\/storage\/stories\/10171581524648.jpg",
+            "images": [
+                "http:\/\/localhost:8000\/storage\/stories\/10421581524648.jpg",
+                "http:\/\/localhost:8000\/storage\/stories\/5771581524648.jpg",
+                "http:\/\/localhost:8000\/storage\/stories\/5171581524648.jpg"
+            ],
+            "created_at": "2020-02-12 22:09:08",
+            "updated_at": "2020-02-12 22:09:08"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/v1/stories`
+
+
+<!-- END_5ca7c3273a6d9b865f3c1d1567fb0d65 -->
+
 #User Management
 
 
@@ -725,7 +790,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"non","password":"quidem"}'
+    -d '{"email":"est","password":"est"}'
 
 ```
 
@@ -740,8 +805,8 @@ let headers = {
 };
 
 let body = {
-    "email": "non",
-    "password": "quidem"
+    "email": "est",
+    "password": "est"
 }
 
 fetch(url, {
@@ -776,7 +841,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"fugit","username":"vitae","mobile":"hic","dob":"quasi","email":"quisquam","password":"esse","password_confirmation":"incidunt","gender":"unde","country":"autem","image":"est"}'
+    -d '{"name":"porro","username":"quisquam","mobile":"at","dob":"voluptatem","email":"dignissimos","password":"aut","password_confirmation":"eum","gender":"magni","country":"ab","image":"illo"}'
 
 ```
 
@@ -791,16 +856,16 @@ let headers = {
 };
 
 let body = {
-    "name": "fugit",
-    "username": "vitae",
-    "mobile": "hic",
-    "dob": "quasi",
-    "email": "quisquam",
-    "password": "esse",
-    "password_confirmation": "incidunt",
-    "gender": "unde",
-    "country": "autem",
-    "image": "est"
+    "name": "porro",
+    "username": "quisquam",
+    "mobile": "at",
+    "dob": "voluptatem",
+    "email": "dignissimos",
+    "password": "aut",
+    "password_confirmation": "eum",
+    "gender": "magni",
+    "country": "ab",
+    "image": "illo"
 }
 
 fetch(url, {
@@ -843,7 +908,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"incidunt"}'
+    -d '{"email":"corporis"}'
 
 ```
 
@@ -858,7 +923,7 @@ let headers = {
 };
 
 let body = {
-    "email": "incidunt"
+    "email": "corporis"
 }
 
 fetch(url, {
@@ -892,7 +957,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"facere","password":"rerum","password_confirmation":"totam"}'
+    -d '{"email":"dolorem","password":"illum","password_confirmation":"doloremque"}'
 
 ```
 
@@ -907,9 +972,9 @@ let headers = {
 };
 
 let body = {
-    "email": "facere",
-    "password": "rerum",
-    "password_confirmation": "totam"
+    "email": "dolorem",
+    "password": "illum",
+    "password_confirmation": "doloremque"
 }
 
 fetch(url, {
@@ -949,7 +1014,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"cumque","images":[]}'
+    -d '{"title":"harum","images":[]}'
 
 ```
 
@@ -964,7 +1029,7 @@ let headers = {
 };
 
 let body = {
-    "title": "cumque",
+    "title": "harum",
     "images": []
 }
 
@@ -1000,7 +1065,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":5,"comment":"excepturi"}'
+    -d '{"user_post_id":9,"comment":"earum"}'
 
 ```
 
@@ -1015,8 +1080,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 5,
-    "comment": "excepturi"
+    "user_post_id": 9,
+    "comment": "earum"
 }
 
 fetch(url, {
@@ -1097,7 +1162,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":20}'
+    -d '{"id":3}'
 
 ```
 
@@ -1112,7 +1177,7 @@ let headers = {
 };
 
 let body = {
-    "id": 20
+    "id": 3
 }
 
 fetch(url, {
@@ -1157,7 +1222,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":14}'
+    -d '{"post_id":2}'
 
 ```
 
@@ -1172,7 +1237,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 14
+    "post_id": 2
 }
 
 fetch(url, {
@@ -1213,7 +1278,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":3}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -1228,7 +1293,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 3
+    "post_id": 19
 }
 
 fetch(url, {
@@ -2076,68 +2141,6 @@ fetch(url, {
 
 
 <!-- END_bae65df80fd9d72a01439241a9ea20d0 -->
-
-<!-- START_5ca7c3273a6d9b865f3c1d1567fb0d65 -->
-## Stories
-get stories listing
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8000/api/v1/stories" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8000/api/v1/stories"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "status": true,
-    "message": "Gifts listing",
-    "code": 200,
-    "stories": [
-        {
-            "id": 2,
-            "name": "Love of Nature",
-            "cover_img": "http:\/\/localhost:8000\/storage\/stories\/10171581524648.jpg",
-            "images": [
-                "http:\/\/localhost:8000\/storage\/stories\/10421581524648.jpg",
-                "http:\/\/localhost:8000\/storage\/stories\/5771581524648.jpg",
-                "http:\/\/localhost:8000\/storage\/stories\/5171581524648.jpg"
-            ],
-            "created_at": "2020-02-12 22:09:08",
-            "updated_at": "2020-02-12 22:09:08"
-        }
-    ]
-}
-```
-
-### HTTP Request
-`GET api/v1/stories`
-
-
-<!-- END_5ca7c3273a6d9b865f3c1d1567fb0d65 -->
 
 <!-- START_30059a09ef3f0284c40e4d06962ce08d -->
 ## dashboard

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Story;
 /**
-     * @Group Stories
+     * @group Stories
      * Story management api
     */
 class StoryController extends BaseApiController
