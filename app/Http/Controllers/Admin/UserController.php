@@ -86,7 +86,7 @@ class UserController extends BaseAdminController
                 $user->revokePermissionTo($user->getAllPermissions());
                 $user->givePermissionTo($request->permissions);
             }
-            return redirect()->route('dashboard.users')->with('success','Update successful');
+            return back()->with('success','Update successful');
         }
         return redirect()->back()->withErrors(['Update failed'],'error');
     }

@@ -88,6 +88,14 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::post('/delete/{category}','Admin\GiftController@deleteCategory')->name('dashboard.category.delete');
         });
 
+        Route::group(['prefix'=>'story'],function(){
+            Route::get('/','Admin\StoryController@index')->name('dashboard.stories');
+            Route::get('/create','Admin\StoryController@create')->name('dashboard.story.create');
+            Route::get('/show/{story}','Admin\StoryController@show')->name('dashboard.story.show');
+            Route::post('/store','Admin\StoryController@store')->name('dashboard.story.store');
+            Route::post('/delete/{story}','Admin\StoryController@destroy')->name('dashboard.story.delete');
+        });
+
 
     });
 

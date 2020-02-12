@@ -695,6 +695,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Models\\HotelPost' => __DIR__ . '/../..' . '/app/Models/HotelPost.php',
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\Package' => __DIR__ . '/../..' . '/app/Models/Package.php',
+        'App\\Models\\Story' => __DIR__ . '/../..' . '/app/Models/Story.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserPost' => __DIR__ . '/../..' . '/app/Models/UserPost.php',
         'App\\NoPermissionModels\\Address' => __DIR__ . '/../..' . '/app/NoPermissionModels/Address.php',

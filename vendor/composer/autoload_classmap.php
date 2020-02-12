@@ -58,6 +58,7 @@ return array(
     'App\\Models\\HotelPost' => $baseDir . '/app/Models/HotelPost.php',
     'App\\Models\\Menu' => $baseDir . '/app/Models/Menu.php',
     'App\\Models\\Package' => $baseDir . '/app/Models/Package.php',
+    'App\\Models\\Story' => $baseDir . '/app/Models/Story.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserPost' => $baseDir . '/app/Models/UserPost.php',
     'App\\NoPermissionModels\\Address' => $baseDir . '/app/NoPermissionModels/Address.php',

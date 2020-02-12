@@ -57,5 +57,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('/top','Api\GiftController@giftForTop');
     });
 
+    Route::get('stories','Api\StoryController@stories');
+
 });
 
