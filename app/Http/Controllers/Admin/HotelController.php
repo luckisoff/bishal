@@ -43,14 +43,13 @@ class HotelController extends BaseAdminController
             'open_time'=>'required',
             'description'=>'required',
             'location'=>'required',
-            'facilities'=>'required'
             ]);
         if($validator->fails())
         {
             return redirect()->back()->withErrors([$validator->errors()->first()],'error');
         }
         $input=$request->all();
-        
+
         $hotel=$id;
 
         $input['facilities'] = explode(',',$request->facilities);
