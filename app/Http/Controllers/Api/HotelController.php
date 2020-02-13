@@ -70,11 +70,14 @@ class HotelController extends BaseApiController
     /**
      * Single Hotel
      * Informations about single hotel
-     * @urlParam hotel integer type id of the hotel
+     * @urlParam id required integer type id of the hotel
     */
-    public function singleHotel(Hotel $hotel)
+    public function singleHotel($id=null)
     {
         try {
+            $hotel = Hotel::find($id);
+            if(!$hotel) throw new \Exception('No hotel found',404);
+
             return $this->successResponse(['hotel'=>$hotel],'Hotel Information');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
