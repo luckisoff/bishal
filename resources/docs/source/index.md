@@ -86,14 +86,14 @@ get gifts for specific category
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/gift/category/saepe" \
+    -G "http://localhost:8000/api/v1/gift/category/aliquid" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/gift/category/saepe"
+    "http://localhost:8000/api/v1/gift/category/aliquid"
 );
 
 let headers = {
@@ -114,7 +114,7 @@ fetch(url, {
 
 ```json
 {
-    "message": "No query results for model [App\\Models\\Category] saepe"
+    "message": "No query results for model [App\\Models\\Category] aliquid"
 }
 ```
 
@@ -256,6 +256,57 @@ fetch(url, {
 
 <!-- END_1626898e456ebc2f3208f9036c240686 -->
 
+<!-- START_fc176a7de732c544823fc380f79a2ef5 -->
+## Single Hotel
+Informations about single hotel
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/hotel/sequi" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/hotel/sequi"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (404):
+
+```json
+{
+    "message": "No query results for model [App\\Models\\Hotel] sequi"
+}
+```
+
+### HTTP Request
+`GET api/v1/hotel/{hotel}`
+
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `hotel` |  optional  | integer type id of the hotel
+
+<!-- END_fc176a7de732c544823fc380f79a2ef5 -->
+
 <!-- START_e9727db33275cd877c816381959eef59 -->
 ## Indoor Hotels
 get all indoor type hotels
@@ -288,82 +339,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (404):
 
 ```json
 {
-    "status": true,
-    "message": "Indoor hotel listing",
-    "code": 200,
-    "hotels": [
-        {
-            "id": 6,
-            "name": "Syanko Katti Roll",
-            "logo_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/logo\/6181577978964.png",
-            "address": "Baneshwor",
-            "description": "Order food online from hundreds of popular restaurants in Kathmandu and Lalitpur ... Founded in 2010, Foodmandu is the first company in Nepal",
-            "phone": "01678372",
-            "website": "https:\/\/www.facebook.com\/ChamlingRollGhar\/",
-            "open_time": "9am -10 pm",
-            "created_at": "2020-01-03 02:59:24",
-            "updated_at": "2020-01-03 02:59:24",
-            "type": "indoor",
-            "facilities": null,
-            "address_location": {
-                "id": 5,
-                "name": "Nepalgunj",
-                "created_at": "2020-02-13 19:16:05",
-                "updated_at": "2020-02-13 19:16:05"
-            },
-            "galleries": []
-        },
-        {
-            "id": 5,
-            "name": "The Burger House",
-            "logo_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/logo\/1661577978712.jpg",
-            "address": "Baneshwor",
-            "description": "The Burger House & Crunchy Fried Chicken Restaurant is the most sorted fast food sit down restaurant in the town.",
-            "phone": "01-6201410",
-            "website": "https:\/\/burgerhousenepal.com\/restaurant\/baneshwor\/",
-            "open_time": "9am -10 pm",
-            "created_at": "2020-01-03 02:55:12",
-            "updated_at": "2020-02-13 19:19:15",
-            "type": "indoor",
-            "facilities": [
-                "Cool",
-                "Greenery",
-                "Hot Cold Water"
-            ],
-            "address_location": {
-                "id": 4,
-                "name": "Butwol",
-                "created_at": "2020-02-13 19:15:57",
-                "updated_at": "2020-02-13 19:15:57"
-            },
-            "galleries": []
-        },
-        {
-            "id": 4,
-            "name": "The Everest Hotel",
-            "logo_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/logo\/11321577978561.jpg",
-            "address": "Baneshwor",
-            "description": "The hotel is nestled in the pinnacle point of beautiful Kathmandu valley. It offers  Loved beauty, accommodations, and most of all staff EVEREST HOTEL",
-            "phone": "01-4780100",
-            "website": "http:\/\/www.theeveresthotel.com\/",
-            "open_time": "9am -10 pm",
-            "created_at": "2020-01-03 02:52:41",
-            "updated_at": "2020-01-03 02:52:41",
-            "type": "indoor",
-            "facilities": null,
-            "address_location": {
-                "id": 3,
-                "name": "Narayanghat",
-                "created_at": "2020-02-13 19:15:47",
-                "updated_at": "2020-02-13 19:15:47"
-            },
-            "galleries": []
-        }
-    ]
+    "message": "No query results for model [App\\Models\\Hotel] indoor"
 }
 ```
 
@@ -405,58 +385,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (404):
 
 ```json
 {
-    "status": true,
-    "message": "Outdoor hotel listing",
-    "code": 200,
-    "hotels": [
-        {
-            "id": 3,
-            "name": "Chicken Station",
-            "logo_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/logo\/4561577978370.jpg",
-            "address": "Baneshwor",
-            "description": "Order food online from hundreds of popular restaurants in Kathmandu and Lalitpur through our website, mobile app or over the phone.",
-            "phone": "01678372",
-            "website": "https:\/\/www.facebook.com\/Chicken-Station-Pipalbot-101744474664541\/?modal=admin_todo_tour",
-            "open_time": "9am -10 pm",
-            "created_at": "2020-01-03 02:49:30",
-            "updated_at": "2020-02-13 19:15:06",
-            "type": "outdoor",
-            "facilities": [
-                "Cool",
-                "Greenery"
-            ],
-            "address_location": {
-                "id": 2,
-                "name": "Baneshwor",
-                "created_at": "2020-02-13 19:12:00",
-                "updated_at": "2020-02-13 19:12:00"
-            },
-            "galleries": [
-                {
-                    "id": 17,
-                    "hotel_id": 3,
-                    "name": "chickenstation",
-                    "image": "8341577980112.jpg",
-                    "image_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/gallery\/8341577980112.jpg",
-                    "created_at": "2020-01-03 03:18:32",
-                    "updated_at": "2020-01-03 03:18:32"
-                },
-                {
-                    "id": 18,
-                    "hotel_id": 3,
-                    "name": "chickenstation",
-                    "image": "7461577980128.jpg",
-                    "image_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/gallery\/7461577980128.jpg",
-                    "created_at": "2020-01-03 03:18:48",
-                    "updated_at": "2020-01-03 03:18:48"
-                }
-            ]
-        }
-    ]
+    "message": "No query results for model [App\\Models\\Hotel] outdoor"
 }
 ```
 
@@ -481,7 +414,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":1}'
+    -d '{"hotel_id":13}'
 
 ```
 
@@ -496,7 +429,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 1
+    "hotel_id": 13
 }
 
 fetch(url, {
@@ -540,7 +473,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":11}'
+    -d '{"hotel_id":3}'
 
 ```
 
@@ -555,7 +488,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 11
+    "hotel_id": 3
 }
 
 fetch(url, {
@@ -624,32 +557,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (404):
 
 ```json
 {
-    "status": true,
-    "message": "Hotel posts listing",
-    "code": 200,
-    "posts": [
-        {
-            "id": 8,
-            "hotel_id": 3,
-            "post": "lorem ipsum dollar sit",
-            "images": [
-                "http:\/\/localhost:8000\/storage\/hotel\/post\/2031580558755.jpg"
-            ],
-            "created_at": "2020-02-01 17:50:56",
-            "updated_at": "2020-02-01 17:50:56",
-            "comments_count": 0,
-            "likes_count": 0,
-            "hotel": {
-                "id": 3,
-                "name": "Chicken Station",
-                "logo_url": "http:\/\/project.shikshaya.com\/storage\/hotels\/logo\/4561577978370.jpg"
-            }
-        }
-    ]
+    "message": "No query results for model [App\\Models\\Hotel] posts"
 }
 ```
 
@@ -669,7 +581,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":9}'
+    -d '{"hotel_id":2}'
 
 ```
 
@@ -684,7 +596,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 9
+    "hotel_id": 2
 }
 
 fetch(url, {
@@ -728,7 +640,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":13}'
+    -d '{"post_id":8}'
 
 ```
 
@@ -743,7 +655,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 13
+    "post_id": 8
 }
 
 fetch(url, {
@@ -782,7 +694,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":11}'
+    -d '{"post_id":17}'
 
 ```
 
@@ -797,7 +709,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 11
+    "post_id": 17
 }
 
 fetch(url, {
@@ -831,7 +743,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":7,"comment":"quas"}'
+    -d '{"post_id":18,"comment":"repellat"}'
 
 ```
 
@@ -846,8 +758,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 7,
-    "comment": "quas"
+    "post_id": 18,
+    "comment": "repellat"
 }
 
 fetch(url, {
@@ -1000,7 +912,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"dolores","password":"et"}'
+    -d '{"email":"at","password":"atque"}'
 
 ```
 
@@ -1015,8 +927,8 @@ let headers = {
 };
 
 let body = {
-    "email": "dolores",
-    "password": "et"
+    "email": "at",
+    "password": "atque"
 }
 
 fetch(url, {
@@ -1051,7 +963,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"voluptas","username":"placeat","mobile":"quia","dob":"quisquam","email":"a","password":"temporibus","password_confirmation":"magni","gender":"in","country":"iure","image":"laboriosam"}'
+    -d '{"name":"voluptatem","username":"corporis","mobile":"dolorem","dob":"voluptatum","email":"illo","password":"id","password_confirmation":"labore","gender":"et","country":"nulla","image":"exercitationem"}'
 
 ```
 
@@ -1066,16 +978,16 @@ let headers = {
 };
 
 let body = {
-    "name": "voluptas",
-    "username": "placeat",
-    "mobile": "quia",
-    "dob": "quisquam",
-    "email": "a",
-    "password": "temporibus",
-    "password_confirmation": "magni",
-    "gender": "in",
-    "country": "iure",
-    "image": "laboriosam"
+    "name": "voluptatem",
+    "username": "corporis",
+    "mobile": "dolorem",
+    "dob": "voluptatum",
+    "email": "illo",
+    "password": "id",
+    "password_confirmation": "labore",
+    "gender": "et",
+    "country": "nulla",
+    "image": "exercitationem"
 }
 
 fetch(url, {
@@ -1118,7 +1030,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"cupiditate"}'
+    -d '{"email":"laborum"}'
 
 ```
 
@@ -1133,7 +1045,7 @@ let headers = {
 };
 
 let body = {
-    "email": "cupiditate"
+    "email": "laborum"
 }
 
 fetch(url, {
@@ -1167,7 +1079,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"amet","password":"voluptas","password_confirmation":"omnis"}'
+    -d '{"email":"placeat","password":"tenetur","password_confirmation":"dolor"}'
 
 ```
 
@@ -1182,9 +1094,9 @@ let headers = {
 };
 
 let body = {
-    "email": "amet",
-    "password": "voluptas",
-    "password_confirmation": "omnis"
+    "email": "placeat",
+    "password": "tenetur",
+    "password_confirmation": "dolor"
 }
 
 fetch(url, {
@@ -1224,7 +1136,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"quia","images":[]}'
+    -d '{"title":"enim","images":[]}'
 
 ```
 
@@ -1239,7 +1151,7 @@ let headers = {
 };
 
 let body = {
-    "title": "quia",
+    "title": "enim",
     "images": []
 }
 
@@ -1275,7 +1187,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":20,"comment":"occaecati"}'
+    -d '{"user_post_id":17,"comment":"perspiciatis"}'
 
 ```
 
@@ -1290,8 +1202,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 20,
-    "comment": "occaecati"
+    "user_post_id": 17,
+    "comment": "perspiciatis"
 }
 
 fetch(url, {
@@ -1372,7 +1284,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":19}'
+    -d '{"id":12}'
 
 ```
 
@@ -1387,7 +1299,7 @@ let headers = {
 };
 
 let body = {
-    "id": 19
+    "id": 12
 }
 
 fetch(url, {
@@ -1432,7 +1344,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":4}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -1447,7 +1359,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 4
+    "post_id": 19
 }
 
 fetch(url, {
@@ -1488,7 +1400,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":15}'
+    -d '{"post_id":13}'
 
 ```
 
@@ -1503,7 +1415,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 15
+    "post_id": 13
 }
 
 fetch(url, {

@@ -67,4 +67,18 @@ class HotelController extends BaseApiController
         }
     }
 
+    /**
+     * Single Hotel
+     * Informations about single hotel
+     * @urlParam hotel integer type id of the hotel
+    */
+    public function singleHotel(Hotel $hotel)
+    {
+        try {
+            return $this->successResponse(['hotel'=>$hotel],'Hotel Information');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
+
 }
