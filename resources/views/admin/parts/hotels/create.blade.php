@@ -63,6 +63,26 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Type *:</label>
+                                                <div class="col-md-8">
+                                                    <select name="type" id="type" class="form-control">
+                                                        <option value="indoor" {{$edit?($hotel->type=="indoor"?'selected':''):''}}>Indoor</option>
+                                                        <option value="outdoor" {{$edit?($hotel->type=="outdoor"?'selected':''):''}}>Outdoor</option>
+                                                    </select>
+                                                    @error('website')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Phone *: </label>
@@ -108,7 +128,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Description *: </label>
                                                 <div class="input-group col-md-8">
-                                                <textarea name="description" id="description" class="form-control">{{$edit?$hotel->description:''}}</textarea>
+                                                <textarea name="description" id="description" class="form-control">{{$edit?$hotel->description:old('description')}}</textarea>
                                                 @error('description')
                                                     <div style="margin-top: 10px;">
                                                         <span class="invalid-feedback alert-danger" role="alert">
@@ -137,6 +157,25 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Facilities *:</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="facilities" class="form-control" value="{{$edit?($hotel->facilities?implode(',',$hotel->facilities):old('facilities')):old('facilities')}}" placeholder="Facilities seperated by comma">
+                                                    @error('facilities')
+                                                        <div style="margin-top: 10px;">
+                                                            <span class="invalid-feedback alert-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     </div> <!-- /.row -->
                                 </div> <!-- /.widget-content -->

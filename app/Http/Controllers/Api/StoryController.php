@@ -19,7 +19,7 @@ class StoryController extends BaseApiController
     {
         try {
             $stories = Story::orderBy('created_at','desc')->get();
-            return $this->successResponse(['stories'=>$stories],'Gifts listing');
+            return $this->successResponse(['stories'=>$stories],'Stories listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
         }

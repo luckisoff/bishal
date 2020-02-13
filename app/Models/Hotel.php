@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hotel extends Model
 {
-    protected $fillable=['name','logo_url','logo','location','address','description','phone','website','open_time'];
+    protected $fillable=['name','logo_url','logo','location','address','description','phone','website','open_time','facilities','type'];
     protected $hidden=['logo','location'];
+
+    protected $casts = [
+        'facilities' => 'array'
+    ];
 
     public function addressLocation()
     {

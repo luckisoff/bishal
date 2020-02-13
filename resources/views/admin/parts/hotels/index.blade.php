@@ -33,6 +33,7 @@
                             <th data-hide="phone">Address</th>
                             <th data-hide="phone">Logo</th>
                             <th data-hide="phone">Website</th>
+                            <th data-hide="phone">Type</th>
                             <th data-hide="phone,tablet">Action</th>
                         </tr>
                     </thead>
@@ -48,6 +49,9 @@
                                 <td>{{$hotel->address}}</td>
                                 <td><img class="img-responsive" style="height:28px" src="{{$hotel->logo_url}}" alt="{{$hotel->name}}"></td>
                                 <td>{{$hotel->website}}</td>
+                                <td>
+                                    <span class="label label-info">{{$hotel->type}}</span>
+                                </td>
                                 <td>
                                     @if(auth()->user()->can('delete userpost'))
                                         <a href="{{route('dashboard.hotel.create',$hotel)}}" class="btn btn-warning btn-sm"><i class="icon-edit"></i></a>
