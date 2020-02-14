@@ -20,6 +20,14 @@ use Log;
  */
 class UserController extends BaseApiController
 {
+
+    protected $storageFolder;
+    protected $publicFolder;
+    function __construct()
+    {
+        $this->storageFolder = '/app/public/user/image';
+        $this->publicFolder = '/storage/user/image/';
+    }
     /**
     *Create user
     *@bodyParam name string required full name of user
@@ -48,14 +56,14 @@ class UserController extends BaseApiController
 
                 if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-                $input=$request->all();
+                $input = $request->all();
 
-                $input['password']=Hash::make($request->password);
+                $input['password'] = Hash::make($request->password);
 
                 if($request->has('image'))
                 {
-                    $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
-                    $input['image_url']=\URL::to('/storage/user/image/'.$input['image']);
+                    $input['image'] = Helper::upload_image($request->image,$this->storageFolder);
+                    $input['image_url'] = \URL::to($this->publicFolder.$input['image']);
                 }
 
                 if($user=User::create($input))
@@ -94,10 +102,15 @@ class UserController extends BaseApiController
 
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-            Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+            if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])) throw new \Exception('Email or password is wrong');
             $user = Auth::user();
+
             $data['token']=$user->createToken($user->username)->accessToken;
             $data['user']=$user;
+
+            $user->updated_at =  new \DateTime();
+            $user->update();
+
             return $this->successResponse($data,'Login success');
 
         }
@@ -164,6 +177,54 @@ class UserController extends BaseApiController
 
             $user->update();
             return $this->successResponse([],'Password reset successful');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
+
+    /**
+    *Update profile
+    *@urlParam user_id required user id to update the user
+    *@bodyParam name string optional full name of user
+    *@bodyParam mobile string optional a unique 10 digits mobile number of user
+    *@bodyParam dob string optional date of birth of user
+    *@bodyParam country string optional country of user optional parameter
+    *@bodyParam image optional image of the user
+    */
+    public function updateProfile(Request $request,int $user_id)
+    {
+        try {
+
+            if(!$user = User::find($user_id)) throw new \Exception('Not user is found');
+            $validator=Validator::make($request->all(),[
+                'mobile'=>'min:10|max:13',
+                'email'=>'|email|max:255|unique:users',
+                'dob'=>'date_format:Y-m-d',
+                'image' =>'mimes:png,jpg,jpeg'
+            ]);
+
+            if($request->has('username')) throw new \Exception('Username can not be changed');
+
+            if($request->has('email')) throw new \Exception('Email can not be changed');
+
+            if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
+
+            $input = $request->all();
+
+            if($request->has('image'))
+            {
+                $input['image']=Helper::upload_image($request->image,$this->storageFolder);
+                $input['image_url']=\URL::to($this->publicFolder.$input['image']);
+
+                if($user->image)
+                {
+                    Helper::delete_image($user->image,$this->storageFolder);
+                }
+            }
+
+            $user->update($input);
+            return $this->successResponse([],'Profile updated');
+
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
         }
