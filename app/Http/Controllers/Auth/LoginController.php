@@ -42,11 +42,4 @@ class LoginController extends Controller
     protected function loggedOut(Request $request) {
         return redirect()->route('dashboard.login');
     }
-
-    protected function authenticated()
-    {
-        $user = auth()->user();
-        $user->updated_at = \Carbon\Carbon::now();
-        $user->update();
-    }
 }
