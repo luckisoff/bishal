@@ -52,12 +52,12 @@ class UserController extends BaseApiController
 
                 $input['password']=Hash::make($request->password);
 
-                if($request->has('image')&&!empty($request->image))
+                if($request->has('image'))
                 {
                     $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
-                    $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
+                    $input['image_url']=\URL::to('/storage/user/image/'.$input['image']);
                 }
-                
+
                 if($user=User::create($input))
                 {
                     try {
@@ -70,10 +70,10 @@ class UserController extends BaseApiController
                     $data['user']=$user;
                     return $this->successResponse($data,'User Created');
                 }
-        }catch(\Exception $e)
+        }catch(\Exception $th)
         {
-            Log::debug($e->getMessage());
-            return $this->errorResponse($th->getMessage(),$th->getCode());
+            Log::debug($th->getMessage());
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
@@ -93,13 +93,13 @@ class UserController extends BaseApiController
             ]);
 
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
-   
+
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
             $user = Auth::user();
             $data['token']=$user->createToken($user->username)->accessToken;
             $data['user']=$user;
             return $this->successResponse($data,'Login success');
-                
+
         }
         catch (\Throwable $th)
         {
@@ -113,21 +113,18 @@ class UserController extends BaseApiController
     */
     public function sendTopUp(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'email'=>'required|email'
-        ]);
-        if($validator->fails())
+        try
         {
-            return $this->errorResponse($validator->errors()->first(),400);
-        }
+            $validator=Validator::make($request->all(),[
+                'email'=>'required|email'
+            ]);
+            if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-        $user=User::where('email',$request->email)->first();
-        if(!$user)
-        {
-            return $this->errorResponse('User not found',400);
-        }
+            $user=User::where('email',$request->email)->first();
 
-        try {
+            if(!$user) throw new \Exception('No user found',403);
+
+
             $code=substr(rand(25650,985986),0,4);
             $user->setAttribute('topup',$code);
 
@@ -140,7 +137,7 @@ class UserController extends BaseApiController
             return $this->successResponse(['topup'=>$code],'Topup sent');
 
         } catch (\Throwable $th) {
-            return $this->errorResponse('Internal server error',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
@@ -152,27 +149,23 @@ class UserController extends BaseApiController
     */
     public function changePassword(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'email'=>'required|email',
-            'password'=>'required|min:8|confirmed'
-        ]);
-        if($validator->fails())
+        try
         {
-            return $this->errorResponse($validator->errors()->first(),400);
-        }
+            $validator=Validator::make($request->all(),[
+                'email'=>'required|email',
+                'password'=>'required|min:8|confirmed'
+            ]);
+            if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-        $user=User::where('email',$request->email)->first();
-        if(!$user)
-        {
-            return $this->errorResponse('User not found',400);
-        }
-        $user->password=Hash::make($request->password);
+            $user=User::where('email',$request->email)->first();
+            if(!$user) throw new \Exception('User not found',404);
 
-        try {
+            $user->password=Hash::make($request->password);
+
             $user->update();
             return $this->successResponse([],'Password reset successful');
         } catch (\Throwable $th) {
-            return $this->errorResponse('Internal server error',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
