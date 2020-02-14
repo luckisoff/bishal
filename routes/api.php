@@ -30,8 +30,9 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('fetch/post/{id}','Api\UserPostController@fetchUniquePost');
         Route::get('check/like/{post_id}','Api\LikeController@isLiked');
         Route::get('post/like/{post_id}','Api\LikeController@likeDislike');
+        Route::post('profile/update/{user_id}','Api\UserController@updateProfile');
+        Route::post('profile/{user_id}','Api\UserController@getProfile');
     });
-    Route::post('profile/update/{user_id}','Api\UserController@updateProfile');
 
     //api/v1/location/
     Route::group(['prefix'=>'location','middleware'=>'auth:api'],function(){

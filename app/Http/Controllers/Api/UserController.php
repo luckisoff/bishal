@@ -230,4 +230,22 @@ class UserController extends BaseApiController
         }
     }
 
+
+     /**
+    *Profile Detail
+    *@urlParam user_id required user id for profile detail
+    */
+    public function getProfile(int $user_id)
+    {
+        try {
+
+            if(!$user = User::find($user_id)) throw new \Exception('Not user is found');
+
+            return $this->successResponse(['user'=>$user],'profile detail');
+
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
+
 }
