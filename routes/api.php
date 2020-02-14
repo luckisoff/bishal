@@ -31,7 +31,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('check/like/{post_id}','Api\LikeController@isLiked');
         Route::get('post/like/{post_id}','Api\LikeController@likeDislike');
         Route::post('profile/update/{user_id}','Api\UserController@updateProfile');
-        Route::post('profile/{user_id}','Api\UserController@getProfile');
+        Route::get('profile/{user_id}','Api\UserController@getProfile');
     });
 
     //api/v1/location/
