@@ -21,7 +21,7 @@ class HotelController extends BaseApiController
     public function addressWithHotels()
     {
         try {
-            $address=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+            $address=Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
                 $query->with('galleries');
             }])
             ->get();
@@ -40,7 +40,7 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $address=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+            $address=Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
                 $query->where('type','indoor')->with('galleries');
             }])
             ->get();
@@ -60,7 +60,7 @@ class HotelController extends BaseApiController
     {
         try {
 
-            $address=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+            $address = Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
                 $query->where('type','outdoor')->with('galleries');
             }])
             ->get();
