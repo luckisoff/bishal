@@ -55,7 +55,7 @@
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="index.html">
-				<img src="{{" alt="{{" style="height: 48px;"/>
+				<img src="" alt="" style="height: 48px;"/>
 			</a>
 			<!-- /logo -->
 
