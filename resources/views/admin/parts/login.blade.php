@@ -33,7 +33,7 @@
 <body class="login">
 	<!-- Logo -->
 	<div class="logo">
-		<img src="{{Site::setting('logo')}}" alt="Site::setting('name')" style="height: 100px;"/>
+		<img src="" alt="" style="height: 100px;"/>
 	</div>
 	<!-- /Logo -->
 
