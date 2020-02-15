@@ -40,10 +40,12 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $hotels = Hotel::orderBy('name','asc')->where('type','indoor')->with(['addressLocation','galleries'])
+            $address=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+                $query->where('type','indoor')->with('galleries');
+            }])
             ->get();
 
-            return $this->successResponse(['hotels'=>$hotels],'Indoor hotel listing');
+            return $this->successResponse(['locations'=>$address],'Indoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
@@ -57,10 +59,13 @@ class HotelController extends BaseApiController
     public function outdoorHotels()
     {
         try {
-            $hotels = Hotel::orderBy('name','asc')->where('type','outdoor')->with(['addressLocation','galleries'])
+
+            $address=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+                $query->where('type','outdoor')->with('galleries');
+            }])
             ->get();
 
-            return $this->successResponse(['hotels'=>$hotels],'Outdoor hotel listing');
+            return $this->successResponse(['locations'=>$address],'Outdoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
