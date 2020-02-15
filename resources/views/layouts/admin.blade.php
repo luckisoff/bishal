@@ -3,12 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<title>Dashboard | </title>
+	<title>Dashboard | {{Site::setting('name')}}</title>
 
 	<!--=== CSS ===-->
 
     <!-- Bootstrap -->
-    <link rel="icon" href="" type="images/png">
+    <link rel="icon" href="{{Site::setting('icon')}}" type="images/png">
 	<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
 	<!-- jQuery UI -->
@@ -55,7 +55,7 @@
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="index.html">
-				<img src="" alt="" style="height: 48px;"/>
+				<img src="{{Site::setting('logo')}}" alt="{{Site::setting('name')}}" style="height: 48px;"/>
 			</a>
 			<!-- /logo -->
 
