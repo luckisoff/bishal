@@ -40,7 +40,8 @@ Route::group(['prefix'=>'v1'],function(){
     Route::group(['prefix'=>'hotel'],function(){
 
         Route::get('posts','Api\HotelPostController@hotelPostsWithHotel');
-        Route::get('/{id}','Api\HotelController@singleHotel');
+        Route::get('indoor','Api\HotelController@indoorHotels');
+        Route::get('outdoor','Api\HotelController@outdoorHotels');
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');
         Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
         Route::post('post/comment/{post_id}','Api\HotelPostController@getComments');
@@ -48,8 +49,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
         Route::get('menus/{hotel_id}','Api\HotelMenuController@getMenus');
         Route::get('packages/{hotel_id}','Api\HotelMenuController@getPackages');
-        Route::get('indoor','Api\HotelController@indoorHotels');
-        Route::get('outdoor','Api\HotelController@outdoorHotels');
+        Route::get('/{id}','Api\HotelController@singleHotel');
     });
 
     Route::group(['prefix'=>'gift'],function(){
