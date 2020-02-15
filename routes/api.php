@@ -39,8 +39,8 @@ Route::group(['prefix'=>'v1'],function(){
     // api/v1/hotel
     Route::group(['prefix'=>'hotel'],function(){
 
-        Route::get('/{id}','Api\HotelController@singleHotel');
         Route::get('posts','Api\HotelPostController@hotelPostsWithHotel');
+        Route::get('/{id}','Api\HotelController@singleHotel');
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');
         Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
         Route::post('post/comment/{post_id}','Api\HotelPostController@getComments');
