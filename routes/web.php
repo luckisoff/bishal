@@ -36,21 +36,21 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::get('/posts','Admin\UserPostController@index')->name('dashboard.user.posts');
             Route::get('/post/view/{post}','Admin\UserPostController@show')->name('dashboard.user.post');
             Route::post('/post/delete/{post}','Admin\UserPostController@destroy')->name('dashboard.user.post.delete');
-        
+
         Route::group(['prefix'=>'hotel'],function(){
 
             Route::get('/','Admin\HotelController@index')->name('dashboard.hotels')->middleware('permission:create hotel');
             Route::get('/create/{id?}','Admin\HotelController@create')->name('dashboard.hotel.create')->middleware('permission:create hotel');
             Route::post('/store/{id?}','Admin\HotelController@store')->name('dashboard.hotel.store')->middleware('permission:create hotel');
             Route::post('/delete/{id}','Admin\HotelController@destroy')->name('dashboard.hotel.delete')->middleware('permission:delete hotel');
-            
+
             Route::get('/gallery/{hotel}','Admin\HotelController@gallery')->name('dashboard.hotel.gallery');
             Route::post('/gallery/store/{hotel}','Admin\HotelController@galleryStore')->name('dashboard.hotel.gallery.store');
             Route::get('/gallery/delete/{gallery?}','Admin\HotelController@galleryDelete')->name('dashboard.hotel.gallery.delete');
 
             Route::get('manager/store/{user}/{hotel}','Admin\HotelManagerController@store')->name('dashboard.manager.store')->middleware('permission:create hotel');
             Route::get('manager/delete/{user}/{hotel}','Admin\HotelManagerController@destroy')->name('dashboard.manager.delete')->middleware('permission:view hotel');
-            
+
             Route::get('/show/{hotel}/{page?}','Admin\HotelController@show')->name('dashboard.hotel.show')->middleware('permission:view hotel');
 
             Route::post('/create/post/store/{hotel}','Admin\HotelPostController@store')->name('dashboard.hotel.post.store')->middleware('permission:view hotel');
@@ -76,7 +76,7 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::post('/update/{gift}','Admin\GiftController@updateGift')->name('dashboard.gift.update');
 
             Route::get('toggle/{gift}','Admin\GiftController@toggleOnOff')->name('dashboard.gift.toggle');
-            
+
             Route::post('/store','Admin\GiftController@storeGift')->name('dashboard.gift.store');
             Route::post('/delete/{gift}','Admin\GiftController@deleteGift')->name('dashboard.gift.delete');
         });
@@ -96,7 +96,8 @@ Route::group(['prefix'=>'dashboard'],function(){
             Route::post('/delete/{story}','Admin\StoryController@destroy')->name('dashboard.story.delete');
         });
 
-
+        Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
+        Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');
     });
 
 

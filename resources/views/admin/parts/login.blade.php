@@ -33,8 +33,7 @@
 <body class="login">
 	<!-- Logo -->
 	<div class="logo">
-		<img src="{{asset('assets/img/logo.png')}}" alt="logo" />
-		<strong>{{env('SITE_NAME')}}</strong>
+		<img src="{{Site::setting('logo')}}" alt="Site::setting('name')" style="height: 100px;"/>
 	</div>
 	<!-- /Logo -->
 

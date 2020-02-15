@@ -3,7 +3,7 @@
     <div id="sidebar-content">
 
         <!-- Search Input -->
-        <form class="sidebar-search">
+        <!-- <form class="sidebar-search">
             <div class="input-box">
                 <button type="submit" class="submit">
                     <i class="icon-search"></i>
@@ -12,13 +12,12 @@
                     <input type="text" placeholder="Search...">
                 </span>
             </div>
-        </form>
+        </form> -->
 
         <!-- Search Results -->
-        <div class="sidebar-search-results">
+        <!-- <div class="sidebar-search-results">
 
             <i class="icon-remove close"></i>
-            <!-- Documents -->
             <div class="title">
                 Documents
             </div>
@@ -46,8 +45,7 @@
                     </a>
                 </li>
             </ul>
-            <!-- /Documents -->
-            <!-- Persons -->
+
             <div class="title">
                 Persons
             </div>
@@ -64,8 +62,7 @@
                     </a>
                 </li>
             </ul>
-        </div> <!-- /.sidebar-search-results -->
-
+        </div> -->
         <!--=== Navigation ===-->
         <ul id="nav">
             <li class="{{Request::url()==route('dashboard')?'current':''}}">
@@ -152,7 +149,7 @@
             </li>
             @endif
             @if(auth()->user()->can('view hotel'))
-            <li class="{{Request::url()==route('dashboard.hotels')?'current':''}}">
+            <li class="{{Request::url() == route('dashboard.hotels') ? 'current':''}}">
                 <a href="{{route('dashboard.hotels')}}">
                     <i class="icon-home"></i>
                     Hotels
@@ -228,6 +225,16 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            @endif
+
+            @if(auth()->user()->can('view setting'))
+            <li>
+                <a href="{{route('dashboard.setting.create')}}">
+                    <i class="icon-cog"></i>
+                        Settings
+                    <span class="label label-info pull-right"></span>
+                </a>
             </li>
             @endif
             <li>

@@ -2,6 +2,7 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\File;
+use App\Models\Setting;
 
 class Helper
 {
@@ -21,9 +22,16 @@ class Helper
     public static function delete_image($file,$path='/app/public/user/post')
     {
         $file=storage_path($path.'/'.$file);
+
         if(File::exists($file))
         {
             File::delete($file);
         }
+    }
+
+    public static function setting($key = 'name')
+    {
+        $setting = Setting::where('key',$key)->first();
+        return $setting?$setting->value:'';
     }
 }

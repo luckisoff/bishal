@@ -7,7 +7,8 @@
 
 	<!--=== CSS ===-->
 
-	<!-- Bootstrap -->
+    <!-- Bootstrap -->
+    <link rel="icon" href="{{Site::setting('icon')}}" type="images/png">
 	<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
 	<!-- jQuery UI -->
@@ -54,8 +55,7 @@
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="index.html">
-				<img src="{{asset('assets/img/logo.png')}}" alt="logo" />
-				<strong>ME</strong>LON
+				<img src="{{Site::setting('logo')}}" alt="{{Site::setting('name')}}" style="height: 48px;"/>
 			</a>
 			<!-- /logo -->
 
@@ -67,7 +67,7 @@
 			<!-- /Sidebar Toggler -->
 		@endif
 			<!-- Top Left Menu -->
-			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+			<ul class="nav navbar-nav navbar-left">
 			@if(!auth()->user()->hasRole('manager'))
 				<li>
 					<a href="#">
