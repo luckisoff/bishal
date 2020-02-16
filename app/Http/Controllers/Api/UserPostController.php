@@ -83,7 +83,7 @@ class UserPostController extends BaseApiController
             $input['commentable_id']=$request->user_post_id;
             $input['commentable_type']=\get_class(new UserPost());
             $input['comment']=$request->comment;
-            
+
             if(Comment::create($input))
             {
                 return $this->successResponse([],'commenting successful');
@@ -101,13 +101,13 @@ class UserPostController extends BaseApiController
     {
         try {
             $posts=UserPost::orderBy('created_at','desc')->withCount(['comments','likes'])->with(['user'=>function($query){
-                $query->select('id','name','username');
+                $query->select('id','name');
             }])->get();
 
             return $this->successResponse(['posts'=>$posts],'User posts');
         } catch (\Throwable $th) {
             Log::debug('post fetch log:'.$th->getMessage());
-            return $this->errorResponse('Internal server error',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
