@@ -21,17 +21,16 @@ class UserController extends BaseAdminController
     }
     public function index()
     {
-        if(!auth()->user()->can('view user'))
-        {
-            return redirect()->back()->withErrors("You don't have permission for this action",'error');
-        }
-        $users=User::orderBy('created_at','desc')->get();
+        if(!auth()->user()->can('view user')) abort(403,'Permission denied');
+
+        $users = User::orderBy('created_at','desc')->get();
+
         return view('admin.parts.users.index',compact('users'));
     }
 
     public function edit(User $user)
     {
-        $permissions=Permission::orderBy('name','asc')->get();
+        $permissions = Permission::orderBy('name','asc')->get();
 
         return view('admin.parts.users.edit',compact('permissions','user'));
     }

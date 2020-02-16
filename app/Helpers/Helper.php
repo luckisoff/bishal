@@ -8,8 +8,8 @@ class Helper
 {
     public static function wish()
     {
-        $hour=now()->format("H");
-        return ($hour<12)?'Morning':($hour<16?'Afternoon':'Evening');
+        $hour = now()->format("H");
+        return ($hour < 12) ? 'Morning' : ($hour < 16? 'Afternoon' : 'Evening');
     }
 
     public static function upload_image($file,$path='/app/public/user/post')
@@ -32,6 +32,6 @@ class Helper
     public static function setting($key = 'name')
     {
         $setting = Setting::where('key',$key)->first();
-        return $setting?$setting->value:'';
+        return $setting ? $setting->value:'';
     }
 }

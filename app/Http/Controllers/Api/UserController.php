@@ -223,7 +223,8 @@ class UserController extends BaseApiController
             }
 
             $user->update($input);
-            return $this->successResponse([],'Profile updated');
+
+            return $this->successResponse(['user'=>$user],'Profile updated');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);

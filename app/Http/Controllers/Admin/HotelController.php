@@ -20,7 +20,7 @@ class HotelController extends BaseAdminController
     {
         parent::__construct();
     }
-    
+
     public function index()
     {
         $hotels=Hotel::orderBy('name','asc')->get();
@@ -29,32 +29,32 @@ class HotelController extends BaseAdminController
 
     public function create(Hotel $id=null)
     {
-        $id?$edit=true:$edit=false;
-        $hotel=$id;
+        $id ? $edit = true : $edit = false;
+        $hotel = $id;
         return view('admin.parts.hotels.create',compact('hotel','edit'));
     }
 
     public function store(Request $request,Hotel $id=null)
     {
-        $validator=Validator::make($request->all(),[
-            'name'=>'required',
-            'address'=>'required',
-            'phone'=>'required',
-            'open_time'=>'required',
-            'description'=>'required',
-            'location'=>'required',
-            ]);
-        if($validator->fails())
+        try
         {
-            return redirect()->back()->withErrors([$validator->errors()->first()],'error');
-        }
-        $input=$request->all();
+            $validator=$this->validator::make($request->all(),[
+                'name'=>'required',
+                'address'=>'required',
+                'phone'=>'required',
+                'open_time'=>'required',
+                'description'=>'required',
+                'location'=>'required',
+                ]);
 
-        $hotel=$id;
+            if($this->validator->fails()) throw new \Exception($validator->errors()->first());
 
-        $input['facilities'] = explode(',',$request->facilities);
+            $input=$request->all();
 
-        try {
+            $hotel=$id;
+
+            $input['facilities'] = explode(',',$request->facilities);
+
 
             if($request->has('logo'))
             {
@@ -68,11 +68,10 @@ class HotelController extends BaseAdminController
                     }
             }
 
-            if($hotel?$hotel->update($input):Hotel::create($input))
-            {
-                return redirect()->route('dashboard.hotels')->with('success',$hotel?"Update successful":"Create successful");
-            }
-            return redirect()->back()->withErrors(['Something went wrong'],'error');
+            $hotel ? $hotel->update($input) : Hotel::create($input);
+
+            return redirect()->route('dashboard.hotels')->with('success',$hotel?"Update successful":"Create successful");
+
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors([$th->getMessage()],'error');
         }
@@ -83,13 +82,14 @@ class HotelController extends BaseAdminController
         $users=null;
 
         if(!auth()->user()->can('create hotel'))
+
             if(!$hotel->managers->contains(auth()->user()->id)) abort(403,'Permission denied');
-        
-        if($page == 'create-manager')
+
+        if( $page == 'create-manager')
         {
             if(!auth()->user()->can('create hotel')) abort(403,'Permission denied');
 
-            $users=User::orderBy('name','asc')->get();
+            $users = User::orderBy('name','asc')->get();
         }
 
         return view('admin.parts.hotels.'.$page,compact('hotel','users'));
@@ -122,20 +122,20 @@ class HotelController extends BaseAdminController
 
     public function galleryStore(Request $request,Hotel $hotel)
     {
-        $validator=Validator::make($request->all(),[
-            'image'=>'required|mimes:jpg,gif,png,jpeg'
-        ]);
-        if($validator->fails())
-        {
-            return trigger_error($validator->errors()->first());
-        }
         try
         {
+            $validator=$this->validator::make($request->all(),[
+                'image'=>'required|mimes:jpg,gif,png,jpeg'
+            ]);
+
+            if($this->validator->fails()) throw new \Exception($validator->errors()->first());
+
             $input=$request->all();
             $input['hotel_id']=$hotel->id;
             $input['image']=Helper::upload_image($request->image,'/app/public/hotels/gallery');
             $input['image_url']=$input['image'];
             $input['name']=substr($request->image->getClientOriginalName(),0,-4);
+
             if(Gallery::create($input))
             {
                 return response()->json([

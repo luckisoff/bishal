@@ -18,7 +18,7 @@ class BaseAdminController extends Controller
 
     protected function setValues()
     {
-        $this->validator=new Validator();
-        $this->helper=new Helper();
+        $this->validator = new Validator();
+        $this->helper = new Helper();
     }
 }
