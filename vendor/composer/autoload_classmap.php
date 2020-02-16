@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\HotelPackageController' => $baseDir . '/app/Http/Controllers/Admin/HotelPackageController.php',
     'App\\Http\\Controllers\\Admin\\HotelPostController' => $baseDir . '/app/Http/Controllers/Admin/HotelPostController.php',
     'App\\Http\\Controllers\\Admin\\MenuController' => $baseDir . '/app/Http/Controllers/Admin/MenuController.php',
+    'App\\Http\\Controllers\\Admin\\SettingController' => $baseDir . '/app/Http/Controllers/Admin/SettingController.php',
     'App\\Http\\Controllers\\Admin\\StoryController' => $baseDir . '/app/Http/Controllers/Admin/StoryController.php',
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
     'App\\Http\\Controllers\\Admin\\UserPostController' => $baseDir . '/app/Http/Controllers/Admin/UserPostController.php',

@@ -31,7 +31,6 @@ class UserController extends BaseApiController
     /**
     *Create user
     *@bodyParam name string required full name of user
-    *@bodyParam username string required a unique username of user
     *@bodyParam mobile string required a unique 10 digits mobile number of user
     *@bodyParam dob string required date of birth of user
     *@bodyParam email string required unique user of email
@@ -39,6 +38,8 @@ class UserController extends BaseApiController
     *@bodyParam password_confirmation string required password confirmation
     *@bodyParam gender string optional default gender is Male
     *@bodyParam country string optional country of user optional parameter
+    *@bodyParam works_at string optional place the user is working now
+    *@bodyParam bio text optional bio of the user
     *@bodyParam image image optional country of user optional parameter
     */
     public function signup(Request $request)
@@ -46,7 +47,6 @@ class UserController extends BaseApiController
         try{
                 $validator=Validator::make($request->all(),[
                     'name'=>'required',
-                    'username'=>'required|min:3|unique:users',
                     'mobile'=>'required|min:10|max:13|unique:users',
                     'email'=>'required|email|max:255|unique:users',
                     'dob'=>'date_format:Y-m-d',
