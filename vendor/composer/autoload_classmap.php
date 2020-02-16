@@ -67,6 +67,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserPost' => $baseDir . '/app/Models/UserPost.php',
     'App\\NoPermissionModels\\Address' => $baseDir . '/app/NoPermissionModels/Address.php',
+    'App\\NoPermissionModels\\Birthdate' => $baseDir . '/app/NoPermissionModels/Birthdate.php',
     'App\\NoPermissionModels\\Like' => $baseDir . '/app/NoPermissionModels/Like.php',
     'App\\Notifications\\NewUsers' => $baseDir . '/app/Notifications/NewUsers.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

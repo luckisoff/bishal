@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\NoPermissionModels\Birthdate;
+
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, HasRoles;
@@ -45,5 +47,10 @@ class User extends Authenticatable
     public function hotels()
     {
         return $this->belongsToMany(Hotel::class);
+    }
+
+    public function birthdates()
+    {
+        return $this->hasMany(Birthdate::class);
     }
 }

@@ -3,9 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class BaseApiController extends Controller
 {
+    protected $validator;
+
+    function __construct()
+    {
+        $this->validator = new Validator();
+    }
     public function successResponse($data = array(), string $message = 'Successful', int $code = 200, array $header = []) {
         $dat['status']=true;
         $dat['message']=$message;

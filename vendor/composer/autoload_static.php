@@ -704,6 +704,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UserPost' => __DIR__ . '/../..' . '/app/Models/UserPost.php',
         'App\\NoPermissionModels\\Address' => __DIR__ . '/../..' . '/app/NoPermissionModels/Address.php',
+        'App\\NoPermissionModels\\Birthdate' => __DIR__ . '/../..' . '/app/NoPermissionModels/Birthdate.php',
         'App\\NoPermissionModels\\Like' => __DIR__ . '/../..' . '/app/NoPermissionModels/Like.php',
         'App\\Notifications\\NewUsers' => __DIR__ . '/../..' . '/app/Notifications/NewUsers.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

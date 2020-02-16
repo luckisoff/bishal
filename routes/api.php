@@ -30,6 +30,16 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('profile/{user_id}','Api\UserController@getProfile');
     });
 
+    //api/v1/birthdate
+    Route::group(['prefix'=>'birthdate','middleware'=>'auth:api'],function(){
+        //store
+        Route::post('store','Api\BirthdateController@store');
+        //list
+        Route::get('list','Api\BirthdateController@getBirthdates');
+        //delete/id
+        Route::delete('delete/{id}','Api\BirthdateController@destroy');
+    });
+
     //api/v1/location/
     Route::group(['prefix'=>'location','middleware'=>'auth:api'],function(){
         Route::get('hotels','Api\HotelController@addressWithHotels');
