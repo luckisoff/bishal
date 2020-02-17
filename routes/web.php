@@ -99,7 +99,7 @@ Route::group(['middleware'=>'web'],function(){
                 Route::get('/','Admin\CardController@index')->name('dashboard.cards');
                 Route::get('/create','Admin\CardController@create')->name('dashboard.card.create');
                 Route::post('/store','Admin\CardController@store')->name('dashboard.card.store');
-                Route::post('/delete/{id}','Admin\CardController@destroy')->name('dashboard.card.delete');
+                Route::post('/delete/{card}','Admin\CardController@destroy')->name('dashboard.card.delete');
             });
 
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
