@@ -50,7 +50,7 @@ class CardController extends BaseAdminController
 
             Card::create($input);
 
-            return back()->with('success','Card created');
+            return redirect()->route('dashbaord.cards')->with('success','Card created');
 
         } catch (\Throwable $th) {
             return back()->withErrors([$th->getMessage()],'error');
