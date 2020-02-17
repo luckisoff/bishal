@@ -37,7 +37,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Name *: </label>
                                                 <div class="input-group col-md-8">
-                                                    <input type="number" name="name" id="name" class="form-control" value="{{old('name')}}" placeholder="Name on the card">
+                                                    <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}" placeholder="Name on the card">
                                                     @error('name')
                                                         <div style="margin-top: 10px;">
                                                             <span class="invalid-feedback alert-danger" role="alert">
