@@ -52,11 +52,15 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('posts','Api\HotelPostController@hotelPostsWithHotel');
         Route::get('indoor','Api\HotelController@indoorHotels');
         Route::get('outdoor','Api\HotelController@outdoorHotels');
+
+        Route::group(['middleware' => 'auth:api'],function(){
+            Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
+            Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
+        });
+
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');
-        Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
         Route::post('post/comment/{post_id}','Api\HotelPostController@getComments');
         Route::post('post/comment','Api\HotelPostController@storeComment');
-        Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
         Route::get('menus/{hotel_id}','Api\HotelMenuController@getMenus');
         Route::get('packages/{hotel_id}','Api\HotelMenuController@getPackages');
         Route::get('/{id}','Api\HotelController@singleHotel');

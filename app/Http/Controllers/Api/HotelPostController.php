@@ -23,7 +23,7 @@ class HotelPostController extends BaseApiController
     {
         try {
 
-            $user=app()->request->user();
+            $user = app()->request->user();
             $isLiked=Like::where('likeable_id',$postId)
                         ->where('likeable_type',\get_class(new HotelPost()))
                         ->where('user_id',$user->id)
@@ -72,7 +72,7 @@ class HotelPostController extends BaseApiController
             $input['commentable_id']=$request->post_id;
             $input['commentable_type']=\get_class(new HotelPost());
             $input['comment']=$request->comment;
-            
+
             Comment::create($input);
             return $this->successResponse([],'commenting successful');
 
