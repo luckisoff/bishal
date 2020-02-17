@@ -98,7 +98,7 @@ Route::group(['middleware'=>'web'],function(){
             Route::group(['prefix'=>'card'],function(){
                 Route::get('/','Admin\CardController@index')->name('dashboard.cards');
                 Route::get('/create','Admin\CardController@create')->name('dashboard.card.create');
-                Route::get('/store','Admin\CardController@store')->name('dashboard.card.store');
+                Route::post('/store','Admin\CardController@store')->name('dashboard.card.store');
                 Route::post('/delete/{id}','Admin\CardController@destroy')->name('dashboard.card.delete');
             });
 

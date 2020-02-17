@@ -5,7 +5,7 @@
         <!-- Tabs-->
         <div class="tabbable tabbable-custom tabbable-full-width">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_edit_account" data-toggle="tab">Create Gift</a></li>
+                <li class="active"><a href="#tab_edit_account" data-toggle="tab">Create Card</a></li>
             </ul>
             <div class="tab-content row">
                 <!--=== Edit Account ===-->
