@@ -68,6 +68,10 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('/top','Api\GiftController@giftForTop');
     });
 
+    Route::group(['prefix'=>'card'],function(){
+        Route::get('/','Api\CardController@cards');
+    });
+
     Route::get('stories','Api\StoryController@stories');
 
 });
