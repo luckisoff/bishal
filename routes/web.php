@@ -95,6 +95,13 @@ Route::group(['middleware'=>'web'],function(){
                 Route::post('/delete/{story}','Admin\StoryController@destroy')->name('dashboard.story.delete');
             });
 
+            Route::group(['prefix'=>'card'],function(){
+                Route::get('/','Admin\CardController@index')->name('dashboard.cards');
+                Route::get('/create','Admin\CardController@create')->name('dashboard.card.create');
+                Route::get('/store','Admin\CardController@store')->name('dashboard.card.store');
+                Route::post('/delete/{id}','Admin\CardController@destroy')->name('dashboard.card.delete');
+            });
+
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
             Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');
         });
