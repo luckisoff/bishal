@@ -20,11 +20,13 @@ Route::group(['prefix'=>'v1'],function(){
     //api/v1/user/post/store
 
     Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
+
+        Route::get('post/{user_id}','Api\UserPostController@allPostOfSingleUser');
+
         Route::post('post/store','Api\UserPostController@store');
 
         Route::post('post/comment/store','Api\UserPostController@commentStore');
 
-        Route::get('post/{user_id}','Api\UserPostController@allPostOfSingleUser');
 
         Route::get('fetch/posts','Api\UserPostController@fetchPosts');
 
