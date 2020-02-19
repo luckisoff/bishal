@@ -21,12 +21,22 @@ Route::group(['prefix'=>'v1'],function(){
 
     Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
         Route::post('post/store','Api\UserPostController@store');
+
         Route::post('post/comment/store','Api\UserPostController@commentStore');
+
+        Route::get('post/{user_id}','Api\UserPostController@allPostOfSingleUser');
+
         Route::get('fetch/posts','Api\UserPostController@fetchPosts');
+
         Route::get('fetch/post/{id}','Api\UserPostController@fetchUniquePost');
+
         Route::get('check/like/{post_id}','Api\LikeController@isLiked');
+
         Route::get('post/like/{post_id}','Api\LikeController@likeDislike');
+
+
         Route::post('profile/update/{user_id}','Api\UserController@updateProfile');
+
         Route::get('profile/{user_id}','Api\UserController@getProfile');
     });
 
@@ -56,11 +66,11 @@ Route::group(['prefix'=>'v1'],function(){
         Route::group(['middleware' => 'auth:api'],function(){
             Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
             Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
+            Route::post('post/comment','Api\HotelPostController@storeComment');
         });
 
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');
         Route::post('post/comment/{post_id}','Api\HotelPostController@getComments');
-        Route::post('post/comment','Api\HotelPostController@storeComment');
         Route::get('menus/{hotel_id}','Api\HotelMenuController@getMenus');
         Route::get('packages/{hotel_id}','Api\HotelMenuController@getPackages');
         Route::get('/{id}','Api\HotelController@singleHotel');

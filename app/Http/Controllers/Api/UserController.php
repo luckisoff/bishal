@@ -135,7 +135,7 @@ class UserController extends BaseApiController
 
             $user=User::where('email',$request->email)->first();
 
-            if(!$user) throw new \Exception('No user found',403);
+            if(!$user) throw new \Exception('No user found',404);
 
 
             $code=substr(rand(25650,985986),0,4);
@@ -195,15 +195,13 @@ class UserController extends BaseApiController
     {
         try {
 
-            if(!$user = User::find($user_id)) throw new \Exception('Not user is found');
+            if(!$user = User::find($user_id)) throw new \Exception('No user is found');
             $validator=Validator::make($request->all(),[
                 'mobile'=>'min:10|max:13',
-                'email'=>'|email|max:255|unique:users',
+                'email'=>'email|max:255|unique:users',
                 'dob'=>'date_format:Y-m-d',
                 'image' =>'mimes:png,jpg,jpeg'
             ]);
-
-            if($request->has('username')) throw new \Exception('Username can not be changed');
 
             if($request->has('email')) throw new \Exception('Email can not be changed');
 
@@ -240,7 +238,7 @@ class UserController extends BaseApiController
     {
         try {
 
-            if(!$user = User::find($user_id)) throw new \Exception('Not user is found');
+            if(!$user = User::find($user_id)) throw new \Exception('No user is found');
 
             return $this->successResponse(['user'=>$user],'profile detail');
 

@@ -136,4 +136,20 @@ class UserPostController extends BaseApiController
         }
     }
 
+    /**
+    *Posts of Single user
+    *post with like and comment counts and comments
+    *@urlParam id required user id for the posts
+    */
+    public function allPostOfSingleUser($user_id)
+    {
+        try {
+            $posts = UserPost::where('user_id',$user_id)->orderBy('created_at','desc')->with('user')->get();
+
+            return $this->successResponse(['posts'=>$posts],'Single user posts listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage());
+        }
+    }
+
 }
