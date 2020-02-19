@@ -80,10 +80,10 @@ class HotelController extends BaseApiController
     public function singleHotel($id=null)
     {
         try {
-            $hotel = Hotel::find($id);
+            $hotel = Hotel::where('id',$id)->with('galleries')->get();
             if(!$hotel) throw new \Exception('No hotel found',404);
 
-            return $this->successResponse(['hotel'=>$hotel],'Hotel Information');
+            return $this->successResponse(['hotel'=>$hotel->with('galleries')],'Hotel Information');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);
         }
