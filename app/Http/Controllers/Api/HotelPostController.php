@@ -146,7 +146,7 @@ class HotelPostController extends BaseApiController
         try {
              $posts=HotelPost::where('hotel_id',$hotelId)->with(['hotel'=>function($q){
                  $q->select('id','logo_url','name');
-             }])->withCount(['comments','likes'])->orderBy('created_at','desc')->get();
+             }])->withCount(['comments','likes'])->with('galleries')->orderBy('created_at','desc')->get();
              return $this->successResponse(['posts'=>$posts],'Hotel Post Listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),501);
