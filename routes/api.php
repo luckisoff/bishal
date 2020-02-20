@@ -25,6 +25,8 @@ Route::group(['prefix'=>'v1'],function(){
 
         Route::post('post/store','Api\UserPostController@store');
 
+        Route::get('post/comment/{post_id}','Api\UserPostController@getComment');
+
         Route::post('post/comment/store','Api\UserPostController@commentStore');
 
 

@@ -155,4 +155,27 @@ class UserPostController extends BaseApiController
         }
     }
 
+    /**
+    *Comments of Post
+    *Comments of User post
+    *@urlParam post_id required post id of the post
+    */
+
+    public function getComment($post_id)
+    {
+        try {
+
+            $comments = Comment::where('commentable_id', $post_id)
+                        ->where('commentable_type', \get_class(new UserPost()))
+                        ->with(['user'=>function($q){
+                            $q->select('id','name','image_url');
+                        }])
+                        ->orderBy('created_at','desc')->get();
+
+            return $this->successResponse(['comments'=>$comments],'Single user comments listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage());
+        }
+    }
+
 }

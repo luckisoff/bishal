@@ -34,7 +34,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/birthdate/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"qui","birth_date":"natus"}'
+    -d '{"name":"sit","birth_date":"tenetur"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "name": "qui",
-    "birth_date": "natus"
+    "name": "sit",
+    "birth_date": "tenetur"
 }
 
 fetch(url, {
@@ -128,14 +128,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8000/api/v1/birthdate/delete/iusto" \
+    "http://localhost:8000/api/v1/birthdate/delete/dignissimos" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/birthdate/delete/iusto"
+    "http://localhost:8000/api/v1/birthdate/delete/dignissimos"
 );
 
 let headers = {
@@ -276,14 +276,14 @@ get gifts for specific category
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/gift/category/illo" \
+    -G "http://localhost:8000/api/v1/gift/category/nihil" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/gift/category/illo"
+    "http://localhost:8000/api/v1/gift/category/nihil"
 );
 
 let headers = {
@@ -513,14 +513,14 @@ Informations about single hotel
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/hotel/assumenda" \
+    -G "http://localhost:8000/api/v1/hotel/est" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/hotel/assumenda"
+    "http://localhost:8000/api/v1/hotel/est"
 );
 
 let headers = {
@@ -543,7 +543,7 @@ fetch(url, {
 {
     "status": false,
     "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `hotels` where `hotels`.`id` = assumenda limit 1)"
+    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `hotels` where `id` = est)"
 }
 ```
 
@@ -573,7 +573,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":2}'
+    -d '{"hotel_id":7}'
 
 ```
 
@@ -588,7 +588,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 2
+    "hotel_id": 7
 }
 
 fetch(url, {
@@ -630,7 +630,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":19}'
+    -d '{"hotel_id":3}'
 
 ```
 
@@ -645,7 +645,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 19
+    "hotel_id": 3
 }
 
 fetch(url, {
@@ -738,7 +738,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":16}'
+    -d '{"post_id":6}'
 
 ```
 
@@ -753,7 +753,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 16
+    "post_id": 6
 }
 
 fetch(url, {
@@ -794,7 +794,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":18}'
+    -d '{"commnet_id":19}'
 
 ```
 
@@ -809,7 +809,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 18
+    "commnet_id": 19
 }
 
 fetch(url, {
@@ -843,7 +843,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":16,"comment":"distinctio"}'
+    -d '{"post_id":3,"comment":"mollitia"}'
 
 ```
 
@@ -858,8 +858,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 16,
-    "comment": "distinctio"
+    "post_id": 3,
+    "comment": "mollitia"
 }
 
 fetch(url, {
@@ -894,7 +894,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":6}'
+    -d '{"hotel_id":19}'
 
 ```
 
@@ -909,7 +909,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 6
+    "hotel_id": 19
 }
 
 fetch(url, {
@@ -952,7 +952,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":9}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -967,7 +967,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 9
+    "post_id": 19
 }
 
 fetch(url, {
@@ -1056,7 +1056,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"eos","password":"adipisci"}'
+    -d '{"email":"maxime","password":"et"}'
 
 ```
 
@@ -1071,8 +1071,8 @@ let headers = {
 };
 
 let body = {
-    "email": "eos",
-    "password": "adipisci"
+    "email": "maxime",
+    "password": "et"
 }
 
 fetch(url, {
@@ -1107,7 +1107,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"aut","mobile":"nulla","dob":"explicabo","email":"hic","password":"molestiae","password_confirmation":"iste","gender":"et","country":"eaque","works_at":"corrupti","bio":"ut","image":"deleniti"}'
+    -d '{"name":"non","mobile":"aut","dob":"eum","email":"dolore","password":"ratione","password_confirmation":"quasi","gender":"et","country":"quia","works_at":"in","bio":"tempora","image":"perspiciatis"}'
 
 ```
 
@@ -1122,17 +1122,17 @@ let headers = {
 };
 
 let body = {
-    "name": "aut",
-    "mobile": "nulla",
-    "dob": "explicabo",
-    "email": "hic",
-    "password": "molestiae",
-    "password_confirmation": "iste",
+    "name": "non",
+    "mobile": "aut",
+    "dob": "eum",
+    "email": "dolore",
+    "password": "ratione",
+    "password_confirmation": "quasi",
     "gender": "et",
-    "country": "eaque",
-    "works_at": "corrupti",
-    "bio": "ut",
-    "image": "deleniti"
+    "country": "quia",
+    "works_at": "in",
+    "bio": "tempora",
+    "image": "perspiciatis"
 }
 
 fetch(url, {
@@ -1176,7 +1176,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"deleniti"}'
+    -d '{"email":"quos"}'
 
 ```
 
@@ -1191,7 +1191,7 @@ let headers = {
 };
 
 let body = {
-    "email": "deleniti"
+    "email": "quos"
 }
 
 fetch(url, {
@@ -1225,7 +1225,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"tenetur","password":"quisquam","password_confirmation":"nihil"}'
+    -d '{"email":"et","password":"occaecati","password_confirmation":"tempore"}'
 
 ```
 
@@ -1240,9 +1240,9 @@ let headers = {
 };
 
 let body = {
-    "email": "tenetur",
-    "password": "quisquam",
-    "password_confirmation": "nihil"
+    "email": "et",
+    "password": "occaecati",
+    "password_confirmation": "tempore"
 }
 
 fetch(url, {
@@ -1275,16 +1275,16 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X POST \
-    "http://localhost:8000/api/v1/user/profile/update/perferendis" \
+    "http://localhost:8000/api/v1/user/profile/update/aperiam" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"odio","mobile":"voluptate","dob":"est","country":"aut","image":"sint"}'
+    -d '{"name":"minus","mobile":"explicabo","dob":"molestiae","country":"est","image":"cumque"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/user/profile/update/perferendis"
+    "http://localhost:8000/api/v1/user/profile/update/aperiam"
 );
 
 let headers = {
@@ -1293,11 +1293,11 @@ let headers = {
 };
 
 let body = {
-    "name": "odio",
-    "mobile": "voluptate",
-    "dob": "est",
-    "country": "aut",
-    "image": "sint"
+    "name": "minus",
+    "mobile": "explicabo",
+    "dob": "molestiae",
+    "country": "est",
+    "image": "cumque"
 }
 
 fetch(url, {
@@ -1337,14 +1337,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/user/profile/amet" \
+    -G "http://localhost:8000/api/v1/user/profile/aperiam" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/user/profile/amet"
+    "http://localhost:8000/api/v1/user/profile/aperiam"
 );
 
 let headers = {
@@ -1384,108 +1384,6 @@ Parameter | Status | Description
 
 
 APIs for managing users post
-<!-- START_f4e3e8657ad3b65db645337fe9d30393 -->
-## Create user post
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8000/api/v1/user/post/store" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"title":"magni","images":[]}'
-
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8000/api/v1/user/post/store"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "title": "magni",
-    "images": []
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/v1/user/post/store`
-
-#### Body Parameters
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    `title` | string |  required  | title of the post or description
-        `images` | array |  required  | array of the images max 5
-    
-<!-- END_f4e3e8657ad3b65db645337fe9d30393 -->
-
-<!-- START_a691e091f03a6923a0603c6589c006c9 -->
-## Create post comment
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8000/api/v1/user/post/comment/store" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"user_post_id":13,"comment":"eveniet"}'
-
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8000/api/v1/user/post/comment/store"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "user_post_id": 13,
-    "comment": "eveniet"
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/v1/user/post/comment/store`
-
-#### Body Parameters
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    `user_post_id` | integer |  required  | current post id to be commented
-        `comment` | string |  required  | comment text
-    
-<!-- END_a691e091f03a6923a0603c6589c006c9 -->
-
 <!-- START_02f7b68b4437149e748b91176f2bf15c -->
 ## Posts of Single user
 post with like and comment counts and comments
@@ -1536,6 +1434,159 @@ Parameter | Status | Description
     `id` |  required  | user id for the posts
 
 <!-- END_02f7b68b4437149e748b91176f2bf15c -->
+
+<!-- START_f4e3e8657ad3b65db645337fe9d30393 -->
+## Create user post
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost:8000/api/v1/user/post/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"title":"illo","images":[]}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/user/post/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "illo",
+    "images": []
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/user/post/store`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `title` | string |  required  | title of the post or description
+        `images` | array |  required  | array of the images max 5
+    
+<!-- END_f4e3e8657ad3b65db645337fe9d30393 -->
+
+<!-- START_224af1a0bc472cda87d49208306e165c -->
+## Comments of Post
+Comments of User post
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/user/post/comment/et" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/user/post/comment/et"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/v1/user/post/comment/{post_id}`
+
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `post_id` |  required  | post id of the post
+
+<!-- END_224af1a0bc472cda87d49208306e165c -->
+
+<!-- START_a691e091f03a6923a0603c6589c006c9 -->
+## Create post comment
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost:8000/api/v1/user/post/comment/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"user_post_id":5,"comment":"cum"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/user/post/comment/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_post_id": 5,
+    "comment": "cum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/v1/user/post/comment/store`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `user_post_id` | integer |  required  | current post id to be commented
+        `comment` | string |  required  | comment text
+    
+<!-- END_a691e091f03a6923a0603c6589c006c9 -->
 
 <!-- START_d7cf4563ab17484c7198d7bdc29e8584 -->
 ## Fetch all posts
@@ -1593,7 +1644,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":17}'
+    -d '{"id":18}'
 
 ```
 
@@ -1608,7 +1659,7 @@ let headers = {
 };
 
 let body = {
-    "id": 17
+    "id": 18
 }
 
 fetch(url, {
@@ -1653,7 +1704,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":13}'
+    -d '{"post_id":4}'
 
 ```
 
@@ -1668,7 +1719,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 13
+    "post_id": 4
 }
 
 fetch(url, {
