@@ -129,7 +129,11 @@ class HotelPostController extends BaseApiController
     {
         try {
             $comments=Comment::where('commentable_id',$postId)->where('commentable_type',\get_class(new HotelPost()))
-                                ->orderBy('created_at','desc')->get();
+                                ->orderBy('created_at','desc')
+                                ->with(['user'=>function($q){
+                                    $q->select('id','name','image_url');
+                                }])
+                                ->get();
 
             return $this->successResponse(['comments'=>$comments],'Comment listing');
         } catch (\Throwable $th) {
