@@ -111,6 +111,9 @@ class UserController extends BaseApiController
             $data['user']=$user;
 
             $user->updated_at =  new \DateTime();
+
+            if($request->has('device_token')) $user->device_token = $request->device_token;
+
             $user->update();
 
             return $this->successResponse($data,'Login success');

@@ -265,7 +265,7 @@
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img alt="{{auth()->user()->name}}" src="{{auth()->user()->image_url}}" style="height: 20px;border-radius: 50%;width: 20px;"/>
-						<span class="username">{{ucfirst(auth()->user()->username)}}</span>
+						<span class="username icon-circle" style="color:{{auth()->user()->online() ? 'green':''}}"></span>
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">

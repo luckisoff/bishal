@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\NoPermissionModels\Birthdate;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function birthdates()
     {
         return $this->hasMany(Birthdate::class);
+    }
+
+    public function online()
+    {
+        return ($this->updated_at->diffInSeconds(Carbon::now()) <= 100);
     }
 }

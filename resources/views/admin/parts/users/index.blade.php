@@ -19,7 +19,6 @@
                                 <input type="checkbox" class="uniform">
                             </th>
                             <th data-class="expand">Name</th>
-                            <th data-hide="phone">Username</th>
                             <th data-hide="phone">Gender</th>
                             <th data-class="expand">Email</th>
                             <th data-hide="phone">Mobile</th>
@@ -35,8 +34,10 @@
                                 <td class="checkbox-column">
                                     <input type="checkbox" class="uniform">
                                 </td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->username}}</td>
+                                <td>
+                                    <span data-toggle="tooltip" data-placement="top" title="{{$user->online()?'Online':'Offline'}}" class="icon-circle" style="color:{{$user->online()?'green':''}}"></span>
+                                    {{$user->name}}
+                                </td>
                                 <td>{{$user->gender}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->mobile}}</td>

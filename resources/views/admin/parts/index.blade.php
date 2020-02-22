@@ -123,6 +123,7 @@
                                         <th>Mobile No.</th>
                                         <th>Image</th>
                                         <th class="align-center">Status</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,7 +132,10 @@
                                             <td class="checkbox-column">
                                                 <input type="checkbox" class="uniform">
                                             </td>
-                                            <td>{{$user->name}}</td>
+                                            <td>
+                                                <span class="icon-circle" style="color:{{$user->online()?'green':''}}"></span>
+                                                {{$user->name}}
+                                            </td>
                                             <td>{{$user->mobile}}</td>
                                             <td>
                                                 @if($user->image_url)
@@ -140,7 +144,9 @@
                                                     <img src="https://via.placeholder.com/150" alt="{{$user->name}}" style="width:50px">
                                                 @endif
                                             </td>
-                                            <td>{{$user->updated_at->diffForHumans()}}</td>
+                                            <td>
+                                                {{$user->updated_at->diffForHumans()}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
