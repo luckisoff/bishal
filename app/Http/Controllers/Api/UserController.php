@@ -60,6 +60,8 @@ class UserController extends BaseApiController
 
                 $input['password'] = Hash::make($request->password);
 
+                if(isset($input['password_confirmation'])) unset($input['password_confirmation']);
+
                 if($request->has('image'))
                 {
                     $input['image'] = Helper::upload_image($request->image,$this->storageFolder);
