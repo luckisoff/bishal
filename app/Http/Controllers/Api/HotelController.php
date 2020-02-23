@@ -46,6 +46,7 @@ class HotelController extends BaseApiController
             ->toArray();
 
             $values = array();
+            return $addresses;
             foreach($addresses as $value)
             {
                 if(!empty($valu['hotels']))
