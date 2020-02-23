@@ -18,7 +18,7 @@ class HotelPost extends Model
 
     public function getTypeAttribute()
     {
-        return 'Hotel Post';
+        return 'hotel_post';
     }
 
     public function hotel()
