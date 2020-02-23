@@ -40,7 +40,7 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $addresses=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+            $addresses=Address::orderBy('name','asc')->withCount('hotels')->whereHas(['hotels',function($query){
                 $query->where('type','indoor')->with('galleries');
             }])
             ->get();
