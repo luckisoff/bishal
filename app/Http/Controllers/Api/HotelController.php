@@ -40,18 +40,17 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $addresses=Address::orderBy('name','asc')->withCount('hotels')->with(['hotels'=>function($query){
+            $addresses=Address::orderBy('name','asc')->with(['hotels'=>function($query){
                 $query->where('type','indoor')->with('galleries');
-            }])
-            ->get();
+            }])->get()
+            ->toArray();
 
             $values = array();
-
-            foreach($addresses as $address)
+            foreach($addresses as $value)
             {
-                if(!empty($address->hotels))
+                if(!empty($valu['hotels']))
                 {
-                    $values[][] = $address;
+                    $values [][] = $value;
                 }
             }
 
