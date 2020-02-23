@@ -68,17 +68,16 @@ class HotelPostController extends BaseApiController
 
             if($validator->fails()) throw new \Exception($validator->errors()->first());
 
-            $input['user_id']=app()->request->user()->id;
-            $input['commentable_id']=$request->post_id;
-            $input['commentable_type']=\get_class(new HotelPost());
-            $input['comment']=$request->comment;
+            $input['user_id'] = app()->request->user()->id;
+            $input['commentable_id'] = $request->post_id;
+            $input['commentable_type'] = \get_class(new HotelPost());
+            $input['comment'] = $request->comment;
 
             $comment = Comment::create($input);
             return $this->successResponse(['comment' => $comment],'commenting successful');
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
-            return $this->errorResponse('Could not like this time.',500);
+            return $this->errorResponse('Could store comment.',500);
         }
     }
 
@@ -89,8 +88,9 @@ class HotelPostController extends BaseApiController
     public function isLiked($postId)
     {
         try {
-            $user=app()->request->user();
-            $isLiked=(bool) Like::where('likeable_id',$postId)
+            $user = app()->request->user();
+
+            $isLiked = (bool) Like::where('likeable_id',$postId)
                                 ->where('likeable_type',\get_class(new HotelPost()))
                                 ->where('user_id',$user->id)->first();
 

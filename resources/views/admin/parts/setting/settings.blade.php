@@ -71,7 +71,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Firebase Url: </label>
+                                                <div class="input-group col-md-8">
+                                                    <input name="firebase_url" id="firebase_url" class="form-control" value="{{Site::setting('firebase_url')?Site::setting('firebase_url'):old('firebase_url')}}" placeholder="Firebase Url">
 
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
 
