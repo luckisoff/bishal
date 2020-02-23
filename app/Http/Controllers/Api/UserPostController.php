@@ -146,7 +146,7 @@ class UserPostController extends BaseApiController
         try {
             $posts = UserPost::where('user_id',$user_id)->orderBy('created_at','desc')
                     ->withCount(['likes','comments'])->with(['user'=>function($q){
-                        $q->select('id','name','image_url');
+                        $q->select('id','name','image_url','works_at','bio');
                     }])->get();
 
             return $this->successResponse(['posts'=>$posts],'Single user posts listing');
@@ -168,7 +168,7 @@ class UserPostController extends BaseApiController
             $comments = Comment::where('commentable_id', $post_id)
                         ->where('commentable_type', \get_class(new UserPost()))
                         ->with(['user'=>function($q){
-                            $q->select('id','name','image_url');
+                            $q->select('id','name','image_url','works_at','bio');
                         }])
                         ->orderBy('created_at','desc')->get();
 

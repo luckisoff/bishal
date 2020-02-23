@@ -40,12 +40,21 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $address=Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
+            $addresses=Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
                 $query->where('type','indoor')->with('galleries');
             }])
             ->get();
 
-            return $this->successResponse(['locations'=>$address],'Indoor hotel listing');
+            foreach($addresses as $address)
+            {
+                if(empty($address->hotels))
+                {
+                    unset($address->hotels);
+                }
+            }
+
+
+            return $this->successResponse(['locations'=>$addresses],'Indoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
