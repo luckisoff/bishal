@@ -73,8 +73,8 @@ class HotelPostController extends BaseApiController
             $input['commentable_type']=\get_class(new HotelPost());
             $input['comment']=$request->comment;
 
-            Comment::create($input);
-            return $this->successResponse([],'commenting successful');
+            $comment = Comment::create($input);
+            return $this->successResponse(['comment' => $comment],'commenting successful');
 
         } catch (\Throwable $th) {
             return $th->getMessage();
@@ -128,14 +128,14 @@ class HotelPostController extends BaseApiController
     public function getComments($postId)
     {
         try {
-            $comments=Comment::where('commentable_id',$postId)->where('commentable_type',\get_class(new HotelPost()))
+            $comments = Comment::where('commentable_id',$postId)->where('commentable_type',\get_class(new HotelPost()))
                                 ->orderBy('created_at','desc')
                                 ->with(['user'=>function($q){
                                     $q->select('id','name','image_url','works_at','bio');
                                 }])
                                 ->get();
 
-            return $this->successResponse(['comments'=>$comments],'Comment listing');
+            return $this->successResponse(['comments'=> $comments],'Comment listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),501);
         }
