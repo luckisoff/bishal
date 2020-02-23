@@ -17,7 +17,7 @@ class UserPost extends Model
 
     public function getTypeAttribute()
     {
-        return null;
+        return 'User Post';
     }
 
     public function user()

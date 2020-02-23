@@ -9,15 +9,16 @@ class HotelPost extends Model
 {
     protected $guarded=[];
 
+    protected $append = ['type'];
+
     protected $casts = [
         'images' =>'array'
     ];
 
-    protected $append = ['type'];
 
     public function getTypeAttribute()
     {
-        return null;
+        return 'Hotel Post';
     }
 
     public function hotel()
