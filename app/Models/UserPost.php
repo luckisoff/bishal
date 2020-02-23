@@ -13,6 +13,13 @@ class UserPost extends Model
         'image_url' => 'array'
     ];
 
+    protected $append = ['type'];
+
+    public function getTypeAttribute()
+    {
+        return null;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

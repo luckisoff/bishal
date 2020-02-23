@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class HotelPost extends Model
 {
     protected $guarded=[];
-    
+
     protected $casts = [
         'images' =>'array'
     ];
+
+    protected $append = ['type'];
+
+    public function getTypeAttribute()
+    {
+        return null;
+    }
 
     public function hotel()
     {
