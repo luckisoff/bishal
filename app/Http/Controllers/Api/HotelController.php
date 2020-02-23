@@ -45,16 +45,18 @@ class HotelController extends BaseApiController
             }])
             ->get();
 
+            $values = array();
+
             foreach($addresses as $address)
             {
-                if(empty($address->hotels))
+                if(!empty($address->hotels))
                 {
-                    unset($address->hotels);
+                    $values[][] = $address;
                 }
             }
 
 
-            return $this->successResponse(['locations'=>$addresses],'Indoor hotel listing');
+            return $this->successResponse(['locations'=>$values],'Indoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
