@@ -46,7 +46,6 @@ class HotelController extends BaseApiController
             ->toArray();
 
             $values = array();
-            // return $addresses;
             foreach($addresses as $value)
             {
                 if(!empty($value['hotels']))
@@ -71,12 +70,22 @@ class HotelController extends BaseApiController
     {
         try {
 
-            $address = Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
+            $address = Address::orderBy('name','asc')->with(['hotels'=>function($query){
                 $query->where('type','outdoor')->with('galleries');
             }])
-            ->get();
+            ->get()
+            ->toArray();
+            $values = array();
 
-            return $this->successResponse(['locations'=>$address],'Outdoor hotel listing');
+            foreach($addresses as $value)
+            {
+                if(!empty($value['hotels']))
+                {
+                    $values [][] = $value;
+                }
+            }
+
+            return $this->successResponse(['locations'=>$values],'Outdoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
