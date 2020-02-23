@@ -9,7 +9,7 @@ class HotelPost extends Model
 {
     protected $guarded=[];
 
-    protected $append = ['type'];
+    protected $appends = ['type'];
 
     protected $casts = [
         'images' =>'array'

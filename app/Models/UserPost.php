@@ -13,7 +13,7 @@ class UserPost extends Model
         'image_url' => 'array'
     ];
 
-    protected $append = ['type'];
+    protected $appends = ['type'];
 
     public function getTypeAttribute()
     {
