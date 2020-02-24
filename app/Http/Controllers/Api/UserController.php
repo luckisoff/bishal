@@ -252,4 +252,20 @@ class UserController extends BaseApiController
         }
     }
 
+     /**
+    *Get All Users
+    *Get the list of all users
+    */
+    public function getAllUsers()
+    {
+        try {
+
+            $users = User::orderBy('name','asc')->get();
+
+            return $this->successResponse(['users' => $users],'All users listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(),500);
+        }
+    }
+
 }

@@ -34,7 +34,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/birthdate/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"sit","birth_date":"tenetur"}'
+    -d '{"name":"recusandae","birth_date":"aut"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "name": "sit",
-    "birth_date": "tenetur"
+    "name": "recusandae",
+    "birth_date": "aut"
 }
 
 fetch(url, {
@@ -128,14 +128,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8000/api/v1/birthdate/delete/dignissimos" \
+    "http://localhost:8000/api/v1/birthdate/delete/saepe" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/birthdate/delete/dignissimos"
+    "http://localhost:8000/api/v1/birthdate/delete/saepe"
 );
 
 let headers = {
@@ -200,13 +200,14 @@ fetch(url, {
 ```
 
 
-> Example response (300):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 300,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `cards` order by `created_at` desc)"
+    "status": true,
+    "message": "Cards listing",
+    "code": 200,
+    "cards": []
 }
 ```
 
@@ -252,13 +253,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select `id`, `name` from `categories` where exists (select * from `gifts` where `categories`.`id` = `gifts`.`category_id`) order by `name` asc)"
+    "status": true,
+    "message": "Categories listing",
+    "code": 200,
+    "categories": []
 }
 ```
 
@@ -276,14 +278,14 @@ get gifts for specific category
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/gift/category/nihil" \
+    -G "http://localhost:8000/api/v1/gift/category/est" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/gift/category/nihil"
+    "http://localhost:8000/api/v1/gift/category/est"
 );
 
 let headers = {
@@ -300,11 +302,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Category] est"
 }
 ```
 
@@ -351,13 +353,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `gifts` where `placeat_top` = 1 order by `created_at` desc)"
+    "status": true,
+    "message": "Gifts listing",
+    "code": 200,
+    "gifts": []
 }
 ```
 
@@ -452,7 +455,12 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "status": true,
+    "message": "Indoor hotel listing",
+    "code": 200,
+    "locations": []
+}
 ```
 
 ### HTTP Request
@@ -496,7 +504,12 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "status": true,
+    "message": "Outdoor hotel listing",
+    "code": 200,
+    "locations": []
+}
 ```
 
 ### HTTP Request
@@ -513,14 +526,14 @@ Informations about single hotel
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/hotel/est" \
+    -G "http://localhost:8000/api/v1/hotel/facilis" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/hotel/est"
+    "http://localhost:8000/api/v1/hotel/facilis"
 );
 
 let headers = {
@@ -537,13 +550,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `hotels` where `id` = est)"
+    "status": true,
+    "message": "Hotel Information",
+    "code": 200,
+    "hotel": []
 }
 ```
 
@@ -573,7 +587,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":7}'
+    -d '{"hotel_id":6}'
 
 ```
 
@@ -588,7 +602,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 7
+    "hotel_id": 6
 }
 
 fetch(url, {
@@ -601,11 +615,13 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "status": false,
+    "code": 404,
+    "message": "No menus are available"
 }
 ```
 
@@ -630,7 +646,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":3}'
+    -d '{"hotel_id":17}'
 
 ```
 
@@ -645,7 +661,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 3
+    "hotel_id": 17
 }
 
 fetch(url, {
@@ -658,11 +674,13 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "status": false,
+    "code": 404,
+    "message": "No menus are available"
 }
 ```
 
@@ -712,13 +730,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select `hotel_posts`.*, (select count(*) from `comments` where `hotel_posts`.`id` = `comments`.`commentable_id` and `comments`.`commentable_type` = App\\Models\\HotelPost) as `comments_count`, (select count(*) from `likes` where `hotel_posts`.`id` = `likes`.`likeable_id` and `likes`.`likeable_type` = App\\Models\\HotelPost) as `likes_count` from `hotel_posts` order by `created_at` desc)"
+    "status": true,
+    "message": "Hotel posts listing",
+    "code": 200,
+    "posts": []
 }
 ```
 
@@ -738,7 +757,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":6}'
+    -d '{"post_id":9}'
 
 ```
 
@@ -753,7 +772,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 6
+    "post_id": 9
 }
 
 fetch(url, {
@@ -794,7 +813,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":19}'
+    -d '{"commnet_id":11}'
 
 ```
 
@@ -809,7 +828,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 19
+    "commnet_id": 11
 }
 
 fetch(url, {
@@ -843,7 +862,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":3,"comment":"mollitia"}'
+    -d '{"post_id":18,"comment":"ut"}'
 
 ```
 
@@ -858,8 +877,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 3,
-    "comment": "mollitia"
+    "post_id": 18,
+    "comment": "ut"
 }
 
 fetch(url, {
@@ -894,7 +913,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":19}'
+    -d '{"hotel_id":17}'
 
 ```
 
@@ -909,7 +928,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 19
+    "hotel_id": 17
 }
 
 fetch(url, {
@@ -922,13 +941,14 @@ fetch(url, {
 ```
 
 
-> Example response (501):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 501,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select `hotel_posts`.*, (select count(*) from `comments` where `hotel_posts`.`id` = `comments`.`commentable_id` and `comments`.`commentable_type` = App\\Models\\HotelPost) as `comments_count`, (select count(*) from `likes` where `hotel_posts`.`id` = `likes`.`likeable_id` and `likes`.`likeable_type` = App\\Models\\HotelPost) as `likes_count` from `hotel_posts` where `hotel_id` = 1 order by `created_at` desc)"
+    "status": true,
+    "message": "Hotel Post Listing",
+    "code": 200,
+    "posts": []
 }
 ```
 
@@ -952,7 +972,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":19}'
+    -d '{"post_id":3}'
 
 ```
 
@@ -967,7 +987,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 19
+    "post_id": 3
 }
 
 fetch(url, {
@@ -1026,13 +1046,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "status": false,
-    "code": 500,
-    "message": "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.\r\n (SQL: select * from `stories` order by `created_at` desc)"
+    "status": true,
+    "message": "Stories listing",
+    "code": 200,
+    "stories": []
 }
 ```
 
@@ -1056,7 +1077,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"maxime","password":"et"}'
+    -d '{"email":"laborum","password":"consequuntur"}'
 
 ```
 
@@ -1071,8 +1092,8 @@ let headers = {
 };
 
 let body = {
-    "email": "maxime",
-    "password": "et"
+    "email": "laborum",
+    "password": "consequuntur"
 }
 
 fetch(url, {
@@ -1107,7 +1128,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"non","mobile":"aut","dob":"eum","email":"dolore","password":"ratione","password_confirmation":"quasi","gender":"et","country":"quia","works_at":"in","bio":"tempora","image":"perspiciatis"}'
+    -d '{"name":"officiis","mobile":"molestiae","dob":"est","email":"rerum","password":"reprehenderit","password_confirmation":"optio","gender":"aspernatur","country":"neque","works_at":"accusamus","bio":"aut","image":"ut"}'
 
 ```
 
@@ -1122,17 +1143,17 @@ let headers = {
 };
 
 let body = {
-    "name": "non",
-    "mobile": "aut",
-    "dob": "eum",
-    "email": "dolore",
-    "password": "ratione",
-    "password_confirmation": "quasi",
-    "gender": "et",
-    "country": "quia",
-    "works_at": "in",
-    "bio": "tempora",
-    "image": "perspiciatis"
+    "name": "officiis",
+    "mobile": "molestiae",
+    "dob": "est",
+    "email": "rerum",
+    "password": "reprehenderit",
+    "password_confirmation": "optio",
+    "gender": "aspernatur",
+    "country": "neque",
+    "works_at": "accusamus",
+    "bio": "aut",
+    "image": "ut"
 }
 
 fetch(url, {
@@ -1176,7 +1197,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quos"}'
+    -d '{"email":"qui"}'
 
 ```
 
@@ -1191,7 +1212,7 @@ let headers = {
 };
 
 let body = {
-    "email": "quos"
+    "email": "qui"
 }
 
 fetch(url, {
@@ -1225,7 +1246,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"et","password":"occaecati","password_confirmation":"tempore"}'
+    -d '{"email":"sequi","password":"ut","password_confirmation":"suscipit"}'
 
 ```
 
@@ -1240,9 +1261,9 @@ let headers = {
 };
 
 let body = {
-    "email": "et",
-    "password": "occaecati",
-    "password_confirmation": "tempore"
+    "email": "sequi",
+    "password": "ut",
+    "password_confirmation": "suscipit"
 }
 
 fetch(url, {
@@ -1268,6 +1289,52 @@ Parameter | Type | Status | Description
     
 <!-- END_a62f1703e9fba891a3e20ff27854aac0 -->
 
+<!-- START_327d9a608d175131d3fc458a600118c7 -->
+## Get All Users
+Get the list of all users
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8000/api/v1/user/all" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8000/api/v1/user/all"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/v1/user/all`
+
+
+<!-- END_327d9a608d175131d3fc458a600118c7 -->
+
 <!-- START_9b9d20d78c8fba46beee7b1e94b178c5 -->
 ## Update profile
 
@@ -1275,16 +1342,16 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X POST \
-    "http://localhost:8000/api/v1/user/profile/update/aperiam" \
+    "http://localhost:8000/api/v1/user/profile/update/omnis" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"minus","mobile":"explicabo","dob":"molestiae","country":"est","image":"cumque"}'
+    -d '{"name":"dignissimos","mobile":"cupiditate","dob":"similique","country":"corrupti","image":"dolorem"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/user/profile/update/aperiam"
+    "http://localhost:8000/api/v1/user/profile/update/omnis"
 );
 
 let headers = {
@@ -1293,11 +1360,11 @@ let headers = {
 };
 
 let body = {
-    "name": "minus",
-    "mobile": "explicabo",
-    "dob": "molestiae",
-    "country": "est",
-    "image": "cumque"
+    "name": "dignissimos",
+    "mobile": "cupiditate",
+    "dob": "similique",
+    "country": "corrupti",
+    "image": "dolorem"
 }
 
 fetch(url, {
@@ -1337,14 +1404,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/user/profile/aperiam" \
+    -G "http://localhost:8000/api/v1/user/profile/eius" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/user/profile/aperiam"
+    "http://localhost:8000/api/v1/user/profile/eius"
 );
 
 let headers = {
@@ -1445,7 +1512,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"illo","images":[]}'
+    -d '{"title":"eum","images":[]}'
 
 ```
 
@@ -1460,7 +1527,7 @@ let headers = {
 };
 
 let body = {
-    "title": "illo",
+    "title": "eum",
     "images": []
 }
 
@@ -1494,14 +1561,14 @@ Comments of User post
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8000/api/v1/user/post/comment/et" \
+    -G "http://localhost:8000/api/v1/user/post/comment/voluptatum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost:8000/api/v1/user/post/comment/et"
+    "http://localhost:8000/api/v1/user/post/comment/voluptatum"
 );
 
 let headers = {
@@ -1547,7 +1614,7 @@ curl -X POST \
     "http://localhost:8000/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":5,"comment":"cum"}'
+    -d '{"user_post_id":14,"comment":"accusamus"}'
 
 ```
 
@@ -1562,8 +1629,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 5,
-    "comment": "cum"
+    "user_post_id": 14,
+    "comment": "accusamus"
 }
 
 fetch(url, {
@@ -1644,7 +1711,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":18}'
+    -d '{"id":7}'
 
 ```
 
@@ -1659,7 +1726,7 @@ let headers = {
 };
 
 let body = {
-    "id": 18
+    "id": 7
 }
 
 fetch(url, {
@@ -1704,7 +1771,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":4}'
+    -d '{"post_id":7}'
 
 ```
 
@@ -1719,7 +1786,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 4
+    "post_id": 7
 }
 
 fetch(url, {
@@ -1760,7 +1827,7 @@ curl -X GET \
     -G "http://localhost:8000/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":2}'
+    -d '{"post_id":20}'
 
 ```
 
@@ -1775,7 +1842,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 2
+    "post_id": 20
 }
 
 fetch(url, {
@@ -1883,11 +1950,22 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "peak_connections": {
+        "x": [],
+        "y": []
+    },
+    "websocket_message_count": {
+        "x": [],
+        "y": []
+    },
+    "api_message_count": {
+        "x": [],
+        "y": []
+    }
 }
 ```
 
@@ -2727,12 +2805,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (302):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request
@@ -2929,11 +3005,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\UserPost] 1"
 }
 ```
 
@@ -3168,11 +3244,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Hotel] 1"
 }
 ```
 
@@ -3249,11 +3325,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Hotel] delete"
 }
 ```
 
@@ -3293,11 +3369,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Hotel] 1"
 }
 ```
 
@@ -3337,11 +3413,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Hotel] 1"
 }
 ```
 
@@ -3381,11 +3457,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Hotel] 1"
 }
 ```
 
@@ -3731,11 +3807,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Gift] 1"
 }
 ```
 
@@ -3775,11 +3851,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Gift] 1"
 }
 ```
 
@@ -3856,11 +3932,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Gift] 1"
 }
 ```
 
@@ -4216,11 +4292,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Story] 1"
 }
 ```
 
@@ -4652,11 +4728,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\NoPermissionModels\\Address] 1"
 }
 ```
 
@@ -4696,12 +4772,10 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
-{
-    "message": "Server Error"
-}
+null
 ```
 
 ### HTTP Request

@@ -17,11 +17,16 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('register', 'Api\UserController@signup');
     Route::post('top-up', 'Api\UserController@sendTopUp');
     Route::post('password/reset', 'Api\UserController@changePassword');
-    //api/v1/user/post/store
+
+    //api/v1/user/
+
 
     Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
 
         Route::get('post/{user_id}','Api\UserPostController@allPostOfSingleUser');
+
+        Route::get('all','Api\UserController@getAllUsers');
+
 
         Route::post('post/store','Api\UserPostController@store');
 
