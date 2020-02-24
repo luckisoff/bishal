@@ -70,11 +70,12 @@ class HotelController extends BaseApiController
     {
         try {
 
-            $address = Address::orderBy('name','asc')->with(['hotels'=>function($query){
+            $addresses = Address::orderBy('name','asc')->with(['hotels'=>function($query){
                 $query->where('type','outdoor')->with('galleries');
             }])
             ->get()
             ->toArray();
+            
             $values = array();
 
             foreach($addresses as $value)
