@@ -23,7 +23,7 @@ class HotelPostController extends BaseApiController
     {
         try {
 
-            $user=app()->request->user();
+            $user = app()->request->user();
             $isLiked=Like::where('likeable_id',$postId)
                         ->where('likeable_type',\get_class(new HotelPost()))
                         ->where('user_id',$user->id)
@@ -47,8 +47,7 @@ class HotelPostController extends BaseApiController
             }
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
-            return $this->errorResponse('Could not like this time.',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
