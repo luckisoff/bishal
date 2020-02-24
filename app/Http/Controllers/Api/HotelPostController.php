@@ -47,8 +47,7 @@ class HotelPostController extends BaseApiController
             }
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
-            return $this->errorResponse('Could not like this time.',500);
+            return $this->errorResponse($th->getMessage(),500);
         }
     }
 
