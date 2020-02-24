@@ -25,17 +25,25 @@ class NotificationController extends BaseApiController
     public static function newUserWelcome(User $user)
     {
         $fields = array(
+
             'to' => $user->device_token,
+
             'notification'=>[
+
                 'title'=>'Welcome Message',
+
                 'text'=>'Dear '.$user->name.'. Welcome to '.self::$site_name.'.'
-            ]
+            ],
+
+            // 'data'=>array(
+            //     'type'=>'claim' //extra data payload
+            // )
         );
         return self::curlInit($fields);
     }
 
 
-    protected static function curlinit($fields)
+    protected static function curlInit($fields)
     {
         $headers = array(
             'Authorization: key='. self::$firebase_key,
@@ -58,7 +66,7 @@ class NotificationController extends BaseApiController
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 
-        $res=curl_exec($ch);
+        $res = curl_exec($ch);
 
         curl_close($ch);
 
