@@ -13,6 +13,7 @@ class UserController extends BaseAdminController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware(['permission:view user'],['only'=>['index']]);
         $this->middleware(['permission:create user'],['ony'=>['edit','update']]);
         $this->middleware(['permission:delete user'],['only'=>['destroy']]);

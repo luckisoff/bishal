@@ -228,6 +228,30 @@
             </li>
             @endif
 
+            @if(auth()->user()->can('view card'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   Cards
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.cards')}}">
+                        <i class="icon-angle-right"></i>
+                        List Cards
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.card.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Card
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
             @if(auth()->user()->can('view setting'))
             <li>
                 <a href="{{route('dashboard.setting.create')}}">

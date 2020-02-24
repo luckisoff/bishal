@@ -35,9 +35,9 @@ class BirthdateController extends BaseApiController
 
             $input['user_id'] = app()->request->user()->id;
 
-            $birthdate ? $birthdate->update($input) : Birthdate::create($input);
+            $birthdate ? $birthdate->update($input) : $birthdate = Birthdate::create($input);
 
-            return $this->successResponse([],'Birthdate saved');
+            return $this->successResponse(['birth_date'=> $birthdate],'Birthdate saved');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(),500);

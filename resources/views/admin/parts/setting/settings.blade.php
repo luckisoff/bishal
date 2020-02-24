@@ -61,10 +61,32 @@
 
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Firebase Key: </label>
+                                                <div class="input-group col-md-8">
+                                                    <input name="firebase_key" id="firebase_key" class="form-control" value="{{Site::setting('firebase_key')?Site::setting('firebase_key'):old('firebase_key')}}" placeholder="Firebase Key">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Firebase Url: </label>
+                                                <div class="input-group col-md-8">
+                                                    <input name="firebase_url" id="firebase_url" class="form-control" value="{{Site::setting('firebase_url')?Site::setting('firebase_url'):old('firebase_url')}}" placeholder="Firebase Url">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div> <!-- /.widget-content -->
                             </div> <!-- /.widget -->
                             <div class="form-actions">
-                                <input type="submit" value="Create" class="btn btn-primary pull-right">
+                                <input type="submit" value="Save" class="btn btn-primary pull-right">
                             </div>
                         </div> <!-- /.col-md-12 -->
                     </form>

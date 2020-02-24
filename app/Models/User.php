@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\NoPermissionModels\Birthdate;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -17,9 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','username','dob','address','mobile','country','gender','social_unique_id','image','image_url'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,5 +51,10 @@ class User extends Authenticatable
     public function birthdates()
     {
         return $this->hasMany(Birthdate::class);
+    }
+
+    public function online()
+    {
+        return ($this->updated_at->diffInSeconds(Carbon::now()) <= 100);
     }
 }

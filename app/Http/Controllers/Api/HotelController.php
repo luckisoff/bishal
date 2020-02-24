@@ -40,12 +40,22 @@ class HotelController extends BaseApiController
     public function indoorHotels()
     {
         try {
-            $address=Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
+            $addresses=Address::orderBy('name','asc')->with(['hotels'=>function($query){
                 $query->where('type','indoor')->with('galleries');
-            }])
-            ->get();
+            }])->get()
+            ->toArray();
 
-            return $this->successResponse(['locations'=>$address],'Indoor hotel listing');
+            $values = array();
+            foreach($addresses as $value)
+            {
+                if(!empty($value['hotels']))
+                {
+                    $values [][] = $value;
+                }
+            }
+
+
+            return $this->successResponse(['locations'=>$values],'Indoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
@@ -60,12 +70,22 @@ class HotelController extends BaseApiController
     {
         try {
 
-            $address = Address::orderBy('name','asc')->whereHas('hotels')->withCount('hotels')->with(['hotels'=>function($query){
+            $address = Address::orderBy('name','asc')->with(['hotels'=>function($query){
                 $query->where('type','outdoor')->with('galleries');
             }])
-            ->get();
+            ->get()
+            ->toArray();
+            $values = array();
 
-            return $this->successResponse(['locations'=>$address],'Outdoor hotel listing');
+            foreach($addresses as $value)
+            {
+                if(!empty($value['hotels']))
+                {
+                    $values [][] = $value;
+                }
+            }
+
+            return $this->successResponse(['locations'=>$values],'Outdoor hotel listing');
         } catch (\Throwable $th) {
             return $th->getMessage();
             return $this->errorResponse('Internal server error',500);
@@ -80,7 +100,8 @@ class HotelController extends BaseApiController
     public function singleHotel($id=null)
     {
         try {
-            $hotel = Hotel::find($id);
+            $hotel = Hotel::where('id',$id)->with('galleries')->get();
+
             if(!$hotel) throw new \Exception('No hotel found',404);
 
             return $this->successResponse(['hotel'=>$hotel],'Hotel Information');
