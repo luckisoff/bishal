@@ -669,6 +669,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Controllers\\Api\\HotelMenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/HotelMenuController.php',
         'App\\Http\\Controllers\\Api\\HotelPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/HotelPostController.php',
         'App\\Http\\Controllers\\Api\\LikeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/LikeController.php',
+        'App\\Http\\Controllers\\Api\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/NotificationController.php',
         'App\\Http\\Controllers\\Api\\StoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/StoryController.php',
         'App\\Http\\Controllers\\Api\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserController.php',
         'App\\Http\\Controllers\\Api\\UserPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserPostController.php',

@@ -32,6 +32,7 @@ return array(
     'App\\Http\\Controllers\\Api\\HotelMenuController' => $baseDir . '/app/Http/Controllers/Api/HotelMenuController.php',
     'App\\Http\\Controllers\\Api\\HotelPostController' => $baseDir . '/app/Http/Controllers/Api/HotelPostController.php',
     'App\\Http\\Controllers\\Api\\LikeController' => $baseDir . '/app/Http/Controllers/Api/LikeController.php',
+    'App\\Http\\Controllers\\Api\\NotificationController' => $baseDir . '/app/Http/Controllers/Api/NotificationController.php',
     'App\\Http\\Controllers\\Api\\StoryController' => $baseDir . '/app/Http/Controllers/Api/StoryController.php',
     'App\\Http\\Controllers\\Api\\UserController' => $baseDir . '/app/Http/Controllers/Api/UserController.php',
     'App\\Http\\Controllers\\Api\\UserPostController' => $baseDir . '/app/Http/Controllers/Api/UserPostController.php',
