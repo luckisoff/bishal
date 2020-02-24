@@ -185,6 +185,7 @@
                             </div>
                         </div> <!-- /.col-md-12 -->
                     </form>
+                    <!-- <div id="map"></div> -->
                 </div>
                 <!-- /Edit Account -->
             </div> <!-- /.tab-content -->
@@ -202,11 +203,13 @@
             <div class="modal-body">
                 <form id="addLocationForm">
                     <div class="form-group">
-                        <!-- <label for="hotel name">Location Name *</label>
+                        <label for="hotel name">Location Name *</label>
                         <input type="text" id="locationName" name="locationname" placeholder="Enter business location" class="form-control" required>
-                        <span style="font-size:10px">(eg.New Baneshwor)</span> -->
+                        <span class="btn btn-sm btn-info" id="search"> <i class="icon-search"></i> </span>
+                        <span style="font-size:10px">(eg.New Baneshwor)</span>
+                        <div id="latlong"></div>
 
-                        <div id="map"></div>
+                        <!-- <div id="map"></div> -->
                     </div>
                     <span id="locProcess" style="display:none">Processing...</span>
                 </div>
@@ -234,56 +237,63 @@
 </div><!-- /.modal -->
 @endsection
 @section('scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpHqofrETD73kZ9vED9qs9mIk0J7sO12o&callback=initMap" async defer></script>
-<script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 27.7172, lng: 85.3240},
-            zoom: 8
-        });
-
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            console.log(pos);
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-</script>
 <script>
     addOption();
     $(document).ready(function(){
+
+        $('#locSubmit').attr('disabled', true);
+
+        $('#search').on('click', function(){
+            $('#locProcess').show();
+            $.ajax({
+                type: "GET",
+                url: 'http://open.mapquestapi.com/geocoding/v1/address',
+                data: {location:$('#locationName').val(),'key':'EetFEEgx46axEg8ZVFIgbKdicVRGqn4K'},
+
+                success: ( response => {
+
+                    $('#locProcess').hide();
+                    var results = response.results[0];
+                    var location = results.locations[0];
+                    var template = `
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Area</th>
+                                <th>City</th>
+                                <th>Lat</th>
+                                <th>Long</th>
+                            </tr>
+                            <tr>
+                                <td>${location.adminArea6 ? location.adminArea6 : location.street}</td>
+                                <td>${location.adminArea5}</td>
+                                <td>
+                                    <input id="lat" value="${location.latLng.lat}" style="border:0px" disabled>
+                                </td>
+                                <td>
+                                    <input id="long" value="${location.latLng.lng}" style="border:0px" disabled>
+                                </td>
+                            </tr>
+                        </table>
+                    `;
+                    $('#latlong').html(template);
+                    $('#locSubmit').attr('disabled', false);
+                }) ,
+
+                error:( error => {
+                    $('#locSubmit').attr('disabled', true);
+                    $('#addLocation').modal('hide');
+                    $('#locProcess').hide();
+                    alert('Error finding coordinates')
+                })
+            });
+        });
+
         $('#addLocationForm').on('submit',function(event) {
             event.preventDefault();
             $('#locProcess').show();
             var name = $('#locationName').val();
+            var latitude = $('#lat').val();
+            var longitude = $('#long').val();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN':'{{csrf_token()}}'
@@ -292,8 +302,9 @@
             $.ajax({
                 type: "POST",
                 url: '{{route("dashboard.address.store")}}',
-                data: {name:name},
+                data: {name:name, latitude:latitude, longitude:longitude},
                 success: function( msg ) {
+                    $('#locSubmit').attr('disabled', true);
                     addOption();
                     $('#addLocation').modal('hide');
                     $('#locProcess').hide();
@@ -331,9 +342,11 @@
 @endsection
 @section('styles')
 <style>
-    #map{
-        width:100%;
-        height:300px;
+    #search{
+        position: absolute;
+        right: 25px;
+        top: 43px;
+        height: 32px;
     }
 </style>
 @endsection
