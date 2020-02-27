@@ -10,10 +10,16 @@ class AddressController extends BaseAdminController
 {
     public function store(Request $request)
     {
-        $address=Address::where('name',$request->name)->first();
+        $address  = Address::where('name',$request->name)->first();
         if(!$address)
         {
             if(Address::create($request->all()))
+            {
+                return response()->json(['status'=>true]);
+            }
+        } else {
+            
+            if($address->update($request->all()))
             {
                 return response()->json(['status'=>true]);
             }
