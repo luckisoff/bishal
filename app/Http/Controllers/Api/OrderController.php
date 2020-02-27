@@ -20,6 +20,7 @@ class OrderController extends BaseApiController
     function __construct()
     {
         parent::__construct();
+        Notify::setValues();
     }
 
     /**

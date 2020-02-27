@@ -12,7 +12,7 @@ class NotificationController
 {
     private static $firebase_key_user, $firebase_key_hotel, $site_name, $url;
 
-    protected static function setValues()
+    public static function setValues()
     {
         self::$firebase_key_user = Helper::setting('firebase_key');
 
@@ -25,7 +25,6 @@ class NotificationController
 
     public static function newUserWelcome(User $user)
     {
-        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
@@ -46,7 +45,6 @@ class NotificationController
 
     public static function orderUser(User $user, $order)
     {
-        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
@@ -60,7 +58,7 @@ class NotificationController
 
 
             'data'=>array(
-                'order'=> '$order' //extra data payload
+                'order'=> $order //extra data payload
             )
         );
         return self::curlInit($fields, self::$firebase_key_user);
@@ -68,7 +66,6 @@ class NotificationController
 
     public static function orderHotel(User $user, Order $order)
     {
-        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
