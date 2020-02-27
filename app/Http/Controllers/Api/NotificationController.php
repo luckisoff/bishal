@@ -8,7 +8,7 @@ use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\Order;
 
-class NotificationController extends BaseApiController
+class NotificationController
 {
     protected static $firebase_key_user, $firebase_key_hotel, $site_name, $url;
 
