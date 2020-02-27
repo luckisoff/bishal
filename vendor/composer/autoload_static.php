@@ -703,6 +703,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Models\\Hotel' => __DIR__ . '/../..' . '/app/Models/Hotel.php',
         'App\\Models\\HotelPost' => __DIR__ . '/../..' . '/app/Models/HotelPost.php',
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
+        'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\Package' => __DIR__ . '/../..' . '/app/Models/Package.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\Story' => __DIR__ . '/../..' . '/app/Models/Story.php',

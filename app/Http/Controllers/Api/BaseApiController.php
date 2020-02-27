@@ -8,11 +8,12 @@ use App\Models\User;
 
 class BaseApiController extends Controller
 {
-    protected $validator;
+    protected $validator, $user;
 
     function __construct()
     {
         $this->validator = new Validator();
+        $this->user = app()->request()->user();
     }
     public function successResponse($data = array(), string $message = 'Successful', int $code = 200, array $header = []) {
         $dat['status']=true;

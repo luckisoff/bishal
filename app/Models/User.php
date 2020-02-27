@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return ($this->updated_at->diffInSeconds(Carbon::now()) <= 100);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class)->orderBy('created_at','desc');
+    }
 }

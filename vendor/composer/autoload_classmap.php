@@ -66,6 +66,7 @@ return array(
     'App\\Models\\Hotel' => $baseDir . '/app/Models/Hotel.php',
     'App\\Models\\HotelPost' => $baseDir . '/app/Models/HotelPost.php',
     'App\\Models\\Menu' => $baseDir . '/app/Models/Menu.php',
+    'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Package' => $baseDir . '/app/Models/Package.php',
     'App\\Models\\Setting' => $baseDir . '/app/Models/Setting.php',
     'App\\Models\\Story' => $baseDir . '/app/Models/Story.php',

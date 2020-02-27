@@ -44,4 +44,9 @@ class Hotel extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class)->orderBy('created_at','desc');
+    }
+
 }

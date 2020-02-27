@@ -76,6 +76,7 @@ Route::group(['prefix'=>'v1'],function(){
             Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
             Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
             Route::post('post/comment','Api\HotelPostController@storeComment');
+            Route::post('place/order','Api\OrderController@store');
         });
 
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');

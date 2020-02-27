@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Hotel;
+use NotificationController as Notify;
+/**
+ * @group Orders
+ *
+ * APIs for orders
+ */
+class OrderController extends BaseApiController
+{
+    protected $manager;
+
+    function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Store
+     * @bodyParam hotel_id integer required id of the hotel for order
+     * @bodyParam items array required items array
+     * @bodyParam amount integer required total order amount of the user
+    */
+    public function store(Request $request)
+    {
+        try {
+            $validator = $this->validator::make($request->all(),[
+                'hotel_id'=>'required',
+                'items' =>'required|array',
+                'amount' =>'required'
+            ]);
+
+            if($validator->fails()) throw new \Exception($validator->errors()->first());
+
+            $input = $request->all();
+
+            $input['user_id'] = $this->user->id;
+
+            $order = Order::create($input);
+
+            $this->setManager($request->hotel_id);
+
+            //sends order info to user
+            Notify::orderUser($this->user, $order);
+
+            //sends order placement to hotel manger
+            Notify::orderHotel($this->manager, $order);
+
+            return $this->successResponse(['order' => $order],'Order placed!');
+
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(), 500);
+        }
+    }
+
+    protected function setManager($hotel_id)
+    {
+        $hotel = Hotel::where('id',$hotel_id)->first();
+
+        $this->manager = $hotel->managers->first();
+    }
+}
