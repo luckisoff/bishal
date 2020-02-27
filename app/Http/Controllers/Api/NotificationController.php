@@ -55,13 +55,12 @@ class NotificationController
 
                 'title'=>'Order Placed!!',
 
-                'text'=>'Dear '.$user->name.'. Welcome to '.self::$site_name.'.'
+                'text'=>'Dear '.$user->name.'. Your order has been placed. \n Thank you for using our service.'
             ],
 
-            'priority'=>'high',
 
             'data'=>array(
-                'order'=>$order //extra data payload
+                'order'=> $order //extra data payload
             )
         );
         return self::curlInit($fields, self::$firebase_key_user);
@@ -93,7 +92,7 @@ class NotificationController
     protected static function curlInit($fields, $firebase_key)
     {
         $headers = array(
-            'Authorization: key='. $firebase_key,
+            'Authorization:key='. $firebase_key,
             'Content-type: Application/json'
         );
 

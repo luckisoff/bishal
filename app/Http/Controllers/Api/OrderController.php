@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Order;
 use App\Models\Hotel;
-use NotificationController as Notify;
+use App\Http\Controllers\Api\NotificationController as Notify;
 /**
  * @group Orders
  *
@@ -30,7 +30,8 @@ class OrderController extends BaseApiController
     */
     public function store(Request $request)
     {
-        try {
+        try
+        {
             $validator = $this->validator::make($request->all(),[
                 'hotel_id'=>'required',
                 'items' =>'required|array',
@@ -41,19 +42,22 @@ class OrderController extends BaseApiController
 
             $input = $request->all();
 
-            $input['user_id'] = app()->request()->user()->id;
+            $input['user_id'] = app()->request->user()->id;
 
             $order = Order::create($input);
 
             $this->setManager($request->hotel_id);
 
             //sends order info to user
-            $not1 = Notify::orderUser($this->user, $order);
+            $not1 = Notify::orderUser(app()->request->user(), $order);
 
             //sends order placement to hotel manger
-            $not2 = Notify::orderHotel($this->manager, $order);
+            if($this->manager)
+            {
+                $not2 = Notify::orderHotel($this->manager, $order);
+            }
 
-            return $this->successResponse(['order' => $order,'notif_user'=>$not1, 'notif_hotel'=>$not2],'Order placed!');
+            return $this->successResponse(['order' => $order,'notif_user'=>$not1],'Order placed!');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
@@ -64,6 +68,6 @@ class OrderController extends BaseApiController
     {
         $hotel = Hotel::where('id',$hotel_id)->first();
 
-        $this->manager = $hotel->managers->first();
+        $this->manager = $hotel ? $hotel->managers->first():'';
     }
 }
