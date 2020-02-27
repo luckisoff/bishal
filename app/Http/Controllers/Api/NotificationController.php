@@ -10,12 +10,10 @@ use App\Models\Order;
 
 class NotificationController
 {
-    protected static $firebase_key_user, $firebase_key_hotel, $site_name, $url;
+    private static $firebase_key_user, $firebase_key_hotel, $site_name, $url;
 
-    function __construct()
+    protected static function setValues()
     {
-        parent::__construct();
-
         self::$firebase_key_user = Helper::setting('firebase_key');
 
         self::$firebase_key_hotel = Helper::setting('firebase_key_hotel');
@@ -27,6 +25,7 @@ class NotificationController
 
     public static function newUserWelcome(User $user)
     {
+        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
@@ -45,8 +44,9 @@ class NotificationController
         return self::curlInit($fields);
     }
 
-    public static function orderUser(User $user, Order $order)
+    public static function orderUser(User $user, $order)
     {
+        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
@@ -60,7 +60,7 @@ class NotificationController
 
 
             'data'=>array(
-                'order'=> $order //extra data payload
+                'order'=> '$order' //extra data payload
             )
         );
         return self::curlInit($fields, self::$firebase_key_user);
@@ -68,6 +68,7 @@ class NotificationController
 
     public static function orderHotel(User $user, Order $order)
     {
+        self::setValues();
         $fields = array(
 
             'to' => $user->device_token,
