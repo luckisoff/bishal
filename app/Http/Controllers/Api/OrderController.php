@@ -47,12 +47,12 @@ class OrderController extends BaseApiController
             $this->setManager($request->hotel_id);
 
             //sends order info to user
-            Notify::orderUser($this->user, $order);
+            $not1 = Notify::orderUser($this->user, $order);
 
             //sends order placement to hotel manger
-            Notify::orderHotel($this->manager, $order);
+            $not2 = Notify::orderHotel($this->manager, $order);
 
-            return $this->successResponse(['order' => $order],'Order placed!');
+            return $this->successResponse(['order' => $order,'notif_user'=>$not1, 'notif_hotel'=>$not2],'Order placed!');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
