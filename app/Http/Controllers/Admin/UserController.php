@@ -79,11 +79,13 @@ class UserController extends BaseAdminController
             }
         }
 
+        unset($input['permissions']);
         if($user->update($input))
         {
             if($request->has('permissions'))
             {
                 $user->revokePermissionTo($user->getAllPermissions());
+
                 $user->givePermissionTo($request->permissions);
             }
             return back()->with('success','Update successful');
