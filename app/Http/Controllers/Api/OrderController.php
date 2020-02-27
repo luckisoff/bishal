@@ -40,7 +40,7 @@ class OrderController extends BaseApiController
 
             $input = $request->all();
 
-            $input['user_id'] = $this->user->id;
+            $input['user_id'] = app()->request()->user()->id;
 
             $order = Order::create($input);
 
