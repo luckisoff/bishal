@@ -66,11 +66,21 @@
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Firebase Key: </label>
                                                 <div class="input-group col-md-8">
-                                                    <input name="firebase_key" id="firebase_key" class="form-control" value="{{Site::setting('firebase_key')?Site::setting('firebase_key'):old('firebase_key')}}" placeholder="Firebase Key">
+                                                    <input name="firebase_key_hotel" id="firebase_key" class="form-control" value="{{Site::setting('firebase_key')?Site::setting('firebase_key'):old('firebase_key')}}" placeholder="Firebase Key">
 
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Firebase Key Hotel: </label>
+                                                <div class="input-group col-md-8">
+                                                    <input name="firebase_key" id="firebase_key_hotel" class="form-control" value="{{Site::setting('firebase_key_hotel')?Site::setting('firebase_key_hotel'):old('firebase_key_hotel')}}" placeholder="Firebase Key for hotel">
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label">Firebase Url: </label>
