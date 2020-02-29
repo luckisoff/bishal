@@ -101,12 +101,13 @@ class OrderController extends BaseApiController
     public function confirmOrder(Request $request)
     {
         try {
+
             $validator = $this->validator::make($request->all(),[
                 'order_id' => 'required',
                 'message'  => 'required'
             ]);
 
-            if($validator->fails()) throw new \Exception($validaor->errors()->first());
+            if($validator->fails()) throw new \Exception($validator->errors()->first());
 
             $order = Order::where('id',$request->order_id)->first();
 
