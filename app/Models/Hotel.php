@@ -54,4 +54,19 @@ class Hotel extends Model
         return $this->hasMany(Order::class)->where('confirm',0)->orderBy('created_at','desc');
     }
 
+    public function confirmedOrders()
+    {
+        return $this->hasMany(Order::class)->where('confirm',1)->where('dispatched',0)->orderBy('created_at','desc');
+    }
+
+    public function dispatchedOrders()
+    {
+        return $this->hasMany(Order::class)->where('dispatched',1)->orderBy('updated_at','desc');
+    }
+
+    public function successOrders()
+    {
+        return $this->hasMany(Order::class)->where('success',1)->orderBy('updated_at','desc');
+    }
+
 }

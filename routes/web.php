@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Models\Package;
 Route::get('/', function () {
-    return Package::all();
     return view('welcome');
 });
 

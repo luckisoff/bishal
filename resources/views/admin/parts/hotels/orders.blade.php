@@ -44,8 +44,9 @@
                                 @foreach($order->items as $item)
                                     <ul>
                                         <li>
-                                            <span>{{ $item['name'] }}</span>
-                                            <span>({{'Rs. '.$item['price'] }})</span>
+                                        {{pritn_r($item)}}
+                                            <!-- <span>{{ $item['name'] }}</span>
+                                            <span>({{'Rs. '.$item['price'] }})</span> -->
                                         </li>
                                     </ul>
                                     <br>
