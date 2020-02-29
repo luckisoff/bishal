@@ -101,7 +101,6 @@ class OrderController extends BaseApiController
     public function confirmOrder(Request $request)
     {
         try {
-
             $validator = $this->validator::make($request->all(),[
                 'order_id' => 'required',
                 'message'  => 'required'
@@ -111,6 +110,7 @@ class OrderController extends BaseApiController
 
             $order = Order::where('id',$request->order_id)->first();
 
+            if(!$order) throw new \Exception('No order found');
             $order->confirm = true;
 
             if(!$order->update()) throw new \Excpetion('Order Confirmation failed');
@@ -118,6 +118,7 @@ class OrderController extends BaseApiController
             $not1 = Notify::confirmOrderToUser($order->user, $order, $request->message);
 
             return $this->successResponse(['orders'=>$orders,'notif_user'=>$not1],'Hotel order listing');
+
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }
