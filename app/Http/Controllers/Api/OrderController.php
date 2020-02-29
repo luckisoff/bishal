@@ -101,7 +101,7 @@ class OrderController extends BaseApiController
     public function confirmOrder(Request $request)
     {
         try {
-            $validaor = $this->validator::make($request->all(),[
+            $validator = $this->validator::make($request->all(),[
                 'order_id' => 'required',
                 'message'  => 'required'
             ]);
