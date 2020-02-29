@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Models\Order;
 Route::get('/', function () {
+    return Order::all();
     return view('welcome');
 });
 

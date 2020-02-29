@@ -8,7 +8,9 @@ class Order extends Model
 {
     protected $guarded = [];
 
-    protected $casts = ['items' => 'array'];
+    protected $casts = [
+        'items' => 'array'
+    ];
 
     public function user()
     {
