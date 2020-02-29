@@ -44,7 +44,10 @@ class HotelManagerController extends BaseAdminController
 
             $user->hasRole('manager') ? $user->removeRole('manager') : '';
 
-            $user->revokePermissionTo('view hotel');
+            if(!$user->can('create hotel'))
+            {
+                $user->revokePermissionTo('view hotel');
+            }
 
             return back()->with('success','A manager is detached');
 

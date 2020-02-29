@@ -91,8 +91,9 @@ class UserController extends BaseApiController
     *Login user
     *@bodyParam email string required email of user
     *@bodyParam password string required password of the user
+    *@bodyParam type string optional type of user eg. manager
     */
-    public function login(Request $request)
+    public function login(Request $request, $type = null)
     {
         try
         {
@@ -109,6 +110,18 @@ class UserController extends BaseApiController
 
             $data['token']=$user->createToken($user->username)->accessToken;
             $data['user']=$user;
+
+            if($type && $type == 'manager')
+            {
+                if(!$user->hasRole('manager')) throw new \Exception('User is not a manager');
+
+                $hotel = $user->hotels()->first();
+
+                if($hotel)
+                {
+                    $data['hotel'] = $hotel;
+                }
+            }
 
             $user->updated_at =  new \DateTime();
 

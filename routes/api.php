@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::group(['prefix'=>'v1'],function(){
-    Route::post('login', 'Api\UserController@login');
+    Route::post('login/{type?}', 'Api\UserController@login');
     Route::post('register', 'Api\UserController@signup');
     Route::post('top-up', 'Api\UserController@sendTopUp');
     Route::post('password/reset', 'Api\UserController@changePassword');

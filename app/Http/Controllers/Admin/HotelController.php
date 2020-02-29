@@ -47,11 +47,11 @@ class HotelController extends BaseAdminController
                 'location'=>'required',
                 ]);
 
-            if($this->validator->fails()) throw new \Exception($validator->errors()->first());
+            if($validator->fails()) throw new \Exception($validator->errors()->first());
 
-            $input=$request->all();
+            $input = $request->all();
 
-            $hotel=$id;
+            $hotel = $id;
 
             $input['facilities'] = explode(',',$request->facilities);
 
