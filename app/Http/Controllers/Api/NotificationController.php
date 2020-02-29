@@ -77,8 +77,6 @@ class NotificationController
                 'text'=>'Dear '.$user->name.' A new order has been placed in your hotel. Please confirm it from the system.\n Thank you.'
             ],
 
-            'priority'=>'high',
-
             'data'=>array(
                 'order'=> $order //extra data payload
             )
