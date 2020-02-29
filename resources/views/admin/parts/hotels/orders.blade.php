@@ -45,8 +45,7 @@
                                     <ul>
                                         <li>
                                         {{print_r($item)}}
-                                            <!-- <span>{{ $item['name'] }}</span>
-                                            <span>({{'Rs. '.$item['price'] }})</span> -->
+
                                         </li>
                                     </ul>
                                     <br>
