@@ -13,7 +13,11 @@ class UpdateOrdersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('orders',function(Blueprint $table){
+            $table->boolean('confirm')->default(0);
+            $table->boolean('dispatched')->default(0);
+            $table->boolean('success')->default(0);
+        });
     }
 
     /**
@@ -23,6 +27,8 @@ class UpdateOrdersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropColumn('confirm');
+        Schema::dropColumn('despatched');
+        Schema::dropColumn('success');
     }
 }
