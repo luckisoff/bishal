@@ -64,6 +64,12 @@ Route::group(['middleware'=>'web'],function(){
                     Route::post('delete/{package}','Admin\HotelPackageController@destroy')->name('dashboard.package.delete')->middleware('permission:view hotel');
                 });
 
+                Route::group(['prefix'=>'order'],function(){
+                    Route::get('confirm/{order}','Admin\OrderController@confirm')->name('dashboard.order.confirm');
+                    Route::get('dispatch/{order}','Admin\OrderController@orderDispatch')->name('dashboard.order.dispatch');
+                    Route::get('success/{order}','Admin\OrderController@success')->name('dashboard.order.success');
+                    Route::get('invoice/{order}','Admin\OrderController@invoice')->name('dashboard.order.invoice');
+                });
             });
 
             Route::group(['prefix'=>'gift'],function(){
@@ -100,6 +106,7 @@ Route::group(['middleware'=>'web'],function(){
                 Route::post('/store','Admin\CardController@store')->name('dashboard.card.store');
                 Route::post('/delete/{card}','Admin\CardController@destroy')->name('dashboard.card.delete');
             });
+
 
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
             Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');

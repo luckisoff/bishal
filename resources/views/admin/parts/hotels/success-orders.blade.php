@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="widget box">
             <div class="widget-header">
-                <h4><i class="icon-reorder"></i> Orders</h4>
+                <h4><i class="icon-reorder"></i> Orders Dispatched</h4>
                 <div class="toolbar no-padding">
                     <div class="btn-group">
                         <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
@@ -31,12 +31,12 @@
                             <th data-hide="phone">Address</th>
                             <th data-hide="phone">Items</th>
                             <th data-hide="phone">Amount</th>
-                            <th data-hide="phone">Date/Time</th>
+                            <th data-hide="phone">Status</th>
                             <th data-hide="phone,tablet">Action</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        @foreach($hotel->newOrders as $order)
+                        @foreach($hotel->dispatchedOrders as $order)
                             <tr>
                                 <td class="checkbox-column">
                                     <input type="checkbox" class="uniform">
@@ -57,12 +57,12 @@
                                 @endforeach
                                 </td>
                                 <td>{{$order->amount}}</td>
-                                <td>{{$order->created_at}} ({{$order->created_at->diffForHumans()}})</td>
+                                <td>{!!$order->dispatched == 1?'<span class="btn btn-success btn-xs">Dispatched : '.$order->updated_at->diffForHumans().'</span>':''!!}</td>
                                 <td>
                                     @if(auth()->user()->hasRole('manager') || auth()->user()->can('update order'))
 
-                                        <a class="btn btn-warning btn-sm" href="{{route('dashboard.order.confirm',$order)}}">
-                                            Confirm
+                                        <a class="btn btn-info btn-sm" href="{{route('dashboard.order.success',$order)}}">
+                                            Invoice
                                         </a>
                                     @endif
                                 </td>

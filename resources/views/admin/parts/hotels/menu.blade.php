@@ -28,3 +28,13 @@
         Managers
     </a>
 </li>
+<li>
+    <a href="{{route('dashboard.hotel.show',$hotel->id.'/orders')}}">
+        Orders
+    </a>
+</li>
+<li>
+    <a href="{{route('dashboard.hotel.show',$hotel->id.'/invoices')}}">
+        Invoices
+    </a>
+</li>

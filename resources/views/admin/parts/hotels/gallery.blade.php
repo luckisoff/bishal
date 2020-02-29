@@ -7,7 +7,7 @@
                 <h2 class="text-left">Gallery </h2>
             </div>
             <div class="pull-left" style="margin: 27px;">
-                (<a data-toggle="modal" href="#gallery-modal" > <i class="icon-upload"></i> Upload</a>)
+                (<a data-toggle="modal" href="#gallery-modal"> <i class="icon-upload"></i> Upload</a>)
             </div>
         </div>
     </div>
