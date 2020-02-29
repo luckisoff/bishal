@@ -71,7 +71,7 @@ class UserController extends BaseAdminController
             if( !empty($request->image))
             {
                 $input['image']=Helper::upload_image($request->image,'/app/public/user/image');
-                $input['image_url']=env('APP_URL').'/storage/user/image/'.$input['image'];
+                $input['image_url']=\URL::to('/storage/user/image/'.$input['image']);
                 if($user->image)
                 {
                     Helper::delete_image($user->image,'/app/public/user/image/');

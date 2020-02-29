@@ -72,4 +72,53 @@ class OrderController extends BaseApiController
 
         $this->manager = $hotel ? $hotel->managers->first():'';
     }
+
+    /**
+     * Get
+     * @urlParam hotel_id required id of the hotel for orders
+    */
+    public function getAllOrders($hotel_id)
+    {
+        try {
+            $orders = Order::where('hotel_id',$hotel_id)
+                        ->where('confirm',0)
+                        ->where('dispatched',0)
+                        ->where('success',0)
+                        ->with('user')
+                        ->orderBy('created_at','desc')
+                        ->get();
+            return $this->successResponse(['orders'=>$orders],'Hotel order listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Confirm
+     * @bodyParam order_id integer required id of the order to be confirmed
+     * @bodyParam message string required message to be sent to the user
+    */
+    public function confirmOrder(Request $request)
+    {
+        try {
+            $validaor = $this->validator::make($request->all(),[
+                'order_id' => 'required',
+                'message'  => 'required'
+            ]);
+
+            if($validator->fails()) throw new \Exception($validaor->errors()->first());
+
+            $order = Order::where('id',$request->order_id)->first();
+
+            $order->confirm = true;
+
+            if(!$order->update()) throw new \Excpetion('Order Confirmation failed');
+
+            $not1 = Notify::confirmOrderToUser($order->user, $order, $request->message);
+
+            return $this->successResponse(['orders'=>$orders,'notif_user'=>$not1],'Hotel order listing');
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(), 500);
+        }
+    }
 }

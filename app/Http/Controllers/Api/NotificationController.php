@@ -64,6 +64,28 @@ class NotificationController
         return self::curlInit($fields, self::$firebase_key_user);
     }
 
+    public static function confirmOrderToUser(User $user, $order, $mesasge)
+    {
+        $fields = array(
+
+            'to' => $user->device_token,
+
+            'notification'=>[
+
+                'title'=>'Order Placed!!',
+
+                'text'=>$message
+            ],
+
+
+            'data'=>array(
+                'order'=> $order //extra data payload
+            )
+        );
+        return self::curlInit($fields, self::$firebase_key_user);
+    }
+
+
     public static function orderHotel(User $user, Order $order)
     {
         $fields = array(
