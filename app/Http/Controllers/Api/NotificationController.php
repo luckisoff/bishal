@@ -64,7 +64,7 @@ class NotificationController
         return self::curlInit($fields, self::$firebase_key_user);
     }
 
-    public static function confirmOrderToUser(User $user, $order, $mesasge)
+    public static function confirmOrderToUser(User $user, $order, $message)
     {
         $fields = array(
 

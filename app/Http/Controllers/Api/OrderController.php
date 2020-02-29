@@ -111,13 +111,14 @@ class OrderController extends BaseApiController
             $order = Order::where('id',$request->order_id)->first();
 
             if(!$order) throw new \Exception('No order found');
+
             $order->confirm = true;
 
             if(!$order->update()) throw new \Excpetion('Order Confirmation failed');
 
             $not1 = Notify::confirmOrderToUser($order->user, $order, $request->message);
 
-            return $this->successResponse(['orders'=>$orders,'notif_user'=>$not1],'Hotel order listing');
+            return $this->successResponse(['orders'=>$order,'notif_user'=>$not1],'Hotel order listing');
 
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
