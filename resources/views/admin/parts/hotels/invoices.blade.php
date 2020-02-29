@@ -195,7 +195,7 @@
                                 <td class="no">${index+1}</td>
                                 <td class="text-left">${value.name}</td>
                                 <td class="unit">${value.price}</td>
-                                <td class="qty">${valu.foodItemAdd}</td>
+                                <td class="qty">${value.foodItemAdd}</td>
                                 <td class="total">${value.price * value.foodItemAdd}</td>
                             </tr>`;
                         $('#invoice-body').append(row);
