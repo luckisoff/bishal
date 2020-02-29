@@ -91,12 +91,12 @@
                         <div style="min-width: 600px">
                             <header>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col col-md-6">
                                         <a target="_blank" href="#">
-                                            <img src="{{$hotel->logo_url}}" data-holder-rendered="true" />
+                                            <img src="{{$hotel->logo_url}}" data-holder-rendered="true" style="height:60px" />
                                         </a>
                                     </div>
-                                    <div class="col company-details">
+                                    <div class="col col-md-6 company-details">
                                         <h2 class="name">
                                             <a target="_blank" href="#">
                                                 {{$hotel->name}}
