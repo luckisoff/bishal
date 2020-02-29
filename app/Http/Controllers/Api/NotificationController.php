@@ -40,7 +40,7 @@ class NotificationController
             //     'type'=>'claim' //extra data payload
             // )
         );
-        return self::curlInit($fields);
+        return self::curlInit($fields,$self::$firebase_key_user);
     }
 
     public static function orderUser(User $user, $order)
