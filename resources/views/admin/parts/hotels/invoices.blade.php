@@ -155,7 +155,7 @@
                             <div class="date">Due Date: ${invoice.updated_at}</div>
                         </div>
                     </div>
-                    <table border="0" cellspacing="0" cellpadding="0">
+                    <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered text-right">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -186,10 +186,7 @@
                         </tfoot>
                     </table>
                     <div class="thanks">Thank you!</div>
-                    <div class="notices">
-                        <div>NOTICE:</div>
-                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-                    </div>
+
                     `;
 
                     $('#invoice-main').html(template);
@@ -298,55 +295,11 @@
         font-size: 1.2em
     }
 
-    .invoice table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 20px
-    }
 
-    .invoice table td,.invoice table th {
-        padding: 15px;
-        background: #eee;
-        border-bottom: 1px solid #fff
-    }
 
-    .invoice table th {
-        white-space: nowrap;
-        font-weight: 400;
-        font-size: 16px
-    }
 
-    .invoice table td h3 {
-        margin: 0;
-        font-weight: 400;
-        color: #3989c6;
-        font-size: 1.2em
-    }
 
-    .invoice table .qty,.invoice table .total,.invoice table .unit {
-        text-align: right;
-        font-size: 1.2em
-    }
 
-    .invoice table .no {
-        color: #fff;
-        font-size: 1.6em;
-        background: #3989c6
-    }
-
-    .invoice table .unit {
-        background: #ddd
-    }
-
-    .invoice table .total {
-        background: #3989c6;
-        color: #fff
-    }
-
-    .invoice table tbody tr:last-child td {
-        border: none
-    }
 
     .invoice table tfoot td {
         background: 0 0;
