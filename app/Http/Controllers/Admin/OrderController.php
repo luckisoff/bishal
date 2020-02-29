@@ -5,15 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Http\Controllers\Api\NotificationController as Notify;
 
 class OrderController extends BaseAdminController
 {
+    function __construct()
+    {
+        parent::__construct();
+        Notify::setValues();
+
+    }
     public function confirm(Order $order)
     {
         try {
             $order->confirm = true;
+
             if(!$order->update()) throw new \Exception('');
+
+            Notify::confirmOrderToUser($order->user, $order, 'Thank you for the order. Your order has been confirmed.');
+
             return back()->with('success','Order has been confirmed');
+
         } catch (\Throwable $th) {
             return back()->withErrors(['Can not perform this action. Please try again'],'error');
         }
@@ -25,6 +37,8 @@ class OrderController extends BaseAdminController
             $order->dispatched = true;
 
             if(!$order->update()) throw new \Exception();
+
+            Notify::confirmOrderToUser($order->user, $order, 'Your order has been dispatched and its on the way.');
 
             return back()->with('success','Order has been dispatched.');
 
