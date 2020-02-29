@@ -54,12 +54,6 @@
                                 <td>{{$order->amount}}</td>
                                 <td>
                                     @if(auth()->user()->hasRole('manager') || auth()->user()->can('update order'))
-                                        <a class="btn btn-danger btn-sm" href="#" onclick="orderDelete({{$order->id}});">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                        <form id="package-delete{{$package->id}}" action="{{route('dashboard.package.delete',$order)}}" method="POST" style="display: none">
-                                            @csrf
-                                        </form>
 
                                         <a class="btn btn-wrning btn-sm" href="#">
                                             Confirm
@@ -78,17 +72,5 @@
 @endsection
 @section('scripts')
 <script>
-    function orderDelete(id)
-    {
-        event.preventDefault();
-        if(confirm('Are you sure?'))
-        {
-            document.getElementById('package-delete'+id).submit();
-        }
-        else
-        {
-            return false;
-        }
-    }
 </script>
 @endsection
