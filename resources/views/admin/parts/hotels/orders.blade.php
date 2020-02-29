@@ -57,7 +57,7 @@
                                         <a class="btn btn-danger btn-sm" href="#" onclick="orderDelete({{$order->id}});">
                                             <i class="icon-trash"></i>
                                         </a>
-                                        <form id="package-delete{{$package->id}}" action="{{route('dashboard.package.delete',$package)}}" method="POST" style="display: none">
+                                        <form id="package-delete{{$package->id}}" action="{{route('dashboard.package.delete',$order)}}" method="POST" style="display: none">
                                             @csrf
                                         </form>
 
