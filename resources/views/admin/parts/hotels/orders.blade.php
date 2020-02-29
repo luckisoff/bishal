@@ -53,13 +53,17 @@
                                 </td>
                                 <td>{{$order->amount}}</td>
                                 <td>
-                                    @if(auth()->user()->hasRole('manager'))
-                                        <a class="btn btn-danger btn-sm" href="#" onclick="packageDelete({{$package->id}});">
+                                    @if(auth()->user()->hasRole('manager') || auth()->user()->can('edit order'))
+                                        <a class="btn btn-danger btn-sm" href="#" onclick="orderDelete({{$order->id}});">
                                             <i class="icon-trash"></i>
                                         </a>
                                         <form id="package-delete{{$package->id}}" action="{{route('dashboard.package.delete',$package)}}" method="POST" style="display: none">
                                             @csrf
                                         </form>
+
+                                        <a class="btn btn-wrning btn-sm" href="#">
+                                            Confirm
+                                        </a>
                                     @endif
                                 </td>
                             </tr>
@@ -74,7 +78,7 @@
 @endsection
 @section('scripts')
 <script>
-    function packageDelete(id)
+    function orderDelete(id)
     {
         event.preventDefault();
         if(confirm('Are you sure?'))
