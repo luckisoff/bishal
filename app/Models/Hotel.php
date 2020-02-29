@@ -49,4 +49,9 @@ class Hotel extends Model
         return $this->hasMany(Order::class)->orderBy('created_at','desc');
     }
 
+    public function newOrders()
+    {
+        return $this->hasMany(Order::class)->where('confirm',0)->orderBy('created_at','desc');
+    }
+
 }
