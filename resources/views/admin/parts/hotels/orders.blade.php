@@ -37,15 +37,14 @@
                                 <td class="checkbox-column">
                                     <input type="checkbox" class="uniform">
                                 </td>
-                                <td>{{$order->user()->name}}</td>
-                                <td>{{$order->user()->mobile}}</td>
-                                <td>{{$order->user()->address}}</td>
+                                <td>{{$order->user->name}}</td>
+                                <td>{{$order->user->mobile}}</td>
+                                <td>{{$order->user->address}}</td>
                                 <td>
                                 @foreach($order->items as $item)
                                     <ul>
                                         <li>
-                                            <span>{{$item['name']}}</span>
-                                            <span>({{'Rs. '.$item['price']}})</span>
+
                                         </li>
                                     </ul>
                                     <br>
