@@ -68,13 +68,6 @@
 		@endif
 			<!-- Top Left Menu -->
 			<ul class="nav navbar-nav navbar-left">
-			@if(!auth()->user()->hasRole('manager'))
-				<li>
-					<a href="#">
-						Dashboard
-					</a>
-				</li>
-			@endif
 				@if(Route::currentRouteName() == 'dashboard.hotel.show')
 					@include('admin.parts.hotels.menu')
 				@endif
@@ -385,9 +378,6 @@
                         <li>
                             <i class="icon-home"></i>
                             <a href="{{route('dashboard')}}">Dashboard</a>
-                        </li>
-                        <li class="current">
-                            <a href="pages_calendar.html" title="">Calendar</a>
                         </li>
                     </ul>
 
