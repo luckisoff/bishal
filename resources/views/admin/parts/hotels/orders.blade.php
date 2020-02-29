@@ -53,7 +53,7 @@
                                 </td>
                                 <td>{{$order->amount}}</td>
                                 <td>
-                                    @if(auth()->user()->hasRole('manager') || auth()->user()->can('edit order'))
+                                    @if(auth()->user()->hasRole('manager') || auth()->user()->can('update order'))
                                         <a class="btn btn-danger btn-sm" href="#" onclick="orderDelete({{$order->id}});">
                                             <i class="icon-trash"></i>
                                         </a>
