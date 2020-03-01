@@ -28,6 +28,7 @@ class OrderController extends BaseApiController
      * @bodyParam hotel_id integer required id of the hotel for order
      * @bodyParam items array required items array
      * @bodyParam amount integer required total order amount of the user
+     * @bodyParam note string required note from the users
     */
     public function store(Request $request)
     {
@@ -36,7 +37,8 @@ class OrderController extends BaseApiController
             $validator = $this->validator::make($request->all(),[
                 'hotel_id'=>'required',
                 'items' =>'required|array',
-                'amount' =>'required'
+                'amount' =>'required',
+                'note' =>'required'
             ]);
 
             if($validator->fails()) throw new \Exception($validator->errors()->first());
@@ -120,6 +122,23 @@ class OrderController extends BaseApiController
 
             return $this->successResponse(['orders'=>$order,'notif_user'=>$not1],'Hotel order listing');
 
+        } catch (\Throwable $th) {
+            return $this->errorResponse($th->getMessage(), 500);
+        }
+    }
+
+    /**
+     * User Orders
+     * @urlParam user_id required id of the user for orders
+    */
+    public function getUserOrders($user_id)
+    {
+        try {
+            $orders = Order::where('user_id',$user_id)
+                        ->with('hotel')
+                        ->orderBy('created_at','desc')
+                        ->get();
+            return $this->successResponse(['orders'=>$orders],'Users order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }
