@@ -235,7 +235,6 @@
     .invoice {
         position: relative;
         background-color: #FFF;
-        min-height: 680px;
         padding: 15px
     }
 
