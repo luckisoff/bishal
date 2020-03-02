@@ -46,7 +46,7 @@ class UserPostController extends BaseApiController
                     $imageName=Helper::upload_image($image);
 
                     $data['images'][]=$imageName;
-                    $data['urls'][]=env('APP_URL')."/storage/user/post/".$imageName;
+                    $data['urls'][]=\URL::to("/storage/user/post/".$imageName);
                 }
 
                 $input['images']=$data['images'];
