@@ -216,7 +216,8 @@ class UserController extends BaseApiController
         try {
 
             if(!$user = User::find($user_id)) throw new \Exception('No user is found');
-            $validator=Validator::make($request->all(),[
+
+            $validator = Validator::make($request->all(),[
                 'mobile'=>'min:10|max:13',
                 'email'=>'email|max:255|unique:users',
                 'dob'=>'date_format:Y-m-d',
