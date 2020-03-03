@@ -97,7 +97,7 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email',
                 'password'=>'required',
 
@@ -106,10 +106,12 @@ class UserController extends BaseApiController
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
             if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])) throw new \Exception('Email or password is wrong');
+            
             $user = Auth::user();
 
-            $data['token']=$user->createToken($user->username)->accessToken;
-            $data['user']=$user;
+            $data['token'] = $user->createToken($user->email)->accessToken;
+
+            $data['user'] = $user;
 
             if($type && $type == 'manager')
             {
@@ -146,17 +148,17 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email'
             ]);
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-            $user=User::where('email',$request->email)->first();
+            $user = User::where('email',$request->email)->first();
 
             if(!$user) throw new \Exception('No user found',404);
 
 
-            $code=substr(rand(25650,985986),0,4);
+            $code = substr(rand(25650,985986),0,4);
             $user->setAttribute('topup',$code);
 
             try {
@@ -182,7 +184,7 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email',
                 'password'=>'required|min:8|confirmed'
             ]);
@@ -229,8 +231,8 @@ class UserController extends BaseApiController
 
             if($request->has('image'))
             {
-                $input['image']=Helper::upload_image($request->image,$this->storageFolder);
-                $input['image_url']=\URL::to($this->publicFolder.$input['image']);
+                $input['image'] = Helper::upload_image($request->image,$this->storageFolder);
+                $input['image_url'] = \URL::to($this->publicFolder.$input['image']);
 
                 if($user->image)
                 {
