@@ -102,7 +102,7 @@ class UserPostController extends BaseApiController
         try {
             $posts=UserPost::orderBy('created_at','desc')->withCount(['comments','likes'])->with(['user'=>function($query){
                 $query->select('id','name','image_url','works_at','bio','gender');
-            }])->get();
+            }])->paginate(7);
 
             return $this->successResponse(['posts'=>$posts],'User posts');
         } catch (\Throwable $th) {
