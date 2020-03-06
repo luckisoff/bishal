@@ -97,7 +97,7 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email',
                 'password'=>'required',
 
@@ -150,17 +150,17 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email'
             ]);
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
-            $user=User::where('email',$request->email)->first();
+            $user = User::where('email',$request->email)->first();
 
             if(!$user) throw new \Exception('No user found',404);
 
 
-            $code=substr(rand(25650,985986),0,4);
+            $code = substr(rand(25650,985986),0,4);
             $user->setAttribute('topup',$code);
 
             try {
@@ -186,7 +186,7 @@ class UserController extends BaseApiController
     {
         try
         {
-            $validator=Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'email'=>'required|email',
                 'password'=>'required|min:8|confirmed'
             ]);
@@ -218,7 +218,8 @@ class UserController extends BaseApiController
         try {
 
             if(!$user = User::find($user_id)) throw new \Exception('No user is found');
-            $validator=Validator::make($request->all(),[
+
+            $validator = Validator::make($request->all(),[
                 'mobile'=>'min:10|max:13',
                 'email'=>'email|max:255|unique:users',
                 'dob'=>'date_format:Y-m-d',
@@ -233,8 +234,8 @@ class UserController extends BaseApiController
 
             if($request->has('image'))
             {
-                $input['image']=Helper::upload_image($request->image,$this->storageFolder);
-                $input['image_url']=\URL::to($this->publicFolder.$input['image']);
+                $input['image'] = Helper::upload_image($request->image,$this->storageFolder);
+                $input['image_url'] = \URL::to($this->publicFolder.$input['image']);
 
                 if($user->image)
                 {
