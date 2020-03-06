@@ -106,10 +106,11 @@ class UserController extends BaseApiController
             if($validator->fails()) throw new \Exception($validator->errors()->first(),403);
 
             if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])) throw new \Exception('Email or password is wrong');
+
             $user = Auth::user();
 
-            $data['token']=$user->createToken($user->username)->accessToken;
-            $data['user']=$user;
+            $data['token'] = $user->createToken($user->username)->accessToken;
+
 
             if($type && $type == 'manager')
             {
@@ -128,6 +129,9 @@ class UserController extends BaseApiController
             if($request->has('device_token')) $user->device_token = $request->device_token;
 
             $user->update();
+
+
+            $data['user'] = $user;
 
             return $this->successResponse($data,'Login success');
 
