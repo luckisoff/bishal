@@ -119,6 +119,7 @@ class OrderController extends BaseApiController
             if(!$order) throw new \Exception('No order found');
 
             $order->confirm = true;
+            $order->dispatched = true;
 
             if(!$order->update()) throw new \Excpetion('Order Confirmation failed');
 
