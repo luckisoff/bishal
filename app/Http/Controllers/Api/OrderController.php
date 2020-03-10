@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Models\Order;
 use App\Models\Hotel;
@@ -88,7 +89,10 @@ class OrderController extends BaseApiController
                         ->where('success',0)
                         ->with('user')
                         ->orderBy('created_at','desc')
-                        ->get();
+                        ->get()
+                        ->groupBy(function($date){
+                            return Carbon::parse($date->created_at)->format('Y-m-d');
+                        });;
             return $this->successResponse(['orders'=>$orders],'Hotel order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
@@ -137,7 +141,10 @@ class OrderController extends BaseApiController
             $orders = Order::where('user_id',$user_id)
                         ->with('hotel')
                         ->orderBy('created_at','desc')
-                        ->get();
+                        ->get()
+                        ->groupBy(function($date){
+                            return Carbon::parse($date->created_at)->format('Y-m-d');
+                        });
             return $this->successResponse(['orders'=>$orders],'Users order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
