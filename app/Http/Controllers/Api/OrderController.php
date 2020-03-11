@@ -146,7 +146,15 @@ class OrderController extends BaseApiController
                         ->groupBy(function($date){
                             return Carbon::parse($date->created_at)->format('Y-m-d');
                         });
-            return $this->successResponse(['orders'=>$orders],'Users order listing');
+            
+            $neworders = array();
+
+            foreach($orders as $date => $items)
+            {
+                $neworders['date'] = $date;
+                $neworders['items'] = $items;
+            }
+            return $this->successResponse(['orders'=>$neworders],'Users order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }

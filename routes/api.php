@@ -72,14 +72,14 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('indoor','Api\HotelController@indoorHotels');
         Route::get('outdoor','Api\HotelController@outdoorHotels');
 
+        Route::get('orders/user/{user_id}','Api\OrderController@getUserOrders');
+        Route::get('orders/{hotel_id}','Api\OrderController@getAllOrders');
         Route::group(['middleware' => 'auth:api'],function(){
             Route::get('post/toggle-like/{post_id}','Api\HotelPostController@toggleLike');
             Route::post('post/comment/delete','Api\HotelPostController@deleteComment');
             Route::post('post/comment','Api\HotelPostController@storeComment');
             Route::post('place/order','Api\OrderController@store');
             Route::post('confirm/order','Api\OrderController@confirmOrder');
-            Route::get('orders/user/{user_id}','Api\OrderController@getUserOrders');
-            Route::get('orders/{hotel_id}','Api\OrderController@getAllOrders');
         });
 
         Route::get('posts/{hotel_id}','Api\HotelPostController@getPosts');
