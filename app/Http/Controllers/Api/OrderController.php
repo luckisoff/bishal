@@ -154,7 +154,7 @@ class OrderController extends BaseApiController
                 $neworders = [
                     'date'  => $date,
                     'items' => $items
-                ]
+                ];
             }
             return $this->successResponse(['orders'=>$neworders],'Users order listing');
         } catch (\Throwable $th) {
