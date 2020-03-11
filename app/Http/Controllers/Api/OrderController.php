@@ -151,12 +151,12 @@ class OrderController extends BaseApiController
 
             foreach($orders as $date => $items)
             {
-                $neworders = [
+                $neworders[] = [
                     'date'  => $date,
                     'items' => $items
                 ];
             }
-            return $this->successResponse(['orders'=>$neworders],'Users order listing');
+            return $this->successResponse(['orders' => $neworders],'Users order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }
