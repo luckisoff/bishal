@@ -147,12 +147,12 @@ class OrderController extends BaseApiController
                             return Carbon::parse($date->created_at)->format('Y-m-d');
                         });
             
-            $neworders = array();
+            $neworders[] = array();
 
             foreach($orders as $date => $items)
             {
-                $neworders[]['date'] = $date;
-                $neworders[]['items'] = $items;
+                $neworders['date'] = $date;
+                $neworders['items'] = $items;
             }
             return $this->successResponse(['orders'=>$neworders],'Users order listing');
         } catch (\Throwable $th) {
