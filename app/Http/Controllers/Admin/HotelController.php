@@ -61,7 +61,7 @@ class HotelController extends BaseAdminController
                 if(!empty($request->logo))
                     $logo=Helper::upload_image($request->logo,'/app/public/hotels/logo');
                     $input['logo']=$logo;
-                    $input['logo_url']=env('APP_URL').'/storage/hotels/logo/'.$logo;
+                    $input['logo_url']=\URL::to('/storage/hotels/logo/'.$logo);
                     if($hotel)
                     {
                         Helper::delete_image($hotel->logo,'/app/public/hotels/logo/');
