@@ -20,35 +20,36 @@ class MenuController extends Controller
 
     public function store(Request $request,Hotel $hotel)
     {
-        try 
+        try
         {
             $validator = Validator::make($request->all(),[
                 'name' =>'required',
                 'items' => 'required|array|min:1',
-                
+                'image' => 'required|mimes:png,jpg,jpeg'
+
             ]);
-            
+
             if($validator->fails()) throw new \Exception($validator->errors()->first());
-            
+
             $input=$request->all();
-    
+
             $data=array();
-            
+
             foreach($request->items as $item)
             {
                 $data['items'][]=$item;
             }
-    
-    
+
+
             if($request->has('image'))
             {
                 $input['image'] = Helper::upload_image($request->image,$this->storageFolder);
             }
-    
+
             $input['items'] = $data['items'];
-    
+
             $hotel->menus()->create($input);
-            
+
             return back()->with('success','Menu created');
 
 
