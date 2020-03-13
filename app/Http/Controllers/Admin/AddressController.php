@@ -11,6 +11,7 @@ class AddressController extends BaseAdminController
     public function store(Request $request)
     {
         $address  = Address::where('name',$request->name)->first();
+
         if(!$address)
         {
             if(Address::create($request->all()))
@@ -18,7 +19,7 @@ class AddressController extends BaseAdminController
                 return response()->json(['status'=>true]);
             }
         } else {
-            
+
             if($address->update($request->all()))
             {
                 return response()->json(['status'=>true]);
@@ -27,6 +28,7 @@ class AddressController extends BaseAdminController
 
         return response()->json(['status'=>false,'message'=>'Can not store address.']);
     }
+
     public function destroy(Address $address)
     {
         if($address->delete())
