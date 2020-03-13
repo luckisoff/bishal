@@ -16,7 +16,7 @@ class Cors
     public function handle($request, Closure $next)
     {
         return $next($request)
-                    ->header("Access-Control-Allow-Origin", "http://project.shikshaya.com/")
+                    ->header("Access-Control-Allow-Origin", "http://project.shikshaya.com,https://project.shikshaya.com")
                     ->header("Access-Control-Allow-Methods", "Get, Post, Put, Delete, Options");
                     // ->header("Access-Control-Allow-Headers", "X-CSRF-TOKEN");
                 }
