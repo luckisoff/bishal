@@ -124,11 +124,11 @@ class HotelController extends BaseAdminController
     {
         try
         {
-            $validator=$this->validator::make($request->all(),[
+            $validator = $this->validator::make($request->all(),[
                 'image'=>'required|mimes:jpg,gif,png,jpeg'
             ]);
 
-            if($this->validator->fails()) throw new \Exception($validator->errors()->first());
+            if($validator->fails()) throw new \Exception($validator->errors()->first());
 
             $input=$request->all();
             $input['hotel_id']=$hotel->id;
