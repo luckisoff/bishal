@@ -93,7 +93,18 @@ class OrderController extends BaseApiController
                         ->groupBy(function($date){
                             return Carbon::parse($date->created_at)->format('Y-m-d');
                         });;
-            return $this->successResponse(['orders'=>$orders],'Hotel order listing');
+
+            $neworders = array();
+
+            foreach($orders as $date => $items)
+            {
+                $neworders[] = [
+                    'date'  => $date,
+                    'items' => $items
+                ];
+            }
+
+            return $this->successResponse(['orders' => $neworders],'Hotel order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }
@@ -146,7 +157,18 @@ class OrderController extends BaseApiController
                         ->groupBy(function($date){
                             return Carbon::parse($date->created_at)->format('Y-m-d');
                         });
-            return $this->successResponse(['orders'=>$orders],'Users order listing');
+            
+            $neworders = array();
+
+            foreach($orders as $date => $items)
+            {
+                $neworders[] = [
+                    'date'  => $date,
+                    'items' => $items
+                ];
+            }
+
+            return $this->successResponse(['orders' => $neworders],'Users order listing');
         } catch (\Throwable $th) {
             return $this->errorResponse($th->getMessage(), 500);
         }
