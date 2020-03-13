@@ -23,6 +23,8 @@ Route::group(['prefix'=>'v1'],function(){
 
     Route::group(['prefix'=>'user','middleware'=>'auth:api'],function(){
 
+        Route::post('feedback','Api\FeedbackController@store');
+
         Route::get('post/{user_id}','Api\UserPostController@allPostOfSingleUser');
 
         Route::get('all','Api\UserController@getAllUsers');

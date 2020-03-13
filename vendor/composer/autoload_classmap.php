@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\Helpers\\Helper' => $baseDir . '/app/Helpers/Helper.php',
     'App\\Http\\Controllers\\Admin\\AddressController' => $baseDir . '/app/Http/Controllers/Admin/AddressController.php',
     'App\\Http\\Controllers\\Admin\\AdminAuthController' => $baseDir . '/app/Http/Controllers/Admin/AdminAuthController.php',
@@ -49,6 +50,7 @@ return array(
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
+    'App\\Http\\Middleware\\Cors' => $baseDir . '/app/Http/Middleware/Cors.php',
     'App\\Http\\Middleware\\DashboardMiddleware' => $baseDir . '/app/Http/Middleware/DashboardMiddleware.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
