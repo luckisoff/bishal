@@ -247,7 +247,7 @@
             $('#locProcess').show();
             $.ajax({
                 type: "GET",
-                url: 'http://open.mapquestapi.com/geocoding/v1/address',
+                url: 'https://open.mapquestapi.com/geocoding/v1/address',
                 data: {location:$('#locationName').val(),'key':'EetFEEgx46axEg8ZVFIgbKdicVRGqn4K'},
 
                 success: ( response => {
