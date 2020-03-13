@@ -54,7 +54,6 @@ class MenuController extends Controller
 
 
         } catch (\Throwable $th) {
-            return $th->getMessage();
             return back()->withErrors([$th->getMessage()],'error');
         }
 
