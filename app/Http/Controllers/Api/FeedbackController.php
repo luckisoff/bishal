@@ -21,7 +21,6 @@ class FeedbackController extends BaseApiController
     public function store(Request $request)
     {
         try {
-
             $validator = $this->validator::make($request->all(),[
                 'feedback' => 'required'
             ]);
@@ -30,7 +29,7 @@ class FeedbackController extends BaseApiController
 
             $input = $request->all();
 
-            $input['user_id'] = app()->request()->user()->id;
+            $input['user_id'] = app()->request->user()->id;
 
             $feedback = Feedback::create($input);
 
