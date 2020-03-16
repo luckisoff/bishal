@@ -107,6 +107,16 @@ Route::group(['middleware'=>'web'],function(){
                 Route::post('/delete/{card}','Admin\CardController@destroy')->name('dashboard.card.delete');
             });
 
+            Route::group(['prefix' => 'news'], function(){
+                Route::get('/', 'Admin\NewsController@index')->name('dashboard.news');
+                Route::get('create', 'Admin\NewsController@create')->name('dashboard.news.create');
+                Route::post('store', 'Admin\NewsController@store')->name('dashboard.news.store');
+                Route::post('delete/{news}', 'Admin\NewsController@destroy')->name('dashboard.news.delete');
+
+                Route::get('show/{news}', 'Admin\NewsController@show')->name('dashboard.news.show');
+                Route::get('edit/{news}', 'Admin\NewsController@edit')->name('dashboard.news.edit');
+            });
+
 
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
             Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');

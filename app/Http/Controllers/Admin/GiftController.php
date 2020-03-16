@@ -11,7 +11,7 @@ class GiftController extends BaseAdminController
 {
     protected $category,$gift,$storageFolder,$publicFolder;
 
-    function __construct(Category $category,Gift $gift)
+    function __construct(Category $category, Gift $gift)
     {
         parent::__construct();
         $this->category = $category;

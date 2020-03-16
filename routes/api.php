@@ -103,5 +103,7 @@ Route::group(['prefix'=>'v1'],function(){
 
     Route::get('stories','Api\StoryController@stories');
 
+    Route::get('news', 'Api\NewsController@getNews');
+
 });
 

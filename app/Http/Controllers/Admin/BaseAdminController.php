@@ -9,7 +9,7 @@ use App\Helpers\Helper;
 use Illuminate\Support\Facades\Auth;
 class BaseAdminController extends Controller
 {
-    protected $validator,$helper;
+    protected $validator, $helper;
 
     function __construct()
     {
