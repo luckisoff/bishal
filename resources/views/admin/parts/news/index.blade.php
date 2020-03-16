@@ -22,6 +22,7 @@
                             <th data-hide="phone">Description</th>
                             <th data-hide="phone">Cover Image</th>
                             <th data-hide="phone">Created At</th>
+                            <th data-hide="phone">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,12 +32,13 @@
                                     <input type="checkbox" class="uniform">
                                 </td>
                                 <td>{{$singleNews->title}}</td>
-                                <td>{{substr($singleNews->description, 0, 200).'...'}}</td>
+                                <td>{{substr($singleNews->description, 0, 120).'...'}}</td>
                                 <td>
                                     @if($singleNews->image)
                                     <img src="{{$singleNews->image}}" alt="{{$singleNews->title}}" style="width:55px">
                                     @endif
                                 </td>
+                                <td>{{$singleNews->created_at->format('m-d H:m')}}</td>
 
 
                                 <td>
