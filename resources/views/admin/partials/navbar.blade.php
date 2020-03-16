@@ -261,6 +261,31 @@
                 </a>
             </li>
             @endif
+
+            @if(auth()->user()->can('view news'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   News
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.news')}}">
+                        <i class="icon-angle-right"></i>
+                        List News
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.news.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create News
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
             <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>
