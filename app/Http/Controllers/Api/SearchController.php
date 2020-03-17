@@ -67,6 +67,7 @@ class SearchController extends BaseApiController
                     ->orWhere('website','LIKE', '%'.$string.'%')
                     ->orWhere('type','LIKE', '%'.$string.'%')
                     ->orWhere('open_time','LIKE', '%'.$string.'%')
+                    ->with('galleries')
                     ->orderBy('name','asc')->get();
 
             return $this->successResponse(['hotels' => $hotels],'Hotels search listing');
