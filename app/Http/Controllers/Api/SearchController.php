@@ -8,9 +8,9 @@ use App\Models\User;
 use App\Models\Hotel;
 
 /**
- * @group Events
+ * @group Search
  *
- * APIs for event
+ * APIs for searching
  */
 class SearchController extends BaseApiController
 {
