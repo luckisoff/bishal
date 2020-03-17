@@ -18,7 +18,6 @@ class EventController extends BaseApiController
     *Get
     *Get the events
     */
-
     public function all()
     {
         try {

@@ -108,5 +108,8 @@ Route::group(['prefix'=>'v1'],function(){
     Route::get('events', 'Api\EventController@all');
     Route::get('events/top', 'Api\EventController@getForTop');
 
+    Route::post('search/user', 'Api\SearchController@users');
+    Route::post('search/hotel', 'Api\SearchController@hotels');
+
 });
 
