@@ -252,15 +252,7 @@
             </li>
             @endif
 
-            @if(auth()->user()->can('view setting'))
-            <li>
-                <a href="{{route('dashboard.setting.create')}}">
-                    <i class="icon-cog"></i>
-                        Settings
-                    <span class="label label-info pull-right"></span>
-                </a>
-            </li>
-            @endif
+
 
             @if(auth()->user()->can('view news'))
             <li>
@@ -286,7 +278,41 @@
             </li>
             @endif
 
+            @if(auth()->user()->can('view event'))
             <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   Events
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.event')}}">
+                        <i class="icon-angle-right"></i>
+                        List Events
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.event.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Event
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
+            @if(auth()->user()->can('view setting'))
+            <li>
+                <a href="{{route('dashboard.setting.create')}}">
+                    <i class="icon-cog"></i>
+                        Settings
+                    <span class="label label-info pull-right"></span>
+                </a>
+            </li>
+            @endif
+
+            <!-- <li>
                 <a href="javascript:void(0);">
                     <i class="icon-edit"></i>
                     Form Elements
@@ -311,8 +337,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="javascript:void(0);">
                     <i class="icon-table"></i>
                     Tables
@@ -425,15 +451,15 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
 
         <!-- /Navigation -->
-        <div class="sidebar-title">
+        <!-- <div class="sidebar-title">
             <span>Notifications</span>
         </div>
-        <ul class="notifications demo-slide-in"> <!-- .demo-slide-in is just for demonstration purposes. You can remove this. -->
-            <li style="display: none;"> <!-- style-attr is here only for fading in this notification after a specific time. Remove this. -->
+        <ul class="notifications demo-slide-in">
+            <li style="display: none;">
                 <div class="col-left">
                     <span class="label label-danger"><i class="icon-warning-sign"></i></span>
                 </div>
@@ -442,7 +468,7 @@
                     <span class="time">few seconds ago</span>
                 </div>
             </li>
-            <li style="display: none;"> <!-- style-attr is here only for fading in this notification after a specific time. Remove this. -->
+            <li style="display: none;">
                 <div class="col-left">
                     <span class="label label-info"><i class="icon-envelope"></i></span>
                 </div>
@@ -460,7 +486,7 @@
                     <span class="time">4 hours ago</span>
                 </div>
             </li>
-        </ul>
+        </ul> -->
 
         <div class="sidebar-widget align-center">
             <div class="btn-group" data-toggle="buttons" id="theme-switcher">

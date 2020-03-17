@@ -105,5 +105,8 @@ Route::group(['prefix'=>'v1'],function(){
 
     Route::get('news', 'Api\NewsController@getNews');
 
+    Route::get('events', 'Api\EventController@all');
+    Route::get('events/top', 'Api\EventController@getForTop');
+
 });
 

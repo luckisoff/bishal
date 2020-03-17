@@ -117,6 +117,18 @@ Route::group(['middleware'=>'web'],function(){
                 Route::get('edit/{news}', 'Admin\NewsController@edit')->name('dashboard.news.edit');
             });
 
+            Route::group(['prefix' => 'events'], function(){
+                Route::get('/', 'Admin\EventController@index')->name('dashboard.event');
+                Route::get('create', 'Admin\EventController@create')->name('dashboard.event.create');
+                Route::post('store', 'Admin\EventController@store')->name('dashboard.event.store');
+                Route::post('delete/{event}', 'Admin\EventController@destroy')->name('dashboard.event.delete');
+
+                Route::get('place/top/{event}', 'Admin\EventController@placeTop')->name('dashboard.event.top');
+
+                Route::get('show/{event}', 'Admin\EventController@show')->name('dashboard.event.show');
+                Route::get('edit/{event}', 'Admin\EventController@edit')->name('dashboard.event.edit');
+            });
+
 
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
             Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');
