@@ -21,4 +21,9 @@ class Package extends Model
     {
         $this->attributes['image'] = \URL::to('/storage/hotels/packages/'.$image);
     }
+
+    public function packageOrder()
+    {
+        return $this->hasMany(AllOrder::class,'orderable');
+    }
 }

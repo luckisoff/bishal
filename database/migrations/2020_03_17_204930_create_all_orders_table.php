@@ -16,11 +16,12 @@ class CreateAllOrdersTable extends Migration
         Schema::create('all_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('orderable_id');
-            $table->string('orderable_type');
+            $table->json('items');
+            $table->integer('total_price');
             $table->text('delivery_address')->nullable();
+
             $table->smallInteger('confirm')->default(0);
-            $table->smallInteger('success')->default(1);
+            $table->smallInteger('success')->default(0);
             $table->timestamps();
         });
     }

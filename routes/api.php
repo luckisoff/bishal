@@ -49,6 +49,9 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('profile/update/{user_id}','Api\UserController@updateProfile');
 
         Route::get('profile/{user_id}','Api\UserController@getProfile');
+
+        Route::post('order/place', 'Api\GiftOrderController@placeOrder');
+        Route::get('order/list', 'Api\GiftOrderController@getUsersOrder');
     });
 
     //api/v1/birthdate

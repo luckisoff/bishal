@@ -8,9 +8,11 @@ class AllOrder extends Model
 {
     protected $guarded = [];
 
-    public function orderable()
+    protected $casts = ['items' => 'array'];
+
+    public function user()
     {
-        return $this->morphTo();
+        return $this->belongsTo(User::class);
     }
 
 }
