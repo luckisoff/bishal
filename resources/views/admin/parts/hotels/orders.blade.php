@@ -26,6 +26,7 @@
                                 <input type="checkbox" class="uniform">
                             </th>
                             <th data-class="expand">Order No.</th>
+                            <th data-class="expand">Order Type.</th>
                             <th data-class="expand">Ordered By</th>
                             <th data-hide="phone">Phone</th>
                             <th data-hide="phone">Address</th>
@@ -42,6 +43,7 @@
                                     <input type="checkbox" class="uniform">
                                 </td>
                                 <td>{{$order->hotel_id.$order->user_id.$order->id}}</td>
+                                <td>{{$order->type}}</td>
                                 <td>{{$order->user->name}}</td>
                                 <td>{{$order->user->mobile}}</td>
                                 <td>{{$order->user->address}}</td>
