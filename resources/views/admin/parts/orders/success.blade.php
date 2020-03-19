@@ -44,16 +44,21 @@
                                 <td>{{$order->user->address}}</td>
                                 <td>{{$order->delivery_address}}</td>
                                 <td>
-                                @foreach($order->items as $item)
-                                    <ul>
-                                        <li>
-                                            <span>{{ 'Name: '.$item['name'] }}</span>
-                                            <span>{{ 'Quantity: '.$item['quantity'] }}</span>
-                                            <span>({{'Rs.: '.$item['price'] }})</span>
-                                        </li>
-                                    </ul>
+                                    <table class="table table-bordered table-responsive">
+                                        <tr style="text-decoration: underline;font-weight: bold;">
+                                            <td>Name</td>
+                                            <td>Qnt</td>
+                                            <td>Rs</td>
+                                        </tr>
+                                        @foreach($order->items as $item)
+                                        <tr>
+                                            <td>{{$item['name']}}</td>
+                                            <td>{{$item['quantity']}}</td>
+                                            <td>{{$item['price']}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
                                     <br>
-                                @endforeach
                                 </td>
                                 <td>{{$order->total_price}}</td>
                                 <td>{{$order->created_at}} ({{$order->created_at->diffForHumans()}})</td>
