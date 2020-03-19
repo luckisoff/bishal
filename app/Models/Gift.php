@@ -9,9 +9,21 @@ class Gift extends Model
 {
     protected $guarded = [];
 
+    protected $appends = ['quantity', 'total_price'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getQuantityAttribute()
+    {
+        return $this->quantity = 1;
+    }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->total_price = $this->price;
     }
 
     protected $casts = [
