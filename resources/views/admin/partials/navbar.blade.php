@@ -76,7 +76,7 @@
                 <a href="javascript:void(0);">
                     <i class="icon-group"></i>
                     User Management
-                    <span class="label label-info pull-right">6</span>
+                    <!-- <span class="label label-info pull-right">6</span> -->
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -85,7 +85,7 @@
                         List Users
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="ui_buttons.html">
                         <i class="icon-angle-right"></i>
                         Buttons
@@ -126,7 +126,7 @@
                         <i class="icon-angle-right"></i>
                         Grid
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             @endif
@@ -296,6 +296,36 @@
                         <a href="{{route('dashboard.event.create')}}">
                         <i class="icon-angle-right"></i>
                         Create Event
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
+            @if(auth()->user()->can('view allorder'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   Orders
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.orders')}}">
+                        <i class="icon-angle-right"></i>
+                        List Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.orders.confirm')}}">
+                        <i class="icon-angle-right"></i>
+                        Confirmed Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.orders.invoiced')}}">
+                        <i class="icon-angle-right"></i>
+                        Invoiced Orders
                         </a>
                     </li>
                 </ul>

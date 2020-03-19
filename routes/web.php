@@ -31,9 +31,10 @@ Route::group(['middleware'=>'web'],function(){
                 Route::post('/delete/{user}','Admin\UserController@destroy')->name('dashboard.user.delete');
                 Route::get('/update/permission','Admin\UserController@updatePermission')->name('dashboard.user.permission');
             });
-                Route::get('/posts','Admin\UserPostController@index')->name('dashboard.user.posts');
-                Route::get('/post/view/{post}','Admin\UserPostController@show')->name('dashboard.user.post');
-                Route::post('/post/delete/{post}','Admin\UserPostController@destroy')->name('dashboard.user.post.delete');
+
+            Route::get('/posts','Admin\UserPostController@index')->name('dashboard.user.posts');
+            Route::get('/post/view/{post}','Admin\UserPostController@show')->name('dashboard.user.post');
+            Route::post('/post/delete/{post}','Admin\UserPostController@destroy')->name('dashboard.user.post.delete');
 
             Route::group(['prefix'=>'hotel'],function(){
 
@@ -127,6 +128,15 @@ Route::group(['middleware'=>'web'],function(){
 
                 Route::get('show/{event}', 'Admin\EventController@show')->name('dashboard.event.show');
                 Route::get('edit/{event}', 'Admin\EventController@edit')->name('dashboard.event.edit');
+            });
+
+            Route::group(['prefix' => 'orders'], function(){
+                Route::get('/', 'Admin\AllOrderController@index')->name('dashboard.orders');
+                Route::get('/confirm', 'Admin\AllOrderController@confirmed')->name('dashboard.orders.confirm');
+                Route::get('/invoiced', 'Admin\AllOrderController@success')->name('dashboard.orders.invoiced');
+
+                Route::get('confirm/{order}', 'Admin\AllOrderController@confirmTheOrder')->name('dashboard.orders.create-confirm');
+                Route::get('invoice/{order}', 'Admin\AllOrderController@successTheOrder')->name('dashboard.orders.invoice');
             });
 
 

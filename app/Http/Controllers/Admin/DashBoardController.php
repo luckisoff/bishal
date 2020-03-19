@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserPost;
 use App\Models\Hotel;
 use App\Models\Category;
+use App\Models\AllOrder;
 
 class DashBoardController extends BaseAdminController
 {
@@ -68,6 +69,21 @@ class DashBoardController extends BaseAdminController
     public function totalCategory()
     {
         return Category::count();
+    }
+
+    public function newOrders()
+    {
+        return AllOrder::where('confirm', 0)->where('success', 0)->count();
+    }
+
+    public function confirmedOrders()
+    {
+        return AllOrder::where('confirm', 1)->where('success', 0)->count();
+    }
+
+    public function invoicedOrders()
+    {
+        return AllOrder::where('confirm', 1)->where('success', 1)->count();
     }
 
 }

@@ -77,7 +77,7 @@
 			<!-- Top Right Menu -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Notifications -->
-				<li class="dropdown">
+				<!-- <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-warning-sign"></i>
 						<span class="badge">5</span>
@@ -125,10 +125,10 @@
 							<a href="javascript:void(0);">View all notifications</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 
 				<!-- Tasks -->
-				<li class="dropdown hidden-xs hidden-sm">
+				<!-- <li class="dropdown hidden-xs hidden-sm">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-tasks"></i>
 						<span class="badge">7</span>
@@ -185,10 +185,10 @@
 							<a href="javascript:void(0);">View all tasks</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 
 				<!-- Messages -->
-				<li class="dropdown hidden-xs hidden-sm">
+				<!-- <li class="dropdown hidden-xs hidden-sm">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-envelope"></i>
 						<span class="badge">1</span>
@@ -237,7 +237,7 @@
 							<a href="javascript:void(0);">View all messages</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 
 				<!-- .row .row-bg Toggler -->
 				{{-- <li>
@@ -263,8 +263,8 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="{{route('dashboard.user.edit',auth()->user())}}"><i class="icon-user"></i> My Profile</a></li>
-						<li><a href="pages_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
-						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+						<!-- <li><a href="pages_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
+						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li> -->
 						<li class="divider"></li>
                         <li>
                             <a href="{{ route('dashboard.logout') }}" onclick="event.preventDefault();
@@ -381,7 +381,7 @@
                         </li>
                     </ul>
 
-                    <ul class="crumb-buttons">
+                    <!-- <ul class="crumb-buttons">
                         <li><a href="charts.html" title=""><i class="icon-signal"></i><span>Statistics</span></a></li>
                         <li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="icon-tasks"></i><span>Users <strong>(+3)</strong></span><i class="icon-angle-down left-padding"></i></a>
                             <ul class="dropdown-menu pull-right">
@@ -394,11 +394,10 @@
                             <span></span>
                             <i class="icon-angle-down"></i>
                         </a></li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <!-- /Breadcrumbs line -->
 
-                <div style="height:50px"></div>
                 @if(session()->exists('success')||session()->get('errors'))
                     <div class="alert alert-{{session()->exists('success')?'success':'danger'}} fade in">
                         <i class="icon-remove close" data-dismiss="alert"></i>
@@ -409,59 +408,7 @@
 
                 <!--=== Page Content ===-->
                 <!--=== Statboxes ===-->
-                {{-- <div class="row row-bg"> <!-- .row-bg -->
-                    <div class="col-sm-6 col-md-3">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-content">
-                                <div class="visual cyan">
-                                    <div class="statbox-sparkline">30,20,15,30,22,25,26,30,27</div>
-                                </div>
-                                <div class="title">Clients</div>
-                                <div class="value">4 501</div>
-                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
-                            </div>
-                        </div> <!-- /.smallstat -->
-                    </div> <!-- /.col-md-3 -->
 
-                    <div class="col-sm-6 col-md-3">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-content">
-                                <div class="visual green">
-                                    <div class="statbox-sparkline">20,30,30,29,22,15,20,30,32</div>
-                                </div>
-                                <div class="title">Feedbacks</div>
-                                <div class="value">714</div>
-                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
-                            </div>
-                        </div> <!-- /.smallstat -->
-                    </div> <!-- /.col-md-3 -->
-
-                    <div class="col-sm-6 col-md-3 hidden-xs">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-content">
-                                <div class="visual yellow">
-                                    <i class="icon-dollar"></i>
-                                </div>
-                                <div class="title">Total Profit</div>
-                                <div class="value">$42,512.61</div>
-                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
-                            </div>
-                        </div> <!-- /.smallstat -->
-                    </div> <!-- /.col-md-3 -->
-
-                    <div class="col-sm-6 col-md-3 hidden-xs">
-                        <div class="statbox widget box box-shadow">
-                            <div class="widget-content">
-                                <div class="visual red">
-                                    <i class="icon-user"></i>
-                                </div>
-                                <div class="title">Visitors</div>
-                                <div class="value">2 521 719</div>
-                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
-                            </div>
-                        </div> <!-- /.smallstat -->
-                    </div> <!-- /.col-md-3 -->
-                </div> <!-- /.row --> --}}
                 <!-- /Statboxes -->
                 @yield('dashboard')
             </div>

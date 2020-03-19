@@ -7,29 +7,60 @@
                         <h3>Dashboard</h3>
                         <span>Good {{\App\Helpers\Helper::wish()}}, {{ucfirst(auth()->user()->name)}}</span>
                     </div>
-
-                    <!-- Page Stats -->
-                    {{-- <ul class="page-stats">
-                        <li>
-                            <div class="summary">
-                                <span>New orders</span>
-                                <h3>17,561</h3>
-                            </div>
-                            <div id="sparkline-bar" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
-                            <!-- Use instead of sparkline e.g. this:
-                            <div class="graph circular-chart" data-percent="73">73%</div>
-                            -->
-                        </li>
-                        <li>
-                            <div class="summary">
-                                <span>My balance</span>
-                                <h3>$21,561.21</h3>
-                            </div>
-                            <div id="sparkline-bar2" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
-                        </li>
-                    </ul> --}}
-                    <!-- /Page Stats -->
                 </div>
+                <div class="row row-bg"> <!-- .row-bg -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual cyan">
+                                    <div class="statbox-sparkline">30,20,15,30,22,25,26,30,27</div>
+                                </div>
+                                <div class="title">New Orders</div>
+                                <div class="value">{{$dashboard->newOrders()}}</div>
+                                <a class="more" href="{{route('dashboard.orders')}}">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual green">
+                                    <div class="statbox-sparkline">20,30,30,29,22,15,20,30,32</div>
+                                </div>
+                                <div class="title">Confirmed Orders</div>
+                                <div class="value">{{$dashboard->confirmedOrders()}}</div>
+                                <a class="more" href="{{route('dashboard.orders.confirm')}}">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <div class="col-sm-6 col-md-4 hidden-xs">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual blue">
+                                    <div class="statbox-sparkline">20,30,30,29,22,15,20,30,32</div>
+                                </div>
+                                <div class="title">Invoiced Orders</div>
+                                <div class="value">{{$dashboard->invoicedOrders()}}</div>
+                                <a class="more" href="{{route('dashboard.orders.invoiced')}}">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div> <!-- /.smallstat -->
+                    </div> <!-- /.col-md-3 -->
+
+                    <!-- <div class="col-sm-6 col-md-3 hidden-xs">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content">
+                                <div class="visual red">
+                                    <i class="icon-user"></i>
+                                </div>
+                                <div class="title">Visitors</div>
+                                <div class="value">2 521 719</div>
+                                <a class="more" href="javascript:void(0);">View More <i class="pull-right icon-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>  -->
+                </div> <!-- /.row -->
         <!--=== Blue Chart ===-->
         <div class="row">
             <div class="col-md-12">
