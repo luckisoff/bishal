@@ -40,7 +40,7 @@
                                 </td>
                                 <td>{{$order->user_id.$order->id}}</td>
                                 <td>{{$order->user->name}}</td>
-                                <td>{{$order->mobile}}</td>
+                                <td>{{ $order->mobile?:$order->user->mobile }}</td>
                                 <td>{{$order->user->address}}</td>
                                 <td>{{$order->delivery_address}}</td>
                                 <td>
