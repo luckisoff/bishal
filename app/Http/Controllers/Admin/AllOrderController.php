@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AllOrder;
+use App\Http\Controllers\Api\NotificationController as Notify;
 
 class AllOrderController extends BaseAdminController
 {
+
+    function __construct()
+    {
+        Notify::setValues();
+    }
+
     public function index()
     {
         $orders = AllOrder::where('confirm', 0)->where('success', 0)->orderBy('created_at','desc')->get();
@@ -30,7 +37,11 @@ class AllOrderController extends BaseAdminController
     {
         try {
             $order->confirm = 1;
+            return $order->user;
             $order->update();
+
+            Notify($order->user, $order, 'Dear user your order has been confirmed! Thank you.');
+
             return back()->with('success','Order has been confirmed');
         } catch (\Throwable $th) {
             return back()->withErrors($th->getMessage(),'error');
@@ -41,7 +52,11 @@ class AllOrderController extends BaseAdminController
     {
         try {
             $order->success = 1;
+
             $order->update();
+
+            Notify($order->user, $order, 'Dear user your payment has been received. Thank you for shopping with us.');
+
             return back()->with('success','Order has been invoiced');
         } catch (\Throwable $th) {
             return back()->withErrors($th->getMessage(),'error');
