@@ -116,6 +116,7 @@
                                                         <input type="number" name="items[0][price]" class="form-control" placeholder="Price of the item">
                                                         <span id="add-field" class="btn btn-success glyphicon glyphicon-plus"></span>
                                                     </div>
+                                                    <input type="number" value="1" name="items[0][foodItemAdd]" style="display:none">
                                                 </div>
                                             </div>
                                         </div>
@@ -153,6 +154,7 @@
                                     <label for="name">Price *</label>
                                     <input type="number" name="items[${i}][price]" class="form-control" placeholder="Price for the item">
                                 </div>
+                                <input type="number" value="1" name="items[${i}][foodItemAdd]" style="display:none">
                                 <span id="cut-field" class="btn btn-success glyphicon glyphicon-minus"></span>
                             </div>
                         `
