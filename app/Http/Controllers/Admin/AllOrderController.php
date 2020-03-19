@@ -40,7 +40,7 @@ class AllOrderController extends BaseAdminController
 
             $order->update();
 
-            Notify($order->user, $order, 'Dear user your order has been confirmed! Thank you.');
+            Notify::confirmOrderToUser($order->user, $order, 'Dear user your order has been confirmed! Thank you.');
 
             return back()->with('success','Order has been confirmed');
         } catch (\Throwable $th) {
@@ -55,7 +55,7 @@ class AllOrderController extends BaseAdminController
 
             $order->update();
 
-            Notify($order->user, $order, 'Dear user your payment has been received. Thank you for shopping with us.');
+            Notify::confirmOrderToUser($order->user, $order, 'Dear user your payment has been received. Thank you for shopping with us.');
 
             return back()->with('success','Order has been invoiced');
         } catch (\Throwable $th) {
