@@ -37,7 +37,7 @@ class AllOrderController extends BaseAdminController
     {
         try {
             $order->confirm = 1;
-            return $order->user;
+
             $order->update();
 
             Notify($order->user, $order, 'Dear user your order has been confirmed! Thank you.');
