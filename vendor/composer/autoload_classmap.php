@@ -28,7 +28,6 @@ return array(
     'App\\Http\\Controllers\\Admin\\StoryController' => $baseDir . '/app/Http/Controllers/Admin/StoryController.php',
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
     'App\\Http\\Controllers\\Admin\\UserPostController' => $baseDir . '/app/Http/Controllers/Admin/UserPostController.php',
-    'App\\Http\\Controllers\\Api\\AllOrderController' => $baseDir . '/app/Http/Controllers/Api/AllOrderController.php',
     'App\\Http\\Controllers\\Api\\BaseApiController' => $baseDir . '/app/Http/Controllers/Api/BaseApiController.php',
     'App\\Http\\Controllers\\Api\\BirthdateController' => $baseDir . '/app/Http/Controllers/Api/BirthdateController.php',
     'App\\Http\\Controllers\\Api\\CardController' => $baseDir . '/app/Http/Controllers/Api/CardController.php',

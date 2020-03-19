@@ -665,7 +665,6 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Controllers\\Admin\\StoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StoryController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\UserPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserPostController.php',
-        'App\\Http\\Controllers\\Api\\AllOrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AllOrderController.php',
         'App\\Http\\Controllers\\Api\\BaseApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/BaseApiController.php',
         'App\\Http\\Controllers\\Api\\BirthdateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/BirthdateController.php',
         'App\\Http\\Controllers\\Api\\CardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CardController.php',
