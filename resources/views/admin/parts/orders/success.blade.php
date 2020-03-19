@@ -49,18 +49,20 @@
                                             <td>Name</td>
                                             <td>Qnt</td>
                                             <td>Rs</td>
+                                            <td>Total</td>
                                         </tr>
                                         @foreach($order->items as $item)
                                         <tr>
                                             <td>{{$item['name']}}</td>
                                             <td>{{$item['quantity']}}</td>
                                             <td>{{$item['price']}}</td>
+                                            <td>{{$item['quantity'] * $item['price']}}</td>
                                         </tr>
                                         @endforeach
                                     </table>
                                     <br>
                                 </td>
-                                <td>{{$order->total_price}}</td>
+                                <td>{{'Rs. '.$order->total_price}}</td>
                                 <td>{{$order->created_at}} ({{$order->created_at->diffForHumans()}})</td>
                                 <!-- <td>
 
