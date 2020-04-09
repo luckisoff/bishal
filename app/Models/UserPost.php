@@ -13,11 +13,16 @@ class UserPost extends Model
         'image_url' => 'array'
     ];
 
-    protected $appends = ['type'];
+    protected $appends = ['type','isliked'];
 
     public function getTypeAttribute()
     {
         return 'user_post';
+    }
+
+    public function getIslikedAttribute() {
+        if(!$user = auth('api')->user()) return false;
+        return (bool) $this->likes()->where('user_id', $user->id)->where('likeable_id', $this->id)->first();
     }
 
     public function user()
