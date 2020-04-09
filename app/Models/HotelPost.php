@@ -17,7 +17,7 @@ class HotelPost extends Model
 
 
     public function getIslikedAttribute() {
-        if(!$user = aut('api')->user()) return false;
+        if(!$user = auth('api')->user()) return false;
         return (bool) $this->likes()->where('user_id', $user->id)->where('likeable_id', $this->id)->first();
     }
     public function getTypeAttribute()
