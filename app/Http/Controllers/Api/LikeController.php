@@ -58,7 +58,7 @@ class LikeController extends BaseApiController
             $isLiked=(bool) Like::where('likeable_id',$postId)->where('user_id',$user->id)->first();
             return $this->successResponse(['isLiked'=>$isLiked],'Like status');
         } catch (\Throwable $th) {
-            return $this->errorResponse('Internal server error',501);
+            return $this->errorResponse('Internal server error', 501);
         }
     }
 }

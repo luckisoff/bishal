@@ -9,13 +9,17 @@ class HotelPost extends Model
 {
     protected $guarded=[];
 
-    protected $appends = ['type'];
+    protected $appends = ['type','isliked'];
 
     protected $casts = [
         'images' =>'array'
     ];
 
 
+    public function getIslikedAttribute() {
+        if(!$user = aut('api')->user()) return false;
+        return (bool) $this->likes()->where('user_id', $user->id)->where('likeable_id', $this->id)->first();
+    }
     public function getTypeAttribute()
     {
         return 'hotel_post';
