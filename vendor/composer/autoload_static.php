@@ -646,6 +646,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
+        'App\\HouseParty' => __DIR__ . '/../..' . '/app/HouseParty.php',
         'App\\Http\\Controllers\\Admin\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AddressController.php',
         'App\\Http\\Controllers\\Admin\\AdminAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminAuthController.php',
         'App\\Http\\Controllers\\Admin\\AllOrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AllOrderController.php',

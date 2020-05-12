@@ -100,6 +100,10 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('/top','Api\GiftController@giftForTop');
     });
 
+    Route::group(['prefix'=>'houseparty'],function(){
+        Route::get('/all','Api\HousePartyController@get');
+    });
+
     Route::group(['prefix'=>'card'],function(){
         Route::get('/','Api\CardController@cards');
     });

@@ -139,9 +139,18 @@ Route::group(['middleware'=>'web'],function(){
                 Route::get('invoice/{order}', 'Admin\AllOrderController@successTheOrder')->name('dashboard.orders.invoice');
             });
 
+            
+
 
             Route::get('setting','Admin\SettingController@setting')->name('dashboard.setting.create');
             Route::post('setting','Admin\SettingController@store')->name('dashboard.setting.store');
+        });
+
+        Route::group(['prefix' => 'houseparty'], function(){
+            Route::get('/', 'Admin\HousePartyController@index')->name('dashboard.houseparty');
+            Route::get('/create', 'Admin\HousePartyController@create')->name('dashboard.houseparty.create');
+            Route::post('/store', 'Admin\HousePartyController@store')->name('dashboard.houseparty.store');
+            Route::post('/delete/{houseparty}', 'Admin\HousePartyController@destroy')->name('dashboard.houseparty.delete');
         });
 
 
