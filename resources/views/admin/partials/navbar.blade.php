@@ -302,6 +302,30 @@
             </li>
             @endif
 
+            @if(auth()->user()->can('view houseparty'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                   House Party
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.houseparty')}}">
+                        <i class="icon-angle-right"></i>
+                        List House Party
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.houseparty.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create House Party
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
             @if(auth()->user()->can('view allorder'))
             <li>
                 <a href="javascript:void(0);">
