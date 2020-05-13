@@ -326,6 +326,30 @@
             </li>
             @endif
 
+            @if(auth()->user()->can('view foodshop'))
+            <li>
+                <a href="javascript:void(0);">
+                    <i class="icon-file-alt"></i>
+                    Food Shop
+                    <span class="label label-info pull-right"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('dashboard.foodshop')}}">
+                        <i class="icon-angle-right"></i>
+                        List Food Shop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.foodshop.create')}}">
+                        <i class="icon-angle-right"></i>
+                        Create Food Shop
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
             @if(auth()->user()->can('view allorder'))
             <li>
                 <a href="javascript:void(0);">

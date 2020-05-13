@@ -153,6 +153,13 @@ Route::group(['middleware'=>'web'],function(){
             Route::post('/delete/{houseparty}', 'Admin\HousePartyController@destroy')->name('dashboard.houseparty.delete');
         });
 
+        Route::group(['prefix' => 'foodshop'], function(){
+            Route::get('/', 'Admin\FoodShopController@index')->name('dashboard.foodshop');
+            Route::get('/create', 'Admin\FoodShopController@create')->name('dashboard.foodshop.create');
+            Route::post('/store', 'Admin\FoodShopController@store')->name('dashboard.foodshop.store');
+            Route::post('/delete/{foodshop}', 'Admin\FoodShopController@destroy')->name('dashboard.foodshop.delete');
+        });
+
 
         Route::post('/address/store','Admin\AddressController@store')->name('dashboard.address.store');
         Route::get('/address','Admin\AddressController@get')->name('dashboard.address.get');

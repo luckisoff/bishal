@@ -104,6 +104,10 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('/all','Api\HousePartyController@get');
     });
 
+    Route::group(['prefix'=>'foodshop'],function(){
+        Route::get('/all','Api\FoodShopController@get');
+    });
+
     Route::group(['prefix'=>'card'],function(){
         Route::get('/','Api\CardController@cards');
     });

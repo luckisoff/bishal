@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="widget box">
             <div class="widget-header">
-                <h4><i class="icon-reorder"></i> House Party</h4>
+                <h4><i class="icon-reorder"></i> Food Shop</h4>
                 <div class="toolbar no-padding">
                     <div class="btn-group">
                         <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
@@ -26,14 +26,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($houseparties as $party)
+                        @foreach($foodshops as $shop)
                             <tr>
                                 <td class="checkbox-column">
                                     <input type="checkbox" class="uniform">
                                 </td>
-                                <td>{{$party->name}}</td>
+                                <td>{{$shop->name}}</td>
                                 <td>
-                                    @foreach($party->items as $item)
+                                    @foreach($shop->items as $item)
                                         <ul>
                                             <li>
                                                 <span>{{$item['name']}}</span>
@@ -44,19 +44,19 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    @if($party->image)
-                                    <img src="{{$party->image}}" alt="{{$party->name}}" style="width:55px">
+                                    @if($shop->image)
+                                    <img src="{{$shop->image}}" alt="{{$shop->name}}" style="width:55px">
                                     @endif
                                 </td>
-                                <td>{{$party->created_at->format('m-d H:m')}}</td>
+                                <td>{{$shop->created_at->format('m-d H:m')}}</td>
 
 
                                 <td>
-                                    @if(auth()->user()->can('delete houseparty'))
-                                        <a class="btn btn-danger btn-sm" href="#" onclick="partyDelete({{$party->id}});">
+                                    @if(auth()->user()->can('delete foodshop'))
+                                        <a class="btn btn-danger btn-sm" href="#" onclick="shopDelete({{$shop->id}});">
                                             <i class="icon-trash"></i>
                                         </a>
-                                        <form id="party-delete{{$party->id}}" action="{{route('dashboard.houseparty.delete',$party)}}" method="POST" style="display: none">
+                                        <form id="shop-delete{{$shop->id}}" action="{{route('dashboard.foodshop.delete', $shop)}}" method="POST" style="display: none">
                                             @csrf
                                         </form>
                                     @endif
@@ -70,12 +70,12 @@
     </div>
 </div>
 <script>
-    function partyDelete(id)
+    function shopDelete(id)
     {
         event.preventDefault();
         if(confirm('Are you sure?'))
         {
-            document.getElementById('party-delete' + id).submit();
+            document.getElementById('shop-delete' + id).submit();
         }
         else
         {
