@@ -34,7 +34,7 @@ curl -X POST \
     "http://localhost/api/v1/birthdate/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quia","birth_date":"consequatur"}'
+    -d '{"name":"odit","birth_date":"commodi"}'
 
 ```
 
@@ -49,8 +49,8 @@ let headers = {
 };
 
 let body = {
-    "name": "quia",
-    "birth_date": "consequatur"
+    "name": "odit",
+    "birth_date": "commodi"
 }
 
 fetch(url, {
@@ -128,14 +128,14 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost/api/v1/birthdate/delete/provident" \
+    "http://localhost/api/v1/birthdate/delete/sint" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/birthdate/delete/provident"
+    "http://localhost/api/v1/birthdate/delete/sint"
 );
 
 let headers = {
@@ -200,11 +200,63 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Cards listing",
+    "code": 200,
+    "cards": [
+        {
+            "id": 7,
+            "title": "Marriage",
+            "name": "Marriage",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/7241581979150.jpg",
+            "created_at": "2020-02-18 10:09:10",
+            "updated_at": "2020-02-18 10:09:10"
+        },
+        {
+            "id": 6,
+            "title": "Birthday",
+            "name": "Birthday",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/10271581979112.jpg",
+            "created_at": "2020-02-18 10:08:32",
+            "updated_at": "2020-02-18 10:08:32"
+        },
+        {
+            "id": 5,
+            "title": "Birthday",
+            "name": "Birthday",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/6651581979085.jpg",
+            "created_at": "2020-02-18 10:08:05",
+            "updated_at": "2020-02-18 10:08:05"
+        },
+        {
+            "id": 4,
+            "title": "Birthday",
+            "name": "Birthday",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/2811581979056.jpg",
+            "created_at": "2020-02-18 10:07:36",
+            "updated_at": "2020-02-18 10:07:36"
+        },
+        {
+            "id": 3,
+            "title": "Birthday",
+            "name": "Birthday",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/491581979000.jpg",
+            "created_at": "2020-02-18 10:06:40",
+            "updated_at": "2020-02-18 10:06:40"
+        },
+        {
+            "id": 2,
+            "title": "Birthday Card",
+            "name": "Bishal Lamshal",
+            "image": "https:\/\/project.shikshaya.com\/storage\/cards\/8171581955804.jpg",
+            "created_at": "2020-02-18 03:40:04",
+            "updated_at": "2020-02-18 03:40:04"
+        }
+    ]
 }
 ```
 
@@ -250,11 +302,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Event Listing",
+    "code": 200,
+    "events": []
 }
 ```
 
@@ -296,11 +351,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Event Listing for top",
+    "code": 200,
+    "events": []
 }
 ```
 
@@ -324,7 +382,7 @@ curl -X POST \
     "http://localhost/api/v1/user/feedback" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"feedback":"rerum","rating":5}'
+    -d '{"feedback":"omnis","rating":20}'
 
 ```
 
@@ -339,8 +397,8 @@ let headers = {
 };
 
 let body = {
-    "feedback": "rerum",
-    "rating": 5
+    "feedback": "omnis",
+    "rating": 20
 }
 
 fetch(url, {
@@ -364,6 +422,75 @@ Parameter | Type | Status | Description
         `rating` | integer |  optional  | optional number of app rating by user default 0
     
 <!-- END_6df5eb4adf7b1eb97dd9f7290bacae6c -->
+
+#Food Shop
+
+
+APIs for food shops
+<!-- START_4b8a71118700a5f1df5664c1e9725ed8 -->
+## Food Shop
+get all food shops
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/v1/foodshop/all" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/v1/foodshop/all"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": true,
+    "message": "Food Shops listing",
+    "code": 200,
+    "foodshops": [
+        {
+            "id": 1,
+            "image": null,
+            "name": "ks",
+            "items": [
+                {
+                    "name": "jjlkj",
+                    "unit": "nothing",
+                    "price": "12",
+                    "foodItemAdd": "1"
+                }
+            ],
+            "created_at": "2020-05-13 12:54:01",
+            "updated_at": "2020-05-13 12:54:01"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/v1/foodshop/all`
+
+
+<!-- END_4b8a71118700a5f1df5664c1e9725ed8 -->
 
 #Gift Apis
 
@@ -401,11 +528,23 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Categories listing",
+    "code": 200,
+    "categories": [
+        {
+            "id": 2,
+            "name": "Cake"
+        },
+        {
+            "id": 4,
+            "name": "Gift"
+        }
+    ]
 }
 ```
 
@@ -423,14 +562,14 @@ get gifts for specific category
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/gift/category/accusamus" \
+    -G "http://localhost/api/v1/gift/category/sit" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/gift/category/accusamus"
+    "http://localhost/api/v1/gift/category/sit"
 );
 
 let headers = {
@@ -447,11 +586,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "No query results for model [App\\Models\\Category] sit"
 }
 ```
 
@@ -498,11 +637,116 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Gifts listing",
+    "code": 200,
+    "gifts": [
+        {
+            "id": 6,
+            "category_id": 2,
+            "name": "Carrot Cake",
+            "price": 650,
+            "oldprice": 700,
+            "cover_img": "https:\/\/backend.foodapic.com\/storage\/gifts\/9011586925651.jpeg",
+            "height": "22",
+            "available": 1,
+            "description": "Carrot cake is cake that contains carrots mixed into the batter. Most modern carrot cake recipes have a white cream cheese frosting.",
+            "highlights": [
+                "Weight : 1 pound",
+                " Text : You can mention what you want to write in cake",
+                " Shape : Round"
+            ],
+            "collections": [
+                "https:\/\/backend.foodapic.com\/storage\/gifts\/4831586925651.jpeg"
+            ],
+            "created_at": "2020-04-15 16:10:51",
+            "updated_at": "2020-04-15 16:23:31",
+            "placeat_top": 1,
+            "quantity": 1,
+            "total_price": 650
+        },
+        {
+            "id": 5,
+            "category_id": 2,
+            "name": "White Forest",
+            "price": 600,
+            "oldprice": 650,
+            "cover_img": "https:\/\/backend.foodapic.com\/storage\/gifts\/1401586925235.jpg",
+            "height": "20",
+            "available": 1,
+            "description": "It’s made of vanilla cake layers that are brushed with syrup and filled with homemade cherry jam and vanilla cream. Perfect cake for cherry lovers that is also a great idea for hosting.",
+            "highlights": [
+                "Weight : 1 pound",
+                " Text : You can mention what you want to write in cake",
+                " Shape : Round and Heart-shaped"
+            ],
+            "collections": [
+                "https:\/\/backend.foodapic.com\/storage\/gifts\/9191586925235.jpg",
+                "https:\/\/backend.foodapic.com\/storage\/gifts\/2881586925235.jpg"
+            ],
+            "created_at": "2020-04-15 16:03:55",
+            "updated_at": "2020-04-15 16:10:58",
+            "placeat_top": 1,
+            "quantity": 1,
+            "total_price": 600
+        },
+        {
+            "id": 3,
+            "category_id": 4,
+            "name": "Taddy Bear",
+            "price": 800,
+            "oldprice": 1000,
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/gifts\/12121581441981.jpg",
+            "height": "20",
+            "available": 1,
+            "description": "A gift or a present is an item given to someone without the expectation of payment or anything in return.",
+            "highlights": [
+                "Quality"
+            ],
+            "collections": [
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/6381581441981.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/13091581441981.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/12681581441981.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/11041581441981.jpg"
+            ],
+            "created_at": "2020-02-12 04:56:21",
+            "updated_at": "2020-02-13 03:10:12",
+            "placeat_top": 1,
+            "quantity": 1,
+            "total_price": 800
+        },
+        {
+            "id": 2,
+            "category_id": 2,
+            "name": "Strawberry Tuxedo",
+            "price": 1200,
+            "oldprice": 1500,
+            "cover_img": "https:\/\/backend.foodapic.com\/storage\/gifts\/9991586926740.jpg",
+            "height": "20",
+            "available": 1,
+            "description": "This stunning strawberry tuxedo cake is a fun and fruity take on my original tuxedo cake. It’s made with tender chocolate and vanilla cake layers, no-bake chocolate cheesecake layers and loads of strawberries.",
+            "highlights": [
+                "Weight : 3 pound",
+                " Text : You can mention what you want to write in cake",
+                " Shape : Round"
+            ],
+            "collections": [
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/12631581441164.png",
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/11521581441164.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/gifts\/9941581441164.jpg",
+                "https:\/\/backend.foodapic.com\/storage\/gifts\/2261586926740.jpg"
+            ],
+            "created_at": "2020-02-12 04:42:44",
+            "updated_at": "2020-04-15 16:47:45",
+            "placeat_top": 1,
+            "quantity": 1,
+            "total_price": 1200
+        }
+    ]
 }
 ```
 
@@ -526,7 +770,7 @@ curl -X POST \
     "http://localhost/api/v1/user/order/place" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"items":[],"deliver_address":"molestias","total_price":12}'
+    -d '{"items":[],"deliver_address":"voluptatum","total_price":13}'
 
 ```
 
@@ -542,8 +786,8 @@ let headers = {
 
 let body = {
     "items": [],
-    "deliver_address": "molestias",
-    "total_price": 12
+    "deliver_address": "voluptatum",
+    "total_price": 13
 }
 
 fetch(url, {
@@ -696,11 +940,55 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Indoor hotel listing",
+    "code": 200,
+    "locations": [
+        [
+            {
+                "id": 8,
+                "name": "Bhaktapur",
+                "created_at": "2020-04-13 15:08:37",
+                "updated_at": "2020-04-13 15:08:37",
+                "latitude": "27.704332",
+                "longitude": "85.452118",
+                "hotels": [
+                    {
+                        "id": 13,
+                        "name": "Local Bhale",
+                        "logo_url": "https:\/\/backend.foodapic.com\/storage\/hotels\/logo\/181586753935.jpg",
+                        "address": "Pepsi cola, Bhaktapur",
+                        "description": "Local Bhale  prepares and serves food and drinks to customers.  Local Provide a typical nepali , indian and continental food available.",
+                        "phone": "9851016868",
+                        "website": "www.localbhale.com",
+                        "open_time": "8am-10pm",
+                        "created_at": "2020-04-13 15:10:39",
+                        "updated_at": "2020-04-13 16:28:55",
+                        "type": "indoor",
+                        "facilities": [
+                            "Wifi",
+                            " Food Delivery"
+                        ],
+                        "galleries": [
+                            {
+                                "id": 31,
+                                "hotel_id": 13,
+                                "name": "rato bhala",
+                                "image": "8871586833035.jpg",
+                                "image_url": "https:\/\/backend.foodapic.com\/storage\/hotels\/gallery\/8871586833035.jpg",
+                                "created_at": "2020-04-14 14:27:15",
+                                "updated_at": "2020-04-14 14:27:15"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    ]
 }
 ```
 
@@ -742,11 +1030,58 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Outdoor hotel listing",
+    "code": 200,
+    "locations": [
+        [
+            {
+                "id": 9,
+                "name": "Kawasoti",
+                "created_at": "2020-04-14 19:52:30",
+                "updated_at": "2020-04-14 19:52:30",
+                "latitude": "27.641533",
+                "longitude": "84.125164",
+                "hotels": [
+                    {
+                        "id": 14,
+                        "name": "Hotel the full moon",
+                        "logo_url": "https:\/\/backend.foodapic.com\/storage\/hotels\/logo\/8221586852806.PNG",
+                        "address": "Film Hall Chok, Kawasoti",
+                        "description": "Hotel the full moon prepares and serves food and drinks to customers. Hotel the full moon Provide a typical nepali , indian and continental food available.",
+                        "phone": "9857041158",
+                        "website": "www.hotelthefullmoon.com",
+                        "open_time": "8am-10pm",
+                        "created_at": "2020-04-14 19:56:46",
+                        "updated_at": "2020-04-14 19:56:46",
+                        "type": "outdoor",
+                        "facilities": [
+                            "Wifi",
+                            " Ac",
+                            " Attach Room",
+                            " Hot Water",
+                            " Food Delivery"
+                        ],
+                        "galleries": [
+                            {
+                                "id": 32,
+                                "hotel_id": 14,
+                                "name": "hotel fullmoon",
+                                "image": "5601586852836.PNG",
+                                "image_url": "https:\/\/backend.foodapic.com\/storage\/hotels\/gallery\/5601586852836.PNG",
+                                "created_at": "2020-04-14 19:57:16",
+                                "updated_at": "2020-04-14 19:57:16"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    ]
 }
 ```
 
@@ -764,14 +1099,14 @@ Informations about single hotel
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/hotel/velit" \
+    -G "http://localhost/api/v1/hotel/rerum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/hotel/velit"
+    "http://localhost/api/v1/hotel/rerum"
 );
 
 let headers = {
@@ -788,11 +1123,14 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Hotel Information",
+    "code": 200,
+    "hotel": []
 }
 ```
 
@@ -822,7 +1160,7 @@ curl -X GET \
     -G "http://localhost/api/v1/hotel/menus/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":10}'
+    -d '{"hotel_id":6}'
 
 ```
 
@@ -837,7 +1175,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 10
+    "hotel_id": 6
 }
 
 fetch(url, {
@@ -850,11 +1188,13 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "status": false,
+    "code": 404,
+    "message": "No menus are available"
 }
 ```
 
@@ -879,7 +1219,7 @@ curl -X GET \
     -G "http://localhost/api/v1/hotel/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":6}'
+    -d '{"hotel_id":12}'
 
 ```
 
@@ -894,7 +1234,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 6
+    "hotel_id": 12
 }
 
 fetch(url, {
@@ -907,11 +1247,13 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (404):
 
 ```json
 {
-    "message": "Server Error"
+    "status": false,
+    "code": 404,
+    "message": "No menus are available"
 }
 ```
 
@@ -961,11 +1303,34 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Hotel posts listing",
+    "code": 200,
+    "posts": [
+        {
+            "id": 6,
+            "hotel_id": 13,
+            "post": "२०७७ सालले खुसी, शान्ति र समृदि ल्यायोस यहि छ नव बर्षको शुभकामना !",
+            "images": [
+                "https:\/\/backend.foodapic.com\/storage\/hotels\/post\/13291586836886.jpg"
+            ],
+            "created_at": "2020-04-14 15:31:26",
+            "updated_at": "2020-04-14 15:31:26",
+            "comments_count": 0,
+            "likes_count": 1,
+            "type": "hotel_post",
+            "isliked": false,
+            "hotel": {
+                "id": 13,
+                "name": "Local Bhale",
+                "logo_url": "https:\/\/backend.foodapic.com\/storage\/hotels\/logo\/181586753935.jpg"
+            }
+        }
+    ]
 }
 ```
 
@@ -985,7 +1350,7 @@ curl -X GET \
     -G "http://localhost/api/v1/hotel/post/toggle-like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":1}'
+    -d '{"post_id":19}'
 
 ```
 
@@ -1000,7 +1365,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 1
+    "post_id": 19
 }
 
 fetch(url, {
@@ -1041,7 +1406,7 @@ curl -X POST \
     "http://localhost/api/v1/hotel/post/comment/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"commnet_id":18}'
+    -d '{"commnet_id":2}'
 
 ```
 
@@ -1056,7 +1421,7 @@ let headers = {
 };
 
 let body = {
-    "commnet_id": 18
+    "commnet_id": 2
 }
 
 fetch(url, {
@@ -1090,7 +1455,7 @@ curl -X POST \
     "http://localhost/api/v1/hotel/post/comment" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":17,"comment":"voluptas"}'
+    -d '{"post_id":9,"comment":"dolorum"}'
 
 ```
 
@@ -1105,8 +1470,8 @@ let headers = {
 };
 
 let body = {
-    "post_id": 17,
-    "comment": "voluptas"
+    "post_id": 9,
+    "comment": "dolorum"
 }
 
 fetch(url, {
@@ -1141,7 +1506,7 @@ curl -X GET \
     -G "http://localhost/api/v1/hotel/posts/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":10}'
+    -d '{"hotel_id":1}'
 
 ```
 
@@ -1156,7 +1521,7 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 10
+    "hotel_id": 1
 }
 
 fetch(url, {
@@ -1169,11 +1534,27 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Hotel Post Listing",
+    "code": 200,
+    "posts": {
+        "current_page": 1,
+        "data": [],
+        "first_page_url": "http:\/\/localhost\/api\/v1\/hotel\/posts\/1?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/v1\/hotel\/posts\/1?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/v1\/hotel\/posts\/1",
+        "per_page": 7,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0
+    }
 }
 ```
 
@@ -1197,7 +1578,7 @@ curl -X POST \
     "http://localhost/api/v1/hotel/post/comment/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":10}'
+    -d '{"post_id":11}'
 
 ```
 
@@ -1212,7 +1593,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 10
+    "post_id": 11
 }
 
 fetch(url, {
@@ -1272,11 +1653,30 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "House party listing",
+    "code": 200,
+    "houseparties": [
+        {
+            "id": 2,
+            "image": "http:\/\/localhost\/bishal\/public\/storage\/houseparty\/7051589322668.png",
+            "name": "House party one",
+            "items": [
+                {
+                    "name": "Item 1",
+                    "unit": "nothing",
+                    "price": "120",
+                    "foodItemAdd": "1"
+                }
+            ],
+            "created_at": "2020-05-13 04:16:08",
+            "updated_at": "2020-05-13 04:16:08"
+        }
+    ]
 }
 ```
 
@@ -1322,11 +1722,44 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "News listing with pagination",
+    "code": 200,
+    "news": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 5,
+                "title": "A healthy diet is essential for good health and nutrition.",
+                "description": "It protects you against many chronic noncommunicable diseases, such as heart disease, diabetes and cancer. Eating a variety of foods and consuming less salt, sugars and saturated and industrially-produced trans-fats, are essential for healthy diet.\r\n\r\nA healthy diet comprises a combination of different foods. These include:\r\n\r\nStaples like cereals (wheat, barley, rye, maize or rice) or starchy tubers or roots (potato, yam, taro or cassava).\r\nLegumes (lentils and beans).\r\nFruit and vegetables.\r\nFoods from animal sources (meat, fish, eggs and milk).\r\nHere is some useful information, based on WHO recommendations, to follow a healthy diet, and the benefits of doing so.\r\n\r\nBreastfeed babies and young children:\r\nA healthy diet starts early in life - breastfeeding fosters healthy growth, and may have longer-term health benefits, like reducing the risk of becoming overweight or obese and developing noncommunicable diseases later in life.\r\nFeeding babies exclusively with breast milk from birth to 6 months of life is important for a healthy diet. It is also important to introduce a variety of safe and nutritious complementary foods at 6 months of age, while continuing to breastfeed until your child is two years old and beyond.\r\n \r\nEat plenty of vegetables and fruit:\r\nThey are important sources of vitamins, minerals, dietary fibre, plant protein and antioxidants.\r\nPeople with diets rich in vegetables and fruit have a significantly lower risk of obesity, heart disease, stroke, diabetes and certain types of cancer.\r\n \r\nEat less fat:\r\nFats and oils and concentrated sources of energy. Eating too much, particularly the wrong kinds of fat, like saturated and industrially-produced trans-fat, can increase the risk of heart disease and stroke.\r\nUsing unsaturated vegetable oils (olive, soy, sunflower or corn oil) rather than animal fats or oils high in saturated fats (butter, ghee, lard, coconut and palm oil) will help consume healthier fats.\r\nTo avoid unhealthy weight gain, consumption of total fat should not exceed 30% of a person's overall energy intake.",
+                "image": "https:\/\/backend.foodapic.com\/storage\/news\/9481586845407.jpeg",
+                "created_at": "2020-04-14 17:53:27",
+                "updated_at": "2020-04-14 17:53:27"
+            },
+            {
+                "id": 3,
+                "title": "How to strengthen your immunity during the coronavirus pandemic.",
+                "description": "(CNN)As the coronavirus situation intensifies, you might be wondering: how can I keep myself healthy? And will swallowing a pill protect me from getting sick?\r\n\r\nFirst, there's the not-so-great news. Despite claims you may have seen on the Internet, there's no magic food or pill that is guaranteed to boost your immune system and protect you against coronavirus.\r\n\"There are no specific supplements that will help protect against coronavirus and anyone claiming that is being investigated by the FTC [Federal Trade Commission] and the FDA [Food and Drug Administration],\" said Melissa Majumdar, a registered dietitian and spokesperson for the Academy of Nutrition and Dietetics.\r\n\r\nCarrots, kale and apricots for beta carotene\r\nBeta carotene gets converted to vitamin A, which is essential for a strong immune system. It works by helping antibodies respond to toxins and foreign substances, Majumdar said.\r\nGood sources of beta carotene include sweet potatoes, carrots, mangoes, apricots, spinach, kale, broccoli, squash and cantaloupe.\r\n\r\nOranges, strawberries and broccoli for Vitamin C\r\nVitamin C increases blood levels of antibodies and helps to differentiate lymphocytes (white blood cells), which helps the body determine what kind of protection is needed, Majumdar explained.\r\nSome research has suggested that higher levels of vitamin C (at least 200 milligrams) may slightly reduce the duration of cold symptoms.\r\nYou can easily consume 200 milligrams of vitamin C from a combination of foods such as oranges, grapefruit, kiwi, strawberries, Brussels sprouts, red and green peppers, broccoli, cooked cabbage and cauliflower.\r\n\r\nEggs, cheese, tofu and mushrooms for Vitamin D\r\nVitamin D regulates the production of a protein that \"selectively kills infectious agents, including bacteria and viruses,\" explained Dr. Michael Holick, an expert on Vitamin D research from Boston University who has published more than 500 papers and 18 books on Vitamin D.\r\nVitamin D also alters the activity and number of white blood cells, known as T 2 killer lymphocytes, which can reduce the spread of bacteria and viruses, Holick added.",
+                "image": "https:\/\/backend.foodapic.com\/storage\/news\/3451586842936.jpg",
+                "created_at": "2020-04-14 17:12:16",
+                "updated_at": "2020-04-14 17:12:16"
+            }
+        ],
+        "first_page_url": "http:\/\/localhost\/api\/v1\/news?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/v1\/news?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/v1\/news",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2
+    }
 }
 ```
 
@@ -1350,7 +1783,7 @@ curl -X POST \
     "http://localhost/api/v1/hotel/place/order" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"hotel_id":11,"items":[],"amount":5,"note":"sit"}'
+    -d '{"hotel_id":19,"items":[],"amount":7,"note":"voluptas"}'
 
 ```
 
@@ -1365,10 +1798,10 @@ let headers = {
 };
 
 let body = {
-    "hotel_id": 11,
+    "hotel_id": 19,
     "items": [],
-    "amount": 5,
-    "note": "sit"
+    "amount": 7,
+    "note": "voluptas"
 }
 
 fetch(url, {
@@ -1405,7 +1838,7 @@ curl -X POST \
     "http://localhost/api/v1/hotel/confirm/order" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"order_id":17,"message":"ipsa"}'
+    -d '{"order_id":15,"message":"in"}'
 
 ```
 
@@ -1420,8 +1853,8 @@ let headers = {
 };
 
 let body = {
-    "order_id": 17,
-    "message": "ipsa"
+    "order_id": 15,
+    "message": "in"
 }
 
 fetch(url, {
@@ -1453,14 +1886,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/hotel/orders/user/ipsa" \
+    -G "http://localhost/api/v1/hotel/orders/user/quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/hotel/orders/user/ipsa"
+    "http://localhost/api/v1/hotel/orders/user/quia"
 );
 
 let headers = {
@@ -1503,14 +1936,14 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/hotel/orders/odit" \
+    -G "http://localhost/api/v1/hotel/orders/rerum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/hotel/orders/odit"
+    "http://localhost/api/v1/hotel/orders/rerum"
 );
 
 let headers = {
@@ -1561,7 +1994,7 @@ curl -X POST \
     "http://localhost/api/v1/search/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"string":"ut"}'
+    -d '{"string":"repellat"}'
 
 ```
 
@@ -1576,7 +2009,7 @@ let headers = {
 };
 
 let body = {
-    "string": "ut"
+    "string": "repellat"
 }
 
 fetch(url, {
@@ -1611,7 +2044,7 @@ curl -X POST \
     "http://localhost/api/v1/search/hotel" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"string":"reiciendis"}'
+    -d '{"string":"cum"}'
 
 ```
 
@@ -1626,7 +2059,7 @@ let headers = {
 };
 
 let body = {
-    "string": "reiciendis"
+    "string": "cum"
 }
 
 fetch(url, {
@@ -1685,11 +2118,86 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (200):
 
 ```json
 {
-    "message": "Server Error"
+    "status": true,
+    "message": "Stories listing",
+    "code": 200,
+    "stories": [
+        {
+            "id": 6,
+            "name": "Birthday",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/11451582468595.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/13431582468595.jpg",
+                "http:\/\/project.shikshaya.com\/storage\/stories\/5971582468595.jpg",
+                "http:\/\/project.shikshaya.com\/storage\/stories\/781582468595.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/1571582468595.jpg"
+            ],
+            "created_at": "2020-02-24 02:06:35",
+            "updated_at": "2020-02-24 02:06:35"
+        },
+        {
+            "id": 5,
+            "name": "Event",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/13671581690279.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/11041581690279.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/7901581690279.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/4901581690279.jpg"
+            ],
+            "created_at": "2020-02-15 01:54:39",
+            "updated_at": "2020-02-15 01:54:39"
+        },
+        {
+            "id": 4,
+            "name": "Party",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/8331581690192.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/9501581690192.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/14861581690192.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/6161581690192.jpg"
+            ],
+            "created_at": "2020-02-15 01:53:12",
+            "updated_at": "2020-02-15 01:53:12"
+        },
+        {
+            "id": 3,
+            "name": "Gift",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/6921581690124.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/3251581690124.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/2731581690124.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/4981581690124.jpg"
+            ],
+            "created_at": "2020-02-15 01:52:04",
+            "updated_at": "2020-02-15 01:52:04"
+        },
+        {
+            "id": 2,
+            "name": "Birthday",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/1361581690060.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/10111581690060.jpg",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/9801581690060.jpg"
+            ],
+            "created_at": "2020-02-15 01:51:00",
+            "updated_at": "2020-02-15 01:51:00"
+        },
+        {
+            "id": 1,
+            "name": "Cake",
+            "cover_img": "https:\/\/project.shikshaya.com\/storage\/stories\/1981581689943.jpg",
+            "images": [
+                "https:\/\/project.shikshaya.com\/storage\/stories\/2971581689943.png",
+                "https:\/\/project.shikshaya.com\/storage\/stories\/9821581689943.jpg"
+            ],
+            "created_at": "2020-02-15 01:49:03",
+            "updated_at": "2020-02-15 01:49:03"
+        }
+    ]
 }
 ```
 
@@ -1713,7 +2221,7 @@ curl -X POST \
     "http://localhost/api/v1/login/" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"hic","password":"voluptatibus","type":"asperiores"}'
+    -d '{"email":"ut","password":"quo","type":"ea"}'
 
 ```
 
@@ -1728,9 +2236,9 @@ let headers = {
 };
 
 let body = {
-    "email": "hic",
-    "password": "voluptatibus",
-    "type": "asperiores"
+    "email": "ut",
+    "password": "quo",
+    "type": "ea"
 }
 
 fetch(url, {
@@ -1766,7 +2274,7 @@ curl -X POST \
     "http://localhost/api/v1/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"distinctio","mobile":"eos","dob":"dicta","email":"voluptas","password":"totam","password_confirmation":"quae","gender":"sint","country":"dignissimos","works_at":"nulla","bio":"autem","image":"eum"}'
+    -d '{"name":"dignissimos","mobile":"delectus","dob":"autem","email":"laboriosam","password":"ad","password_confirmation":"et","gender":"nisi","country":"recusandae","works_at":"officia","bio":"id","image":"at"}'
 
 ```
 
@@ -1781,17 +2289,17 @@ let headers = {
 };
 
 let body = {
-    "name": "distinctio",
-    "mobile": "eos",
-    "dob": "dicta",
-    "email": "voluptas",
-    "password": "totam",
-    "password_confirmation": "quae",
-    "gender": "sint",
-    "country": "dignissimos",
-    "works_at": "nulla",
-    "bio": "autem",
-    "image": "eum"
+    "name": "dignissimos",
+    "mobile": "delectus",
+    "dob": "autem",
+    "email": "laboriosam",
+    "password": "ad",
+    "password_confirmation": "et",
+    "gender": "nisi",
+    "country": "recusandae",
+    "works_at": "officia",
+    "bio": "id",
+    "image": "at"
 }
 
 fetch(url, {
@@ -1835,7 +2343,7 @@ curl -X POST \
     "http://localhost/api/v1/top-up" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"sed"}'
+    -d '{"email":"ratione"}'
 
 ```
 
@@ -1850,7 +2358,7 @@ let headers = {
 };
 
 let body = {
-    "email": "sed"
+    "email": "ratione"
 }
 
 fetch(url, {
@@ -1884,7 +2392,7 @@ curl -X POST \
     "http://localhost/api/v1/password/reset" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"voluptatum","password":"earum","password_confirmation":"hic"}'
+    -d '{"email":"blanditiis","password":"culpa","password_confirmation":"repellendus"}'
 
 ```
 
@@ -1899,9 +2407,9 @@ let headers = {
 };
 
 let body = {
-    "email": "voluptatum",
-    "password": "earum",
-    "password_confirmation": "hic"
+    "email": "blanditiis",
+    "password": "culpa",
+    "password_confirmation": "repellendus"
 }
 
 fetch(url, {
@@ -1980,16 +2488,16 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/user/profile/update/atque" \
+    "http://localhost/api/v1/user/profile/update/est" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"sit","mobile":"autem","dob":"molestias","country":"qui","image":"itaque"}'
+    -d '{"name":"omnis","mobile":"qui","dob":"fugit","country":"quibusdam","image":"ut"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/user/profile/update/atque"
+    "http://localhost/api/v1/user/profile/update/est"
 );
 
 let headers = {
@@ -1998,11 +2506,11 @@ let headers = {
 };
 
 let body = {
-    "name": "sit",
-    "mobile": "autem",
-    "dob": "molestias",
-    "country": "qui",
-    "image": "itaque"
+    "name": "omnis",
+    "mobile": "qui",
+    "dob": "fugit",
+    "country": "quibusdam",
+    "image": "ut"
 }
 
 fetch(url, {
@@ -2042,14 +2550,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/user/profile/quis" \
+    -G "http://localhost/api/v1/user/profile/facilis" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/user/profile/quis"
+    "http://localhost/api/v1/user/profile/facilis"
 );
 
 let headers = {
@@ -2150,7 +2658,7 @@ curl -X POST \
     "http://localhost/api/v1/user/post/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"title":"qui","images":[]}'
+    -d '{"title":"quod","images":[]}'
 
 ```
 
@@ -2165,7 +2673,7 @@ let headers = {
 };
 
 let body = {
-    "title": "qui",
+    "title": "quod",
     "images": []
 }
 
@@ -2199,14 +2707,14 @@ Comments of User post
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/user/post/comment/omnis" \
+    -G "http://localhost/api/v1/user/post/comment/aliquam" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/user/post/comment/omnis"
+    "http://localhost/api/v1/user/post/comment/aliquam"
 );
 
 let headers = {
@@ -2252,7 +2760,7 @@ curl -X POST \
     "http://localhost/api/v1/user/post/comment/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"user_post_id":8,"comment":"dolorum"}'
+    -d '{"user_post_id":19,"comment":"sed"}'
 
 ```
 
@@ -2267,8 +2775,8 @@ let headers = {
 };
 
 let body = {
-    "user_post_id": 8,
-    "comment": "dolorum"
+    "user_post_id": 19,
+    "comment": "sed"
 }
 
 fetch(url, {
@@ -2349,7 +2857,7 @@ curl -X GET \
     -G "http://localhost/api/v1/user/fetch/post/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"id":19}'
+    -d '{"id":12}'
 
 ```
 
@@ -2364,7 +2872,7 @@ let headers = {
 };
 
 let body = {
-    "id": 19
+    "id": 12
 }
 
 fetch(url, {
@@ -2409,7 +2917,7 @@ curl -X GET \
     -G "http://localhost/api/v1/user/check/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":19}'
+    -d '{"post_id":7}'
 
 ```
 
@@ -2424,7 +2932,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 19
+    "post_id": 7
 }
 
 fetch(url, {
@@ -2465,7 +2973,7 @@ curl -X GET \
     -G "http://localhost/api/v1/user/post/like/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"post_id":7}'
+    -d '{"post_id":10}'
 
 ```
 
@@ -2480,7 +2988,7 @@ let headers = {
 };
 
 let body = {
-    "post_id": 7
+    "post_id": 10
 }
 
 fetch(url, {
@@ -6336,6 +6844,168 @@ fetch(url, {
 
 
 <!-- END_1fe1bb298abd6bbcf8fcd723a89301bc -->
+
+<!-- START_597ff4c76c73ac71fda47adda1631248 -->
+## dashboard/foodshop
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/dashboard/foodshop" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/dashboard/foodshop"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET dashboard/foodshop`
+
+
+<!-- END_597ff4c76c73ac71fda47adda1631248 -->
+
+<!-- START_c4e2d672f9412256dd28a5436857f737 -->
+## dashboard/foodshop/create
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/dashboard/foodshop/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/dashboard/foodshop/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET dashboard/foodshop/create`
+
+
+<!-- END_c4e2d672f9412256dd28a5436857f737 -->
+
+<!-- START_d1627abcf9570f7478d878acae9438c1 -->
+## dashboard/foodshop/store
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/dashboard/foodshop/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/dashboard/foodshop/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/foodshop/store`
+
+
+<!-- END_d1627abcf9570f7478d878acae9438c1 -->
+
+<!-- START_ada728451886e089e13d7cc4486568a0 -->
+## dashboard/foodshop/delete/{foodshop}
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/dashboard/foodshop/delete/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/dashboard/foodshop/delete/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST dashboard/foodshop/delete/{foodshop}`
+
+
+<!-- END_ada728451886e089e13d7cc4486568a0 -->
 
 <!-- START_93dc8769690b5f5555e43da4610f41ed -->
 ## dashboard/address/store
