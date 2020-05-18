@@ -122,5 +122,10 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('search/user', 'Api\SearchController@users');
     Route::post('search/hotel', 'Api\SearchController@hotels');
 
+    Route::group(['prefix'=>'friendship', 'middleware' => 'auth:api'], function(){
+        Route::get('/get', 'Api\FriendshipController@getAllFriends');
+        Route::post('/request','Api\FriendshipController@sendCancelRequest');
+    });
+
 });
 

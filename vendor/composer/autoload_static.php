@@ -165,6 +165,10 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
             'Invoker\\' => 8,
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'Hootlex\\Friendships\\' => 20,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -517,6 +521,10 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Hootlex\\Friendships\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hootlex/laravel-friendships/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -653,6 +661,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Controllers\\Admin\\CardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CardController.php',
         'App\\Http\\Controllers\\Admin\\DashBoardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashBoardController.php',
         'App\\Http\\Controllers\\Admin\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/EventController.php',
+        'App\\Http\\Controllers\\Admin\\FoodShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FoodShopController.php',
         'App\\Http\\Controllers\\Admin\\GiftController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/GiftController.php',
         'App\\Http\\Controllers\\Admin\\HotelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HotelController.php',
         'App\\Http\\Controllers\\Admin\\HotelManagerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HotelManagerController.php',
@@ -671,6 +680,7 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'App\\Http\\Controllers\\Api\\CardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CardController.php',
         'App\\Http\\Controllers\\Api\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/EventController.php',
         'App\\Http\\Controllers\\Api\\FeedbackController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/FeedbackController.php',
+        'App\\Http\\Controllers\\Api\\FoodShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/FoodShopController.php',
         'App\\Http\\Controllers\\Api\\GiftController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GiftController.php',
         'App\\Http\\Controllers\\Api\\GiftOrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GiftOrderController.php',
         'App\\Http\\Controllers\\Api\\HotelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/HotelController.php',
@@ -1706,6 +1716,11 @@ class ComposerStaticInit786772dcfcee76111aef0e9b7e83a683
         'Highlight\\RegExMatch' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExMatch.php',
         'Highlight\\RegExUtils' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExUtils.php',
         'Highlight\\Terminators' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Terminators.php',
+        'Hootlex\\Friendships\\FriendshipsServiceProvider' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/FriendshipsServiceProvider.php',
+        'Hootlex\\Friendships\\Models\\FriendFriendshipGroups' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Models/FriendFriendshipGroups.php',
+        'Hootlex\\Friendships\\Models\\Friendship' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Models/Friendship.php',
+        'Hootlex\\Friendships\\Status' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Status.php',
+        'Hootlex\\Friendships\\Traits\\Friendable' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Traits/Friendable.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

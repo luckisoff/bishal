@@ -9,10 +9,11 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\NoPermissionModels\Birthdate;
 use Carbon\Carbon;
+use Hootlex\Friendships\Traits\Friendable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, HasRoles;
+    use HasApiTokens, Notifiable, HasRoles, Friendable;
     /**
      * The attributes that are mass assignable.
      *
