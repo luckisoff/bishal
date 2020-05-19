@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\NoPermissionModels\Birthdate;
 use Carbon\Carbon;
-use Hootlex\Friendships\Traits\Friendable;
+use App\Traits\Friendable;
 
 class User extends Authenticatable
 {
