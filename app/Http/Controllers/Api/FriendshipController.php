@@ -30,6 +30,7 @@ class FriendshipController extends BaseApiController
     *@bodyParam user_id integer required user id for the friendship
     */
     public function sendCancelRequest(Request $request) {
+        
         try {
             $user = auth('api')->user();
             $friend = User::find($request->user_id);
