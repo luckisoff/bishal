@@ -19,7 +19,7 @@ class FriendshipController extends BaseApiController
     public function getAllFriends() {
         try {
             $user = auth('api')->user();
-            return $this->successResponse(['friends' => $user->getAllFriendships()],'Friends listing');
+            return $this->successResponse(['friends' => $user->getFriends()],'Friends listing');
         } catch (\Throwable $th) {
             return $this->errorResponse('Something went wrong', 500);
         }
