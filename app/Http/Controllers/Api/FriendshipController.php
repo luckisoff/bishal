@@ -44,4 +44,37 @@ class FriendshipController extends BaseApiController
             return $this->errorResponse('Something went wrong', 500);
         }
     }
+
+    /**
+    *Accept Request
+    *@bodyParam user_id integer required user id for the friendship
+    */
+    public function acceptRequest(Request $request) {
+        try {
+            $user = auth('api')->user();
+            $friend = User::find($request->user_id);
+            $user->acceptFriendRequest($friend);
+            return $this->successResponse([],'Action success');
+        } catch (\Throwable $th) {
+            return $this->errorResponse('Something went wrong', 500);
+        }
+    }
+
+    /**
+    *Get All Request
+    */
+    public function getAllRequest(Request $request) {
+        try {
+            $user = auth('api')->user();
+            $requests = $user->getFriendRequests();
+
+            foreach($requests as $req) {
+                $req->sender;
+            }
+
+            return $this->successResponse(['requests' => $requests],'Action success');
+        } catch (\Throwable $th) {
+            return $this->errorResponse('Something went wrong', 500);
+        }
+    }
 }

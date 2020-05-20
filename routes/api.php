@@ -125,6 +125,8 @@ Route::group(['prefix'=>'v1'],function(){
     Route::group(['prefix'=>'friendship', 'middleware' => 'auth:api'], function(){
         Route::get('/get', 'Api\FriendshipController@getAllFriends');
         Route::post('/request','Api\FriendshipController@sendCancelRequest');
+        Route::post('/request/accept','Api\FriendshipController@acceptRequest');
+        Route::get('/all/request','Api\FriendshipController@getAllRequest');
     });
 
 });
