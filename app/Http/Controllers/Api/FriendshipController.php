@@ -39,7 +39,7 @@ class FriendshipController extends BaseApiController
             } else {
                 $user->beFriend($friend);
             }
-            return $this->successResponse([],'Action success');
+            return $this->successResponse(['requests' => $user->getFriendRequests()],'Action success');
         } catch (\Throwable $th) {
             return $this->errorResponse('Something went wrong', 500);
         }
