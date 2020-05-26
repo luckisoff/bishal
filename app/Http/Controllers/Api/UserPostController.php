@@ -100,11 +100,10 @@ class UserPostController extends BaseApiController
     public function fetchPosts()
     {
         try {
+            $friendsIds = auth('api')->user()->getFriends()->pluck('id')->toArray();
+            
             $posts=UserPost::orderBy('created_at','desc')->withCount(['comments','likes'])
-            ->whereHas('user', function($q){
-                $q->whereHas('friends');
-               
-            })
+            ->whereIn('user_id', $friendsIds)
             ->with(['user'=>function($query){
                 $query->select('id','name','image_url','works_at','bio','gender');
             }])->paginate(7);
