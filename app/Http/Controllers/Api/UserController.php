@@ -278,7 +278,13 @@ class UserController extends BaseApiController
     {
         try {
 
-            $users = User::orderBy('name','asc')->get();
+            $user = auth('api')->user();
+
+            $friendsIds = $user->getFriends()->pluck('id')->toArray();
+
+            $users = User::whereNotIn('id', $friendsIds)
+                            ->whereNotIn('id',[$user->id])
+                            ->orderBy('name','asc')->get();
 
             return $this->successResponse(['users' => $users],'All users listing');
         } catch (\Throwable $th) {
