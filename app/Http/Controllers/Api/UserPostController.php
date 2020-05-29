@@ -104,13 +104,13 @@ class UserPostController extends BaseApiController
             
             $posts=UserPost::orderBy('created_at','desc')->withCount(['comments','likes'])
             ->whereIn('user_id', $friendsIds)
+            ->orWhereIn('user_id', [auth('api')->user()->id])
             ->with(['user'=>function($query){
                 $query->select('id','name','image_url','works_at','bio','gender');
             }])->paginate(7);
 
             return $this->successResponse(['posts'=>$posts],'User posts');
         } catch (\Throwable $th) {
-            Log::debug('post fetch log:'.$th->getMessage());
             return $this->errorResponse($th->getMessage(),500);
         }
     }
