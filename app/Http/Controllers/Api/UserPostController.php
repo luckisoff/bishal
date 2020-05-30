@@ -106,7 +106,7 @@ class UserPostController extends BaseApiController
             ->whereIn('user_id', $friendsIds)
             ->orWhereIn('user_id', [auth('api')->user()->id])
             ->with(['user'=>function($query){
-                $query->select('id','name','image_url','works_at','bio','gender');
+                $query->select('id','name','image_url','works_at','bio','gender', 'email', 'address');
             }])->paginate(7);
 
             return $this->successResponse(['posts'=>$posts],'User posts');
@@ -172,7 +172,7 @@ class UserPostController extends BaseApiController
             $comments = Comment::where('commentable_id', $post_id)
                         ->where('commentable_type', \get_class(new UserPost()))
                         ->with(['user'=>function($q){
-                            $q->select('id','name','image_url','works_at','bio','gender');
+                            $q->select('id','name','image_url','works_at','bio','gender', 'email', 'address');
                         }])
                         ->orderBy('created_at','desc')->get();
 

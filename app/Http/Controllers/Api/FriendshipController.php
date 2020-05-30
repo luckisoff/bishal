@@ -54,6 +54,11 @@ class FriendshipController extends BaseApiController
             $user = auth('api')->user();
             $friend = User::find($request->user_id);
             $user->acceptFriendRequest($friend);
+
+            foreach($user->getFriendRequests() as $req) {
+                $req->sender;
+            }
+
             return $this->successResponse(['requests' => $user->getFriendRequests()],'Action success');
         } catch (\Throwable $th) {
             return $this->errorResponse('Something went wrong', 500);
