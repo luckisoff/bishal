@@ -150,7 +150,7 @@ class UserPostController extends BaseApiController
         try {
             $posts = UserPost::where('user_id',$user_id)->orderBy('created_at','desc')
                     ->withCount(['likes','comments'])->with(['user'=>function($q){
-                        $q->select('id','name','image_url','works_at','bio','gender');
+                        $q->select('id','name','image_url','works_at','bio','gender','email', 'address');
                     }])->get();
 
             return $this->successResponse(['posts'=>$posts],'Single user posts listing');
