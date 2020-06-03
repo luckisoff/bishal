@@ -29,6 +29,9 @@
                             <th data-hide="phone">Items</th>
                             <th data-hide="phone">Total Amount</th>
                             <th data-hide="phone">Date/Time</th>
+                            <th data-hide="phone">Longitude</th>
+                            <th data-hide="phone">Latitude</th>
+                            <th data-hide="phone">Pick Up Time</th>
                             <th data-hide="phone,tablet">Action</th>
                         </tr>
                     </thead>
@@ -64,6 +67,9 @@
                                 </td>
                                 <td>{{'Rs. '.$order->total_price}}</td>
                                 <td>{{$order->created_at}} ({{$order->created_at->diffForHumans()}})</td>
+                                <td>{{$order->long}}</td>
+                                <td>{{$order->lat}}</td>
+                                <td>{{$order->pickup_time}}</td>
                                 <td>
                                     @if(auth()->user()->hasRole('manager') || auth()->user()->can('update order'))
 

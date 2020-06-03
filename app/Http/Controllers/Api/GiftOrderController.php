@@ -24,6 +24,9 @@ class GiftOrderController extends BaseApiController
      * @bodyParam items array required details of items ordered name,unit price, quantity etc
      * @bodyParam deliver_address string required address of the users to be delivered
      * @bodyParam total_price integer required total price of the order
+     * @bodyParam lang longitude of the place
+     * @bodyParam lat  latitude of the place
+     * @bodyParam timestamp pick up time
     */
     public function placeOrder(Request $request)
     {
